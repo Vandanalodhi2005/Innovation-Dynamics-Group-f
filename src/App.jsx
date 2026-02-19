@@ -1,0 +1,76 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ShopProvider } from './context/ShopContext';
+import { AuthProvider } from './context/AuthContext';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import FAQs from './pages/FAQs';
+import Contact from './pages/Contact';
+import Printers from './components/Printers';
+import ProductDetails from './pages/ProductDetails';
+import Cart from './pages/Cart';
+import Wishlist from './pages/Wishlist';
+import Shipping from './pages/Shipping';
+import Payment from './pages/Payment';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile'; // Admin Components
+import AdminLayout from './components/admin/Layout/AdminLayout';
+import AdminDashboard from './components/admin/Pages/AdminDashboard';
+import AdminCategories from './components/admin/Pages/AdminCategories';
+import AdminProducts from './components/admin/Pages/AdminProducts';
+import AdminCustomers from './components/admin/Pages/AdminCustomers';
+import AdminOrders from './components/admin/Pages/AdminOrders';
+import AdminChat from './components/admin/Pages/AdminChat';
+import AdminAnalytics from './components/admin/Pages/AdminAnalytics';
+import AdminSettings from './components/admin/Pages/AdminSettings';
+
+import './App.css';
+
+function App() {
+  return (
+    <AuthProvider>
+      <ShopProvider>
+        <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <div className="min-h-screen bg-gray-50 flex flex-col">
+            <Navbar />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/faqs" element={<FAQs />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/shop" element={<Printers />} />
+                <Route path="/shop/:category" element={<Printers />} />
+                <Route path="/product/:id" element={<ProductDetails />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/shipping" element={<Shipping />} />
+                <Route path="/payment" element={<Payment />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/profile" element={<Profile />} />
+
+                {/* Admin Routes */}
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route path="dashboard" element={<AdminDashboard />} />
+                  <Route path="categories" element={<AdminCategories />} />
+                  <Route path="products" element={<AdminProducts />} />
+                  <Route path="customers" element={<AdminCustomers />} />
+                  <Route path="orders" element={<AdminOrders />} />
+                  <Route path="chat" element={<AdminChat />} />
+                  <Route path="analytics" element={<AdminAnalytics />} />
+                  <Route path="settings" element={<AdminSettings />} />
+                </Route>
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </ShopProvider>
+    </AuthProvider>
+  );
+}
+
+export default App;

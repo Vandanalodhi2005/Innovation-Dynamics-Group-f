@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-orange: #ffa143;
+  --color-active-orange: #e08e3b;
+  /* Slightly darker for hover/active */
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
