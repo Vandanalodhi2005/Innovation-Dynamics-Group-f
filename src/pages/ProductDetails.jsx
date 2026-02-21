@@ -5,6 +5,7 @@ import { listProductDetails, createProductReview } from '../redux/actions/produc
 import { addToCart } from '../redux/actions/cartActions';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../redux/constants/productConstants';
 import { useShop } from '../context/ShopContext';
+import { useAuth } from '../context/AuthContext';
 import {
     Star, ShoppingBag, ShoppingCart, Heart, Truck, Shield,
     ChevronLeft, ChevronRight, Check, RotateCcw, Award
@@ -41,6 +42,14 @@ const Stars = ({ value, size = 16, interactive = false, onSet, onHover, onLeave 
         ))}
     </div>
 );
+
+/* helper chip */
+const Chip = ({ label, value }) => (
+    <span className="inline-flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-4 py-1.5 text-sm">
+        {label && <span className="text-gray-500">{label}:</span>}
+        <span className="font-bold text-gray-800">{value}</span>
+    </span>
+);
 /* ─────────────────────────────────────────────────────────────────────────── */
 
 const ProductDetails = () => {
@@ -55,7 +64,8 @@ const ProductDetails = () => {
     const [hoverRating, setHoverRating] = useState(0);
     const [comment, setComment] = useState('');
 
-    const { addToWishlist, isInWishlist } = useShop();
+    const { addToWishlist, isInWishlist, addToCart: ctxAddToCart } = useShop();
+    const { isAuthenticated } = useAuth();
 
     const { loading, error, product } = useSelector((s) => s.productDetails);
     const { userInfo } = useSelector((s) => s.userLogin);
@@ -89,15 +99,15 @@ const ProductDetails = () => {
     const images = product?.images?.length ? product.images : [];
     const mainImg = images[activeImg] ? imgUrl(images[activeImg]) : 'https://placehold.co/600x600?text=No+Image';
     const toCart = () => {
-        if (!userInfo) { alert('Please sign in to add items to cart.'); navigate('/login'); return; }
-        dispatch(addToCart(id, qty)); navigate('/cart');
+        if (!isAuthenticated) { alert('Please sign in to add items to cart.'); navigate('/login'); return; }
+        ctxAddToCart(product, qty); navigate('/cart');
     };
     const buyNow = () => {
-        if (!userInfo) { alert('Please sign in to buy products.'); navigate('/login'); return; }
-        dispatch(addToCart(id, qty)); navigate('/cart?redirect=shipping');
+        if (!isAuthenticated) { alert('Please sign in to buy products.'); navigate('/login'); return; }
+        ctxAddToCart(product, qty); navigate('/cart?redirect=shipping');
     };
     const wishlist = () => {
-        if (!userInfo) { alert('Please sign in to save items.'); navigate('/login'); return; }
+        if (!isAuthenticated) { alert('Please sign in to save items.'); navigate('/login'); return; }
         if (!addToWishlist(product)) { alert('Please sign in to save items.'); navigate('/login'); }
     };
 
@@ -217,6 +227,19 @@ const ProductDetails = () => {
                                         <span className="text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1 rounded-full uppercase tracking-wide">
                                             {product.category.name}
                                         </span>
+                                    )}
+                                </div>
+
+                                {/* Tech & Usage attributes */}
+                                <div className="flex flex-wrap items-center gap-3 mb-4">
+                                    {product.technology?.length > 0 && (
+                                        <Chip value={product.technology.join(', ')} />
+                                    )}
+                                    {product.usageCategory?.length > 0 && (
+                                        <Chip value={product.usageCategory.join(', ')} />
+                                    )}
+                                    {product.allInOneType?.length > 0 && (
+                                        <Chip value={product.allInOneType.join(', ')} />
                                     )}
                                 </div>
 
@@ -350,15 +373,13 @@ const ProductDetails = () => {
                                 {/* OVERVIEW */}
                                 {activeTab === 'overview' && (
                                     <div>
-                                        <h2 className="text-xl font-bold text-gray-900 mb-4">About this Product</h2>
-                                        <p className="text-gray-600 leading-relaxed mb-8">{product.description}</p>
+
+
                                         <div className="flex flex-wrap gap-3">
-                                            {product.technology && <Chip label="Technology" value={product.technology} />}
-                                            {product.brand && <Chip label="Brand" value={product.brand} />}
-                                            {product.usageCategory?.length > 0 && <Chip label="Usage" value={product.usageCategory.join(', ')} />}
-                                            {product.isAllInOne && <Chip label="All-in-One" value="Yes" />}
-                                            {product.isWireless && <Chip label="Wireless" value="Yes" />}
-                                            {product.mainFunction && <Chip label="Function" value={product.mainFunction} />}
+                                            <div
+                                                className="prose max-w-none text-gray-600 "
+                                                dangerouslySetInnerHTML={{ __html: product.overview }}
+                                            />
                                         </div>
                                     </div>
                                 )}
@@ -490,12 +511,5 @@ const ProductDetails = () => {
     );
 };
 
-/* helper chip */
-const Chip = ({ label, value }) => (
-    <span className="inline-flex items-center gap-1.5 bg-gray-50 border border-gray-200 rounded-full px-4 py-1.5 text-sm">
-        <span className="text-gray-500">{label}:</span>
-        <span className="font-bold text-gray-800">{value}</span>
-    </span>
-);
 
 export default ProductDetails;

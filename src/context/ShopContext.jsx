@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart as addToCartAction, removeFromCart as removeFromCartAction, saveShippingAddress } from '../redux/actions/cartActions';
 import { useAuth } from './AuthContext';
 
 const ShopContext = createContext();
@@ -8,83 +10,53 @@ export const useShop = () => {
 };
 
 export const ShopProvider = ({ children }) => {
+    const dispatch = useDispatch();
     const { isAuthenticated } = useAuth();
-    // Cart State
-    const [cart, setCart] = useState(() => {
-        const savedCart = localStorage.getItem('cart');
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
 
-    // Wishlist State
+    // Redux Cart State
+    const cartState = useSelector((state) => state.cart);
+    const { cartItems, shippingAddress } = cartState;
+
+    // Wishlist State (Keep in Context for now as it's not in smartinkguide Redux)
     const [wishlist, setWishlist] = useState(() => {
         const savedWishlist = localStorage.getItem('wishlist');
         return savedWishlist ? JSON.parse(savedWishlist) : [];
     });
 
-    // Shipping State
-    const [shippingInfo, setShippingInfo] = useState(() => {
-        const savedShipping = localStorage.getItem('shippingInfo');
-        return savedShipping ? JSON.parse(savedShipping) : {
-            fullName: '',
-            address: '',
-            city: '',
-            postalCode: '',
-            country: ''
-        };
-    });
-
-    // Persist to LocalStorage
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }, [cart]);
-
+    // Persist Wishlist to LocalStorage
     useEffect(() => {
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
     }, [wishlist]);
 
-    useEffect(() => {
-        localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
-    }, [shippingInfo]);
-
-    // Cart Actions
+    // Cart Actions (Mapped to Redux)
     const addToCart = (product, quantity = 1) => {
-        setCart(prevCart => {
-            const existingItem = prevCart.find(item => item._id === product._id);
-            if (existingItem) {
-                return prevCart.map(item =>
-                    item._id === product._id
-                        ? { ...item, quantity: item.quantity + quantity }
-                        : item
-                );
-            }
-            return [...prevCart, { ...product, quantity }];
-        });
+        // Redux action uses id/slug
+        dispatch(addToCartAction(product._id || product.slug, quantity));
     };
 
     const removeFromCart = (productId) => {
-        setCart(prevCart => prevCart.filter(item => item._id !== productId));
+        dispatch(removeFromCartAction(productId));
     };
 
     const updateQuantity = (productId, quantity) => {
         if (quantity < 1) return;
-        setCart(prevCart =>
-            prevCart.map(item =>
-                item._id === productId ? { ...item, quantity } : item
-            )
-        );
+        dispatch(addToCartAction(productId, quantity)); // addToCart in smartinkguide updates qty if already exists
     };
 
-    const clearCart = () => setCart([]);
+    const clearCart = () => {
+        // Clear logic for Redux cart
+        cartItems.forEach(item => dispatch(removeFromCartAction(item.product)));
+    };
 
     // Wishlist Actions
     const addToWishlist = (product) => {
-        if (!isAuthenticated) return false; // Return false to indicate failure (handled in UI)
+        if (!isAuthenticated) return false;
 
         setWishlist(prevWishlist => {
             if (prevWishlist.some(item => item._id === product._id)) return prevWishlist;
             return [...prevWishlist, product];
         });
-        return true; // Return true to indicate success
+        return true;
     };
 
     const removeFromWishlist = (productId) => {
@@ -102,8 +74,26 @@ export const ShopProvider = ({ children }) => {
 
     // Shipping Actions
     const saveShippingInfo = (info) => {
-        setShippingInfo(info);
+        dispatch(saveShippingAddress({
+            address: info.address,
+            city: info.city,
+            state: info.state || '',
+            postalCode: info.postalCode,
+            country: info.country,
+            phone: info.phone || '',
+            fullName: info.fullName
+        }));
     };
+
+    // Map Redux cartItems to expected Format in Context (if needed)
+    // smartinkguide cart item: { product, title, image, price, countInStock, slug, qty }
+    // current context item: { _id, title, images, price, quantity, ... }
+    const cart = cartItems.map(item => ({
+        ...item,
+        _id: item.product,
+        quantity: item.qty,
+        images: [item.image]
+    }));
 
     const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
     const wishlistCount = wishlist.length;
@@ -112,7 +102,15 @@ export const ShopProvider = ({ children }) => {
     const value = {
         cart,
         wishlist,
-        shippingInfo,
+        shippingInfo: {
+            fullName: shippingAddress.fullName || '',
+            address: shippingAddress.address || '',
+            city: shippingAddress.city || '',
+            postalCode: shippingAddress.postalCode || '',
+            country: shippingAddress.country || '',
+            state: shippingAddress.state || '',
+            phone: shippingAddress.phone || ''
+        },
         addToCart,
         removeFromCart,
         updateQuantity,

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, Mail, Lock, AlertCircle, Shield, KeyRound, CheckCircle2 } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendRegistrationOTP, verifyRegistrationOTP } from '../redux/actions/userActions';
+import { User, Mail, Lock, AlertCircle, KeyRound, CheckCircle2 } from 'lucide-react';
 
 const Signup = () => {
     const [step, setStep] = useState(1); // 1: Details, 2: OTP
@@ -11,60 +12,54 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [otp, setOtp] = useState('');
-    const [isAdminSignup, setIsAdminSignup] = useState(false);
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-    const [loading, setLoading] = useState(false);
-    const { sendOTP, verifyOTP } = useAuth();
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleSendOTP = async (e) => {
-        e.preventDefault();
-        setError('');
+    const userSendOTP = useSelector((state) => state.userSendOTP);
+    const { loading: loadingSendOTP, error: errorSendOTP, success: successSendOTP } = userSendOTP;
 
-        if (password !== confirmPassword) {
-            return setError('Passwords do not match');
+    const userVerifyOTP = useSelector((state) => state.userVerifyOTP);
+    const { loading: loadingVerifyOTP, error: errorVerifyOTP, success: successVerifyOTP } = userVerifyOTP;
+
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo: userLoginInfo } = userLogin;
+
+    useEffect(() => {
+        if (userLoginInfo) {
+            navigate('/');
         }
+    }, [navigate, userLoginInfo]);
 
-        if (password.length < 6) {
-            return setError('Password must be at least 6 characters');
-        }
-
-        setLoading(true);
-
-        try {
-            await sendOTP(firstName, lastName, email, password);
+    useEffect(() => {
+        if (successSendOTP) {
             setStep(2);
-            setSuccess('Verification code sent to your email.');
-        } catch (err) {
-            setError(err.message || 'Failed to send OTP');
-        } finally {
-            setLoading(false);
         }
+    }, [successSendOTP]);
+
+    useEffect(() => {
+        if (successVerifyOTP) {
+            navigate('/login?message=Successfully Verified. Please Login.');
+        }
+    }, [successVerifyOTP, navigate]);
+
+    const handleSendOTP = (e) => {
+        e.preventDefault();
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
+        dispatch(sendRegistrationOTP(firstName, lastName, email, password));
     };
 
-    const handleVerifyOTP = async (e) => {
+    const handleVerifyOTP = (e) => {
         e.preventDefault();
-        setError('');
-        setLoading(true);
-
-        try {
-            await verifyOTP(email, otp);
-            setSuccess('Account verified successfully! Redirecting to login...');
-            setTimeout(() => {
-                navigate('/login');
-            }, 3000);
-        } catch (err) {
-            setError(err.message || 'OTP verification failed');
-        } finally {
-            setLoading(false);
-        }
+        dispatch(verifyRegistrationOTP(email, otp));
     };
 
     return (
         <div className="min-h-screen pt-20 pb-12 flex flex-col items-center justify-center bg-gray-50 font-sans">
-            <div className={`w-full max-w-md bg-white p-8 rounded-lg shadow-md border ${isAdminSignup ? 'border-blue-200 shadow-blue-100' : 'border-gray-100'}`}>
-
+            <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md border border-gray-100">
                 {step === 1 ? (
                     <>
                         <div className="text-center mb-8">
@@ -72,10 +67,10 @@ const Signup = () => {
                             <p className="text-gray-600">Join us to access exclusive features</p>
                         </div>
 
-                        {error && (
+                        {errorSendOTP && (
                             <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-center gap-2">
                                 <AlertCircle size={20} />
-                                <span>{error}</span>
+                                <span>{errorSendOTP}</span>
                             </div>
                         )}
 
@@ -92,7 +87,7 @@ const Signup = () => {
                                             required
                                             value={firstName}
                                             onChange={(e) => setFirstName(e.target.value)}
-                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
                                             placeholder="John"
                                         />
                                     </div>
@@ -108,7 +103,7 @@ const Signup = () => {
                                             required
                                             value={lastName}
                                             onChange={(e) => setLastName(e.target.value)}
-                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
                                             placeholder="Doe"
                                         />
                                     </div>
@@ -126,7 +121,7 @@ const Signup = () => {
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
                                         placeholder="you@example.com"
                                     />
                                 </div>
@@ -143,7 +138,7 @@ const Signup = () => {
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -160,7 +155,7 @@ const Signup = () => {
                                         required
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -168,10 +163,10 @@ const Signup = () => {
 
                             <button
                                 type="submit"
-                                disabled={loading}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled={loadingSendOTP}
+                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50"
                             >
-                                {loading ? 'Sending OTP...' : 'Next: Verify Email'}
+                                {loadingSendOTP ? 'Sending OTP...' : 'Next: Verify Email'}
                             </button>
                         </form>
                     </>
@@ -185,17 +180,10 @@ const Signup = () => {
                             <p className="text-gray-600">Enter the 6-digit code sent to <strong>{email}</strong></p>
                         </div>
 
-                        {error && (
+                        {errorVerifyOTP && (
                             <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-center gap-2">
                                 <AlertCircle size={20} />
-                                <span>{error}</span>
-                            </div>
-                        )}
-
-                        {success && (
-                            <div className="mb-6 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 flex items-center gap-2">
-                                <CheckCircle2 size={20} />
-                                <span>{success}</span>
+                                <span>{errorVerifyOTP}</span>
                             </div>
                         )}
 
@@ -220,10 +208,10 @@ const Signup = () => {
 
                             <button
                                 type="submit"
-                                disabled={loading || otp.length < 6}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled={loadingVerifyOTP || otp.length < 6}
+                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50"
                             >
-                                {loading ? 'Verifying...' : 'Verify & Create Account'}
+                                {loadingVerifyOTP ? 'Verifying...' : 'Verify & Create Account'}
                             </button>
 
                             <div className="text-center">

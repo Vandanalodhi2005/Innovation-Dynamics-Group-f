@@ -55,7 +55,7 @@ const AdminSidebar = ({ isOpen, setIsOpen }) => {
             `}>
                 <div className="h-16 flex items-center gap-2 px-6 border-b border-slate-100 shrink-0">
                     <div className="flex-1 flex items-center gap-2">
-                        <img src={logo} alt="Admin Panel" className="h-10 md:h-16 w-auto object-contain" />
+                        {/* <img src={logo} alt="Admin Panel" className="h-10 md:h-16 w-auto object-contain" /> */}
                         <span className="text-lg font-bold text-slate-900 tracking-tight">Admin</span>
                     </div>
                     {/* Mobile Close Button */}

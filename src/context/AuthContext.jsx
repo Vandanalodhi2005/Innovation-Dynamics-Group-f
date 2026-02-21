@@ -126,6 +126,7 @@ export const AuthProvider = ({ children }) => {
 
     const value = {
         user,
+        setUser,
         isAuthenticated: !!user,
         login,
         signup,

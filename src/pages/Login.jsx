@@ -1,60 +1,78 @@
-import React, { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { USER_LOGIN_SUCCESS } from '../redux/constants/userConstants';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/actions/userActions';
 import { Mail, Lock, AlertCircle, Shield } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isAdminLogin, setIsAdminLogin] = useState(false);
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
-    const navigate = useNavigate();
+
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const location = useLocation();
+    const { setUser } = useAuth();
 
-    // Redirect to where the user came from, or home
-    const from = location.state?.from?.pathname || '/';
+    const userLogin = useSelector((state) => state.userLogin);
+    const { loading, error, userInfo } = userLogin;
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
-        setLoading(true);
+    const [successMessage, setSuccessMessage] = useState('');
 
-        try {
-            const user = await login(email, password, isAdminLogin);
+    // Parse query params safely
+    const queryParams = new URLSearchParams(location.search);
+    const redirect = queryParams.get('redirect');
+    const messageParam = queryParams.get('message');
 
-            // Sync with Redux
-            dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
+    useEffect(() => {
+        if (messageParam) {
+            setSuccessMessage(messageParam);
+        }
+    }, [messageParam]);
 
-            if (isAdminLogin) {
-                if (user.isAdmin) {
+    useEffect(() => {
+        if (userInfo) {
+            setUser(userInfo); // Sync AuthContext with Redux
+            setSuccessMessage('Logged In Successfully');
+            const timer = setTimeout(() => {
+                if (redirect) {
+                    navigate(`/${redirect}`, { replace: true });
+                } else if (userInfo.isAdmin && isAdminLogin) {
                     navigate('/admin/dashboard', { replace: true });
                 } else {
-                    setError('Access Denied: This account does not have admin privileges.');
-                    setLoading(false); // Make sure to stop loading if we don't navigate away
-                    // Ideally we should logout here so they aren't stuck in a 'logged in but denied' state for this specific flow check
-                    // but for now showing the error is the primary requirement.
+                    const from = location.state?.from?.pathname || '/';
+                    navigate(from, { replace: true });
                 }
-            } else {
-                navigate(from, { replace: true });
-            }
-        } catch (err) {
-            setError(err.message || 'Failed to login');
-            setLoading(false);
+            }, 1500);
+            return () => clearTimeout(timer);
         }
+    }, [userInfo, navigate, redirect, isAdminLogin, location.state, setUser]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!email || !password) return;
+        dispatch(login(email, password, isAdminLogin));
     };
 
     return (
         <div className="min-h-screen pt-20 pb-12 flex flex-col items-center justify-center bg-gray-50 font-sans">
-            <div className={`w-full max-w-md bg-white p-8 rounded-lg shadow-md border ${isAdminLogin ? 'border-blue-200 shadow-blue-100' : 'border-gray-100'}`}>
+            <div className={`w-full max-w-md bg-white p-8 rounded-lg shadow-md border ${isAdminLogin ? 'border-primary-orange shadow-orange-50' : 'border-gray-100'}`}>
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-                    <p className="text-gray-600">Sign in to your account to continue</p>
+                    <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                        {isAdminLogin ? 'Admin Portal' : 'Welcome Back'}
+                    </h1>
+                    <p className="text-gray-600">
+                        {isAdminLogin ? 'Please enter admin credentials' : 'Sign in to your account to continue'}
+                    </p>
                 </div>
+
+                {successMessage && (
+                    <div className="mb-6 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 flex items-center gap-2">
+                        <Shield size={20} className="text-green-500" />
+                        <span>{successMessage}</span>
+                    </div>
+                )}
 
                 {error && (
                     <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-center gap-2">
@@ -101,36 +119,22 @@ const Login = () => {
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
                             <input
-                                id="remember-me"
-                                name="remember-me"
+                                id="admin-login"
                                 type="checkbox"
+                                checked={isAdminLogin}
+                                onChange={(e) => setIsAdminLogin(e.target.checked)}
                                 className="h-4 w-4 text-primary-orange focus:ring-primary-orange border-gray-300 rounded"
                             />
-                            <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
-                                Remember me
+                            <label htmlFor="admin-login" className="ml-2 block text-sm text-gray-900 cursor-pointer">
+                                Login as Admin
                             </label>
                         </div>
 
                         <div className="text-sm">
-                            <a href="#" className="font-medium text-primary-orange hover:text-orange-600">
+                            <Link to="/forgot-password" title="Forgot Password" className="font-medium text-primary-orange hover:text-orange-600">
                                 Forgot your password?
-                            </a>
+                            </Link>
                         </div>
-                    </div>
-
-                    {/* Admin Toggle */}
-                    <div className="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <input
-                            id="admin-login"
-                            type="checkbox"
-                            checked={isAdminLogin}
-                            onChange={(e) => setIsAdminLogin(e.target.checked)}
-                            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                        />
-                        <label htmlFor="admin-login" className="ml-2 flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer select-none">
-                            <Shield size={16} className={isAdminLogin ? "text-blue-600" : "text-gray-400"} />
-                            Login as Administrator
-                        </label>
                     </div>
 
                     <button
@@ -155,13 +159,6 @@ const Login = () => {
                         </Link>
                     </p>
                 </div>
-            </div>
-
-            {/* Demo Credentials Hint */}
-            <div className="mt-8 max-w-md w-full bg-blue-50 p-4 rounded-md border border-blue-100 text-sm text-blue-800">
-                <p className="font-bold mb-1">Demo Mode:</p>
-                <p>Since this is a demo, you can sign up with any email/password, or use these credentials if you've already created them.</p>
-                <p className="mt-2 text-xs opacity-75">Admin Default: admin@example.com / admin123</p>
             </div>
         </div>
     );

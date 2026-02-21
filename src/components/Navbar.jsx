@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, User, Search, Heart, ShoppingCart, LogOut } from 'lucide-react';
+import { Menu, X, ChevronDown, User, Search, Heart, ShoppingCart, LogOut, Truck } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
 import { useDispatch } from 'react-redux';
@@ -10,10 +10,19 @@ const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
     const { cartCount, wishlistCount } = useShop();
     const { user, isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const handleSearch = (e) => {
+        if (e.key === 'Enter' && searchTerm.trim()) {
+            navigate(`/shop?search=${encodeURIComponent(searchTerm.trim())}`);
+            setSearchTerm(''); // Clear after search
+            if (isMenuOpen) setIsMenuOpen(false); // Close mobile menu if searching from there
+        }
+    };
 
     // Toggle Mobile Menu
     const toggleMenu = () => {
@@ -116,6 +125,9 @@ const Navbar = () => {
                             <input
                                 type="text"
                                 placeholder="Search..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                onKeyUp={handleSearch}
                                 className="bg-gray-100 text-sm rounded-full pl-10 pr-4 py-1.5 focus:outline-none focus:ring-1 focus:ring-active-orange text-black w-32 focus:w-48 transition-all duration-300 placeholder-gray-500"
                             />
                             <Search className="absolute left-3 top-1.5 text-gray-500 w-4 h-4" />
@@ -141,6 +153,9 @@ const Navbar = () => {
                                     <Link to="/profile" onClick={() => setIsUserDropdownOpen(false)} className="block px-4 py-2 border-b border-gray-100 hover:bg-gray-50 transition-colors">
                                         <p className="text-sm font-bold truncate">{user.name}</p>
                                         <p className="text-xs text-gray-500 truncate">View Profile</p>
+                                    </Link>
+                                    <Link to="/track-order" onClick={() => setIsUserDropdownOpen(false)} className="block px-4 py-2 hover:bg-gray-50 transition-colors text-sm">
+                                        Track Order
                                     </Link>
                                     <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
                                         <LogOut size={16} /> Logout
@@ -190,6 +205,9 @@ const Navbar = () => {
                         <input
                             type="text"
                             placeholder="Search products..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onKeyUp={handleSearch}
                             className="w-full bg-gray-100 text-black rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-1 focus:ring-active-orange"
                         />
                         <Search className="absolute left-3 top-2.5 text-gray-500 w-5 h-5" />
@@ -242,6 +260,14 @@ const Navbar = () => {
                             </Link>
                         )}
 
+                        <Link
+                            to="/track-order"
+                            onClick={toggleMenu}
+                            className="flex items-center gap-2 text-black hover:text-active-orange transition-colors w-full"
+                        >
+                            <Truck size={20} />
+                            <span>Track Order</span>
+                        </Link>
                         <Link
                             to="/wishlist"
                             onClick={handleWishlistClick}

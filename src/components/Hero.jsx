@@ -1,5 +1,11 @@
 import React from 'react';
 import { ArrowRight, Printer, Briefcase, Zap, Palette, Droplet } from 'lucide-react';
+import homeImage from "../../public/homeImage/img1.jpg";
+import officeImage from "../../public/homeImage/img2.jpg";
+import inkjetImage from "../../public/homeImage/img3.jpg";
+import laserImage from "../../public/homeImage/img4.jpg";
+import inkImage from "../../public/homeImage/img5.jpg";
+// import largeFormatImage from "../../public/homeImage/img6.jpg";
 
 const Hero = () => {
     const categories = [
@@ -7,37 +13,44 @@ const Hero = () => {
             title: "Home Printers",
             description: "Perfect for families, students, and everyday household printing needs. Compact, efficient, and designed for regular home use.",
             icon: <Printer size={24} className="text-white" />,
-            image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&q=80&w=500",
+            image: homeImage,
             link: "/shop/home-printers"
         },
         {
             title: "Office Printers",
             description: "Ideal for small businesses and workspaces needing consistent, high-volume output. Reliable, durable, and built for productivity.",
             icon: <Briefcase size={24} className="text-white" />,
-            image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=500",
+            image: officeImage,
             link: "/shop/office-printers"
         },
         {
             title: "Inkjet Printers",
             description: "Best for color documents, photos, and creative printing. Smooth color output and versatile media compatibility.",
             icon: <Palette size={24} className="text-white" />,
-            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=500",
+            image: inkjetImage,
             link: "/shop/inkjet-printers"
         },
         {
             title: "Laser Printers",
             description: "Great for fast, high-volume black & white or color printing. Cost-efficient and optimized for busy work environments.",
             icon: <Zap size={24} className="text-white" />,
-            image: "https://printerpoint.co.in/shop/printers/hp-colour-laser-150nw-wireless-color-laser-printer-built-in-ethernet-and-wifi-direct/",
+            image: laserImage,
             link: "/shop/laser-printers"
         },
         {
             title: "Ink Cartridges",
             description: "A wide selection of genuine and compatible ink cartridges and high-quality toner options, including standard and high-yield versions.",
             icon: <Droplet size={24} className="text-white" />,
-            image: "https://images.unsplash.com/photo-1610473068565-89689408e063?auto=format&fit=crop&q=80&w=500",
+            image: inkImage,
             link: "/shop/ink-cartridges"
         }
+        //  {
+        //     title: "Large format printers",
+        //     description: "A wide selection of genuine and compatible ink cartridges and high-quality toner options, including standard and high-yield versions.",
+        //     icon: <Droplet size={24} className="text-white" />,
+        //     image: largeFormatImage,
+        //     link: "/shop/ink-cartridges"
+        // }
     ];
 
     return (

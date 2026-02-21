@@ -33,6 +33,7 @@ const Footer = () => {
                             <li><a href="/shop/inkjet-printers" className="hover:text-primary-orange transition-colors">Inkjet Printers</a></li>
                             <li><a href="/shop/laser-printers" className="hover:text-primary-orange transition-colors">Laser Printers</a></li>
                             <li><a href="/shop/ink-cartridges" className="hover:text-primary-orange transition-colors">Ink & Toner</a></li>
+                            <li><a href="/track-order" className="hover:text-primary-orange transition-colors font-bold text-active-orange">Track Your Order</a></li>
                             <li><a href="/buying-guide" className="hover:text-primary-orange transition-colors font-bold italic">Buying Guide</a></li>
                             <li><a href="/resources" className="hover:text-primary-orange transition-colors font-bold italic">Resources Center</a></li>
                         </ul>

@@ -35,14 +35,14 @@ const Cart = () => {
                                 <div key={item._id} className="p-6 flex flex-col sm:flex-row gap-6 items-center">
                                     {/* Image */}
                                     <div className="w-24 h-24 bg-gray-50 rounded p-2 flex-shrink-0">
-                                        <img src={item.image} alt={item.name} className="w-full h-full object-contain mix-blend-multiply" />
+                                        <img src={item.images?.[0] || item.image || 'https://placehold.co/100x100?text=No+Image'} alt={item.title} className="w-full h-full object-contain mix-blend-multiply" />
                                     </div>
 
                                     {/* Info */}
                                     <div className="flex-1 text-center sm:text-left">
-                                        <h3 className="font-bold text-lg text-gray-900 mb-1">{item.name}</h3>
+                                        <h3 className="font-bold text-lg text-gray-900 mb-1">{item.title}</h3>
                                         <p className="text-sm text-gray-500 mb-2">{item.brand}</p>
-                                        <p className="font-bold text-primary-orange">${item.price.toFixed(2)}</p>
+                                        <p className="font-bold text-primary-orange">${Number(item.price || 0).toFixed(2)}</p>
                                     </div>
 
                                     {/* Quantity Controls */}
@@ -116,7 +116,7 @@ const Cart = () => {
                             </div>
 
                             <Link
-                                to="/shipping"
+                                to="/checkout"
                                 className="w-full py-4 bg-black text-white font-bold uppercase tracking-wider hover:bg-primary-orange transition-colors flex items-center justify-center gap-2"
                             >
                                 Checkout <ArrowRight size={18} />

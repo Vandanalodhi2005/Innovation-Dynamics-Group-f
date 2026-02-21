@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../redux/actions/productActions';
 import { Eye, ShoppingBag, Heart, ChevronRight, X, ChevronLeft } from 'lucide-react';
@@ -142,15 +142,16 @@ const CategorySection = ({ catName, catSlug, onViewAll, onDetails, onWishlist, i
     );
 };
 
-// ── Filtered View (single category, with search/sort/pagination) ─────────────
-const FilteredView = ({ catName, onDetails, onWishlist, isWishlisted }) => {
+// ── Filtered View (single category or search, with search/sort/pagination) ─────────────
+const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWishlisted }) => {
     const dispatch = useDispatch();
-    const [search, setSearch] = useState('');
-    const [debounced, setDeb] = useState('');
+    const [search, setSearch] = useState(initialSearch);
+    const [debounced, setDeb] = useState(initialSearch);
     const [sortBy, setSortBy] = useState('featured');
 
     const { loading, error, products = [], pages = 1, page = 1 } = useSelector(s => s.productList);
 
+    useEffect(() => { setSearch(initialSearch); }, [initialSearch]);
     useEffect(() => { const t = setTimeout(() => setDeb(search), 400); return () => clearTimeout(t); }, [search]);
     useEffect(() => { dispatch(listProducts(debounced, catName, 1)); }, [dispatch, debounced, catName]);
 
@@ -234,8 +235,13 @@ const FilteredView = ({ catName, onDetails, onWishlist, isWishlisted }) => {
 // ── Main Printers Page ────────────────────────────────────────────────────────
 const Printers = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const { category: catSlug } = useParams();
     const { addToWishlist, isInWishlist } = useShop();
+
+    // Get search query from URL
+    const searchParams = new URLSearchParams(location.search);
+    const globalSearch = searchParams.get('search') || '';
 
     // Load all categories dynamically from the backend
     const [allCategories, setAllCategories] = useState([]);
@@ -266,13 +272,15 @@ const Printers = () => {
                 {/* ── Header ─────────────────────────────────────────────── */}
                 <div className="text-center mb-10">
                     <h1 className="text-5xl font-bold mb-4 tracking-tight">
-                        {activeCatName || 'Popular Printers & Best-Selling Supplies'}
+                        {globalSearch ? `Search Results for "${globalSearch}"` : (activeCatName || 'Popular Printers & Best-Selling Supplies')}
                     </h1>
                     <div className="w-20 h-1 bg-primary-orange mx-auto" />
                     <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
-                        {activeCatName
-                            ? `Browse our range of ${activeCatName}.`
-                            : 'Browse customer favorites, top-rated items, and frequently purchased printing essentials.'}
+                        {globalSearch
+                            ? `Showing search results across all categories.`
+                            : (activeCatName
+                                ? `Browse our range of ${activeCatName}.`
+                                : 'Browse customer favorites, top-rated items, and frequently purchased printing essentials.')}
                     </p>
 
                     {/* Category tabs */}
@@ -298,7 +306,15 @@ const Printers = () => {
                 </div>
 
                 {/* ── Content ────────────────────────────────────────────── */}
-                {activeCatName ? (
+                {globalSearch ? (
+                    <FilteredView
+                        catName=""
+                        initialSearch={globalSearch}
+                        onDetails={handleDetails}
+                        onWishlist={handleWishlist}
+                        isWishlisted={isInWishlist}
+                    />
+                ) : activeCatName ? (
                     <FilteredView
                         catName={activeCatName}
                         onDetails={handleDetails}

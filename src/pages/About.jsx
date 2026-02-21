@@ -1,5 +1,6 @@
 import React from 'react';
 import { Target, ShieldCheck, Printer, Users, Rocket, Eye, Heart, Info, Box } from 'lucide-react';
+import aboutImage from '../../public/about/hero.jpg';
 
 const About = () => {
     return (
@@ -9,7 +10,7 @@ const About = () => {
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1920"
+                        src={aboutImage}
                         alt="Office Background"
                         className="w-full h-full object-cover opacity-95"
                     />
