@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import { useNavigate } from 'react-router-dom';
-import { Truck, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Truck, ArrowRight, ShieldCheck, AlertCircle } from 'lucide-react';
+import { useAuth } from '../context/AuthContext'; // Assuming useAuth is imported from somewhere
 
 const Shipping = () => {
     const { cart, cartTotal, shippingInfo, saveShippingInfo } = useShop();
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState(shippingInfo);
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,11 +18,22 @@ const Shipping = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Final validation
+        if (!formData.fullName || !formData.address || !formData.city || !formData.postalCode || !formData.country) {
+            setError('Please fill in all shipping details');
+            return;
+        }
+
         saveShippingInfo(formData);
-        // For now, allow proceeding even if fields are empty, but real app would validate
         console.log("Shipping Info Saved:", formData);
         navigate('/payment');
     };
+
+    if (!user) {
+        navigate('/login?redirect=shipping');
+        return null;
+    }
 
     if (cart.length === 0) {
         navigate('/cart');
@@ -47,6 +61,13 @@ const Shipping = () => {
                             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
                                 <Truck className="text-primary-orange" /> Shipping Information
                             </h2>
+
+                            {error && (
+                                <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-center gap-2">
+                                    <AlertCircle size={20} />
+                                    <span>{error}</span>
+                                </div>
+                            )}
 
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>

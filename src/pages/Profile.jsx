@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { USER_LOGOUT } from '../redux/constants/userConstants';
 import { User, Package, LogOut, MapPin, CreditCard, ChevronDown, ChevronUp, Plus, X, Save } from 'lucide-react';
 
 const Profile = () => {
     const { user, isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     // State for Features
     const [isEditingAddress, setIsEditingAddress] = useState(false);
@@ -36,7 +39,8 @@ const Profile = () => {
     if (!user) return null;
 
     const handleLogout = () => {
-        logout();
+        logout(); // AuthContext logout
+        dispatch({ type: USER_LOGOUT }); // Redux logout
         navigate('/');
     };
 
@@ -182,8 +186,8 @@ const Profile = () => {
                                             </div>
                                             <div className="text-center">
                                                 <span className={`inline - block px - 2 py - 1 rounded - full text - xs font - bold ${order.status === 'Delivered' ? 'bg-green-100 text-green-800' :
-                                                        order.status === 'Processing' ? 'bg-blue-100 text-blue-800' :
-                                                            'bg-gray-100 text-gray-800'
+                                                    order.status === 'Processing' ? 'bg-blue-100 text-blue-800' :
+                                                        'bg-gray-100 text-gray-800'
                                                     } `}>
                                                     {order.status}
                                                 </span>

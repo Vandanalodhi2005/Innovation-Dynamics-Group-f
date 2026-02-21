@@ -35,7 +35,7 @@ const AdminOrders = () => {
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/orders?page=${pageNum}&search=${search}`, {
                 headers: { Authorization: `Bearer ${userInfo.token}` }
             });
-            
+
             // Handle if data is array (legacy/old api) or object
             const newOrders = Array.isArray(data) ? data : data.orders;
             const newPages = Array.isArray(data) ? 1 : data.pages;
@@ -117,7 +117,7 @@ const AdminOrders = () => {
     const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`https://printersbackend.onrender.com/api/orders/${selectedOrder._id}/status`, updateForm, {
+            await axios.put(`${import.meta.env.VITE_API_URL}/orders/${selectedOrder._id}/status`, updateForm, {
                 headers: { Authorization: `Bearer ${userInfo.token}` }
             });
             fetchOrders();
@@ -246,21 +246,21 @@ const AdminOrders = () => {
                     </table>
                 </div>
 
-                 {loading && page > 1 && (
-                     <div className="p-4 border-t border-slate-50 flex justify-center sticky bottom-0 bg-white/95 backdrop-blur-sm z-10 space-x-2">
-                             <div className="w-5 h-5 border-2 border-slate-600 border-t-transparent rounded-full animate-spin"></div>
-                             <span className="text-slate-500 font-bold text-sm">Loading more orders...</span>
-                     </div>
-                 )}
+                {loading && page > 1 && (
+                    <div className="p-4 border-t border-slate-50 flex justify-center sticky bottom-0 bg-white/95 backdrop-blur-sm z-10 space-x-2">
+                        <div className="w-5 h-5 border-2 border-slate-600 border-t-transparent rounded-full animate-spin"></div>
+                        <span className="text-slate-500 font-bold text-sm">Loading more orders...</span>
+                    </div>
+                )}
 
                 {(page < totalPages) && !loading && (
                     <div className="p-4 border-t border-slate-100 flex justify-center">
-                        <button 
+                        <button
                             onClick={handleLoadMore}
                             disabled={loading}
                             className="px-6 py-2 bg-slate-100 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-bold transition-colors disabled:opacity-50 flex items-center gap-2"
                         >
-                           See More Orders
+                            See More Orders
                         </button>
                     </div>
                 )}
@@ -339,7 +339,7 @@ const AdminOrders = () => {
                                 {selectedOrder.orderItems.map((item, index) => (
                                     <div key={index} className="flex gap-4 items-center p-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors">
                                         <div className="w-16 h-16 bg-white border rounded-lg flex items-center justify-center overflow-hidden shrink-0">
-                                            <img src={item.image.startsWith('http') ? item.image : `http://localhost:5000${item.image}`} className="w-full h-full object-contain" alt="" />
+                                            <img src={item.image.startsWith('http') ? item.image : `${import.meta.env.VITE_API_URL.replace('/api', '')}${item.image}`} className="w-full h-full object-contain" alt="" />
                                         </div>
                                         <div className="flex-1">
                                             <h4 className="font-bold text-slate-800 text-sm line-clamp-2">{item.name}</h4>

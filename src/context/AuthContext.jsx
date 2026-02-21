@@ -11,12 +11,12 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     // API URL from environment variables
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5003/api';
 
     useEffect(() => {
         // Check for logged-in user in localStorage on mount
         const checkLoggedIn = async () => {
-            const storedUser = localStorage.getItem('user');
+            const storedUser = localStorage.getItem('userInfo');
             if (storedUser) {
                 const parsedUser = JSON.parse(storedUser);
                 setUser(parsedUser);
@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
     const login = async (email, password, isAdminLogin = false) => {
         setLoading(true);
         try {
-            const response = await fetch(`${API_URL}/api/auth/login`, {
+            const response = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
             }
 
             setUser(data);
-            localStorage.setItem('user', JSON.stringify(data));
+            localStorage.setItem('userInfo', JSON.stringify(data));
             return data;
         } catch (error) {
             throw error;
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
         // Note: Backend might ignore isAdmin flag for security reasons
         // But we pass it if we ever decide to allow it via API or for consistency
         try {
-            const response = await fetch(`${API_URL}/api/auth/register`, {
+            const response = await fetch(`${API_URL}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +82,37 @@ export const AuthProvider = ({ children }) => {
 
             // Backend register response includes token, so we can auto-login
             setUser(data);
-            localStorage.setItem('user', JSON.stringify(data));
+            localStorage.setItem('userInfo', JSON.stringify(data));
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    const sendOTP = async (firstName, lastName, email, password) => {
+        try {
+            const response = await fetch(`${API_URL}/auth/send-registration-otp`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ firstName, lastName, email, password }),
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message || 'Failed to send OTP');
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    };
+
+    const verifyOTP = async (email, otp) => {
+        try {
+            const response = await fetch(`${API_URL}/auth/verify-registration-otp`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, otp }),
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message || 'OTP verification failed');
             return data;
         } catch (error) {
             throw error;
@@ -91,7 +121,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem('user');
+        localStorage.removeItem('userInfo');
     };
 
     const value = {
@@ -100,6 +130,8 @@ export const AuthProvider = ({ children }) => {
         login,
         signup,
         logout,
+        sendOTP,
+        verifyOTP,
         loading
     };
 

@@ -15,7 +15,19 @@ import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Profile from './pages/Profile'; // Admin Components
+import Profile from './pages/Profile';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import RefundPolicy from './pages/RefundPolicy';
+import ShippingPolicy from './pages/ShippingPolicy';
+import CookiePolicy from './pages/CookiePolicy';
+import Disclaimer from './pages/Disclaimer';
+import DoNotSell from './pages/DoNotSell';
+import Accessibility from './pages/Accessibility';
+import BuyingGuide from './pages/BuyingGuide';
+import Resources from './pages/Resources';
+import ReturnExchange from './pages/ReturnExchange';
+// Admin Components
 import AdminLayout from './components/admin/Layout/AdminLayout';
 import AdminDashboard from './components/admin/Pages/AdminDashboard';
 import AdminCategories from './components/admin/Pages/AdminCategories';
@@ -51,6 +63,17 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-conditions" element={<TermsConditions />} />
+                <Route path="/return-refund" element={<RefundPolicy />} />
+                <Route path="/shipping-policy" element={<ShippingPolicy />} />
+                <Route path="/cookies-policy" element={<CookiePolicy />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
+                <Route path="/do-not-sell" element={<DoNotSell />} />
+                <Route path="/accessibility" element={<Accessibility />} />
+                <Route path="/buying-guide" element={<BuyingGuide />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/return-exchange" element={<ReturnExchange />} />
 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminLayout />}>

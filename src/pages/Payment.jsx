@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import { useShop } from '../context/ShopContext';
 import { useNavigate } from 'react-router-dom';
 import { CreditCard, ArrowRight, ShieldCheck, MapPin, Truck, CheckCircle } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const Payment = () => {
     const { cart, cartTotal, shippingInfo, clearCart } = useShop();
+    const { user } = useAuth();
     const navigate = useNavigate();
     const [selectedMethod, setSelectedMethod] = useState('card');
     const [isProcessing, setIsProcessing] = useState(false);
     const [orderPlaced, setOrderPlaced] = useState(false);
+
+    // Redirect if not logged in
+    React.useEffect(() => {
+        if (!user) {
+            navigate('/login?redirect=payment');
+        } else if (!shippingInfo.fullName || !shippingInfo.address || !shippingInfo.city || !shippingInfo.postalCode || !shippingInfo.country) {
+            navigate('/shipping');
+        }
+    }, [user, shippingInfo, navigate]);
 
     const handlePlaceOrder = () => {
         setIsProcessing(true);

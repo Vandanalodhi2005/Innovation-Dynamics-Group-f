@@ -1,14 +1,18 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import WhyChooseUs from '../components/home/WhyChooseUs';
 import Printers from '../components/Printers';
-// import Footer from '../components/Footer';
+import TrustSection from '../components/home/TrustSection';
+import HomeContact from '../components/home/HomeContact';
 
 const Home = () => {
     return (
         <div className="home-page">
             <Hero />
+            <WhyChooseUs />
             <Printers />
-            {/* <Footer /> */}
+            <TrustSection />
+            <HomeContact />
         </div>
     );
 };

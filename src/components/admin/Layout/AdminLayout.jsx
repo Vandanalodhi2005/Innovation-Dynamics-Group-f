@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUserProfile, logout } from '../../../redux/actions/userActions';
+import { useAuth } from '../../../context/AuthContext';
 import AdminSidebar from './AdminSidebar';
 import { io } from 'socket.io-client';
 import {
@@ -123,14 +124,16 @@ const AdminLayout = () => {
     const unreadCount = notifications.filter(n => !n.read).length;
 
     const handleNotifClick = (path, id) => {
-        setNotifications(notifications.map(n => 
+        setNotifications(notifications.map(n =>
             n.id === id ? { ...n, read: true } : n
         ));
         navigate(path);
         setIsNotifOpen(false);
     };
 
+    const { logout: authLogout } = useAuth();
     const handleLogout = () => {
+        authLogout();
         dispatch(logout());
         navigate('/admin/login');
     };
@@ -206,7 +209,7 @@ const AdminLayout = () => {
                                         )}
                                     </div>
                                     <div className="px-4 py-2 border-t border-slate-100 text-center">
-                                        <button onClick={() => setNotifications(notifications.map(n => ({...n, read: true })))} className="text-xs font-bold text-slate-500 hover:text-slate-800">Mark All Read</button>
+                                        <button onClick={() => setNotifications(notifications.map(n => ({ ...n, read: true })))} className="text-xs font-bold text-slate-500 hover:text-slate-800">Mark All Read</button>
                                     </div>
                                 </div>
                             )}

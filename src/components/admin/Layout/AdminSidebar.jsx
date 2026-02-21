@@ -14,13 +14,16 @@ import {
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../redux/actions/userActions';
+import { useAuth } from '../../../context/AuthContext';
 const logo = "/PrintsCartslogo.png";
 
 const AdminSidebar = ({ isOpen, setIsOpen }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const { logout: authLogout } = useAuth();
     const handleLogout = () => {
+        authLogout();
         dispatch(logout());
         navigate('/admin/login');
     };

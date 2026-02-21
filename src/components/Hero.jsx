@@ -2,34 +2,41 @@ import React from 'react';
 import { ArrowRight, Printer, Briefcase, Zap, Palette, Droplet } from 'lucide-react';
 
 const Hero = () => {
-    const printerTypes = [
+    const categories = [
         {
             title: "Home Printers",
-            description: "Home printers designed for simple setup and reliable everyday printing.",
+            description: "Perfect for families, students, and everyday household printing needs. Compact, efficient, and designed for regular home use.",
             icon: <Printer size={24} className="text-white" />,
             image: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&q=80&w=500",
             link: "/shop/home-printers"
         },
         {
             title: "Office Printers",
-            description: "Office printers designed for speed, efficiency, and daily business use.",
+            description: "Ideal for small businesses and workspaces needing consistent, high-volume output. Reliable, durable, and built for productivity.",
             icon: <Briefcase size={24} className="text-white" />,
             image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=500",
             link: "/shop/office-printers"
         },
         {
+            title: "Inkjet Printers",
+            description: "Best for color documents, photos, and creative printing. Smooth color output and versatile media compatibility.",
+            icon: <Palette size={24} className="text-white" />,
+            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=500",
+            link: "/shop/inkjet-printers"
+        },
+        {
             title: "Laser Printers",
-            description: "Laser printers deliver fast, sharp, and cost-efficient printing.",
+            description: "Great for fast, high-volume black & white or color printing. Cost-efficient and optimized for busy work environments.",
             icon: <Zap size={24} className="text-white" />,
             image: "https://printerpoint.co.in/shop/printers/hp-colour-laser-150nw-wireless-color-laser-printer-built-in-ethernet-and-wifi-direct/",
             link: "/shop/laser-printers"
         },
         {
-            title: "Inkjet Printers",
-            description: "Inkjet printers built for colorful, everyday home printing.",
-            icon: <Palette size={24} className="text-white" />,
-            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=500",
-            link: "/shop/inkjet-printers"
+            title: "Ink Cartridges",
+            description: "A wide selection of genuine and compatible ink cartridges and high-quality toner options, including standard and high-yield versions.",
+            icon: <Droplet size={24} className="text-white" />,
+            image: "https://images.unsplash.com/photo-1610473068565-89689408e063?auto=format&fit=crop&q=80&w=500",
+            link: "/shop/ink-cartridges"
         }
     ];
 
@@ -43,15 +50,23 @@ const Hero = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         {/* Left Side - Text */}
                         <div className="space-y-8">
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-                                Find the Right Printer for Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#df762b] to-white">Home & Office</span>
-                            </h1>
-                            <p className="text-xl text-gray-300 max-w-lg leading-relaxed">
-                                Explore printers suitable for home and office use, including all-in-one and laser models designed for consistent performance and everyday reliability.
-                            </p>
+                            <div className="space-y-4">
+                                <span className="text-sm font-bold uppercase tracking-[0.3em] text-[#df762b]">Printers & Printing Essentials</span>
+                                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+                                    Quality Printers & Printing Supplies for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#df762b] to-white">Every Need</span>
+                                </h1>
+                            </div>
+                            <div className="space-y-4">
+                                <p className="text-xl text-gray-300 max-w-xl leading-relaxed">
+                                    Discover a curated collection of printers, ink, toner, and printing accessories designed for homes, offices, and small businesses.
+                                </p>
+                                <p className="text-sm text-gray-400 max-w-xl leading-relaxed italic border-l-2 border-[#df762b] pl-4">
+                                    As an independent retailer based in Blaine, Minnesota, we bring you clear product information, trusted sourcing, and a smooth online shopping experience.
+                                </p>
+                            </div>
                             <div className="pt-4">
                                 <a href="/shop" className="inline-flex items-center px-10 py-4 bg-[#df762b] text-white text-lg font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-lg hover:shadow-orange-500/50">
-                                    Explore Printers <ArrowRight className="ml-2" size={20} />
+                                    Shop Now <ArrowRight className="ml-2" size={20} />
                                 </a>
                             </div>
                         </div>
@@ -85,14 +100,17 @@ const Hero = () => {
             {/* Features Section - "Choose Your Printer Type" */}
             <div className="py-20 bg-white/50 backdrop-blur-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Choose Your Printer Type</h2>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-primary-orange to-orange-300 mx-auto rounded-full"></div>
+                    <div className="text-center mb-16 max-w-3xl mx-auto">
+                        <h2 className="text-4xl font-bold text-gray-900 mb-4">Explore Printing Categories</h2>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-primary-orange to-orange-300 mx-auto rounded-full mb-6"></div>
+                        <p className="text-gray-600">
+                            We make it easy to find the right printer or printing supply by organizing our catalog into clear, user-friendly categories.
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {printerTypes.map((type, index) => (
-                            <a key={index} href={type.link} className="block group h-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {categories.map((type, index) => (
+                            <a key={index} href={type.link} className={`block group h-full ${index === 4 ? 'md:col-span-2 lg:col-span-1 lg:col-start-2' : ''}`}>
                                 <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-full flex flex-col border border-gray-100 group-hover:-translate-y-2">
                                     {/* Card Image */}
                                     <div className="relative h-48 overflow-hidden">

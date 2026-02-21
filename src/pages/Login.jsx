@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { USER_LOGIN_SUCCESS } from '../redux/constants/userConstants';
 import { Mail, Lock, AlertCircle, Shield } from 'lucide-react';
 
 const Login = () => {
@@ -11,6 +13,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const { login } = useAuth();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const location = useLocation();
 
     // Redirect to where the user came from, or home
@@ -23,6 +26,9 @@ const Login = () => {
 
         try {
             const user = await login(email, password, isAdminLogin);
+
+            // Sync with Redux
+            dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
 
             if (isAdminLogin) {
                 if (user.isAdmin) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartActions';
 const printerImg = "/PrintsCartslogo.png"; // Fallback
 import { Eye, ShoppingBag } from 'lucide-react';
@@ -8,6 +8,8 @@ import { Eye, ShoppingBag } from 'lucide-react';
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
   const [isHovered, setIsHovered] = useState(false);
 
   const handleDetails = (e) => {
@@ -19,53 +21,58 @@ const ProductCard = ({ product }) => {
   const handleBuyNow = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (!userInfo) {
+      alert('Please sign in to buy products.');
+      navigate('/login');
+      return;
+    }
     dispatch(addToCart(product.slug || product._id, 1));
     navigate('/cart?redirect=shipping');
   };
 
-  const imageUrl = product.image 
+  const imageUrl = product.image
     ? (product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL.replace('/api', '')}${product.image}`)
-    : (product.images && product.images.length > 0 
-        ? (product.images[0].startsWith('http') ? product.images[0] : `${import.meta.env.VITE_API_URL.replace('/api', '')}${product.images[0]}`) 
-        : printerImg);
+    : (product.images && product.images.length > 0
+      ? (product.images[0].startsWith('http') ? product.images[0] : `${import.meta.env.VITE_API_URL.replace('/api', '')}${product.images[0]}`)
+      : printerImg);
 
   const price = typeof product.price === 'number' ? product.price.toFixed(2) : product.price;
 
   return (
-    <div 
+    <div
       className="product-card"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link to={`/product/${product.slug || product._id}`} className="product-image-container">
-        <img 
-          src={imageUrl} 
-          alt={product.title || product.name} 
+        <img
+          src={imageUrl}
+          alt={product.title || product.name}
           onError={(e) => { e.target.src = 'https://via.placeholder.com/300?text=No+Image'; }}
           className="product-image"
         />
       </Link>
-      
+
       <div className="product-info">
         <div className="product-category">
-            {product.category?.name || product.category || 'Printer'}
+          {product.category?.name || product.category || 'Printer'}
         </div>
         <Link to={`/product/${product.slug || product._id}`} className="product-title" title={product.title || product.name}>
           {product.title || product.name}
         </Link>
         <div className="product-price">
-           ${price}
+          ${price}
         </div>
 
         <div className="product-card-buttons">
-            <button className="card-btn details-btn" onClick={handleDetails}>
-                <Eye size={14} />
-                Details
-            </button>
-            <button className="card-btn buy-btn" onClick={handleBuyNow}>
-                <ShoppingBag size={14} />
-                Buy Now
-            </button>
+          <button className="card-btn details-btn" onClick={handleDetails}>
+            <Eye size={14} />
+            Details
+          </button>
+          <button className="card-btn buy-btn" onClick={handleBuyNow}>
+            <ShoppingBag size={14} />
+            Buy Now
+          </button>
         </div>
       </div>
 

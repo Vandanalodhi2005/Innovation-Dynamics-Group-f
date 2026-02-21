@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Menu, X, ChevronDown, User, Search, Heart, ShoppingCart, LogOut } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { USER_LOGOUT } from '../redux/constants/userConstants';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
@@ -11,6 +13,7 @@ const Navbar = () => {
     const { cartCount, wishlistCount } = useShop();
     const { user, isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     // Toggle Mobile Menu
     const toggleMenu = () => {
@@ -28,7 +31,8 @@ const Navbar = () => {
     };
 
     const handleLogout = () => {
-        logout();
+        logout(); // AuthContext logout
+        dispatch({ type: USER_LOGOUT }); // Redux logout
         setIsUserDropdownOpen(false);
         navigate('/');
     };
