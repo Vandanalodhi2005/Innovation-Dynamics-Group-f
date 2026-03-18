@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
-
+import faq from '../../public/images/faq-hero.jpg';
 const FAQs = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
@@ -68,7 +68,7 @@ const FAQs = () => {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1920"
+                        src={faq}
                         alt="FAQs Background"
                         className="w-full h-full object-cover opacity-90"
                     />
@@ -76,7 +76,7 @@ const FAQs = () => {
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <HelpCircle className="mx-auto mb-6 text-primary-orange" size={56} />
+                    <HelpCircle className="mx-auto mb-6 text-primary-blue" size={56} />
                     <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
                         Frequently Asked Questions
                     </h1>
@@ -94,7 +94,7 @@ const FAQs = () => {
                             key={index}
                             className={`border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 ${
                                 openIndex === index
-                                    ? 'shadow-md border-primary-orange/50'
+                                    ? 'shadow-md border-primary-blue/50'
                                     : 'hover:border-gray-300'
                             }`}
                         >
@@ -106,7 +106,7 @@ const FAQs = () => {
                                     {faq.question}
                                 </span>
                                 {openIndex === index ? (
-                                    <Minus className="text-primary-orange flex-shrink-0" size={20} />
+                                    <Minus className="text-primary-blue flex-shrink-0" size={20} />
                                 ) : (
                                     <Plus className="text-gray-400 flex-shrink-0" size={20} />
                                 )}
@@ -129,9 +129,9 @@ const FAQs = () => {
             </div>
 
             {/* Important Notice */}
-            <div className="bg-orange-50 py-12 border-t border-orange-100">
+            <div className="bg-blue-50 py-12 border-t border-blue-100">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h3 className="text-xl font-bold mb-4 text-primary-orange uppercase tracking-wide">
+                    <h3 className="text-xl font-bold mb-4 text-primary-blue uppercase tracking-wide">
                         Important Notice
                     </h3>
                     <p className="text-gray-700 text-sm leading-relaxed mb-6">

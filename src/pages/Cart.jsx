@@ -14,7 +14,7 @@ const Cart = () => {
                 </div>
                 <h2 className="text-2xl font-bold mb-2">Your cart is empty</h2>
                 <p className="text-gray-500 mb-8 text-center max-w-md">Looks like you haven't added any printers to your cart yet.</p>
-                <Link to="/shop" className="px-8 py-3 bg-primary-orange text-white font-bold rounded hover:bg-orange-600 transition-colors flex items-center gap-2">
+                <Link to="/shop" className="px-8 py-3 bg-primary-blue text-white font-bold rounded hover:bg-blue-600 transition-colors flex items-center gap-2">
                     <ArrowLeft size={20} />
                     Start Shopping
                 </Link>
@@ -42,7 +42,7 @@ const Cart = () => {
                                     <div className="flex-1 text-center sm:text-left">
                                         <h3 className="font-bold text-lg text-gray-900 mb-1">{item.title}</h3>
                                         <p className="text-sm text-gray-500 mb-2">{item.brand}</p>
-                                        <p className="font-bold text-primary-orange">${Number(item.price || 0).toFixed(2)}</p>
+                                        <p className="font-bold text-primary-blue">${Number(item.price || 0).toFixed(2)}</p>
                                     </div>
 
                                     {/* Quantity Controls */}
@@ -81,7 +81,7 @@ const Cart = () => {
                         </div>
 
                         <div className="mt-4 flex justify-between">
-                            <Link to="/shop" className="text-gray-500 hover:text-primary-orange flex items-center gap-2 font-medium">
+                            <Link to="/shop" className="text-gray-500 hover:text-primary-blue flex items-center gap-2 font-medium">
                                 <ArrowLeft size={16} /> Continue Shopping
                             </Link>
                             <button onClick={clearCart} className="text-red-500 hover:text-red-700 text-sm font-medium">
@@ -117,7 +117,7 @@ const Cart = () => {
 
                             <Link
                                 to="/checkout"
-                                className="w-full py-4 bg-black text-white font-bold uppercase tracking-wider hover:bg-primary-orange transition-colors flex items-center justify-center gap-2"
+                                className="w-full py-4 bg-black text-white font-bold uppercase tracking-wider hover:bg-primary-blue transition-colors flex items-center justify-center gap-2"
                             >
                                 Checkout <ArrowRight size={18} />
                             </Link>

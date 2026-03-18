@@ -34,7 +34,7 @@ const MyOrders = () => {
 
                 {loading ? (
                     <div className="flex flex-col items-center justify-center py-20 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                        <div className="w-12 h-12 border-4 border-gray-200 border-t-primary-orange rounded-full animate-spin mb-4"></div>
+                        <div className="w-12 h-12 border-4 border-gray-200 border-t-primary-blue rounded-full animate-spin mb-4"></div>
                         <p className="text-gray-500 font-medium">Fetching your orders...</p>
                     </div>
                 ) : error ? (
@@ -56,7 +56,7 @@ const MyOrders = () => {
                         </div>
                         <h2 className="text-2xl font-bold text-gray-800 mb-2">No Orders Yet</h2>
                         <p className="text-gray-500 mb-8 max-w-sm mx-auto">You haven't placed any orders yet. Explore our latest products and start your journey.</p>
-                        <Link to="/shop" className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-xl hover:bg-primary-orange transition-all">
+                        <Link to="/shop" className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-xl hover:bg-primary-blue transition-all">
                             Start Shopping <ArrowRight size={18} />
                         </Link>
                     </div>
@@ -86,7 +86,7 @@ const MyOrders = () => {
                                                     <CheckCircle size={14} /> Delivered
                                                 </span>
                                             ) : order.isPaid ? (
-                                                <span className="flex items-center gap-1.5 px-3 py-1 bg-orange-100 text-primary-orange rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                                <span className="flex items-center gap-1.5 px-3 py-1 bg-blue-100 text-primary-blue rounded-full text-[10px] font-bold uppercase tracking-wider">
                                                     <Truck size={14} /> Processing
                                                 </span>
                                             ) : (
@@ -95,7 +95,7 @@ const MyOrders = () => {
                                                 </span>
                                             )}
                                         </div>
-                                        <Link to={`/order/${order._id}`} className="px-5 py-2 bg-white border border-gray-200 text-gray-600 text-sm font-bold rounded-lg hover:border-primary-orange hover:text-primary-orange transition-colors">
+                                        <Link to={`/order/${order._id}`} className="px-5 py-2 bg-white border border-gray-200 text-gray-600 text-sm font-bold rounded-lg hover:border-primary-blue hover:text-primary-blue transition-colors">
                                             View Details
                                         </Link>
                                     </div>

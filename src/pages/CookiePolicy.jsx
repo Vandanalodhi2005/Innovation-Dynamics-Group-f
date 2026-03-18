@@ -1,5 +1,6 @@
 import React from "react";
 import { Cookie } from "lucide-react";
+import cookiePolicyImage from '../../public/images/cookies.jpg';
 
 const CookiePolicy = () => {
   return (
@@ -11,7 +12,7 @@ const CookiePolicy = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1505253216365-6b51b7b43e74?auto=format&fit=crop&q=80&w=1920"
+            src={cookiePolicyImage}
             alt="Cookie Policy Background"
             className="w-full h-full object-cover opacity-70"
           />
@@ -19,7 +20,7 @@ const CookiePolicy = () => {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <Cookie className="mx-auto mb-4 text-primary-orange" size={48} />
+          <Cookie className="mx-auto mb-4 text-primary-blue" size={48} />
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Cookie Policy
@@ -170,7 +171,7 @@ Phone: +1 (651) 815-4630`
       </div>
 
       {/* Footer Notice */}
-      <div className="bg-orange-50 py-6 sm:py-8 border-t border-orange-100">
+      <div className="bg-blue-50 py-6 sm:py-8 border-t border-blue-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-xs sm:text-sm text-gray-600">
             By continuing to use our website, you consent to the use of cookies as described in this policy.

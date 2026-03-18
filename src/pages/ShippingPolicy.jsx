@@ -1,5 +1,6 @@
 import React from "react";
 import { Truck } from "lucide-react";
+import shipping from '../../public/images/shipping.jpg';
 
 const ShippingPolicy = () => {
   return (
@@ -11,7 +12,7 @@ const ShippingPolicy = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1920"
+            src={shipping}
             alt="Shipping and Delivery"
             className="w-full h-full object-cover opacity-70"
           />
@@ -19,7 +20,7 @@ const ShippingPolicy = () => {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <Truck className="mx-auto mb-4 text-primary-orange" size={48} />
+          <Truck className="mx-auto mb-4 text-primary-blue" size={48} />
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Shipping & Delivery Policy
@@ -159,7 +160,7 @@ We typically respond within one business day.`
       </div>
 
       {/* Footer Notice */}
-      <div className="bg-orange-50 py-6 sm:py-8 border-t border-orange-100">
+      <div className="bg-blue-50 py-6 sm:py-8 border-t border-blue-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-xs sm:text-sm text-gray-600">
             By placing an order, you acknowledge and agree to this Shipping & Delivery Policy.

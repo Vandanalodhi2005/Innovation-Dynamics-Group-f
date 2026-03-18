@@ -87,7 +87,7 @@ const Signup = () => {
                                             required
                                             value={firstName}
                                             onChange={(e) => setFirstName(e.target.value)}
-                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                             placeholder="John"
                                         />
                                     </div>
@@ -103,7 +103,7 @@ const Signup = () => {
                                             required
                                             value={lastName}
                                             onChange={(e) => setLastName(e.target.value)}
-                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                             placeholder="Doe"
                                         />
                                     </div>
@@ -121,7 +121,7 @@ const Signup = () => {
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                         placeholder="you@example.com"
                                     />
                                 </div>
@@ -138,7 +138,7 @@ const Signup = () => {
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -155,7 +155,7 @@ const Signup = () => {
                                         required
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -164,7 +164,7 @@ const Signup = () => {
                             <button
                                 type="submit"
                                 disabled={loadingSendOTP}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50"
+                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors disabled:opacity-50"
                             >
                                 {loadingSendOTP ? 'Sending OTP...' : 'Next: Verify Email'}
                             </button>
@@ -173,8 +173,8 @@ const Signup = () => {
                 ) : (
                     <>
                         <div className="text-center mb-8">
-                            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Mail size={32} className="text-primary-orange" />
+                            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <Mail size={32} className="text-primary-blue" />
                             </div>
                             <h1 className="text-3xl font-bold text-gray-900 mb-2">Verify Email</h1>
                             <p className="text-gray-600">Enter the 6-digit code sent to <strong>{email}</strong></p>
@@ -200,7 +200,7 @@ const Signup = () => {
                                         maxLength="6"
                                         value={otp}
                                         onChange={(e) => setOtp(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-3 border-2 border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange text-2xl tracking-[0.5em] font-bold text-center transition-all"
+                                        className="block w-full pl-10 pr-3 py-3 border-2 border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue text-2xl tracking-[0.5em] font-bold text-center transition-all"
                                         placeholder="000000"
                                     />
                                 </div>
@@ -209,7 +209,7 @@ const Signup = () => {
                             <button
                                 type="submit"
                                 disabled={loadingVerifyOTP || otp.length < 6}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50"
+                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors disabled:opacity-50"
                             >
                                 {loadingVerifyOTP ? 'Verifying...' : 'Verify & Create Account'}
                             </button>
@@ -218,7 +218,7 @@ const Signup = () => {
                                 <button
                                     type="button"
                                     onClick={() => setStep(1)}
-                                    className="text-sm text-gray-500 hover:text-primary-orange transition-colors"
+                                    className="text-sm text-gray-500 hover:text-primary-blue transition-colors"
                                 >
                                     Change email or details?
                                 </button>
@@ -230,7 +230,7 @@ const Signup = () => {
                 <div className="mt-6 text-center text-sm text-gray-600">
                     <p>
                         Already have an account?{' '}
-                        <Link to="/login" className="font-medium text-primary-orange hover:text-orange-600">
+                        <Link to="/login" className="font-medium text-primary-blue hover:text-blue-600">
                             Log in here
                         </Link>
                     </p>

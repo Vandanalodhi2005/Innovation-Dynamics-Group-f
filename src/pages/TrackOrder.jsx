@@ -38,7 +38,7 @@ const TrackOrder = () => {
                     <form onSubmit={handleTrack} className="max-w-xl mx-auto relative">
                         <input
                             type="text"
-                            className="w-full pl-12 pr-32 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-primary-orange/20 focus:border-primary-orange transition-all"
+                            className="w-full pl-12 pr-32 py-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-primary-blue/20 focus:border-primary-blue transition-all"
                             placeholder="Enter Order ID (e.g. ORD-12345)"
                             value={orderId}
                             onChange={(e) => setOrderId(e.target.value)}
@@ -47,7 +47,7 @@ const TrackOrder = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2.5 bg-black text-white font-bold rounded-lg hover:bg-primary-orange transition-colors disabled:opacity-50"
+                            className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2.5 bg-black text-white font-bold rounded-lg hover:bg-primary-blue transition-colors disabled:opacity-50"
                         >
                             {loading ? 'Searching...' : 'Track'}
                         </button>
@@ -72,7 +72,7 @@ const TrackOrder = () => {
                                 </div>
                                 <div className="text-right">
                                     <p className="text-gray-400 text-xs uppercase tracking-widest mb-1">Status</p>
-                                    <span className="inline-block px-3 py-1 bg-primary-orange text-white rounded-full text-xs font-bold uppercase tracking-wider">
+                                    <span className="inline-block px-3 py-1 bg-primary-blue text-white rounded-full text-xs font-bold uppercase tracking-wider">
                                         {order.isDelivered ? 'Delivered' : order.isPaid ? 'Processing' : 'Pending'}
                                     </span>
                                 </div>
@@ -81,7 +81,7 @@ const TrackOrder = () => {
                             <div className="p-8">
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                     <div className="flex items-start gap-4">
-                                        <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-primary-orange shrink-0">
+                                        <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-primary-blue shrink-0">
                                             <Calendar size={20} />
                                         </div>
                                         <div>
@@ -90,7 +90,7 @@ const TrackOrder = () => {
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
-                                        <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-primary-orange shrink-0">
+                                        <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-primary-blue shrink-0">
                                             <MapPin size={20} />
                                         </div>
                                         <div>
@@ -99,7 +99,7 @@ const TrackOrder = () => {
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
-                                        <div className="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-primary-orange shrink-0">
+                                        <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-primary-blue shrink-0">
                                             <CreditCard size={20} />
                                         </div>
                                         <div>

@@ -56,9 +56,9 @@ const Navbar = () => {
     // Helper to determine active class
     const getLinkClasses = (path) => {
         const currentPath = window.location.pathname;
-        const baseClasses = "font-medium transition-all duration-300 hover:text-active-orange hover:underline decoration-active-orange underline-offset-4";
-        const activeClasses = "text-active-orange underline decoration-active-orange underline-offset-4";
-        const inactiveClasses = "text-black";
+        const baseClasses = "font-medium transition-all duration-300 hover:text-white/80 hover:underline decoration-white/80 underline-offset-4";
+        const activeClasses = "text-white underline decoration-white underline-offset-4";
+        const inactiveClasses = "text-white";
 
         return currentPath === path ? `${baseClasses} ${activeClasses}` : `${baseClasses} ${inactiveClasses}`;
     };
@@ -67,14 +67,14 @@ const Navbar = () => {
     const getMobileLinkClasses = (path) => {
         const currentPath = window.location.pathname;
         const baseClasses = "block px-3 py-2 rounded-md text-base font-medium transition-colors";
-        const activeClasses = "text-active-orange bg-orange-50";
-        const inactiveClasses = "text-black hover:text-active-orange hover:bg-gray-50";
+        const activeClasses = "text-white bg-white/20";
+        const inactiveClasses = "text-white hover:text-white/80 hover:bg-white/10";
 
         return currentPath === path ? `${baseClasses} ${activeClasses}` : `${baseClasses} ${inactiveClasses}`;
     };
 
     return (
-        <nav className="bg-white text-black shadow-md border-b-4 border-primary-orange sticky top-0 z-50 font-sans">
+        <nav className="bg-[#0096d6] text-white shadow-md border-b-4 border-[#007bb0] sticky top-0 z-50 font-sans">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
 
@@ -84,7 +84,7 @@ const Navbar = () => {
                             <div className="flex flex-col leading-none">
                                 <span className="font-bold text-3xl tracking-tighter lowercase">idg</span>
                             </div>
-                            <div className="flex flex-col leading-none text-[0.6rem] font-bold tracking-widest uppercase border-l-2 border-black pl-2 py-0.5">
+                            <div className="flex flex-col leading-none text-[0.6rem] font-bold tracking-widest uppercase border-l-2 border-white pl-2 py-0.5">
                                 <span>Innovation</span>
                                 <span>Dynamics</span>
                                 <span>Group</span>
@@ -99,17 +99,17 @@ const Navbar = () => {
 
                         {/* Dropdown Container */}
                         <div className="relative group">
-                            <button className={`flex items-center gap-1 font-medium hover:text-active-orange hover:underline decoration-active-orange underline-offset-4 transition-all duration-300 focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-active-orange underline decoration-active-orange underline-offset-4' : 'text-black'}`}>
+                            <button className={`flex items-center gap-1 font-medium hover:text-white/80 hover:underline decoration-white/80 underline-offset-4 transition-all duration-300 focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-white underline decoration-white underline-offset-4' : 'text-white'}`}>
                                 Shop <ChevronDown size={16} />
                             </button>
 
                             {/* Dropdown Menu */}
                             <div className="absolute left-0 mt-2 w-56 bg-white text-black rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50">
                                 <div className="py-2">
-                                    <a href="/shop/home-printers" className="block px-4 py-2 hover:bg-orange-50 hover:text-active-orange transition-colors">Home Printers</a>
-                                    <a href="/shop/office-printers" className="block px-4 py-2 hover:bg-orange-50 hover:text-active-orange transition-colors">Office Printers</a>
-                                    <a href="/shop/inkjet-printers" className="block px-4 py-2 hover:bg-orange-50 hover:text-active-orange transition-colors">Inkjet Printers</a>
-                                    <a href="/shop/laser-printers" className="block px-4 py-2 hover:bg-orange-50 hover:text-active-orange transition-colors">Laser Printers</a>
+                                    <a href="/shop/home-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Home Printers</a>
+                                    <a href="/shop/office-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Office Printers</a>
+                                    <a href="/shop/inkjet-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Inkjet Printers</a>
+                                    <a href="/shop/laser-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Laser Printers</a>
                                 </div>
                             </div>
                         </div>
@@ -128,20 +128,20 @@ const Navbar = () => {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 onKeyUp={handleSearch}
-                                className="bg-gray-100 text-sm rounded-full pl-10 pr-4 py-1.5 focus:outline-none focus:ring-1 focus:ring-active-orange text-black w-32 focus:w-48 transition-all duration-300 placeholder-gray-500"
+                                className="bg-white/10 text-sm rounded-full pl-10 pr-4 py-1.5 focus:outline-none focus:ring-1 focus:ring-white/30 text-white w-32 focus:w-48 transition-all duration-300 placeholder-white/60"
                             />
-                            <Search className="absolute left-3 top-1.5 text-gray-500 w-4 h-4" />
+                            <Search className="absolute left-3 top-1.5 text-white/60 w-4 h-4" />
                         </div>
 
                         {/* User Icon / Dropdown */}
                         <div className="relative">
                             {isAuthenticated ? (
-                                <button onClick={toggleUserDropdown} className="text-black hover:text-active-orange transition-colors duration-300 relative group flex items-center gap-2">
+                                <button onClick={toggleUserDropdown} className="text-white hover:text-white/80 transition-colors duration-300 relative group flex items-center gap-2">
                                     <User size={22} />
                                     <span className="text-sm font-medium hidden lg:block">{user.name.split(' ')[0]}</span>
                                 </button>
                             ) : (
-                                <Link to="/login" className="text-black hover:text-active-orange transition-colors duration-300 relative group flex items-center gap-1">
+                                <Link to="/login" className="text-white hover:text-white/80 transition-colors duration-300 relative group flex items-center gap-1">
                                     <User size={22} />
                                     <span className="text-sm font-medium hidden lg:block">Login</span>
                                 </Link>
@@ -167,30 +167,30 @@ const Navbar = () => {
                         <Link
                             to="/wishlist"
                             onClick={handleWishlistClick}
-                            className="text-black hover:text-active-orange transition-colors duration-300 relative group"
+                            className="text-white hover:text-white/80 transition-colors duration-300 relative group"
                         >
                             <Heart size={22} />
                             {wishlistCount > 0 && (
                                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{wishlistCount}</span>
                             )}
                         </Link>
-                        <Link to="/cart" className="text-black hover:text-active-orange transition-colors duration-300 relative group">
+                        <Link to="/cart" className="text-white hover:text-white/80 transition-colors duration-300 relative group">
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-primary-orange text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
+                                <span className="absolute -top-2 -right-2 bg-white text-[#0096d6] text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
                             )}
                         </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center gap-4">
-                        <Link to="/cart" className="text-black hover:text-active-orange transition-colors duration-300 relative">
+                        <Link to="/cart" className="text-white hover:text-white/80 transition-colors duration-300 relative">
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-primary-orange text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
+                                <span className="absolute -top-2 -right-2 bg-white text-[#0096d6] text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
                             )}
                         </Link>
-                        <button onClick={toggleMenu} className="text-black hover:text-active-orange focus:outline-none focus:text-active-orange transition-colors">
+                        <button onClick={toggleMenu} className="text-white hover:text-white/80 focus:outline-none focus:text-white/80 transition-colors">
                             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </div>
@@ -198,8 +198,8 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out bg-white overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'}`}>
-                <div className="px-4 pt-2 pb-6 space-y-2 border-t border-gray-100">
+            <div className={`md:hidden transition-all duration-300 ease-in-out bg-[#0096d6] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'}`}>
+                <div className="px-4 pt-2 pb-6 space-y-2 border-t border-white/10">
                     {/* Mobile Search */}
                     <div className="relative mb-4 mt-4">
                         <input
@@ -208,9 +208,9 @@ const Navbar = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             onKeyUp={handleSearch}
-                            className="w-full bg-gray-100 text-black rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-1 focus:ring-active-orange"
+                            className="w-full bg-white/10 text-white placeholder-white/60 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-1 focus:ring-white/30"
                         />
-                        <Search className="absolute left-3 top-2.5 text-gray-500 w-5 h-5" />
+                        <Search className="absolute left-3 top-2.5 text-white/60 w-5 h-5" />
                     </div>
 
                     <a href="/" className={getMobileLinkClasses('/')}>Home</a>
@@ -220,27 +220,27 @@ const Navbar = () => {
                     <div>
                         <button
                             onClick={toggleShopDropdown}
-                            className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-active-orange bg-orange-50' : 'text-black hover:text-active-orange hover:bg-gray-50'}`}
+                            className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-white bg-white/20' : 'text-white hover:text-white/80 hover:bg-white/10'}`}
                         >
                             Shop <ChevronDown size={16} className={`transform transition-transform duration-300 ${isShopDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
                         <div className={`pl-6 space-y-1 transition-all duration-300 overflow-hidden ${isShopDropdownOpen ? 'max-h-60' : 'max-h-0'}`}>
-                            <a href="/shop/home-printers" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-active-orange hover:bg-gray-50 transition-colors">Home Printers</a>
-                            <a href="/shop/office-printers" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-active-orange hover:bg-gray-50 transition-colors">Office Printers</a>
-                            <a href="/shop/inkjet-printers" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-active-orange hover:bg-gray-50 transition-colors">Inkjet Printers</a>
-                            <a href="/shop/laser-printers" className="block px-3 py-2 rounded-md text-sm text-gray-600 hover:text-active-orange hover:bg-gray-50 transition-colors">Laser Printers</a>
+                            <a href="/shop/home-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Home Printers</a>
+                            <a href="/shop/office-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Office Printers</a>
+                            <a href="/shop/inkjet-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</a>
+                            <a href="/shop/laser-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</a>
                         </div>
                     </div>
 
                     <a href="/faqs" className={getMobileLinkClasses('/faqs')}>FAQs</a>
                     <a href="/contact" className={getMobileLinkClasses('/contact')}>Contact Us</a>
 
-                    <div className="border-t border-gray-100 pt-4 mt-4 flex items-center gap-4 px-3 flex-wrap">
+                    <div className="border-t border-white/10 pt-4 mt-4 flex items-center gap-4 px-3 flex-wrap">
                         {isAuthenticated ? (
                             <>
                                 <div className="w-full flex items-center justify-between">
                                     <Link to="/profile" onClick={toggleMenu} className="flex items-center gap-2">
-                                        <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-primary-orange font-bold">
+                                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-primary-blue font-bold">
                                             {user.name.charAt(0)}
                                         </div>
                                         <div>
@@ -254,7 +254,7 @@ const Navbar = () => {
                                 </div>
                             </>
                         ) : (
-                            <Link to="/login" className="flex items-center gap-2 text-black hover:text-active-orange transition-colors w-full">
+                            <Link to="/login" className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full">
                                 <User size={20} />
                                 <span>Login / Sign Up</span>
                             </Link>
@@ -263,7 +263,7 @@ const Navbar = () => {
                         <Link
                             to="/track-order"
                             onClick={toggleMenu}
-                            className="flex items-center gap-2 text-black hover:text-active-orange transition-colors w-full"
+                            className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full"
                         >
                             <Truck size={20} />
                             <span>Track Order</span>
@@ -271,7 +271,7 @@ const Navbar = () => {
                         <Link
                             to="/wishlist"
                             onClick={handleWishlistClick}
-                            className="flex items-center gap-2 text-black hover:text-active-orange transition-colors w-full"
+                            className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full"
                         >
                             <Heart size={20} />
                             <span>Wishlist</span>

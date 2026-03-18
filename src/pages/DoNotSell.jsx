@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldX, AlertCircle, Mail, Phone, MapPin, UserCheck, Lock, Info } from 'lucide-react';
+import doNotSellImage from '../../public/images/doNOTsell.jpg';
 
 const DoNotSell = () => {
     return (
@@ -12,7 +13,7 @@ const DoNotSell = () => {
 
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1544396821-4dd40b938ad3?auto=format&fit=crop&q=80&w=1920"
+                        src={doNotSellImage}
                         alt="Data Protection"
                         className="w-full h-full object-cover opacity-60"
                     />
@@ -21,13 +22,13 @@ const DoNotSell = () => {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
                     <div className="max-w-3xl">
-                        <div className="inline-flex items-center gap-2 bg-primary-orange/20 text-primary-orange px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-primary-orange/30">
+                        <div className="inline-flex items-center gap-2 bg-primary-blue/20 text-primary-blue px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-primary-blue/30">
                             <Lock size={16} /> California Privacy Rights
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white italic">
                             Do Not Sell or Share My Personal Information
                         </h1>
-                        <div className="w-24 h-1.5 bg-primary-orange mb-8 rounded-full"></div>
+                        <div className="w-24 h-1.5 bg-primary-blue mb-8 rounded-full"></div>
                         <p className="text-xl text-gray-200 font-light leading-relaxed italic">
                             Innovation Dynamics Group LLC does not sell personal information. We respect your choice and provide clear methods to manage your data preferences.
                         </p>
@@ -42,14 +43,14 @@ const DoNotSell = () => {
                     {/* Left Column: Information & Requests */}
                     <div className="space-y-12">
                         <section className="prose prose-lg text-gray-600">
-                            <p className="text-lg leading-relaxed italic border-l-4 border-primary-orange pl-6 py-2">
+                            <p className="text-lg leading-relaxed italic border-l-4 border-primary-blue pl-6 py-2">
                                 This page provides California residents with the right to opt out of the “sale” or “sharing” of personal information under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA).
                             </p>
                         </section>
 
                         <section className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 italic underline decoration-primary-orange decoration-2">
-                                <span className="bg-primary-orange text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl">1</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 italic underline decoration-primary-blue decoration-2">
+                                <span className="bg-primary-blue text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl">1</span>
                                 Your Right to Opt Out
                             </h2>
                             <p className="text-gray-600 font-medium">If you are a California resident, you have the right to request that we:</p>
@@ -61,7 +62,7 @@ const DoNotSell = () => {
                                     "Clarify how information is used"
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                                        <UserCheck className="text-primary-orange" size={20} />
+                                        <UserCheck className="text-primary-blue" size={20} />
                                         <span className="text-sm font-bold text-gray-700">{item}</span>
                                     </div>
                                 ))}
@@ -69,19 +70,19 @@ const DoNotSell = () => {
                         </section>
 
                         <section className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 italic underline decoration-primary-orange decoration-2">
-                                <span className="bg-primary-orange text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl">2</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 italic underline decoration-primary-blue decoration-2">
+                                <span className="bg-primary-blue text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl">2</span>
                                 Submit a Request
                             </h2>
                             <div className="space-y-6">
-                                <div className="p-8 bg-orange-50 rounded-3xl border border-orange-100">
+                                <div className="p-8 bg-blue-50 rounded-3xl border border-blue-100">
                                     <div className="flex gap-4 items-start mb-6">
-                                        <div className="bg-white p-3 rounded-xl shadow-sm border border-orange-100">
-                                            <Mail className="text-primary-orange" size={24} />
+                                        <div className="bg-white p-3 rounded-xl shadow-sm border border-blue-100">
+                                            <Mail className="text-primary-blue" size={24} />
                                         </div>
                                         <div>
                                             <h3 className="font-bold text-gray-900 text-lg">Email Submission</h3>
-                                            <p className="text-primary-orange font-bold">support@innovationdynamicsgroup.com</p>
+                                            <p className="text-primary-blue font-bold">support@innovationdynamicsgroup.com</p>
                                         </div>
                                     </div>
                                     <div className="bg-white/50 p-4 rounded-xl text-sm text-gray-600 italic font-medium">
@@ -95,14 +96,14 @@ const DoNotSell = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
                                         <h3 className="font-bold flex items-center gap-3 mb-2 italic">
-                                            <Phone className="text-primary-orange" size={20} />
+                                            <Phone className="text-primary-blue" size={20} />
                                             Phone
                                         </h3>
                                         <p className="text-gray-900 font-bold">+1 (651) 815-4630</p>
                                     </div>
                                     <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
                                         <h3 className="font-bold flex items-center gap-3 mb-2 italic">
-                                            <MapPin className="text-primary-orange" size={20} />
+                                            <MapPin className="text-primary-blue" size={20} />
                                             Mail
                                         </h3>
                                         <p className="text-xs text-gray-600 font-medium">
@@ -117,9 +118,9 @@ const DoNotSell = () => {
                     {/* Right Column: Definitions and Protections */}
                     <div className="space-y-10">
                         <div className="bg-slate-900 text-white p-8 rounded-3xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-orange/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-                            <h2 className="text-xl font-bold mb-6 flex items-center gap-3 italic underline decoration-primary-orange">
-                                <Info className="text-primary-orange" size={24} />
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-blue/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                            <h2 className="text-xl font-bold mb-6 flex items-center gap-3 italic underline decoration-primary-blue">
+                                <Info className="text-primary-blue" size={24} />
                                 What “Sell” or “Share” Means
                             </h2>
                             <p className="text-gray-300 text-sm leading-relaxed mb-6 italic">
@@ -127,26 +128,26 @@ const DoNotSell = () => {
                             </p>
                             <ul className="space-y-4 text-sm font-medium text-gray-400">
                                 <li className="flex gap-3">
-                                    <div className="w-1.5 h-1.5 bg-primary-orange rounded-full mt-1.5 flex-shrink-0"></div>
+                                    <div className="w-1.5 h-1.5 bg-primary-blue rounded-full mt-1.5 flex-shrink-0"></div>
                                     <span>Allowing third-party tools to collect browsing data for profit.</span>
                                 </li>
                                 <li className="flex gap-3">
-                                    <div className="w-1.5 h-1.5 bg-primary-orange rounded-full mt-1.5 flex-shrink-0"></div>
+                                    <div className="w-1.5 h-1.5 bg-primary-blue rounded-full mt-1.5 flex-shrink-0"></div>
                                     <span>Using retargeting or behavioral advertising cookies.</span>
                                 </li>
                                 <li className="flex gap-3">
-                                    <div className="w-1.5 h-1.5 bg-primary-orange rounded-full mt-1.5 flex-shrink-0"></div>
+                                    <div className="w-1.5 h-1.5 bg-primary-blue rounded-full mt-1.5 flex-shrink-0"></div>
                                     <span>Providing access to data in exchange for analytics services.</span>
                                 </li>
                             </ul>
-                            <p className="mt-8 p-4 bg-white/5 rounded-xl text-xs text-primary-orange font-bold uppercase tracking-wider text-center border border-white/10">
+                            <p className="mt-8 p-4 bg-white/5 rounded-xl text-xs text-primary-blue font-bold uppercase tracking-wider text-center border border-white/10">
                                 We do not use your information in these ways.
                             </p>
                         </div>
 
-                        <div className="bg-orange-50 p-8 rounded-3xl border border-orange-100 space-y-6">
+                        <div className="bg-blue-50 p-8 rounded-3xl border border-blue-100 space-y-6">
                             <h3 className="font-bold text-gray-900 flex items-center gap-3 italic">
-                                <UserCheck className="text-primary-orange" size={20} />
+                                <UserCheck className="text-primary-blue" size={20} />
                                 Authorized Agents
                             </h3>
                             <p className="text-sm text-gray-600 font-medium leading-relaxed">

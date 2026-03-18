@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-orange: #ffa143;
-  --color-active-orange: #e08e3b;
-  /* Slightly darker for hover/active */
+  --color-primary-blue: #0096d6;
+  --color-active-blue: #007bb0;
+  /* Darker for hover/active */
 }
 
 :root {

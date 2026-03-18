@@ -15,13 +15,13 @@ const HomeContact = () => {
                                 <p className="text-gray-400 text-lg">
                                     For inquiries about printers or printing supplies, our team in Blaine, Minnesota is here to help.
                                 </p>
-                                <div className="w-16 h-1.5 bg-primary-orange rounded-full"></div>
+                                <div className="w-16 h-1.5 bg-primary-blue rounded-full"></div>
                             </div>
 
                             <div className="mt-12 space-y-8">
                                 <div className="flex items-center gap-6 group">
-                                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-primary-orange transition-colors">
-                                        <Mail className="text-primary-orange group-hover:text-white" size={24} />
+                                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-primary-blue transition-colors">
+                                        <Mail className="text-primary-blue group-hover:text-white" size={24} />
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">Email Us</p>
@@ -30,8 +30,8 @@ const HomeContact = () => {
                                 </div>
 
                                 <div className="flex items-center gap-6 group">
-                                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-primary-orange transition-colors">
-                                        <Phone className="text-primary-orange group-hover:text-white" size={24} />
+                                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-primary-blue transition-colors">
+                                        <Phone className="text-primary-blue group-hover:text-white" size={24} />
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">Call Us</p>
@@ -40,8 +40,8 @@ const HomeContact = () => {
                                 </div>
 
                                 <div className="flex items-center gap-6 group">
-                                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-primary-orange transition-colors">
-                                        <Clock className="text-primary-orange group-hover:text-white" size={24} />
+                                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-primary-blue transition-colors">
+                                        <Clock className="text-primary-blue group-hover:text-white" size={24} />
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-500 font-bold uppercase tracking-widest mb-1">Response Time</p>
@@ -53,8 +53,8 @@ const HomeContact = () => {
 
                         {/* Address/Brand Side */}
                         <div className="p-12 md:p-16 lg:p-20 flex flex-col justify-center items-center text-center bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-opacity-5">
-                            <div className="w-24 h-24 bg-orange-100 rounded-3xl flex items-center justify-center mb-8">
-                                <MapPin className="text-primary-orange" size={48} />
+                            <div className="w-24 h-24 bg-blue-100 rounded-3xl flex items-center justify-center mb-8">
+                                <MapPin className="text-primary-blue" size={48} />
                             </div>
 
                             <h3 className="text-2xl font-bold text-gray-900 mb-2">Our Location</h3>

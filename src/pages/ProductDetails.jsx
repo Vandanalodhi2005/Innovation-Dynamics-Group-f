@@ -14,7 +14,7 @@ import {
 /* ── Micro components ─────────────────────────────────────────────────────── */
 const Loader = () => (
     <div className="flex justify-center items-center py-24">
-        <div className="w-14 h-14 rounded-full border-4 border-gray-200 border-t-primary-orange animate-spin" />
+        <div className="w-14 h-14 rounded-full border-4 border-gray-200 border-t-primary-blue animate-spin" />
     </div>
 );
 
@@ -22,7 +22,7 @@ const Alert = ({ variant = 'info', children }) => {
     const cls = {
         danger: 'bg-red-50  border-l-4 border-red-500  text-red-700',
         success: 'bg-green-50 border-l-4 border-green-500 text-green-700',
-        info: 'bg-orange-50 border-l-4 border-primary-orange text-orange-800',
+        info: 'bg-blue-50 border-l-4 border-primary-blue text-blue-800',
     };
     return <div className={`rounded-lg p-4 text-sm ${cls[variant] || cls.info}`}>{children}</div>;
 };
@@ -34,7 +34,7 @@ const Stars = ({ value, size = 16, interactive = false, onSet, onHover, onLeave 
                 key={s}
                 size={size}
                 fill={value >= s ? 'currentColor' : 'none'}
-                className={`${value >= s ? 'text-primary-orange' : 'text-gray-300'} ${interactive ? 'cursor-pointer transition-transform hover:scale-110' : ''}`}
+                className={`${value >= s ? 'text-primary-blue' : 'text-gray-300'} ${interactive ? 'cursor-pointer transition-transform hover:scale-110' : ''}`}
                 onClick={interactive ? () => onSet?.(s) : undefined}
                 onMouseEnter={interactive ? () => onHover?.(s) : undefined}
                 onMouseLeave={interactive ? () => onLeave?.() : undefined}
@@ -124,9 +124,9 @@ const ProductDetails = () => {
             <div className="border-b border-gray-100 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                     <nav className="flex items-center gap-2 text-sm text-gray-500">
-                        <Link to="/" className="hover:text-primary-orange transition-colors">Home</Link>
+                        <Link to="/" className="hover:text-primary-blue transition-colors">Home</Link>
                         <ChevronRight size={13} className="text-gray-300" />
-                        <Link to="/shop" className="hover:text-primary-orange transition-colors">Shop</Link>
+                        <Link to="/shop" className="hover:text-primary-blue transition-colors">Shop</Link>
                         <ChevronRight size={13} className="text-gray-300" />
                         <span className="text-gray-900 font-semibold truncate max-w-xs">
                             {product?.title || 'Product Details'}
@@ -140,7 +140,7 @@ const ProductDetails = () => {
                 {loading ? <Loader /> : error ? (
                     <div className="max-w-lg mx-auto mt-8 space-y-4">
                         <Alert variant="danger">{error}</Alert>
-                        <button onClick={() => navigate('/shop')} className="flex items-center gap-1 text-sm font-bold text-gray-600 hover:text-primary-orange">
+                        <button onClick={() => navigate('/shop')} className="flex items-center gap-1 text-sm font-bold text-gray-600 hover:text-primary-blue">
                             <ChevronLeft size={16} /> Back to Shop
                         </button>
                     </div>
@@ -187,11 +187,11 @@ const ProductDetails = () => {
                                     {images.length > 1 && (
                                         <>
                                             <button onClick={() => setActiveImg((p) => (p - 1 + images.length) % images.length)}
-                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white shadow rounded-full flex items-center justify-center text-gray-600 hover:text-primary-orange opacity-0 group-hover:opacity-100 transition-all">
+                                                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white shadow rounded-full flex items-center justify-center text-gray-600 hover:text-primary-blue opacity-0 group-hover:opacity-100 transition-all">
                                                 <ChevronLeft size={18} />
                                             </button>
                                             <button onClick={() => setActiveImg((p) => (p + 1) % images.length)}
-                                                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white shadow rounded-full flex items-center justify-center text-gray-600 hover:text-primary-orange opacity-0 group-hover:opacity-100 transition-all">
+                                                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white shadow rounded-full flex items-center justify-center text-gray-600 hover:text-primary-blue opacity-0 group-hover:opacity-100 transition-all">
                                                 <ChevronRight size={18} />
                                             </button>
                                         </>
@@ -203,7 +203,7 @@ const ProductDetails = () => {
                                     <div className="flex gap-3 overflow-x-auto pb-1">
                                         {images.map((img, i) => (
                                             <button key={i} onClick={() => setActiveImg(i)}
-                                                className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${activeImg === i ? 'border-primary-orange shadow-md' : 'border-gray-200 hover:border-gray-400'}`}>
+                                                className={`flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${activeImg === i ? 'border-primary-blue shadow-md' : 'border-gray-200 hover:border-gray-400'}`}>
                                                 <img src={imgUrl(img)} alt={`view ${i + 1}`}
                                                     className="w-full h-full object-contain p-1 mix-blend-multiply"
                                                     onError={(e) => { e.target.src = 'https://placehold.co/80x80?text=x'; }} />
@@ -219,7 +219,7 @@ const ProductDetails = () => {
                                 {/* Brand / category chips */}
                                 <div className="flex flex-wrap items-center gap-2 mb-4">
                                     {product.brand && (
-                                        <span className="text-xs font-bold text-primary-orange bg-orange-50 border border-orange-200 px-3 py-1 rounded-full uppercase tracking-widest">
+                                        <span className="text-xs font-bold text-primary-blue bg-blue-50 border border-blue-200 px-3 py-1 rounded-full uppercase tracking-widest">
                                             {product.brand}
                                         </span>
                                     )}
@@ -269,7 +269,7 @@ const ProductDetails = () => {
                                             <span className="text-lg text-gray-400 line-through mb-1">
                                                 ${Number(product.oldPrice).toFixed(2)}
                                             </span>
-                                            <span className="mb-1 text-xs font-bold text-white bg-primary-orange px-2.5 py-0.5 rounded-full">
+                                            <span className="mb-1 text-xs font-bold text-white bg-primary-blue px-2.5 py-0.5 rounded-full">
                                                 SAVE ${(product.oldPrice - product.price).toFixed(2)}
                                             </span>
                                         </>
@@ -306,7 +306,7 @@ const ProductDetails = () => {
                                         {/* Add to Cart */}
                                         <button
                                             onClick={toCart}
-                                            className="w-full flex items-center justify-center gap-2 bg-black text-white font-bold py-4 px-8 rounded-xl hover:bg-primary-orange transition-colors duration-300 text-base uppercase tracking-wide shadow-lg hover:shadow-orange-200"
+                                            className="w-full flex items-center justify-center gap-2 bg-black text-white font-bold py-4 px-8 rounded-xl hover:bg-primary-blue transition-colors duration-300 text-base uppercase tracking-wide shadow-lg hover:shadow-blue-200"
                                         >
                                             <ShoppingCart size={20} />
                                             Add to Cart
@@ -315,7 +315,7 @@ const ProductDetails = () => {
                                         {/* Buy Now */}
                                         <button
                                             onClick={buyNow}
-                                            className="w-full flex items-center justify-center gap-2 bg-primary-orange text-white font-bold py-4 px-8 rounded-xl hover:bg-active-orange transition-colors duration-300 text-base uppercase tracking-wide shadow-lg hover:shadow-orange-300"
+                                            className="w-full flex items-center justify-center gap-2 bg-primary-blue text-white font-bold py-4 px-8 rounded-xl hover:bg-active-blue transition-colors duration-300 text-base uppercase tracking-wide shadow-lg hover:shadow-blue-300"
                                         >
                                             <ShoppingBag size={20} />
                                             Buy Now
@@ -330,10 +330,10 @@ const ProductDetails = () => {
                                 {/* ── Trust badges ────────────────────── */}
                                 <div className="grid grid-cols-2 gap-3 pt-6 border-t border-gray-100">
                                     {[
-                                        { icon: <Truck size={17} />, bg: 'bg-orange-50 text-primary-orange', label: 'Free Shipping', sub: 'Orders over $500' },
+                                        { icon: <Truck size={17} />, bg: 'bg-blue-50 text-primary-blue', label: 'Free Shipping', sub: 'Orders over $500' },
                                         { icon: <RotateCcw size={17} />, bg: 'bg-gray-100 text-gray-600', label: 'Easy Returns', sub: '30-day policy' },
                                         { icon: <Shield size={17} />, bg: 'bg-green-50 text-green-600', label: '2-Year Warranty', sub: 'Official warranty' },
-                                        { icon: <Award size={17} />, bg: 'bg-orange-50 text-primary-orange', label: 'Genuine Product', sub: '100% authentic' },
+                                        { icon: <Award size={17} />, bg: 'bg-blue-50 text-primary-blue', label: 'Genuine Product', sub: '100% authentic' },
                                     ].map((b, i) => (
                                         <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
                                             <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${b.bg}`}>
@@ -357,11 +357,11 @@ const ProductDetails = () => {
                                     <button
                                         key={tab}
                                         onClick={() => setActiveTab(tab)}
-                                        className={`relative py-5 px-2 mr-8 text-sm font-bold uppercase tracking-widest transition-colors ${activeTab === tab ? 'text-primary-orange' : 'text-gray-400 hover:text-gray-600'}`}
+                                        className={`relative py-5 px-2 mr-8 text-sm font-bold uppercase tracking-widest transition-colors ${activeTab === tab ? 'text-primary-blue' : 'text-gray-400 hover:text-gray-600'}`}
                                     >
                                         {tab}
                                         {activeTab === tab && (
-                                            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-orange rounded-full" />
+                                            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-blue rounded-full" />
                                         )}
                                     </button>
                                 ))}
@@ -414,7 +414,7 @@ const ProductDetails = () => {
 
                                             {/* Average summary card */}
                                             {product.numReviews > 0 && (
-                                                <div className="flex items-center gap-5 p-5 bg-orange-50 border border-orange-100 rounded-xl mb-6">
+                                                <div className="flex items-center gap-5 p-5 bg-blue-50 border border-blue-100 rounded-xl mb-6">
                                                     <div className="text-5xl font-extrabold text-gray-900">
                                                         {Number(product.rating || 0).toFixed(1)}
                                                     </div>
@@ -433,7 +433,7 @@ const ProductDetails = () => {
                                                         <div key={rev._id} className="border border-gray-100 rounded-xl p-5">
                                                             <div className="flex items-start justify-between mb-3">
                                                                 <div className="flex items-center gap-3">
-                                                                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary-orange to-active-orange flex items-center justify-center text-white font-bold text-sm">
+                                                                    <div className="w-9 h-9 rounded-full bg-gradient-to-br from-primary-blue to-active-blue flex items-center justify-center text-white font-bold text-sm">
                                                                         {rev.name?.charAt(0)?.toUpperCase() || 'U'}
                                                                     </div>
                                                                     <div>
@@ -477,13 +477,13 @@ const ProductDetails = () => {
                                                             value={comment}
                                                             onChange={(e) => setComment(e.target.value)}
                                                             placeholder="Share your experience with this product..."
-                                                            className="w-full p-4 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary-orange focus:border-transparent resize-none"
+                                                            className="w-full p-4 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent resize-none"
                                                         />
                                                     </div>
                                                     <button
                                                         type="submit"
                                                         disabled={loadingReview || rating === 0 || !comment.trim()}
-                                                        className="w-full py-3 bg-black text-white font-bold rounded-xl hover:bg-primary-orange transition-colors uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+                                                        className="w-full py-3 bg-black text-white font-bold rounded-xl hover:bg-primary-blue transition-colors uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
                                                     >
                                                         {loadingReview ? 'Submitting...' : 'Submit Review'}
                                                     </button>
@@ -492,7 +492,7 @@ const ProductDetails = () => {
                                                 <div className="bg-gray-50 border border-gray-100 rounded-xl p-8 text-center">
                                                     <p className="text-gray-500 mb-5">Sign in to leave a review</p>
                                                     <Link to="/login"
-                                                        className="inline-block bg-black text-white font-bold px-8 py-3 rounded-xl hover:bg-primary-orange transition-colors uppercase tracking-wide">
+                                                        className="inline-block bg-black text-white font-bold px-8 py-3 rounded-xl hover:bg-primary-blue transition-colors uppercase tracking-wide">
                                                         Sign In
                                                     </Link>
                                                 </div>

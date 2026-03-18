@@ -1,5 +1,6 @@
 import React from "react";
 import { RotateCcw } from "lucide-react";
+import refund from '../../public/images/return.jpg';
 
 const RefundPolicy = () => {
   return (
@@ -11,7 +12,7 @@ const RefundPolicy = () => {
         {/* New Professional Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1920"
+            src={refund}
             alt="Refund Policy Legal Background"
             className="w-full h-full object-cover opacity-70"
           />
@@ -19,7 +20,7 @@ const RefundPolicy = () => {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
-          <RotateCcw className="mx-auto mb-4 text-primary-orange" size={48} />
+          <RotateCcw className="mx-auto mb-4 text-primary-blue" size={48} />
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Refund & Return Policy
@@ -131,7 +132,7 @@ Address: 11397 Quincy St NE, Blaine, MN 55434`
       </div>
 
       {/* Footer Notice */}
-      <div className="bg-orange-50 py-6 sm:py-8 border-t border-orange-100">
+      <div className="bg-blue-50 py-6 sm:py-8 border-t border-blue-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-xs sm:text-sm text-gray-600">
             By placing an order, you acknowledge and agree to this Refund & Return Policy.

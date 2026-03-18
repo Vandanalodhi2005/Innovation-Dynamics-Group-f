@@ -525,7 +525,7 @@ const AdminProducts = () => {
                                                     checked={Array.isArray(formData.mainFunction) && formData.mainFunction.includes(opt)}
                                                     onChange={handleInputChange}
                                                 />
-                                                <span className="text-xs font-bold text-orange-700">{opt}</span>
+                                                <span className="text-xs font-bold text-blue-700">{opt}</span>
                                             </label>
                                         ))}
                                     </div>

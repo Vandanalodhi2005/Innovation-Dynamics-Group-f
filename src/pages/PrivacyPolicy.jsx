@@ -1,63 +1,64 @@
 import React from 'react';
-import { Shield, Lock, Eye, FileText, UserCheck, Share2, Database, Bell, Mail, Phone, MapPin } from 'lucide-react';
-
+import { Shield, Lock, Eye, FileText, UserCheck, Share2, Database, Bell, Mail, Phone, MapPin, Globe, ShieldCheck } from 'lucide-react';
+import privacy from '../../public/images/buying1.jpg';
 const PrivacyPolicy = () => {
     return (
         <div className="bg-white text-black font-sans min-h-screen">
             {/* Hero Section */}
-            <div className="relative bg-black text-white py-24 md:py-32 overflow-hidden">
-                <div className="absolute inset-0 z-0 text-gray-100 opacity-20 transform -rotate-12 pointer-events-none">
-                    <Shield size={500} className="absolute -top-20 -left-20" />
-                </div>
-
+            <div className="relative bg-black text-white py-24 md:py-32 overflow-hidden italic">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1920"
+                        src={privacy}
                         alt="Security Background"
                         className="w-full h-full object-cover opacity-60"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 text-center md:text-left">
                     <div className="max-w-3xl">
-                        <div className="inline-flex items-center gap-2 bg-primary-orange/20 text-primary-orange px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-primary-orange/30">
-                            <Lock size={16} /> Privacy & Security
+                        <div className="inline-flex items-center gap-2 bg-[#0096d6]/20 text-[#0096d6] px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-[#0096d6]/30">
+                            <ShieldCheck size={16} /> Privacy Commitment
                         </div>
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white italic">Privacy Policy</h1>
-                        <div className="w-24 h-1.5 bg-primary-orange mb-8 rounded-full mx-auto md:mx-0"></div>
-                        <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed">
-                            Protecting your information is a top priority at Innovation Dynamics Group LLC. We are committed to transparency in how we handle your personal data.
+                        <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white italic underline decoration-[#0096d6] decoration-4 underline-offset-8">Privacy Policy</h1>
+                        <div className="w-24 h-1.5 bg-[#0096d6] mb-8 rounded-full mx-auto md:mx-0"></div>
+                        <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-4">
+                            Innovation Dynamics Group LLC respects your privacy and is committed to protecting the personal information you share.
                         </p>
-                        <p className="mt-6 text-gray-400 font-medium">Effective Date: February 21, 2026</p>
+                        <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-gray-400 font-medium text-sm">
+                            <p>Effective Date: March 17, 2026</p>
+                            <p>Last Updated: March 17, 2026</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 font-serif italic">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
 
                     {/* Sidebar Navigation - Sticky */}
                     <div className="hidden lg:block lg:col-span-1">
                         <div className="sticky top-24 space-y-4">
-                            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Contents</h3>
+                            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Policy Sections</h3>
                             <nav className="space-y-2">
                                 {[
                                     { id: 'collect', label: '1. Information We Collect', icon: <Database size={18} /> },
                                     { id: 'use', label: '2. How We Use Information', icon: <FileText size={18} /> },
-                                    { id: 'gdpr', label: '3. Legal Basis (GDPR)', icon: <UserCheck size={18} /> },
-                                    { id: 'share', label: '4. Sharing Information', icon: <Share2 size={18} /> },
+                                    { id: 'share', label: '3. Sharing of Information', icon: <Share2 size={18} /> },
+                                    { id: 'cookies', label: '4. Cookies & Tracking', icon: <Globe size={18} /> },
                                     { id: 'security', label: '5. Data Security', icon: <Lock size={18} /> },
-                                    { id: 'retention', label: '6. Data Retention', icon: <Clock size={18} /> },
-                                    { id: 'rights', label: '7. Your Rights', icon: <UserCheck size={18} /> },
-                                    { id: 'contact', label: '11. Contact Us', icon: <Mail size={18} /> }
+                                    { id: 'rights', label: '6. Your Rights', icon: <UserCheck size={18} /> },
+                                    { id: 'links', label: '7. Third-Party Links', icon: <Globe size={18} /> },
+                                    { id: 'brand', label: '8. Brand Info', icon: <Shield size={18} /> },
+                                    { id: 'changes', label: '9. Future Changes', icon: <Bell size={18} /> },
+                                    { id: 'contact', label: '10. Contact Us', icon: <Mail size={18} /> }
                                 ].map((item) => (
                                     <a
                                         key={item.id}
                                         href={`#${item.id}`}
-                                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-orange-50 hover:text-primary-orange text-gray-600 font-medium group"
+                                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-blue-50 hover:text-[#0096d6] text-gray-600 font-medium group"
                                     >
-                                        <span className="text-gray-400 group-hover:text-primary-orange transition-colors">
+                                        <span className="text-gray-400 group-hover:text-[#0096d6] transition-colors">
                                             {item.icon}
                                         </span>
                                         {item.label}
@@ -68,241 +69,247 @@ const PrivacyPolicy = () => {
                     </div>
 
                     {/* Main Content */}
-                    <div className="lg:col-span-2 space-y-16">
+                    <div className="lg:col-span-2 space-y-16 text-gray-800">
                         {/* Introduction */}
-                        <section>
-                            <p className="text-lg text-gray-600 leading-relaxed italic border-l-4 border-primary-orange pl-6 py-2">
-                                This Privacy Policy explains how Innovation Dynamics Group LLC (“we,” “our,” or “us”) collects, uses, and safeguards personal information from customers and visitors who access our website and purchase our printers, Ink & Toner, and printing accessories. By using our website, you agree to the collection and use of information in accordance with this policy.
+                        <section className="text-lg leading-relaxed space-y-4 border-l-4 border-[#0096d6] pl-8 py-2">
+                            <p>
+                                Innovation Dynamics Group LLC ("Company", "we", "our", or "us") respects your privacy and is committed to protecting the personal information you share when visiting our website or purchasing products from our online store.
+                            </p>
+                            <p>
+                                This Privacy Policy explains how we collect, use, store, and protect your information when you interact with our website and services.
                             </p>
                         </section>
 
                         {/* 1. Information We Collect */}
                         <section id="collect" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4">
-                                <span className="bg-primary-orange text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic">1</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">1</span>
                                 Information We Collect
                             </h2>
-                            <p className="text-gray-600 leading-relaxed">
-                                We collect information to process orders, improve user experience, and operate our store efficiently.
-                            </p>
+                            <p className="font-medium text-gray-600 italic">We may collect different types of information when you use our website.</p>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                                <div className="bg-orange-50 p-6 rounded-2xl border border-orange-100">
-                                    <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2 italic">
-                                        <UserCheck className="text-primary-orange" size={20} />
-                                        1.1 Information You Provide
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm">
+                                    <h3 className="font-bold text-gray-900 mb-6 flex items-center gap-2 italic">
+                                        <UserCheck className="text-[#0096d6]" size={24} />
+                                        Personal Information
                                     </h3>
-                                    <ul className="space-y-2 text-gray-600 text-sm font-medium">
-                                        <li>• Name</li>
-                                        <li>• Email address</li>
-                                        <li>• Phone number</li>
-                                        <li>• Billing and shipping address</li>
-                                        <li>• Order details</li>
-                                        <li>• Messages submitted through forms</li>
+                                    <p className="text-sm text-gray-600 mb-4 font-serif italic">When you place an order, contact us, or interact with our services, we may collect:</p>
+                                    <ul className="space-y-3 text-gray-700 text-sm font-bold uppercase underline decoration-blue-100 decoration-2">
+                                        <li>Full name</li>
+                                        <li>Email address</li>
+                                        <li>Phone number</li>
+                                        <li>Billing & Shipping address</li>
+                                        <li>Order details & purchase history</li>
+                                        <li>Payment information (processed securely)</li>
+                                    </ul>
+                                    <p className="mt-6 text-xs text-gray-500 italic leading-relaxed pt-4 border-t border-gray-200">
+                                        Payment information is handled by secure third-party payment processors and is not stored on our servers.
+                                    </p>
+                                </div>
+                                <div className="bg-blue-50/30 p-8 rounded-3xl border border-blue-50 shadow-sm">
+                                    <h3 className="font-bold text-gray-900 mb-6 flex items-center gap-2 italic">
+                                        <Database className="text-[#0096d6]" size={24} />
+                                        Automatically Collected Information
+                                    </h3>
+                                    <p className="text-sm text-gray-600 mb-4 font-serif italic">Certain information may be collected automatically to help improve the site:</p>
+                                    <ul className="space-y-3 text-gray-700 text-sm font-bold uppercase underline decoration-blue-200 decoration-2">
+                                        <li>IP address</li>
+                                        <li>Browser type and version</li>
+                                        <li>Device information</li>
+                                        <li>Pages visited on the website</li>
+                                        <li>Time spent on pages</li>
+                                        <li>Referring websites</li>
                                     </ul>
                                 </div>
-                                <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                                    <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2 italic">
-                                        <Database className="text-primary-orange" size={20} />
-                                        1.2 Automatically Collected Information
-                                    </h3>
-                                    <ul className="space-y-2 text-gray-600 text-sm font-medium">
-                                        <li>• IP address</li>
-                                        <li>• Browser type and version</li>
-                                        <li>• Device information</li>
-                                        <li>• Visit duration and page interactions</li>
-                                        <li>• General, non-precise location</li>
-                                        <li>• Referring URLs</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="mt-8 p-6 bg-white border border-gray-100 rounded-2xl shadow-sm">
-                                <h3 className="font-bold text-gray-900 mb-3 flex items-center gap-2 italic">
-                                    <Eye className="text-primary-orange" size={20} />
-                                    1.3 Cookies & Tracking Technologies
-                                </h3>
-                                <p className="text-sm text-gray-600 mb-4 lowercase italic font-medium">WE USE COOKIES TO:</p>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 bg-primary-orange rounded-full"></div>
-                                        <span>Maintain website functionality</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 bg-primary-orange rounded-full"></div>
-                                        <span>Remember your preferences</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 bg-primary-orange rounded-full"></div>
-                                        <span>Improve shopping performance</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 bg-primary-orange rounded-full"></div>
-                                        <span>Understand general site usage</span>
-                                    </div>
-                                </div>
-                                <p className="mt-4 text-xs text-gray-400 italic">You can control cookies directly through your browser settings.</p>
                             </div>
                         </section>
 
-                        {/* 2. How We Use */}
-                        <section id="use" className="space-y-8 pt-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4">
-                                <span className="bg-primary-orange text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic">2</span>
+                        {/* 2. How We Use Your Information */}
+                        <section id="use" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">2</span>
                                 How We Use Your Information
                             </h2>
-                            <p className="text-gray-600 leading-relaxed">
-                                We use personal information only for legitimate business purposes, including:
-                            </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-gray-700 font-medium">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {[
                                     "Processing and fulfilling orders",
                                     "Sending order confirmations and updates",
-                                    "Responding to customer inquiries",
-                                    "Improving website performance",
-                                    "Enhancing browsing and shopping experience",
-                                    "Fraud prevention and security purposes",
-                                    "Compliance with legal obligations"
-                                ].map((step, idx) => (
-                                    <div key={idx} className="flex items-center gap-3">
-                                        <div className="w-2 h-2 bg-primary-orange rounded-full"></div>
-                                        <span>{step}</span>
+                                    "Providing customer service and support",
+                                    "Improving website functionality",
+                                    "Preventing fraudulent activity",
+                                    "Maintaining website security",
+                                    "Complying with legal requirements"
+                                ].map((item, idx) => (
+                                    <div key={idx} className="flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                                        <div className="w-2 h-2 bg-[#0096d6] rounded-full"></div>
+                                        <span className="text-gray-700 font-bold text-sm uppercase italic">{item}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-6 p-4 bg-orange-100/50 rounded-xl border border-orange-200 flex gap-4">
-                                <Lock className="text-primary-orange flex-shrink-0" size={20} />
-                                <p className="text-sm text-gray-700 font-bold italic leading-relaxed">
-                                    We do not use personal data for any technical-support, troubleshooting, or device-related service purposes.
+                            <p className="text-gray-600 italic font-medium leading-relaxed border-t border-gray-100 pt-4">
+                                We only collect and use information necessary to operate our business and provide services.
+                            </p>
+                        </section>
+
+                        {/* 3. Sharing of Information */}
+                        <section id="share" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">3</span>
+                                Sharing of Information
+                            </h2>
+                            <div className="bg-red-50/50 border border-red-100 p-6 rounded-3xl mb-8">
+                                <p className="text-red-900 font-bold italic text-lg leading-relaxed">
+                                    Innovation Dynamics Group LLC does not sell, trade, or rent personal information to third parties.
                                 </p>
+                            </div>
+                            <p className="italic text-gray-600 font-medium">However, we may share information with trusted service providers when necessary to operate our business, including:</p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {[
+                                    "Payment processing providers",
+                                    "Shipping and delivery partners",
+                                    "Website hosting providers",
+                                    "Security and fraud prevention services"
+                                ].map((service, idx) => (
+                                    <div key={idx} className="flex gap-4 items-start p-2">
+                                        <ShieldCheck className="text-[#0096d6] flex-shrink-0" size={24} />
+                                        <p className="text-gray-700 font-bold uppercase text-sm border-b border-gray-100 pb-2">{service}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-xs text-gray-500 italic mt-6 leading-relaxed bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                                These service providers are only permitted to use information required to perform their services.
+                            </p>
+                        </section>
+
+                        {/* 4. Cookies & Tracking Technologies */}
+                        <section id="cookies" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">4</span>
+                                Cookies & Tracking Technologies
+                            </h2>
+                            <p className="italic text-gray-600 font-medium">Our website may use cookies and similar technologies to improve functionality and enhance the browsing experience. Cookies help us:</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                {["Remember preferences", "Understand usage", "Improve performance", "Better experience"].map((v, i) => (
+                                    <div key={i} className="p-4 rounded-2xl bg-gray-50 text-center font-bold text-xs uppercase italic border border-gray-100 shadow-sm">{v}</div>
+                                ))}
                             </div>
                         </section>
 
-                        {/* 3 & 4 Combined for brevity in view but distinct sections */}
-                        <div className="space-y-16">
-                            <section id="gdpr" className="space-y-4">
-                                <h2 className="text-2xl font-bold italic">3. Legal Basis for Processing (GDPR)</h2>
-                                <p className="text-gray-600 leading-relaxed underline decoration-primary-orange/30 decoration-2 underline-offset-4">
-                                    For customers located in the European Union or regions following GDPR principles, we process data under:
-                                </p>
-                                <ul className="space-y-3 text-gray-600 font-medium">
-                                    <li><span className="text-gray-900 font-bold">Contractual necessity:</span> Fulfilling and delivering your order</li>
-                                    <li><span className="text-gray-900 font-bold">Legitimate interests:</span> Improving our website and shopping experience</li>
-                                    <li><span className="text-gray-900 font-bold">Legal compliance:</span> Maintaining transaction records</li>
-                                    <li><span className="text-gray-900 font-bold">Consent:</span> When optional features require approval</li>
-                                </ul>
-                            </section>
-
-                            <section id="share" className="space-y-4">
-                                <h2 className="text-2xl font-bold italic">4. How We Share Your Information</h2>
-                                <p className="text-gray-600 mb-6 italic">We do not sell or share personal information with third parties for marketing.</p>
-                                <div className="space-y-6">
-                                    <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                                        <h4 className="font-bold mb-3 flex items-center gap-2">
-                                            <Share2 size={18} className="text-primary-orange" />
-                                            4.1 Service Providers
-                                        </h4>
-                                        <p className="text-sm text-gray-600 mb-4 font-medium">Companies that help us operate our online store, such as Payment processors, Shipping carriers, Fraud-prevention tools, and Website hosting platforms. They receive only the information necessary to perform their services.</p>
-                                    </div>
-                                    <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-                                        <h4 className="font-bold mb-3 flex items-center gap-2">
-                                            <FileText size={18} className="text-primary-orange" />
-                                            4.2 Legal Requirements
-                                        </h4>
-                                        <p className="text-sm text-gray-600 font-medium">We may disclose information if required to comply with law enforcement requests, regulatory obligations, fraud prevention, or legal proceedings.</p>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-
-                        {/* 5, 6, 7, 8 */}
-                        <div className="space-y-12">
-                            <section id="security">
-                                <h2 className="text-2xl font-bold mb-4 italic">5. Data Security</h2>
-                                <p className="text-gray-600 leading-relaxed font-medium">
-                                    We use standard security measures to protect personal information during transmission and storage. While no online platform is completely risk-free, we maintain appropriate safeguards to protect your data.
-                                </p>
-                            </section>
-
-                            <section id="retention">
-                                <h2 className="text-2xl font-bold mb-4 italic">6. Data Retention</h2>
-                                <p className="text-gray-600 leading-relaxed font-medium">
-                                    We retain personal information only as long as required for fulfilling your orders, legal and tax recordkeeping, and business operations. After retention periods end, information is securely deleted.
-                                </p>
-                            </section>
-
-                            <section id="rights">
-                                <h2 className="text-2xl font-bold mb-4 italic">7. Your Rights</h2>
-                                <p className="text-gray-600 mb-4 font-bold lowercase">DEPENDING ON YOUR REGION, YOU MAY HAVE RIGHTS SUCH AS:</p>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600 font-medium italic">
-                                    <span>• Access to your personal information</span>
-                                    <span>• Correction of inaccurate data</span>
-                                    <span>• Deletion of data, where applicable</span>
-                                    <span>• Opt-out of certain data uses</span>
-                                    <span>• Requesting a copy of stored information</span>
-                                    <span>• Restricting or objecting to processing</span>
-                                </div>
-                            </section>
-
-                            <section id="ccpa" className="p-8 bg-black text-white rounded-3xl relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-orange/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
-                                <h2 className="text-xl font-bold mb-4 italic underline decoration-primary-orange decoration-4 underline-offset-8">8. “Do Not Sell or Share My Personal Information” (CCPA/CPRA)</h2>
-                                <p className="text-gray-300 leading-relaxed mb-4">
-                                    We do not sell, trade, or share customer personal data with third parties for advertising or marketing.
-                                </p>
-                                <p className="text-sm font-medium italic text-primary-orange">
-                                    California residents may request additional details or opt-out confirmations using our contact information below.
-                                </p>
-                            </section>
-
-                            <section id="children">
-                                <h2 className="text-2xl font-bold mb-4 italic">9. Children’s Privacy</h2>
-                                <p className="text-gray-600 font-medium italic">
-                                    Our website is intended for adults and general consumers. We do not knowingly collect information from children under 13.
-                                </p>
-                            </section>
-                        </div>
-
-                        {/* 11. Contact Us */}
-                        <section id="contact" className="bg-gray-50 p-10 rounded-3xl border border-gray-100">
-                            <h2 className="text-3xl font-bold mb-8 flex items-center gap-4 italic underline decoration-primary-orange decoration-2">
-                                <Mail className="text-primary-orange" size={32} />
-                                11. Contact Us
+                        {/* 5. Data Security */}
+                        <section id="security" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">5</span>
+                                Data Security
                             </h2>
-                            <p className="text-gray-600 mb-10 leading-relaxed">
-                                For privacy-related questions or data requests, contact us through any of the following channels:
+                            <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100">
+                                <div className="p-6 bg-white rounded-3xl shadow-xl border border-blue-50">
+                                    <Lock size={48} className="text-[#0096d6]" />
+                                </div>
+                                <div className="space-y-4">
+                                    <p className="text-gray-800 leading-relaxed font-bold italic">
+                                        We implement appropriate security measures to protect personal information from unauthorized access, loss, misuse, or disclosure.
+                                    </p>
+                                    <p className="text-sm text-gray-600 font-medium leading-relaxed italic border-l-2 border-[#0096d6] pl-4">
+                                        Secure technologies and industry-standard practices are used to protect sensitive information during transactions.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* 6. Your Privacy Rights */}
+                        <section id="rights" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">6</span>
+                                Your Privacy Rights
+                            </h2>
+                            <p className="italic text-gray-600 font-medium">Depending on your location, you may have certain rights regarding your personal information, including:</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-8 bg-blue-50/20 rounded-3xl border border-blue-100 italic font-bold text-sm uppercase">
+                                <span>• Request access to personal data</span>
+                                <span>• Request correction of inaccurate information</span>
+                                <span>• Request deletion of information</span>
+                                <span>• Opt out of marketing communications</span>
+                            </div>
+                        </section>
+
+                        {/* Third-Party Links */}
+                        <section id="links" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">7</span>
+                                Third-Party Links
+                            </h2>
+                            <p className="italic text-gray-600 font-medium leading-relaxed">
+                                Our website may contain links to external websites operated by third parties. We are not responsible for the privacy practices or content of those websites. Users are encouraged to review the privacy policies of external websites before providing personal information.
                             </p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div className="space-y-6">
-                                    <div className="flex gap-4 items-start">
-                                        <div className="bg-white p-3 rounded-xl shadow-sm border border-gray-100">
-                                            <Mail className="text-primary-orange" size={20} />
+                        </section>
+
+                        {/* Brand and Manufacturer Information */}
+                        <section id="brand" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">8</span>
+                                Brand and Manufacturer Information
+                            </h2>
+                            <p className="italic text-gray-600 font-medium leading-relaxed">
+                                Innovation Dynamics Group LLC is a specialized online retailer focused on printers and printing solutions. We are also a member of the HP Amplify Partner Program.
+                            </p>
+                            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                                All trademarks, product names, and logos belong to their respective owners and are used for identification purposes only.
+                            </p>
+                        </section>
+
+                        {/* Changes to This Privacy Policy */}
+                        <section id="changes" className="space-y-8">
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
+                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">9</span>
+                                Changes to This Privacy Policy
+                            </h2>
+                            <p className="italic text-gray-600 font-medium leading-relaxed">
+                                Innovation Dynamics Group LLC may update this Privacy Policy from time to time to reflect changes in legal requirements or business practices. Updated versions will be posted on this page with the revised date.
+                            </p>
+                        </section>
+
+                        {/* 10. Contact Us */}
+                        <section id="contact" className="bg-slate-900 text-white p-12 rounded-[3rem] shadow-2xl relative overflow-hidden italic">
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#0096d6] opacity-10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                             <h2 className="text-3xl font-bold mb-8 flex items-center gap-4 underline decoration-[#0096d6] decoration-4 underline-offset-8">
+                                <Mail className="text-[#0096d6]" size={32} />
+                                10. Contact Us
+                            </h2>
+                            <p className="text-gray-400 mb-12 leading-relaxed max-w-2xl">
+                                If you have questions about this Privacy Policy or how your information is handled, please contact us:
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                <div className="space-y-8">
+                                    <div className="flex gap-6 items-start">
+                                        <div className="p-4 bg-white/10 rounded-2xl border border-white/5 backdrop-blur-sm">
+                                            <Mail className="text-[#0096d6]" size={24} />
                                         </div>
                                         <div>
-                                            <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Email</p>
-                                            <p className="font-bold text-gray-900">support@innovationdynamicsgroup.com</p>
+                                            <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Email us</p>
+                                            <p className="text-lg font-bold underline decoration-white/20">support@innovationdynamicsgroup.com</p>
                                         </div>
                                     </div>
-                                    <div className="flex gap-4 items-start">
-                                        <div className="bg-white p-3 rounded-xl shadow-sm border border-gray-100">
-                                            <Phone className="text-primary-orange" size={20} />
+                                    <div className="flex gap-6 items-start">
+                                        <div className="p-4 bg-white/10 rounded-2xl border border-white/5 backdrop-blur-sm">
+                                            <Phone className="text-[#0096d6]" size={24} />
                                         </div>
                                         <div>
-                                            <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Phone</p>
-                                            <p className="font-bold text-gray-900">+1 (651) 815-4630</p>
+                                            <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Call us</p>
+                                            <p className="text-lg font-bold">+1 (651) 815-4630</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex gap-4 items-start">
-                                    <div className="bg-white p-3 rounded-xl shadow-sm border border-gray-100">
-                                        <MapPin className="text-primary-orange" size={20} />
+                                <div className="flex gap-6 items-start">
+                                    <div className="p-4 bg-white/10 rounded-2xl border border-white/5 backdrop-blur-sm">
+                                        <MapPin className="text-[#0096d6]" size={24} />
                                     </div>
-                                    <div>
-                                        <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-1">Address</p>
-                                        <p className="font-bold text-gray-900 leading-relaxed">
+                                    <div className="space-y-2">
+                                        <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Business Address</p>
+                                        <p className="font-bold text-lg leading-relaxed">
                                             Innovation Dynamics Group LLC<br />
                                             11397 Quincy St NE<br />
-                                            Blaine, MN 55434
+                                            Blaine, MN 55434<br />
+                                            United States
                                         </p>
                                     </div>
                                 </div>
@@ -311,37 +318,8 @@ const PrivacyPolicy = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Bottom Footer Slogan */}
-            <div className="py-20 bg-gray-50 border-t border-gray-100 text-center">
-                <div className="max-w-4xl mx-auto px-4">
-                    <Shield className="mx-auto mb-6 text-primary-orange opacity-20" size={64} />
-                    <h2 className="text-3xl font-bold mb-4 italic">Commitment to Integrity</h2>
-                    <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic font-medium">
-                        At Innovation Dynamics Group LLC, we value your trust and are dedicated to protecting your privacy while providing you with the best printing experience possible.
-                    </p>
-                </div>
-            </div>
         </div>
     );
 };
-
-// Simple Clock for the content
-const Clock = ({ size, className }) => (
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-    >
-        <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-    </svg>
-);
 
 export default PrivacyPolicy;

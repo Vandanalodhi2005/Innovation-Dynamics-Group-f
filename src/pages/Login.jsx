@@ -57,7 +57,7 @@ const Login = () => {
 
     return (
         <div className="min-h-screen pt-20 pb-12 flex flex-col items-center justify-center bg-gray-50 font-sans">
-            <div className={`w-full max-w-md bg-white p-8 rounded-lg shadow-md border ${isAdminLogin ? 'border-primary-orange shadow-orange-50' : 'border-gray-100'}`}>
+            <div className={`w-full max-w-md bg-white p-8 rounded-lg shadow-md border ${isAdminLogin ? 'border-primary-blue shadow-blue-50' : 'border-gray-100'}`}>
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 mb-2">
                         {isAdminLogin ? 'Admin Portal' : 'Welcome Back'}
@@ -93,7 +93,7 @@ const Login = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm transition-colors"
                                 placeholder="you@example.com"
                             />
                         </div>
@@ -110,7 +110,7 @@ const Login = () => {
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm transition-colors"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -123,7 +123,7 @@ const Login = () => {
                                 type="checkbox"
                                 checked={isAdminLogin}
                                 onChange={(e) => setIsAdminLogin(e.target.checked)}
-                                className="h-4 w-4 text-primary-orange focus:ring-primary-orange border-gray-300 rounded"
+                                className="h-4 w-4 text-primary-blue focus:ring-primary-blue border-gray-300 rounded"
                             />
                             <label htmlFor="admin-login" className="ml-2 block text-sm text-gray-900 cursor-pointer">
                                 Login as Admin
@@ -131,7 +131,7 @@ const Login = () => {
                         </div>
 
                         <div className="text-sm">
-                            <Link to="/forgot-password" title="Forgot Password" className="font-medium text-primary-orange hover:text-orange-600">
+                            <Link to="/forgot-password" title="Forgot Password" className="font-medium text-primary-blue hover:text-blue-600">
                                 Forgot your password?
                             </Link>
                         </div>
@@ -143,7 +143,7 @@ const Login = () => {
                         className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed
                             ${isAdminLogin
                                 ? 'bg-slate-900 hover:bg-slate-800 focus:ring-slate-900'
-                                : 'bg-black hover:bg-primary-orange focus:ring-primary-orange'
+                                : 'bg-black hover:bg-primary-blue focus:ring-primary-blue'
                             }
                         `}
                     >
@@ -154,7 +154,7 @@ const Login = () => {
                 <div className="mt-6 text-center text-sm text-gray-600">
                     <p>
                         Don't have an account?{' '}
-                        <Link to="/signup" className="font-medium text-primary-orange hover:text-orange-600">
+                        <Link to="/signup" className="font-medium text-primary-blue hover:text-blue-600">
                             Sign up here
                         </Link>
                     </p>

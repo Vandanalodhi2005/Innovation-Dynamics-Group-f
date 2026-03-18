@@ -26,7 +26,7 @@ const OrderDetails = () => {
 
     if (loading) return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 pt-16">
-            <div className="w-10 h-10 border-4 border-gray-200 border-t-primary-orange rounded-full animate-spin"></div>
+            <div className="w-10 h-10 border-4 border-gray-200 border-t-primary-blue rounded-full animate-spin"></div>
         </div>
     );
 
@@ -37,7 +37,7 @@ const OrderDetails = () => {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Order Not Found</h2>
             <p className="text-gray-600 mb-8">{error}</p>
-            <Link to="/orders" className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-primary-orange transition-colors">
+            <Link to="/orders" className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-primary-blue transition-colors">
                 Back to My Orders
             </Link>
         </div>
@@ -49,7 +49,7 @@ const OrderDetails = () => {
                 {/* Header Section */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <Link to="/orders" className="flex items-center gap-1 text-gray-500 hover:text-primary-orange font-bold text-sm mb-4 transition-colors">
+                        <Link to="/orders" className="flex items-center gap-1 text-gray-500 hover:text-primary-blue font-bold text-sm mb-4 transition-colors">
                             <ChevronLeft size={16} /> Back to My Orders
                         </Link>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
@@ -63,7 +63,7 @@ const OrderDetails = () => {
                                 <CheckCircle size={14} /> Delivered
                             </span>
                         ) : order.isPaid ? (
-                            <span className="flex items-center gap-1.5 px-4 py-1.5 bg-orange-100 text-primary-orange rounded-full text-xs font-bold uppercase tracking-wider">
+                            <span className="flex items-center gap-1.5 px-4 py-1.5 bg-blue-100 text-primary-blue rounded-full text-xs font-bold uppercase tracking-wider">
                                 <Truck size={14} /> Processing
                             </span>
                         ) : (
@@ -112,7 +112,7 @@ const OrderDetails = () => {
                             {/* Shipping Details */}
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                                 <h3 className="font-bold text-gray-800 flex items-center gap-2 mb-4 border-b pb-3 border-gray-50">
-                                    <MapPin size={18} className="text-primary-orange" /> Shipping Details
+                                    <MapPin size={18} className="text-primary-blue" /> Shipping Details
                                 </h3>
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-3">
@@ -143,7 +143,7 @@ const OrderDetails = () => {
                             {/* Payment Info */}
                             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                                 <h3 className="font-bold text-gray-800 flex items-center gap-2 mb-4 border-b pb-3 border-gray-50">
-                                    <CreditCard size={18} className="text-primary-orange" /> Payment Summary
+                                    <CreditCard size={18} className="text-primary-blue" /> Payment Summary
                                 </h3>
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-3">
@@ -190,11 +190,11 @@ const OrderDetails = () => {
                                 </div>
                                 <div className="pt-6 border-t border-gray-800 flex justify-between">
                                     <span className="text-xl font-bold">Total Paid</span>
-                                    <span className="text-xl font-bold text-primary-orange">${order.totalPrice.toFixed(2)}</span>
+                                    <span className="text-xl font-bold text-primary-blue">${order.totalPrice.toFixed(2)}</span>
                                 </div>
                             </div>
                             <div className="mt-8">
-                                <button className="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-primary-orange hover:text-white transition-all text-sm uppercase tracking-widest">
+                                <button className="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-primary-blue hover:text-white transition-all text-sm uppercase tracking-widest">
                                     Download Invoice
                                 </button>
                             </div>

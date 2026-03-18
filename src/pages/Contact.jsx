@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Clock, Info, CheckCircle2 } from 'lucide-react';
-
+import contactImage from '../../public/images/contact.jpg';
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -30,7 +30,7 @@ const Contact = () => {
 
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=1920"
+                        src={contactImage}
                         alt="Contact Support"
                         className="w-full h-full object-cover opacity-60"
                     />
@@ -40,7 +40,7 @@ const Contact = () => {
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
                     <div className="max-w-3xl">
                         <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white">Contact Us</h1>
-                        <div className="w-24 h-1.5 bg-primary-orange mb-8 rounded-full"></div>
+                        <div className="w-24 h-1.5 bg-primary-blue mb-8 rounded-full"></div>
                         <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed">
                             At Innovation Dynamics Group LLC, we make it simple for customers to reach us with product inquiries, order-related questions, or general information about our printers and printing supplies.
                         </p>
@@ -61,7 +61,7 @@ const Contact = () => {
 
                         <div className="bg-gray-50 p-8 md:p-10 rounded-3xl border border-gray-100">
                             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                                <Send className="text-primary-orange" size={24} />
+                                <Send className="text-primary-blue" size={24} />
                                 Send Us a Message
                             </h2>
                             <p className="text-gray-600 mb-8">
@@ -78,7 +78,7 @@ const Contact = () => {
                                             required
                                             value={formData.name}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-orange outline-none transition-all bg-white"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition-all bg-white"
                                             placeholder="John Doe"
                                         />
                                     </div>
@@ -90,7 +90,7 @@ const Contact = () => {
                                             required
                                             value={formData.email}
                                             onChange={handleChange}
-                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-orange outline-none transition-all bg-white"
+                                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition-all bg-white"
                                             placeholder="john@example.com"
                                         />
                                     </div>
@@ -102,7 +102,7 @@ const Contact = () => {
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-orange outline-none transition-all bg-white"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition-all bg-white"
                                         placeholder="Product Inquiry"
                                     />
                                 </div>
@@ -113,13 +113,13 @@ const Contact = () => {
                                         rows="4"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-orange outline-none transition-all bg-white resize-none"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary-blue outline-none transition-all bg-white resize-none"
                                         placeholder="How can we help you today?"
                                     ></textarea>
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full bg-primary-orange hover:bg-orange-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1"
+                                    className="w-full bg-primary-blue hover:bg-blue-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-200 transition-all transform hover:-translate-y-1"
                                 >
                                     Send Message
                                 </button>
@@ -134,32 +134,32 @@ const Contact = () => {
                         <div className="space-y-8">
                             {/* Email */}
                             <div className="flex gap-6 items-start">
-                                <div className="bg-orange-50 p-4 rounded-2xl">
-                                    <Mail className="text-primary-orange" size={28} />
+                                <div className="bg-blue-50 p-4 rounded-2xl">
+                                    <Mail className="text-primary-blue" size={28} />
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-gray-900 mb-1">Email Support</h3>
-                                    <p className="text-primary-orange font-bold text-lg mb-1">support@innovationdynamicsgroup.com</p>
+                                    <p className="text-primary-blue font-bold text-lg mb-1">support@innovationdynamicsgroup.com</p>
                                     <p className="text-gray-500 text-sm italic">We typically respond within one business day.</p>
                                 </div>
                             </div>
 
                             {/* Phone */}
                             <div className="flex gap-6 items-start">
-                                <div className="bg-orange-50 p-4 rounded-2xl">
-                                    <Phone className="text-primary-orange" size={28} />
+                                <div className="bg-blue-50 p-4 rounded-2xl">
+                                    <Phone className="text-primary-blue" size={28} />
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-gray-900 mb-1">Phone</h3>
-                                    <p className="text-primary-orange font-bold text-lg mb-1">+1 (651) 815-4630</p>
+                                    <p className="text-primary-blue font-bold text-lg mb-1">+1 (651) 815-4630</p>
                                     <p className="text-gray-500 text-sm">Clear product information and purchasing guidance.</p>
                                 </div>
                             </div>
 
                             {/* Address */}
                             <div className="flex gap-6 items-start">
-                                <div className="bg-orange-50 p-4 rounded-2xl">
-                                    <MapPin className="text-primary-orange" size={28} />
+                                <div className="bg-blue-50 p-4 rounded-2xl">
+                                    <MapPin className="text-primary-blue" size={28} />
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-gray-900 mb-1">Business Address</h3>
@@ -171,9 +171,9 @@ const Contact = () => {
 
                         {/* Business Hours */}
                         <div className="bg-slate-900 text-white p-8 rounded-3xl relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-orange/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-blue/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
                             <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
-                                <Clock className="text-primary-orange" size={24} />
+                                <Clock className="text-primary-blue" size={24} />
                                 Business Hours
                             </h3>
                             <div className="space-y-3 font-medium text-gray-300">
@@ -187,14 +187,14 @@ const Contact = () => {
                                 </div>
                                 <div className="flex justify-between">
                                     <span>Sunday</span>
-                                    <span className="text-orange-400">Closed</span>
+                                    <span className="text-blue-400">Closed</span>
                                 </div>
                             </div>
                             <p className="mt-4 text-xs text-gray-500 italic">All times CST</p>
                         </div>
 
                         {/* What You Can Contact Us For */}
-                        <div className="bg-orange-50 p-8 rounded-3xl border border-orange-100">
+                        <div className="bg-blue-50 p-8 rounded-3xl border border-blue-100">
                             <h3 className="font-bold text-gray-900 mb-6 uppercase tracking-wider text-sm">What You Can Contact Us For</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {[
@@ -206,13 +206,13 @@ const Contact = () => {
                                     "General store information"
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-2">
-                                        <CheckCircle2 size={16} className="text-primary-orange" />
+                                        <CheckCircle2 size={16} className="text-primary-blue" />
                                         <span className="text-sm text-gray-700 font-medium">{item}</span>
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-8 flex gap-4 p-4 bg-orange-100/50 rounded-xl border border-orange-200">
-                                <Info className="text-primary-orange flex-shrink-0" size={20} />
+                            <div className="mt-8 flex gap-4 p-4 bg-blue-100/50 rounded-xl border border-blue-200">
+                                <Info className="text-primary-blue flex-shrink-0" size={20} />
                                 <p className="text-xs text-gray-600 font-medium leading-relaxed italic">
                                     We only provide product and purchase-related information, not any technical or operational assistance.
                                 </p>

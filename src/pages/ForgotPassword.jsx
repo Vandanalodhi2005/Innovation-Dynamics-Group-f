@@ -59,7 +59,7 @@ const ForgotPassword = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm transition-colors"
+                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm transition-colors"
                                 placeholder="you@example.com"
                             />
                         </div>
@@ -68,14 +68,14 @@ const ForgotPassword = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Sending OTP...' : 'Send Reset Link'}
                     </button>
                 </form>
 
                 <div className="mt-8 text-center text-sm">
-                    <Link to="/login" className="font-medium text-gray-600 hover:text-primary-orange flex items-center justify-center gap-2 transition-colors">
+                    <Link to="/login" className="font-medium text-gray-600 hover:text-primary-blue flex items-center justify-center gap-2 transition-colors">
                         <ArrowLeft size={16} /> Back to Sign In
                     </Link>
                 </div>

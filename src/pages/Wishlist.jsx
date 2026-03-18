@@ -26,9 +26,9 @@ const Wishlist = () => {
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="w-32 h-32 bg-orange-50 rounded-full flex items-center justify-center mb-8"
+                    className="w-32 h-32 bg-blue-50 rounded-full flex items-center justify-center mb-8"
                 >
-                    <Heart size={64} className="text-primary-orange" />
+                    <Heart size={64} className="text-primary-blue" />
                 </motion.div>
                 <h2 className="text-3xl font-bold mb-3 text-gray-900">Your wishlist is empty</h2>
                 <p className="text-gray-500 mb-10 text-center max-w-md text-lg">
@@ -36,7 +36,7 @@ const Wishlist = () => {
                 </p>
                 <Link
                     to="/shop"
-                    className="px-10 py-4 bg-black text-white font-bold rounded-lg hover:bg-primary-orange transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-orange-500/20"
+                    className="px-10 py-4 bg-black text-white font-bold rounded-lg hover:bg-primary-blue transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-blue-500/20"
                 >
                     Discover Products <ArrowRight size={22} />
                 </Link>
@@ -50,14 +50,14 @@ const Wishlist = () => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12">
                     <div>
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="w-1 h-8 bg-primary-orange rounded-full" />
+                            <div className="w-1 h-8 bg-primary-blue rounded-full" />
                             <h1 className="text-4xl font-bold text-gray-900 tracking-tight">My Wishlist</h1>
                         </div>
                         <p className="text-gray-500 font-medium ml-4">You have {wishlist.length} item{wishlist.length !== 1 ? 's' : ''} saved</p>
                     </div>
                     <Link
                         to="/shop"
-                        className="flex items-center gap-2 text-primary-orange font-bold hover:underline transition-all"
+                        className="flex items-center gap-2 text-primary-blue font-bold hover:underline transition-all"
                     >
                         Continue Shopping <ArrowRight size={18} />
                     </Link>
@@ -76,7 +76,7 @@ const Wishlist = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 transition={{ duration: 0.4 }}
-                                className="group bg-white border border-gray-100 shadow-sm hover:shadow-2xl hover:border-primary-orange/30 transition-all duration-500 flex flex-col h-full relative"
+                                className="group bg-white border border-gray-100 shadow-sm hover:shadow-2xl hover:border-primary-blue/30 transition-all duration-500 flex flex-col h-full relative"
                             >
                                 {/* Remove Button */}
                                 <button
@@ -110,15 +110,15 @@ const Wishlist = () => {
                                 {/* Content */}
                                 <div className="p-6 flex flex-col flex-1">
                                     <div className="flex justify-between items-start mb-2">
-                                        <span className="text-[10px] font-black text-primary-orange uppercase tracking-[.25em]">{product.brand || 'Premium'}</span>
-                                        <div className="flex items-center text-primary-orange">
+                                        <span className="text-[10px] font-black text-primary-blue uppercase tracking-[.25em]">{product.brand || 'Premium'}</span>
+                                        <div className="flex items-center text-primary-blue">
                                             <Star size={12} fill="currentColor" />
                                             <span className="text-xs font-bold ml-1 text-gray-900">{product.rating || '4.8'}</span>
                                         </div>
                                     </div>
 
                                     <h3
-                                        className="text-base font-bold text-gray-900 mb-2 leading-tight group-hover:text-primary-orange transition-colors cursor-pointer line-clamp-2"
+                                        className="text-base font-bold text-gray-900 mb-2 leading-tight group-hover:text-primary-blue transition-colors cursor-pointer line-clamp-2"
                                         onClick={() => handleDetails(product)}
                                     >
                                         {product.title || product.name}
@@ -136,7 +136,7 @@ const Wishlist = () => {
 
                                         <button
                                             onClick={() => handleDetails(product)}
-                                            className="w-12 h-12 bg-black text-white hover:bg-primary-orange transition-all duration-300 rounded-full flex items-center justify-center shadow-lg hover:shadow-orange-500/40 transform hover:-rotate-12 active:scale-95"
+                                            className="w-12 h-12 bg-black text-white hover:bg-primary-blue transition-all duration-300 rounded-full flex items-center justify-center shadow-lg hover:shadow-blue-500/40 transform hover:-rotate-12 active:scale-95"
                                             title="Add to Cart"
                                         >
                                             <ShoppingBag size={20} />
@@ -152,7 +152,7 @@ const Wishlist = () => {
                 <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-gray-200 pt-16">
                     <div className="flex items-start gap-4">
                         <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <Heart className="text-primary-orange" size={24} />
+                            <Heart className="text-primary-blue" size={24} />
                         </div>
                         <div>
                             <h4 className="font-bold text-gray-900 mb-1 text-lg">Save Your Favorites</h4>
@@ -161,7 +161,7 @@ const Wishlist = () => {
                     </div>
                     <div className="flex items-start gap-4">
                         <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <ShoppingBag className="text-primary-orange" size={24} />
+                            <ShoppingBag className="text-primary-blue" size={24} />
                         </div>
                         <div>
                             <h4 className="font-bold text-gray-900 mb-1 text-lg">Express Checkout</h4>
@@ -170,7 +170,7 @@ const Wishlist = () => {
                     </div>
                     <div className="flex items-start gap-4">
                         <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <Star className="text-primary-orange" size={24} />
+                            <Star className="text-primary-blue" size={24} />
                         </div>
                         <div>
                             <h4 className="font-bold text-gray-900 mb-1 text-lg">Curated Selection</h4>

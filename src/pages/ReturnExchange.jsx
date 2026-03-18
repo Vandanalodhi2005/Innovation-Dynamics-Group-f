@@ -78,7 +78,7 @@ const ReturnExchange = () => {
                     </p>
                     <button
                         onClick={() => setSubmitted(false)}
-                        className="bg-primary-orange hover:bg-black text-white font-bold py-4 px-10 rounded-xl transition-all uppercase tracking-widest text-sm"
+                        className="bg-primary-blue hover:bg-black text-white font-bold py-4 px-10 rounded-xl transition-all uppercase tracking-widest text-sm"
                     >
                         Back to Form
                     </button>
@@ -101,11 +101,11 @@ const ReturnExchange = () => {
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-                    <RotateCcw className="mx-auto mb-6 text-primary-orange" size={56} />
+                    <RotateCcw className="mx-auto mb-6 text-primary-blue" size={56} />
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-white italic lowercase">
                         return & exchange
                     </h1>
-                    <div className="w-32 h-1.5 bg-primary-orange mb-8 rounded-full mx-auto"></div>
+                    <div className="w-32 h-1.5 bg-primary-blue mb-8 rounded-full mx-auto"></div>
                     <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-3xl mx-auto italic">
                         Our goal is to keep your experience simple, transparent, and hassle-free.
                     </p>
@@ -118,8 +118,8 @@ const ReturnExchange = () => {
                     {/* Policy Details Column */}
                     <div className="space-y-16">
                         <section className="space-y-8">
-                            <h2 className="text-3xl font-bold italic underline decoration-primary-orange decoration-4 flex items-center gap-4">
-                                <span className="bg-primary-orange text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl not-italic font-black">1</span>
+                            <h2 className="text-3xl font-bold italic underline decoration-primary-blue decoration-4 flex items-center gap-4">
+                                <span className="bg-primary-blue text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl not-italic font-black">1</span>
                                 Eligibility
                             </h2>
                             <div className="space-y-6">
@@ -144,34 +144,34 @@ const ReturnExchange = () => {
                         </section>
 
                         <section className="space-y-8">
-                            <h2 className="text-3xl font-bold italic underline decoration-primary-orange decoration-4 flex items-center gap-4">
+                            <h2 className="text-3xl font-bold italic underline decoration-primary-blue decoration-4 flex items-center gap-4">
                                 <span className="bg-black text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl not-italic font-black">2</span>
                                 Process & Details
                             </h2>
                             <div className="space-y-8">
                                 <div className="flex gap-6">
-                                    <div className="bg-gray-50 p-4 rounded-xl h-fit border border-gray-100 flex-shrink-0"><ShieldCheck className="text-primary-orange" /></div>
+                                    <div className="bg-gray-50 p-4 rounded-xl h-fit border border-gray-100 flex-shrink-0"><ShieldCheck className="text-primary-blue" /></div>
                                     <div>
                                         <h4 className="font-bold text-lg mb-2 italic">Damaged Items</h4>
                                         <p className="text-sm text-gray-600 font-medium italic leading-relaxed">Report within 5 business days with photos. We will guide you with a replacement or resolution.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-6">
-                                    <div className="bg-gray-50 p-4 rounded-xl h-fit border border-gray-100 flex-shrink-0"><FileText className="text-primary-orange" /></div>
+                                    <div className="bg-gray-50 p-4 rounded-xl h-fit border border-gray-100 flex-shrink-0"><FileText className="text-primary-blue" /></div>
                                     <div>
                                         <h4 className="font-bold text-lg mb-2 italic">Refunds & Costs</h4>
                                         <p className="text-sm text-gray-600 font-medium italic leading-relaxed">Customer pays return shipping unless error was ours. Shipping fees are non-refundable. Restocking fees may apply.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-6">
-                                    <div className="bg-gray-50 p-4 rounded-xl h-fit border border-gray-100 flex-shrink-0"><MapPin className="text-primary-orange" /></div>
+                                    <div className="bg-gray-50 p-4 rounded-xl h-fit border border-gray-100 flex-shrink-0"><MapPin className="text-primary-blue" /></div>
                                     <div>
                                         <h4 className="font-bold text-lg mb-2 italic">Return Address</h4>
                                         <p className="text-sm text-gray-700 font-bold italic leading-relaxed">
                                             Innovation Dynamics Group LLC<br />
                                             11397 Quincy St NE, Blaine, MN 55434
                                         </p>
-                                        <p className="text-xs text-primary-orange font-bold mt-2 uppercase tracking-widest italic animate-pulse">DO NOT SHIP WITHOUT APPROVAL</p>
+                                        <p className="text-xs text-primary-blue font-bold mt-2 uppercase tracking-widest italic animate-pulse">DO NOT SHIP WITHOUT APPROVAL</p>
                                     </div>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@ const ReturnExchange = () => {
                     {/* Form Column */}
                     <div id="form-section">
                         <div className="bg-gray-50 p-8 md:p-12 rounded-[2rem] border border-gray-100 shadow-sm relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-orange/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-blue/5 rounded-full -mr-16 -mt-16 blur-2xl"></div>
 
                             <div className="relative z-10 mb-10 text-center md:text-left">
                                 <h2 className="text-3xl font-bold mb-4 italic">Start Your Request</h2>
@@ -204,7 +204,7 @@ const ReturnExchange = () => {
                                             name="fullName"
                                             value={formData.fullName}
                                             onChange={handleChange}
-                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-orange focus:ring-1 focus:ring-primary-orange transition-all font-medium italic"
+                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all font-medium italic"
                                             placeholder="Your name"
                                         />
                                     </div>
@@ -216,7 +216,7 @@ const ReturnExchange = () => {
                                             name="email"
                                             value={formData.email}
                                             onChange={handleChange}
-                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-orange focus:ring-1 focus:ring-primary-orange transition-all font-medium italic"
+                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all font-medium italic"
                                             placeholder="email@example.com"
                                         />
                                     </div>
@@ -230,7 +230,7 @@ const ReturnExchange = () => {
                                             name="orderNumber"
                                             value={formData.orderNumber}
                                             onChange={handleChange}
-                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-orange focus:ring-1 focus:ring-primary-orange transition-all font-medium italic placeholder:not-italic"
+                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all font-medium italic placeholder:not-italic"
                                             placeholder="#IDG-XXXX"
                                         />
                                     </div>
@@ -241,7 +241,7 @@ const ReturnExchange = () => {
                                             name="productName"
                                             value={formData.productName}
                                             onChange={handleChange}
-                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-orange focus:ring-1 focus:ring-primary-orange transition-all font-medium italic"
+                                            className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all font-medium italic"
                                             placeholder="e.g. HP LaserJet M110we"
                                         />
                                     </div>
@@ -264,9 +264,9 @@ const ReturnExchange = () => {
                                                     name="reason"
                                                     value={reason}
                                                     onChange={handleChange}
-                                                    className="w-4 h-4 accent-primary-orange border-gray-300 rounded focus:ring-primary-orange"
+                                                    className="w-4 h-4 accent-primary-blue border-gray-300 rounded focus:ring-primary-blue"
                                                 />
-                                                <span className="text-sm font-medium text-gray-600 italic group-hover:text-primary-orange transition-colors">{reason}</span>
+                                                <span className="text-sm font-medium text-gray-600 italic group-hover:text-primary-blue transition-colors">{reason}</span>
                                             </label>
                                         ))}
                                     </div>
@@ -278,7 +278,7 @@ const ReturnExchange = () => {
                                         name="preferredResolution"
                                         value={formData.preferredResolution}
                                         onChange={handleChange}
-                                        className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-orange focus:ring-1 focus:ring-primary-orange transition-all font-medium italic appearance-none"
+                                        className="w-full bg-white border border-gray-200 rounded-xl px-5 py-4 text-sm focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all font-medium italic appearance-none"
                                     >
                                         <option value="">Select an option</option>
                                         <option value="Return for Refund">Return for Refund</option>
@@ -287,18 +287,18 @@ const ReturnExchange = () => {
                                     </select>
                                 </div>
 
-                                <div className="p-6 bg-white border border-dashed border-gray-300 rounded-2xl text-center group hover:border-primary-orange transition-colors">
-                                    <Camera className="mx-auto mb-3 text-gray-400 group-hover:text-primary-orange transition-colors" size={32} />
+                                <div className="p-6 bg-white border border-dashed border-gray-300 rounded-2xl text-center group hover:border-primary-blue transition-colors">
+                                    <Camera className="mx-auto mb-3 text-gray-400 group-hover:text-primary-blue transition-colors" size={32} />
                                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Upload Photos</p>
                                     <p className="text-[10px] text-gray-400 italic font-medium italic">Recommended for damaged or incorrect items</p>
                                     <input type="file" className="hidden" id="file-upload" />
-                                    <label htmlFor="file-upload" className="mt-4 inline-block text-xs font-bold text-primary-orange cursor-pointer hover:underline uppercase">Choose File</label>
+                                    <label htmlFor="file-upload" className="mt-4 inline-block text-xs font-bold text-primary-blue cursor-pointer hover:underline uppercase">Choose File</label>
                                 </div>
 
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="w-full bg-black hover:bg-primary-orange text-white font-bold py-5 rounded-xl transition-all uppercase tracking-widest text-sm flex items-center justify-center gap-2 group shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full bg-black hover:bg-primary-blue text-white font-bold py-5 rounded-xl transition-all uppercase tracking-widest text-sm flex items-center justify-center gap-2 group shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {loading ? 'Submitting...' : 'Submit Request'}
                                     {!loading && <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
@@ -312,20 +312,20 @@ const ReturnExchange = () => {
             {/* Bottom Contact Section */}
             <div className="bg-gray-50 py-24 border-t border-gray-100">
                 <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
-                    <h3 className="text-3xl font-bold italic underline decoration-primary-orange decoration-4">Need Help Before Submitting?</h3>
+                    <h3 className="text-3xl font-bold italic underline decoration-primary-blue decoration-4">Need Help Before Submitting?</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="space-y-2">
-                            <Mail className="mx-auto text-primary-orange mb-4" size={32} />
+                            <Mail className="mx-auto text-primary-blue mb-4" size={32} />
                             <p className="text-sm font-bold lowercase italic text-gray-400">Email us</p>
                             <p className="font-bold text-gray-900">support@innovationdynamicsgroup.com</p>
                         </div>
                         <div className="space-y-2">
-                            <Phone className="mx-auto text-primary-orange mb-4" size={32} />
+                            <Phone className="mx-auto text-primary-blue mb-4" size={32} />
                             <p className="text-sm font-bold lowercase italic text-gray-400">Call us</p>
                             <p className="font-bold text-gray-900">+1 (651) 815-4630</p>
                         </div>
                         <div className="space-y-2">
-                            <MapPin className="mx-auto text-primary-orange mb-4" size={32} />
+                            <MapPin className="mx-auto text-primary-blue mb-4" size={32} />
                             <p className="text-sm font-bold lowercase italic text-gray-400">Visit / Mail</p>
                             <p className="font-bold text-gray-900">Blaine, Minnesota</p>
                         </div>

@@ -94,7 +94,7 @@ const Profile = () => {
                         {/* Sidebar / User Info Card */}
                         <div className="col-span-1">
                             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 flex flex-col items-center text-center">
-                                <div className="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center text-primary-orange text-3xl font-bold mb-4">
+                                <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center text-primary-blue text-3xl font-bold mb-4">
                                     {user.name?.charAt(0) || <User size={40} />}
                                 </div>
                                 <h2 className="text-xl font-bold mb-1">{user.name}</h2>
@@ -114,7 +114,7 @@ const Profile = () => {
                                         <MapPin size={18} /> Default Address
                                     </h3>
                                     {!isEditingAddress && (
-                                        <button onClick={handleEditAddress} className="text-primary-orange text-sm font-bold hover:underline">Edit</button>
+                                        <button onClick={handleEditAddress} className="text-primary-blue text-sm font-bold hover:underline">Edit</button>
                                     )}
                                 </div>
 
@@ -183,7 +183,7 @@ const Profile = () => {
                                     {orders && orders.length > 2 && (
                                         <button
                                             onClick={() => setShowAllOrders(!showAllOrders)}
-                                            className="text-primary-orange text-sm font-bold hover:underline flex items-center gap-1"
+                                            className="text-primary-blue text-sm font-bold hover:underline flex items-center gap-1"
                                         >
                                             {showAllOrders ? <>Show Less <ChevronUp size={14} /></> : <>View All <ChevronDown size={14} /></>}
                                         </button>
@@ -198,7 +198,7 @@ const Profile = () => {
                                     ) : orders && orders.length === 0 ? (
                                         <div className="p-12 text-center">
                                             <p className="text-gray-500 mb-4">No orders found.</p>
-                                            <Link to="/shop" className="text-primary-orange font-bold hover:underline">Start Shopping</Link>
+                                            <Link to="/shop" className="text-primary-blue font-bold hover:underline">Start Shopping</Link>
                                         </div>
                                     ) : (
                                         displayedOrders.map(order => (
@@ -220,7 +220,7 @@ const Profile = () => {
                                                         <p className="font-bold text-sm">${order.totalPrice.toFixed(2)}</p>
                                                         <p className="text-[10px] text-gray-500">{order.orderItems.length} items</p>
                                                     </div>
-                                                    <Link to={`/order/${order._id}`} className="p-2 text-gray-400 hover:text-primary-orange transition-colors">
+                                                    <Link to={`/order/${order._id}`} className="p-2 text-gray-400 hover:text-primary-blue transition-colors">
                                                         <Plus size={18} />
                                                     </Link>
                                                 </div>
@@ -289,7 +289,7 @@ const Profile = () => {
                                     ) : (
                                         <button
                                             onClick={() => setIsAddingCard(true)}
-                                            className="mt-2 text-primary-orange text-sm font-bold hover:underline flex items-center gap-1"
+                                            className="mt-2 text-primary-blue text-sm font-bold hover:underline flex items-center gap-1"
                                         >
                                             <Plus size={16} /> Add New Card
                                         </button>

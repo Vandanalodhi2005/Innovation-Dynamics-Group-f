@@ -91,7 +91,7 @@ const ResetPassword = () => {
                                 required
                                 value={otp}
                                 onChange={(e) => setOtp(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                 placeholder="Enter 6-digit OTP"
                             />
                         </div>
@@ -108,7 +108,7 @@ const ResetPassword = () => {
                                 required
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -125,7 +125,7 @@ const ResetPassword = () => {
                                 required
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-orange focus:border-primary-orange sm:text-sm"
+                                className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -134,14 +134,14 @@ const ResetPassword = () => {
                     <button
                         type="submit"
                         disabled={loading || success}
-                        className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-orange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-orange transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {loading ? 'Resetting...' : 'Update Password'}
                     </button>
                 </form>
 
                 <div className="mt-8 text-center text-sm">
-                    <Link to="/login" className="font-medium text-gray-600 hover:text-primary-orange flex items-center justify-center gap-2 transition-colors">
+                    <Link to="/login" className="font-medium text-gray-600 hover:text-primary-blue flex items-center justify-center gap-2 transition-colors">
                         <ArrowLeft size={16} /> Back to Sign In
                     </Link>
                 </div>

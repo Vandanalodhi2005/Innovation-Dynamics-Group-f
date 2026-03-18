@@ -5,6 +5,7 @@ import officeImage from "../../public/homeImage/img2.jpg";
 import inkjetImage from "../../public/homeImage/img3.jpg";
 import laserImage from "../../public/homeImage/img4.jpg";
 import inkImage from "../../public/homeImage/img5.jpg";
+import heroRightImage from "../../public/hero/hero-right.png";
 // import largeFormatImage from "../../public/homeImage/img6.jpg";
 
 const Hero = () => {
@@ -56,55 +57,66 @@ const Hero = () => {
     return (
         <div className="bg-white">
             {/* Hero Section */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-[#df762b] text-white">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+            <div className="relative overflow-hidden bg-white text-gray-900 border-b border-gray-100">
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         {/* Left Side - Text */}
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <span className="text-sm font-bold uppercase tracking-[0.3em] text-[#df762b]">Printers & Printing Essentials</span>
-                                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
-                                    Quality Printers & Printing Supplies for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#df762b] to-white">Every Need</span>
+                                <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#0096d6]">Printers & Printing Essentials</span>
+                                <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 max-w-lg">
+                                    Quality Printers & <br />Printing Supplies for <br />
+                                    <span className="text-[#0096d6] text-6xl md:text-7xl">Every Need</span>
                                 </h1>
                             </div>
-                            <div className="space-y-4">
-                                <p className="text-xl text-gray-300 max-w-xl leading-relaxed">
+                            <div className="space-y-6">
+                                <p className="text-lg text-gray-600 max-w-md leading-relaxed">
                                     Discover a curated collection of printers, ink, toner, and printing accessories designed for homes, offices, and small businesses.
                                 </p>
-                                <p className="text-sm text-gray-400 max-w-xl leading-relaxed italic border-l-2 border-[#df762b] pl-4">
-                                    As an independent retailer based in Blaine, Minnesota, we bring you clear product information, trusted sourcing, and a smooth online shopping experience.
-                                </p>
+                                <div className="border-l-2 border-[#0096d6] pl-4 py-1">
+                                    <p className="text-xs text-gray-500 max-w-sm leading-relaxed italic">
+                                        As an independent retailer based in Blaine, Minnesota, we bring you clear product information, trusted sourcing, and a smooth online shopping experience.
+                                    </p>
+                                </div>
                             </div>
-                            <div className="pt-4">
-                                <a href="/shop" className="inline-flex items-center px-10 py-4 bg-[#df762b] text-white text-lg font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-lg hover:shadow-orange-500/50">
+                            <div className="flex items-center gap-6 pt-2">
+                                <a href="/shop" className="inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-[#0096d6] to-[#007bb0] text-white text-lg font-bold rounded-full hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300">
                                     Shop Now <ArrowRight className="ml-2" size={20} />
+                                </a>
+                                <a 
+                                    href="https://locator.hp.com/us/en/?ml___lang=en-US%20(1)&ml___region=us&ml___cont=US&ml___task=search_zip&ml___id=569440&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___redirect_commercial_destination_Itemid=1" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-6 hover:opacity-80 transition-opacity"
+                                >
+                                    <div className="h-10 w-px bg-gray-200"></div>
+                                    <img src="/logo/hp-partner.png" alt="HP Business Partner" className="h-17 w-auto object-contain" />
                                 </a>
                             </div>
                         </div>
 
-                        {/* Right Side - Image Placeholder */}
-                        <div className="relative">
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 bg-white/5 backdrop-blur-sm aspect-[4/3] group transform hover:rotate-1 transition-transform duration-500">
+                         <div className="relative">
+                            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-white bg-gray-50 aspect-[4/3] group transform hover:-translate-y-1 transition-all duration-500">
                                 <img
-                                    src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&q=80&w=1000"
-                                    alt="Modern Printer"
+                                    src={heroRightImage}
+                                    alt="Modern Silver Printer"
                                     className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
                                 />
 
                                 {/* Overlay Content */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+                                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-8">
                                     <div className="text-white">
                                         <p className="font-bold text-2xl mb-1">High-Performance Series</p>
-                                        <p className="text-sm text-gray-300">Professional Output, Every Time</p>
+                                        <p className="text-sm text-gray-200">Professional Output, Every Time</p>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Decorative Elements */}
-                            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#df762b] rounded-full opacity-20 blur-3xl"></div>
-                            <div className="absolute -top-10 -left-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
+                             {/* Decorative Elements */}
+                            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#0096d6] rounded-full opacity-5 blur-3xl"></div>
+                            <div className="absolute -top-10 -left-10 w-64 h-64 bg-blue-100 rounded-full opacity-10 blur-3xl"></div>
                         </div>
                     </div>
                 </div>
@@ -115,7 +127,7 @@ const Hero = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16 max-w-3xl mx-auto">
                         <h2 className="text-4xl font-bold text-gray-900 mb-4">Explore Printing Categories</h2>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-primary-orange to-orange-300 mx-auto rounded-full mb-6"></div>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-primary-blue to-blue-300 mx-auto rounded-full mb-6"></div>
                         <p className="text-gray-600">
                             We make it easy to find the right printer or printing supply by organizing our catalog into clear, user-friendly categories.
                         </p>
@@ -133,20 +145,20 @@ const Hero = () => {
                                             alt={type.title}
                                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                                         />
-                                        <div className="absolute top-4 right-4 bg-primary-orange p-2 rounded-full text-white shadow-md">
+                                        <div className="absolute top-4 right-4 bg-primary-blue p-2 rounded-full text-white shadow-md">
                                             {type.icon}
                                         </div>
                                     </div>
 
                                     {/* Card Content */}
                                     <div className="p-6 flex-grow flex flex-col">
-                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-orange transition-colors">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-blue transition-colors">
                                             {type.title}
                                         </h3>
                                         <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
                                             {type.description}
                                         </p>
-                                        <div className="flex items-center text-primary-orange font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                                        <div className="flex items-center text-primary-blue font-semibold text-sm group-hover:translate-x-1 transition-transform">
                                             View Models <ArrowRight size={16} className="ml-1" />
                                         </div>
                                     </div>
