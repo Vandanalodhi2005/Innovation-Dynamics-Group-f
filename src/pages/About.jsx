@@ -20,9 +20,9 @@ const About = () => {
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-                    <span className="text-sm font-bold uppercase tracking-[0.3em] text-[#0096d6] mb-4 block">Innovation Dynamics Group</span>
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 leading-tight">Your Trusted Online <br/> <span className="text-[#0096d6]">Printer Store</span></h1>
-                    <div className="w-24 h-1.5 bg-[#0096d6] mx-auto mb-8 rounded-full"></div>
+                    <span className="text-sm font-bold uppercase tracking-[0.3em] text-[#024ad8] mb-4 block">Innovation Dynamics Group</span>
+                    <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 leading-tight">Your Trusted Online <br/> <span className="text-[#024ad8]">Printer Store</span></h1>
+                    <div className="w-24 h-1.5 bg-[#024ad8] mx-auto mb-8 rounded-full"></div>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@ const About = () => {
 
                         {/* Who We Are Content */}
                         <div className="space-y-8 order-1 lg:order-2">
-                            <div className="inline-flex items-center gap-3 bg-blue-50 text-[#0096d6] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">
+                            <div className="inline-flex items-center gap-3 bg-blue-50 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">
                                 <Users size={18} /> Our Identity
                             </div>
                             <h2 className="text-4xl font-bold text-gray-900">Who We Are</h2>
@@ -73,12 +73,12 @@ const About = () => {
             <section className="py-24 bg-gray-50 overflow-hidden relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <div className="inline-flex items-center gap-3 bg-blue-100/50 text-[#0096d6] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+                        <div className="inline-flex items-center gap-3 bg-blue-100/50 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
                             <ShieldCheck size={18} /> Our Standards
                         </div>
                         <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Commitment</h2>
-                        <h3 className="text-2xl text-[#0096d6] font-medium italic mb-8">Quality, Transparency, and Customer Satisfaction</h3>
-                        <div className="w-16 h-1 bg-[#0096d6] mx-auto rounded-full"></div>
+                        <h3 className="text-2xl text-[#024ad8] font-medium italic mb-8">Quality, Transparency, and Customer Satisfaction</h3>
+                        <div className="w-16 h-1 bg-[#024ad8] mx-auto rounded-full"></div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -101,7 +101,7 @@ const About = () => {
                                 alt="Printer Supplies"
                                 className="rounded-[2.5rem] shadow-2xl w-full h-[450px] object-cover"
                             />
-                            <div className="absolute -bottom-6 -left-6 bg-[#0096d6] text-white p-10 rounded-3xl shadow-2xl max-w-xs">
+                            <div className="absolute -bottom-6 -left-6 bg-[#024ad8] text-white p-10 rounded-3xl shadow-2xl max-w-xs">
                                 <Info size={40} className="mb-4 opacity-50" />
                                 <p className="font-bold text-lg leading-tight uppercase italic underline decoration-white/30 decoration-2 underline-offset-4">Straightforward & Stress-Free Experience</p>
                             </div>
@@ -114,7 +114,7 @@ const About = () => {
             <section className="py-24">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <div className="inline-flex items-center gap-3 bg-blue-50 text-[#0096d6] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
+                        <div className="inline-flex items-center gap-3 bg-blue-50 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
                             <Target size={18} /> Why Innovation Dynamics?
                         </div>
                         <h2 className="text-4xl font-bold text-gray-900 mb-6 font-serif italic">Why Choose Us</h2>
@@ -124,17 +124,17 @@ const About = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
                             {
-                                icon: <Printer size={32} className="text-[#0096d6]" />,
+                                icon: <Printer size={32} className="text-[#024ad8]" />,
                                 title: "Right Selection",
                                 text: "Whether you need a compact printer for home use or a high-performance device for office environments, Innovation Dynamics Group LLC helps you choose the right printing solution."
                             },
                             {
-                                icon: <Box size={32} className="text-[#0096d6]" />,
+                                icon: <Box size={32} className="text-[#024ad8]" />,
                                 title: "Specialized Expertise",
                                 text: "By focusing specifically on printers and printing technology, we are able to better understand customer needs and provide solutions that truly match everyday printing requirements."
                             },
                             {
-                                icon: <ShieldCheck size={32} className="text-[#0096d6]" />,
+                                icon: <ShieldCheck size={32} className="text-[#024ad8]" />,
                                 title: "Our Simple Goal",
                                 text: "Our goal is simple — to provide reliable printing solutions through a clear, trustworthy, and customer-focused platform."
                             }
@@ -155,15 +155,15 @@ const About = () => {
 
             {/* Final Call to Action */}
             <section className="py-20 bg-slate-900 text-white overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[#0096d6] opacity-10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#024ad8] opacity-10 rounded-full blur-3xl -mr-48 -mt-48"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                    <Rocket className="text-[#0096d6] mx-auto mb-8" size={48} />
-                    <h2 className="text-3xl font-bold mb-6 italic underline decoration-[#0096d6] decoration-4 underline-offset-8">Dedicated to Better Printing</h2>
+                    <Rocket className="text-[#024ad8] mx-auto mb-8" size={48} />
+                    <h2 className="text-3xl font-bold mb-6 italic underline decoration-[#024ad8] decoration-4 underline-offset-8">Dedicated to Better Printing</h2>
                     <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
                         Join thousands of customers who trust Innovation Dynamics Group for their printing technology needs.
                     </p>
                     <div className="mt-12">
-                        <a href="/shop" className="inline-flex items-center gap-3 px-10 py-4 bg-[#0096d6] text-white font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-xl shadow-blue-500/20">
+                        <a href="/shop" className="inline-flex items-center gap-3 px-10 py-4 bg-[#024ad8] text-white font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-xl shadow-blue-500/20">
                             Explore Our Catalog <Box size={20} />
                         </a>
                     </div>

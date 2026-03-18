@@ -19,11 +19,11 @@ const TermsConditions = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 text-center md:text-left">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-[#0096d6]/20 text-[#0096d6] px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-[#0096d6]/30">
+            <div className="inline-flex items-center gap-2 bg-[#024ad8]/20 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-[#024ad8]/30">
               <Scale size={16} /> Legal Agreement
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white italic underline decoration-[#0096d6] decoration-4 underline-offset-8">Terms & Conditions</h1>
-            <div className="w-24 h-1.5 bg-[#0096d6] mb-8 rounded-full mx-auto md:mx-0"></div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white italic underline decoration-[#024ad8] decoration-4 underline-offset-8">Terms & Conditions</h1>
+            <div className="w-24 h-1.5 bg-[#024ad8] mb-8 rounded-full mx-auto md:mx-0"></div>
             <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-4">
               These terms govern the use of the website operated by Innovation Dynamics Group LLC.
             </p>
@@ -55,9 +55,9 @@ const TermsConditions = () => {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-blue-50 hover:text-[#0096d6] text-gray-600 font-medium group"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-blue-50 hover:text-[#024ad8] text-gray-600 font-medium group"
                   >
-                    <span className="text-gray-400 group-hover:text-[#0096d6] transition-colors">
+                    <span className="text-gray-400 group-hover:text-[#024ad8] transition-colors">
                       {item.icon}
                     </span>
                     {item.label}
@@ -71,7 +71,7 @@ const TermsConditions = () => {
           <div className="lg:col-span-2 space-y-16">
             
             {/* Introduction */}
-            <section className="text-lg leading-relaxed space-y-4 border-l-4 border-[#0096d6] pl-8 py-2">
+            <section className="text-lg leading-relaxed space-y-4 border-l-4 border-[#024ad8] pl-8 py-2">
               <p>
                 By accessing or using our website, you agree to comply with these Terms and Conditions. 
                 Innovation Dynamics Group LLC provides a specialized platform focused on printers and printing technology.
@@ -83,8 +83,8 @@ const TermsConditions = () => {
 
             {/* Use of the Website */}
             <section id="use" className="space-y-6">
-              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">1</span>
+              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">1</span>
                 Use of the Website
               </h2>
               <p className="font-medium text-gray-600">By using our website, you agree to use it only for lawful purposes. You agree not to:</p>
@@ -96,7 +96,7 @@ const TermsConditions = () => {
                   "Reproduce content without permission"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                    <AlertCircle className="text-[#0096d6] flex-shrink-0" size={20} />
+                    <AlertCircle className="text-[#024ad8] flex-shrink-0" size={20} />
                     <span className="text-gray-700 font-bold text-sm uppercase italic">{item}</span>
                   </div>
                 ))}
@@ -105,8 +105,8 @@ const TermsConditions = () => {
 
             {/* Product Information */}
             <section id="product" className="space-y-6">
-              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">2</span>
+              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">2</span>
                 Product Information
               </h2>
               <div className="bg-blue-50/30 p-8 rounded-3xl border border-blue-50 space-y-4">
@@ -121,14 +121,14 @@ const TermsConditions = () => {
 
             {/* Orders and Payments */}
             <section id="orders" className="space-y-6">
-              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">3</span>
+              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">3</span>
                 Orders and Payments
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4 p-8 bg-gray-50 rounded-3xl border border-gray-100">
                   <h3 className="font-bold flex items-center gap-2 italic">
-                    <CreditCard className="text-[#0096d6]" size={20} /> Payment Authorization
+                    <CreditCard className="text-[#024ad8]" size={20} /> Payment Authorization
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed italic uppercase font-bold">
                     All information provided must be accurate, and payment methods must be valid and authorized.
@@ -136,7 +136,7 @@ const TermsConditions = () => {
                 </div>
                 <div className="space-y-4 p-8 bg-gray-50 rounded-3xl border border-gray-100">
                   <h3 className="font-bold flex items-center gap-2 italic">
-                    <AlertCircle className="text-[#0096d6]" size={20} /> Order Verification
+                    <AlertCircle className="text-[#024ad8]" size={20} /> Order Verification
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed italic uppercase font-bold">
                     Orders may be subject to verification. We reserve the right to cancel suspicious or fraudulent orders.
@@ -153,14 +153,14 @@ const TermsConditions = () => {
 
             {/* Shipping & Returns */}
             <section id="shipping" className="space-y-8">
-              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">4</span>
+              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">4</span>
                 Shipping & Policies
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <div className="flex gap-4 items-start">
-                    <Truck className="text-[#0096d6] flex-shrink-0" size={24} />
+                    <Truck className="text-[#024ad8] flex-shrink-0" size={24} />
                     <div>
                       <h4 className="font-bold uppercase text-sm border-b border-gray-100 pb-2 mb-2">Shipping Policy</h4>
                       <p className="text-sm text-gray-600 leading-relaxed italic">
@@ -171,7 +171,7 @@ const TermsConditions = () => {
                 </div>
                 <div className="space-y-4">
                   <div className="flex gap-4 items-start">
-                    <ShoppingBag className="text-[#0096d6] flex-shrink-0" size={24} />
+                    <ShoppingBag className="text-[#024ad8] flex-shrink-0" size={24} />
                     <div>
                       <h4 className="font-bold uppercase text-sm border-b border-gray-100 pb-2 mb-2">Returns & Refunds</h4>
                       <p className="text-sm text-gray-600 leading-relaxed italic">
@@ -185,8 +185,8 @@ const TermsConditions = () => {
 
             {/* Intellectual Property & Brand */}
             <section id="legal" className="space-y-8">
-              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">5</span>
+              <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">5</span>
                 Ownership & Branding
               </h2>
               <div className="space-y-6">
@@ -209,10 +209,10 @@ const TermsConditions = () => {
             <section className="space-y-6">
                 <div className="flex flex-col md:flex-row gap-8 items-center bg-slate-900 text-white p-10 rounded-[3rem]">
                     <div className="p-6 bg-white/10 rounded-3xl border border-white/5 backdrop-blur-sm">
-                        <ShieldCheck size={48} className="text-[#0096d6]" />
+                        <ShieldCheck size={48} className="text-[#024ad8]" />
                     </div>
                     <div className="space-y-4">
-                        <h3 className="text-xl font-bold italic underline decoration-[#0096d6] decoration-2 underline-offset-4">Limitation of Liability</h3>
+                        <h3 className="text-xl font-bold italic underline decoration-[#024ad8] decoration-2 underline-offset-4">Limitation of Liability</h3>
                         <p className="text-sm text-gray-400 leading-relaxed italic">
                             We shall not be liable for incidental or consequential damages resulting from the use of our website or products. Customers must ensure products meet their requirements before purchase.
                         </p>
@@ -225,37 +225,37 @@ const TermsConditions = () => {
 
             {/* Contact Information */}
             <section id="contact" className="bg-gray-50 p-12 rounded-[3.5rem] border border-gray-100 italic shadow-sm">
-              <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                <Mail className="text-[#0096d6]" size={32} />
+              <h2 className="text-3xl font-bold mb-10 flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                <Mail className="text-[#024ad8]" size={32} />
                 Contact Information
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-8">
                    <div className="flex gap-4 items-start">
                      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-                        <Mail className="text-[#0096d6]" size={20} />
+                        <Mail className="text-[#024ad8]" size={20} />
                      </div>
                      <div>
-                        <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Email Support</p>
+                        <p className="text-xs text-[#024ad8] font-bold uppercase tracking-widest mb-1">Email Support</p>
                         <p className="font-bold">support@innovationdynamicsgroup.com</p>
                      </div>
                    </div>
                    <div className="flex gap-4 items-start">
                      <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-                        <Phone className="text-[#0096d6]" size={20} />
+                        <Phone className="text-[#024ad8]" size={20} />
                      </div>
                      <div>
-                        <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Phone Line</p>
+                        <p className="text-xs text-[#024ad8] font-bold uppercase tracking-widest mb-1">Phone Line</p>
                         <p className="font-bold">+1 (651) 815-4630</p>
                      </div>
                    </div>
                 </div>
                 <div className="flex gap-4 items-start">
                    <div className="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
-                      <MapPin className="text-[#0096d6]" size={20} />
+                      <MapPin className="text-[#024ad8]" size={20} />
                    </div>
                    <div>
-                      <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Office Location</p>
+                      <p className="text-xs text-[#024ad8] font-bold uppercase tracking-widest mb-1">Office Location</p>
                       <address className="not-italic font-bold leading-relaxed">
                         Innovation Dynamics Group LLC<br />
                         11397 Quincy St NE<br />

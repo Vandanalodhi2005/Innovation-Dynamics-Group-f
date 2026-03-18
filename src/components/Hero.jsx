@@ -65,24 +65,24 @@ const Hero = () => {
                         {/* Left Side - Text */}
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#0096d6]">Printers & Printing Essentials</span>
+                                <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#024ad8]">Printers & Printing Essentials</span>
                                 <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 max-w-lg">
                                     Quality Printers & <br />Printing Supplies for <br />
-                                    <span className="text-[#0096d6] text-6xl md:text-7xl">Every Need</span>
+                                    <span className="text-[#024ad8] text-6xl md:text-7xl">Every Need</span>
                                 </h1>
                             </div>
                             <div className="space-y-6">
                                 <p className="text-lg text-gray-600 max-w-md leading-relaxed">
                                     Discover a curated collection of printers, ink, toner, and printing accessories designed for homes, offices, and small businesses.
                                 </p>
-                                <div className="border-l-2 border-[#0096d6] pl-4 py-1">
+                                <div className="border-l-2 border-[#024ad8] pl-4 py-1">
                                     <p className="text-xs text-gray-500 max-w-sm leading-relaxed italic">
                                         As an independent retailer based in Blaine, Minnesota, we bring you clear product information, trusted sourcing, and a smooth online shopping experience.
                                     </p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-6 pt-2">
-                                <a href="/shop" className="inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-[#0096d6] to-[#007bb0] text-white text-lg font-bold rounded-full hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300">
+                                <a href="/shop" className="inline-flex items-center justify-center px-8 py-3.5 bg-gradient-to-r from-[#024ad8] to-[#0133a1] text-white text-lg font-bold rounded-full hover:shadow-xl hover:shadow-[#024ad8]/40 transition-all duration-300 transform hover:-translate-y-0.5">
                                     Shop Now <ArrowRight className="ml-2" size={20} />
                                 </a>
                                 <a 
@@ -115,7 +115,7 @@ const Hero = () => {
                             </div>
 
                              {/* Decorative Elements */}
-                            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#0096d6] rounded-full opacity-5 blur-3xl"></div>
+                            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-[#024ad8] rounded-full opacity-5 blur-3xl"></div>
                             <div className="absolute -top-10 -left-10 w-64 h-64 bg-blue-100 rounded-full opacity-10 blur-3xl"></div>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ const Hero = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16 max-w-3xl mx-auto">
                         <h2 className="text-4xl font-bold text-gray-900 mb-4">Explore Printing Categories</h2>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-primary-blue to-blue-300 mx-auto rounded-full mb-6"></div>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-[#024ad8] to-blue-200 mx-auto rounded-full mb-6"></div>
                         <p className="text-gray-600">
                             We make it easy to find the right printer or printing supply by organizing our catalog into clear, user-friendly categories.
                         </p>

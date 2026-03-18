@@ -17,11 +17,11 @@ const PrivacyPolicy = () => {
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 text-center md:text-left">
                     <div className="max-w-3xl">
-                        <div className="inline-flex items-center gap-2 bg-[#0096d6]/20 text-[#0096d6] px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-[#0096d6]/30">
+                        <div className="inline-flex items-center gap-2 bg-[#024ad8]/20 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold mb-6 tracking-wide uppercase border border-[#024ad8]/30">
                             <ShieldCheck size={16} /> Privacy Commitment
                         </div>
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white italic underline decoration-[#0096d6] decoration-4 underline-offset-8">Privacy Policy</h1>
-                        <div className="w-24 h-1.5 bg-[#0096d6] mb-8 rounded-full mx-auto md:mx-0"></div>
+                        <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-white italic underline decoration-[#024ad8] decoration-4 underline-offset-8">Privacy Policy</h1>
+                        <div className="w-24 h-1.5 bg-[#024ad8] mb-8 rounded-full mx-auto md:mx-0"></div>
                         <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed mb-4">
                             Innovation Dynamics Group LLC respects your privacy and is committed to protecting the personal information you share.
                         </p>
@@ -56,9 +56,9 @@ const PrivacyPolicy = () => {
                                     <a
                                         key={item.id}
                                         href={`#${item.id}`}
-                                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-blue-50 hover:text-[#0096d6] text-gray-600 font-medium group"
+                                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all hover:bg-blue-50 hover:text-[#024ad8] text-gray-600 font-medium group"
                                     >
-                                        <span className="text-gray-400 group-hover:text-[#0096d6] transition-colors">
+                                        <span className="text-gray-400 group-hover:text-[#024ad8] transition-colors">
                                             {item.icon}
                                         </span>
                                         {item.label}
@@ -71,7 +71,7 @@ const PrivacyPolicy = () => {
                     {/* Main Content */}
                     <div className="lg:col-span-2 space-y-16 text-gray-800">
                         {/* Introduction */}
-                        <section className="text-lg leading-relaxed space-y-4 border-l-4 border-[#0096d6] pl-8 py-2">
+                        <section className="text-lg leading-relaxed space-y-4 border-l-4 border-[#024ad8] pl-8 py-2">
                             <p>
                                 Innovation Dynamics Group LLC ("Company", "we", "our", or "us") respects your privacy and is committed to protecting the personal information you share when visiting our website or purchasing products from our online store.
                             </p>
@@ -82,8 +82,8 @@ const PrivacyPolicy = () => {
 
                         {/* 1. Information We Collect */}
                         <section id="collect" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">1</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">1</span>
                                 Information We Collect
                             </h2>
                             <p className="font-medium text-gray-600 italic">We may collect different types of information when you use our website.</p>
@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div className="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm">
                                     <h3 className="font-bold text-gray-900 mb-6 flex items-center gap-2 italic">
-                                        <UserCheck className="text-[#0096d6]" size={24} />
+                                        <UserCheck className="text-[#024ad8]" size={24} />
                                         Personal Information
                                     </h3>
                                     <p className="text-sm text-gray-600 mb-4 font-serif italic">When you place an order, contact us, or interact with our services, we may collect:</p>
@@ -109,7 +109,7 @@ const PrivacyPolicy = () => {
                                 </div>
                                 <div className="bg-blue-50/30 p-8 rounded-3xl border border-blue-50 shadow-sm">
                                     <h3 className="font-bold text-gray-900 mb-6 flex items-center gap-2 italic">
-                                        <Database className="text-[#0096d6]" size={24} />
+                                        <Database className="text-[#024ad8]" size={24} />
                                         Automatically Collected Information
                                     </h3>
                                     <p className="text-sm text-gray-600 mb-4 font-serif italic">Certain information may be collected automatically to help improve the site:</p>
@@ -127,8 +127,8 @@ const PrivacyPolicy = () => {
 
                         {/* 2. How We Use Your Information */}
                         <section id="use" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">2</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">2</span>
                                 How We Use Your Information
                             </h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -142,7 +142,7 @@ const PrivacyPolicy = () => {
                                     "Complying with legal requirements"
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                                        <div className="w-2 h-2 bg-[#0096d6] rounded-full"></div>
+                                        <div className="w-2 h-2 bg-[#024ad8] rounded-full"></div>
                                         <span className="text-gray-700 font-bold text-sm uppercase italic">{item}</span>
                                     </div>
                                 ))}
@@ -154,8 +154,8 @@ const PrivacyPolicy = () => {
 
                         {/* 3. Sharing of Information */}
                         <section id="share" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">3</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">3</span>
                                 Sharing of Information
                             </h2>
                             <div className="bg-red-50/50 border border-red-100 p-6 rounded-3xl mb-8">
@@ -172,7 +172,7 @@ const PrivacyPolicy = () => {
                                     "Security and fraud prevention services"
                                 ].map((service, idx) => (
                                     <div key={idx} className="flex gap-4 items-start p-2">
-                                        <ShieldCheck className="text-[#0096d6] flex-shrink-0" size={24} />
+                                        <ShieldCheck className="text-[#024ad8] flex-shrink-0" size={24} />
                                         <p className="text-gray-700 font-bold uppercase text-sm border-b border-gray-100 pb-2">{service}</p>
                                     </div>
                                 ))}
@@ -184,8 +184,8 @@ const PrivacyPolicy = () => {
 
                         {/* 4. Cookies & Tracking Technologies */}
                         <section id="cookies" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">4</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">4</span>
                                 Cookies & Tracking Technologies
                             </h2>
                             <p className="italic text-gray-600 font-medium">Our website may use cookies and similar technologies to improve functionality and enhance the browsing experience. Cookies help us:</p>
@@ -198,19 +198,19 @@ const PrivacyPolicy = () => {
 
                         {/* 5. Data Security */}
                         <section id="security" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">5</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">5</span>
                                 Data Security
                             </h2>
                             <div className="flex flex-col md:flex-row gap-8 items-center bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100">
                                 <div className="p-6 bg-white rounded-3xl shadow-xl border border-blue-50">
-                                    <Lock size={48} className="text-[#0096d6]" />
+                                    <Lock size={48} className="text-[#024ad8]" />
                                 </div>
                                 <div className="space-y-4">
                                     <p className="text-gray-800 leading-relaxed font-bold italic">
                                         We implement appropriate security measures to protect personal information from unauthorized access, loss, misuse, or disclosure.
                                     </p>
-                                    <p className="text-sm text-gray-600 font-medium leading-relaxed italic border-l-2 border-[#0096d6] pl-4">
+                                    <p className="text-sm text-gray-600 font-medium leading-relaxed italic border-l-2 border-[#024ad8] pl-4">
                                         Secure technologies and industry-standard practices are used to protect sensitive information during transactions.
                                     </p>
                                 </div>
@@ -219,8 +219,8 @@ const PrivacyPolicy = () => {
 
                         {/* 6. Your Privacy Rights */}
                         <section id="rights" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">6</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">6</span>
                                 Your Privacy Rights
                             </h2>
                             <p className="italic text-gray-600 font-medium">Depending on your location, you may have certain rights regarding your personal information, including:</p>
@@ -234,8 +234,8 @@ const PrivacyPolicy = () => {
 
                         {/* Third-Party Links */}
                         <section id="links" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">7</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">7</span>
                                 Third-Party Links
                             </h2>
                             <p className="italic text-gray-600 font-medium leading-relaxed">
@@ -245,8 +245,8 @@ const PrivacyPolicy = () => {
 
                         {/* Brand and Manufacturer Information */}
                         <section id="brand" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">8</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">8</span>
                                 Brand and Manufacturer Information
                             </h2>
                             <p className="italic text-gray-600 font-medium leading-relaxed">
@@ -259,8 +259,8 @@ const PrivacyPolicy = () => {
 
                         {/* Changes to This Privacy Policy */}
                         <section id="changes" className="space-y-8">
-                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#0096d6] decoration-2">
-                                <span className="bg-[#0096d6] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">9</span>
+                            <h2 className="text-3xl font-bold flex items-center gap-4 underline decoration-[#024ad8] decoration-2">
+                                <span className="bg-[#024ad8] text-white w-10 h-10 rounded-lg flex items-center justify-center text-xl italic shadow-md shadow-blue-500/20">9</span>
                                 Changes to This Privacy Policy
                             </h2>
                             <p className="italic text-gray-600 font-medium leading-relaxed">
@@ -270,9 +270,9 @@ const PrivacyPolicy = () => {
 
                         {/* 10. Contact Us */}
                         <section id="contact" className="bg-slate-900 text-white p-12 rounded-[3rem] shadow-2xl relative overflow-hidden italic">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#0096d6] opacity-10 rounded-full blur-3xl -mr-32 -mt-32"></div>
-                             <h2 className="text-3xl font-bold mb-8 flex items-center gap-4 underline decoration-[#0096d6] decoration-4 underline-offset-8">
-                                <Mail className="text-[#0096d6]" size={32} />
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#024ad8] opacity-10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                             <h2 className="text-3xl font-bold mb-8 flex items-center gap-4 underline decoration-[#024ad8] decoration-4 underline-offset-8">
+                                <Mail className="text-[#024ad8]" size={32} />
                                 10. Contact Us
                             </h2>
                             <p className="text-gray-400 mb-12 leading-relaxed max-w-2xl">
@@ -282,29 +282,29 @@ const PrivacyPolicy = () => {
                                 <div className="space-y-8">
                                     <div className="flex gap-6 items-start">
                                         <div className="p-4 bg-white/10 rounded-2xl border border-white/5 backdrop-blur-sm">
-                                            <Mail className="text-[#0096d6]" size={24} />
+                                            <Mail className="text-[#024ad8]" size={24} />
                                         </div>
                                         <div>
-                                            <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Email us</p>
+                                            <p className="text-xs text-[#024ad8] font-bold uppercase tracking-widest mb-1">Email us</p>
                                             <p className="text-lg font-bold underline decoration-white/20">support@innovationdynamicsgroup.com</p>
                                         </div>
                                     </div>
                                     <div className="flex gap-6 items-start">
                                         <div className="p-4 bg-white/10 rounded-2xl border border-white/5 backdrop-blur-sm">
-                                            <Phone className="text-[#0096d6]" size={24} />
+                                            <Phone className="text-[#024ad8]" size={24} />
                                         </div>
                                         <div>
-                                            <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Call us</p>
+                                            <p className="text-xs text-[#024ad8] font-bold uppercase tracking-widest mb-1">Call us</p>
                                             <p className="text-lg font-bold">+1 (651) 815-4630</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="flex gap-6 items-start">
                                     <div className="p-4 bg-white/10 rounded-2xl border border-white/5 backdrop-blur-sm">
-                                        <MapPin className="text-[#0096d6]" size={24} />
+                                        <MapPin className="text-[#024ad8]" size={24} />
                                     </div>
                                     <div className="space-y-2">
-                                        <p className="text-xs text-[#0096d6] font-bold uppercase tracking-widest mb-1">Business Address</p>
+                                        <p className="text-xs text-[#024ad8] font-bold uppercase tracking-widest mb-1">Business Address</p>
                                         <p className="font-bold text-lg leading-relaxed">
                                             Innovation Dynamics Group LLC<br />
                                             11397 Quincy St NE<br />

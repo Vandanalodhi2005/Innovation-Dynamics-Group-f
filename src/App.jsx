@@ -3,6 +3,18 @@ import { ShopProvider } from './context/ShopContext';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+// Utility to scroll to top on route change
+const ScrollToTopOnNavigation = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 import Home from './pages/Home';
 import About from './pages/About';
 import FAQs from './pages/FAQs';
@@ -49,6 +61,7 @@ function App() {
     <AuthProvider>
       <ShopProvider>
         <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <ScrollToTopOnNavigation />
           <div className="min-h-screen bg-gray-50 flex flex-col">
             <Navbar />
             <main className="flex-grow">
@@ -97,6 +110,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
+            <ScrollToTop />
           </div>
         </Router>
       </ShopProvider>

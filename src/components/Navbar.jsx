@@ -74,7 +74,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-[#0096d6] text-white shadow-md border-b-4 border-[#007bb0] sticky top-0 z-50 font-sans">
+        <nav className="bg-[#024ad8] text-white shadow-lg border-b border-white/10 sticky top-0 z-50 font-sans backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
 
@@ -84,7 +84,7 @@ const Navbar = () => {
                             <div className="flex flex-col leading-none">
                                 <span className="font-bold text-3xl tracking-tighter lowercase">idg</span>
                             </div>
-                            <div className="flex flex-col leading-none text-[0.6rem] font-bold tracking-widest uppercase border-l-2 border-white pl-2 py-0.5">
+                            <div className="flex flex-col leading-tight text-[0.7rem] font-bold tracking-widest uppercase border-l-2 border-white/70 pl-3 py-0.5 group-hover:border-white transition-colors">
                                 <span>Innovation</span>
                                 <span>Dynamics</span>
                                 <span>Group</span>
@@ -94,8 +94,8 @@ const Navbar = () => {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-8 items-center">
-                        <a href="/" className={getLinkClasses('/')}>Home</a>
-                        <a href="/about" className={getLinkClasses('/about')}>About Us</a>
+                        <Link to="/" className={getLinkClasses('/')}>Home</Link>
+                        <Link to="/about" className={getLinkClasses('/about')}>About Us</Link>
 
                         {/* Dropdown Container */}
                         <div className="relative group">
@@ -106,16 +106,16 @@ const Navbar = () => {
                             {/* Dropdown Menu */}
                             <div className="absolute left-0 mt-2 w-56 bg-white text-black rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50">
                                 <div className="py-2">
-                                    <a href="/shop/home-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Home Printers</a>
-                                    <a href="/shop/office-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Office Printers</a>
-                                    <a href="/shop/inkjet-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Inkjet Printers</a>
-                                    <a href="/shop/laser-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Laser Printers</a>
+                                    <Link to="/shop/home-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Home Printers</Link>
+                                    <Link to="/shop/office-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Office Printers</Link>
+                                    <Link to="/shop/inkjet-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Inkjet Printers</Link>
+                                    <Link to="/shop/laser-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Laser Printers</Link>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="/faqs" className={getLinkClasses('/faqs')}>FAQs</a>
-                        <a href="/contact" className={getLinkClasses('/contact')}>Contact Us</a>
+                        <Link to="/faqs" className={getLinkClasses('/faqs')}>FAQs</Link>
+                        <Link to="/contact" className={getLinkClasses('/contact')}>Contact Us</Link>
                     </div>
 
                     {/* Icons Section */}
@@ -128,9 +128,9 @@ const Navbar = () => {
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 onKeyUp={handleSearch}
-                                className="bg-white/10 text-sm rounded-full pl-10 pr-4 py-1.5 focus:outline-none focus:ring-1 focus:ring-white/30 text-white w-32 focus:w-48 transition-all duration-300 placeholder-white/60"
+                                className="bg-white/20 text-sm rounded-full pl-10 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-white/40 text-white w-32 focus:w-48 transition-all duration-300 placeholder-white/70"
                             />
-                            <Search className="absolute left-3 top-1.5 text-white/60 w-4 h-4" />
+                            <Search className="absolute left-3 top-1.5 text-white/70 w-4 h-4" />
                         </div>
 
                         {/* User Icon / Dropdown */}
@@ -177,7 +177,7 @@ const Navbar = () => {
                         <Link to="/cart" className="text-white hover:text-white/80 transition-colors duration-300 relative group">
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-white text-[#0096d6] text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
+                                <span className="absolute -top-2 -right-2 bg-white text-[#024ad8] text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
                             )}
                         </Link>
                     </div>
@@ -187,7 +187,7 @@ const Navbar = () => {
                         <Link to="/cart" className="text-white hover:text-white/80 transition-colors duration-300 relative">
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-white text-[#0096d6] text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
+                                <span className="absolute -top-2 -right-2 bg-white text-[#024ad8] text-[0.6rem] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-lg transform scale-110">{cartCount}</span>
                             )}
                         </Link>
                         <button onClick={toggleMenu} className="text-white hover:text-white/80 focus:outline-none focus:text-white/80 transition-colors">
@@ -198,7 +198,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out bg-[#0096d6] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'}`}>
+            <div className={`md:hidden transition-all duration-300 ease-in-out bg-[#024ad8] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'}`}>
                 <div className="px-4 pt-2 pb-6 space-y-2 border-t border-white/10">
                     {/* Mobile Search */}
                     <div className="relative mb-4 mt-4">
