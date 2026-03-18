@@ -56,8 +56,8 @@ const Navbar = () => {
     // Helper to determine active class
     const getLinkClasses = (path) => {
         const currentPath = window.location.pathname;
-        const baseClasses = "font-medium transition-all duration-300 hover:text-white/80 hover:underline decoration-white/80 underline-offset-4";
-        const activeClasses = "text-white underline decoration-white underline-offset-4";
+        const baseClasses = "text-[11px] font-bold uppercase tracking-[0.12em] transition-all duration-300 hover:text-white/70 relative py-1";
+        const activeClasses = "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white";
         const inactiveClasses = "text-white";
 
         return currentPath === path ? `${baseClasses} ${activeClasses}` : `${baseClasses} ${inactiveClasses}`;
@@ -80,36 +80,37 @@ const Navbar = () => {
 
                     {/* Logo Section */}
                     <div className="flex-shrink-0 flex items-center">
-                        <a href="/" className="flex items-center gap-2 group">
+                        <Link to="/" className="flex items-center gap-2 group">
                             <div className="flex flex-col leading-none">
-                                <span className="font-bold text-3xl tracking-tighter lowercase">idg</span>
+                                <span className="font-bold text-2xl sm:text-3xl tracking-tighter lowercase">idg</span>
                             </div>
-                            <div className="flex flex-col leading-tight text-[0.7rem] font-bold tracking-widest uppercase border-l-2 border-white/70 pl-3 py-0.5 group-hover:border-white transition-colors">
+                            <div className="flex flex-col leading-tight text-[0.6rem] sm:text-[0.7rem] font-bold tracking-widest uppercase border-l-2 border-white/70 pl-3 py-0.5 group-hover:border-white transition-colors">
                                 <span>Innovation</span>
                                 <span>Dynamics</span>
                                 <span>Group</span>
                             </div>
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden md:flex space-x-8 items-center">
+                    <div className="hidden lg:flex space-x-8 items-center">
                         <Link to="/" className={getLinkClasses('/')}>Home</Link>
                         <Link to="/about" className={getLinkClasses('/about')}>About Us</Link>
 
                         {/* Dropdown Container */}
                         <div className="relative group">
-                            <button className={`flex items-center gap-1 font-medium hover:text-white/80 hover:underline decoration-white/80 underline-offset-4 transition-all duration-300 focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-white underline decoration-white underline-offset-4' : 'text-white'}`}>
-                                Shop <ChevronDown size={16} />
+                            <button className={`flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.12em] hover:text-white/70 transition-all duration-300 focus:outline-none relative py-1 ${window.location.pathname.startsWith('/shop') ? "after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white" : 'text-white'}`}>
+                                Shop Now <ChevronDown size={14} />
                             </button>
 
                             {/* Dropdown Menu */}
-                            <div className="absolute left-0 mt-2 w-56 bg-white text-black rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left z-50">
-                                <div className="py-2">
-                                    <Link to="/shop/home-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Home Printers</Link>
-                                    <Link to="/shop/office-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Office Printers</Link>
-                                    <Link to="/shop/inkjet-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Inkjet Printers</Link>
-                                    <Link to="/shop/laser-printers" className="block px-4 py-2 hover:bg-blue-50 hover:text-active-blue transition-colors">Laser Printers</Link>
+                            <div className="absolute left-0 mt-4 w-30 bg-white text-black rounded-sm shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 transform origin-top-left z-50">
+                                <div className="py-4">
+                                    <Link to="/shop/home-printers" className="block px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.1em] hover:bg-gray-50 hover:text-[#024ad8] transition-all">Home Printers</Link>
+                                    <Link to="/shop/office-printers" className="block px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.1em] hover:bg-gray-50 hover:text-[#024ad8] transition-all">Office Printers</Link>
+                                    <Link to="/shop/inkjet-printers" className="block px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.1em] hover:bg-gray-50 hover:text-[#024ad8] transition-all">Inkjet Printers</Link>
+                                    <Link to="/shop/laser-printers" className="block px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.1em] hover:bg-gray-50 hover:text-[#024ad8] transition-all">Laser Printers</Link>
+                                    <Link to="/shop/ink-toner" className="block px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.1em] hover:bg-gray-50 hover:text-[#024ad8] transition-all border-t border-gray-50 mt-2">Supplies: Ink & Toner</Link>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +120,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Icons Section */}
-                    <div className="hidden md:flex items-center space-x-6">
+                    <div className="hidden lg:flex items-center space-x-6">
                         {/* Search Bar - styled to match white theme */}
                         <div className="relative group">
                             <input
@@ -183,11 +184,11 @@ const Navbar = () => {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center gap-4">
+                    <div className="lg:hidden flex items-center gap-4">
                         <Link to="/cart" className="text-white hover:text-white/80 transition-colors duration-300 relative">
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-white text-[#024ad8] text-[0.6rem] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-lg transform scale-110">{cartCount}</span>
+                                <span className="absolute -top-2 -right-2 bg-white text-[#024ad8] text-[0.6rem] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-lg transform scale-110">{cartCount}</span>
                             )}
                         </Link>
                         <button onClick={toggleMenu} className="text-white hover:text-white/80 focus:outline-none focus:text-white/80 transition-colors">
@@ -198,7 +199,7 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out bg-[#024ad8] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'}`}>
+            <div className={`lg:hidden transition-all duration-300 ease-in-out bg-[#024ad8] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'}`}>
                 <div className="px-4 pt-2 pb-6 space-y-2 border-t border-white/10">
                     {/* Mobile Search */}
                     <div className="relative mb-4 mt-4">
@@ -213,8 +214,8 @@ const Navbar = () => {
                         <Search className="absolute left-3 top-2.5 text-white/60 w-5 h-5" />
                     </div>
 
-                    <a href="/" className={getMobileLinkClasses('/')}>Home</a>
-                    <a href="/about" className={getMobileLinkClasses('/about')}>About Us</a>
+                    <Link to="/" onClick={toggleMenu} className={getMobileLinkClasses('/')}>Home</Link>
+                    <Link to="/about" onClick={toggleMenu} className={getMobileLinkClasses('/about')}>About Us</Link>
 
                     {/* Mobile Dropdown */}
                     <div>
@@ -225,15 +226,16 @@ const Navbar = () => {
                             Shop <ChevronDown size={16} className={`transform transition-transform duration-300 ${isShopDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
                         <div className={`pl-6 space-y-1 transition-all duration-300 overflow-hidden ${isShopDropdownOpen ? 'max-h-60' : 'max-h-0'}`}>
-                            <a href="/shop/home-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Home Printers</a>
-                            <a href="/shop/office-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Office Printers</a>
-                            <a href="/shop/inkjet-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</a>
-                            <a href="/shop/laser-printers" className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</a>
+                            <Link to="/shop/home-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Home Printers</Link>
+                            <Link to="/shop/office-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Office Printers</Link>
+                            <Link to="/shop/inkjet-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</Link>
+                            <Link to="/shop/laser-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</Link>
+                            <Link to="/shop/ink-toner" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Ink & Toner</Link>
                         </div>
                     </div>
 
-                    <a href="/faqs" className={getMobileLinkClasses('/faqs')}>FAQs</a>
-                    <a href="/contact" className={getMobileLinkClasses('/contact')}>Contact Us</a>
+                    <Link to="/faqs" onClick={toggleMenu} className={getMobileLinkClasses('/faqs')}>FAQs</Link>
+                    <Link to="/contact" onClick={toggleMenu} className={getMobileLinkClasses('/contact')}>Contact Us</Link>
 
                     <div className="border-t border-white/10 pt-4 mt-4 flex items-center gap-4 px-3 flex-wrap">
                         {isAuthenticated ? (

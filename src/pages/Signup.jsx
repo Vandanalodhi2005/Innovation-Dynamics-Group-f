@@ -58,52 +58,52 @@ const Signup = () => {
     };
 
     return (
-        <div className="min-h-screen pt-20 pb-12 flex flex-col items-center justify-center bg-gray-50 font-sans">
-            <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md border border-gray-100">
+        <div className="min-h-screen pt-32 pb-24 flex flex-col items-center justify-center bg-[#F8F9FA]">
+            <div className="w-full max-w-md bg-white p-12 rounded-sm shadow-2xl border-t-8 border-black">
                 {step === 1 ? (
                     <>
-                        <div className="text-center mb-8">
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
-                            <p className="text-gray-600">Join us to access exclusive features</p>
+                        <div className="text-center mb-10">
+                            <h1 className="text-3xl font-bold text-black mb-3 tracking-tight leading-tight">Create Account</h1>
+                            <p className="text-xs font-medium text-gray-400 tracking-wide">Join the professional printing network</p>
                         </div>
 
                         {errorSendOTP && (
-                            <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-center gap-2">
-                                <AlertCircle size={20} />
+                            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-sm text-red-700 flex items-center gap-3 text-xs font-medium shadow-sm">
+                                <AlertCircle size={18} className="text-red-500" />
                                 <span>{errorSendOTP}</span>
                             </div>
                         )}
 
-                        <form onSubmit={handleSendOTP} className="space-y-6">
+                        <form onSubmit={handleSendOTP} className="space-y-5">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <User size={20} className="text-gray-400" />
+                                    <label className="block text-xs font-semibold text-[#024ad8] uppercase tracking-wider mb-2">First Name</label>
+                                    <div className="relative group">
+                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <User size={16} className="text-gray-300 group-focus-within:text-[#024ad8] transition-colors" />
                                         </div>
                                         <input
                                             type="text"
                                             required
                                             value={firstName}
                                             onChange={(e) => setFirstName(e.target.value)}
-                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
+                                            className="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-sm bg-gray-50/50 text-sm font-medium tracking-normal focus:outline-none focus:border-[#024ad8] focus:bg-white transition-all placeholder:text-gray-300"
                                             placeholder="John"
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                                    <div className="relative">
-                                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                            <User size={20} className="text-gray-400" />
+                                    <label className="block text-xs font-semibold text-[#024ad8] uppercase tracking-wider mb-2">Last Name</label>
+                                    <div className="relative group">
+                                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <User size={16} className="text-gray-300 group-focus-within:text-[#024ad8] transition-colors" />
                                         </div>
                                         <input
                                             type="text"
                                             required
                                             value={lastName}
                                             onChange={(e) => setLastName(e.target.value)}
-                                            className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
+                                            className="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-sm bg-gray-50/50 text-sm font-medium tracking-normal focus:outline-none focus:border-[#024ad8] focus:bg-white transition-all placeholder:text-gray-300"
                                             placeholder="Doe"
                                         />
                                     </div>
@@ -111,51 +111,51 @@ const Signup = () => {
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <Mail size={20} className="text-gray-400" />
+                                <label className="block text-xs font-semibold text-[#024ad8] uppercase tracking-wider mb-2">Email</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Mail size={16} className="text-gray-300 group-focus-within:text-[#024ad8] transition-colors" />
                                     </div>
                                     <input
                                         type="email"
                                         required
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
-                                        placeholder="you@example.com"
+                                        className="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-sm bg-gray-50/50 text-sm font-medium tracking-normal focus:outline-none focus:border-[#024ad8] focus:bg-white transition-all placeholder:text-gray-300"
+                                        placeholder="name@domain.com"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <Lock size={20} className="text-gray-400" />
+                                <label className="block text-xs font-semibold text-[#024ad8] uppercase tracking-wider mb-2">Password</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Lock size={16} className="text-gray-300 group-focus-within:text-[#024ad8] transition-colors" />
                                     </div>
                                     <input
                                         type="password"
                                         required
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
+                                        className="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-sm bg-gray-50/50 text-sm font-medium tracking-normal focus:outline-none focus:border-[#024ad8] focus:bg-white transition-all placeholder:text-gray-300"
                                         placeholder="••••••••"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <Lock size={20} className="text-gray-400" />
+                                <label className="block text-xs font-semibold text-[#024ad8] uppercase tracking-wider mb-2">Confirm Password</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Lock size={16} className="text-gray-300 group-focus-within:text-[#024ad8] transition-colors" />
                                     </div>
                                     <input
                                         type="password"
                                         required
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue sm:text-sm"
+                                        className="block w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-sm bg-gray-50/50 text-sm font-medium tracking-normal focus:outline-none focus:border-[#024ad8] focus:bg-white transition-all placeholder:text-gray-300"
                                         placeholder="••••••••"
                                     />
                                 </div>
@@ -164,35 +164,36 @@ const Signup = () => {
                             <button
                                 type="submit"
                                 disabled={loadingSendOTP}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors disabled:opacity-50"
+                                className="w-full flex justify-center py-4 px-8 bg-black text-white font-bold rounded-sm shadow-lg shadow-black/10 text-sm uppercase tracking-wider hover:bg-gray-800 transition-all disabled:opacity-30 hover:-translate-y-0.5"
                             >
-                                {loadingSendOTP ? 'Sending OTP...' : 'Next: Verify Email'}
+                                {loadingSendOTP ? 'Sending OTP...' : 'Continue'}
                             </button>
                         </form>
                     </>
                 ) : (
                     <>
-                        <div className="text-center mb-8">
-                            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <Mail size={32} className="text-primary-blue" />
+                        <div className="text-center mb-10">
+                            <div className="w-20 h-20 bg-[#F8F9FA] border border-gray-100 rounded-sm flex items-center justify-center mx-auto mb-6 shadow-sm">
+                                <Mail size={36} className="text-[#024ad8]" />
                             </div>
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">Verify Email</h1>
-                            <p className="text-gray-600">Enter the 6-digit code sent to <strong>{email}</strong></p>
+                            <h1 className="text-3xl font-bold text-black mb-3 tracking-tight leading-tight">Verify Your Email</h1>
+                            <p className="text-xs font-medium text-gray-400 tracking-wide">Enter the code sent to:</p>
+                            <p className="text-sm font-semibold text-[#024ad8] mt-2">{email}</p>
                         </div>
 
                         {errorVerifyOTP && (
-                            <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 flex items-center gap-2">
-                                <AlertCircle size={20} />
+                            <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-sm text-red-700 flex items-center gap-3 text-xs font-medium shadow-sm">
+                                <AlertCircle size={18} className="text-red-500" />
                                 <span>{errorVerifyOTP}</span>
                             </div>
                         )}
 
-                        <form onSubmit={handleVerifyOTP} className="space-y-6">
+                        <form onSubmit={handleVerifyOTP} className="space-y-8">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2 uppercase tracking-wider text-center">Verification Code</label>
-                                <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <KeyRound size={20} className="text-gray-400" />
+                                <label className="block text-xs font-semibold text-[#024ad8] uppercase tracking-wider mb-4 text-center">Verification Code</label>
+                                <div className="relative group">
+                                    <div className="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
+                                        <KeyRound size={24} className="text-gray-200" />
                                     </div>
                                     <input
                                         type="text"
@@ -200,7 +201,7 @@ const Signup = () => {
                                         maxLength="6"
                                         value={otp}
                                         onChange={(e) => setOtp(e.target.value)}
-                                        className="block w-full pl-10 pr-3 py-3 border-2 border-gray-300 rounded-md shadow-sm focus:ring-primary-blue focus:border-primary-blue text-2xl tracking-[0.5em] font-bold text-center transition-all"
+                                        className="block w-full pl-16 pr-6 py-5 border border-gray-200 rounded-sm bg-gray-50/50 text-3xl tracking-[0.5em] font-bold text-center focus:outline-none focus:border-[#024ad8] focus:bg-white transition-all placeholder:text-gray-200"
                                         placeholder="000000"
                                     />
                                 </div>
@@ -209,29 +210,29 @@ const Signup = () => {
                             <button
                                 type="submit"
                                 disabled={loadingVerifyOTP || otp.length < 6}
-                                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-primary-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors disabled:opacity-50"
+                                className="w-full flex justify-center py-4 px-8 bg-[#024ad8] text-white font-bold rounded-sm shadow-lg shadow-[#024ad8]/20 text-sm uppercase tracking-wider hover:bg-[#0133a1] transition-all disabled:opacity-30 hover:-translate-y-0.5"
                             >
-                                {loadingVerifyOTP ? 'Verifying...' : 'Verify & Create Account'}
+                                {loadingVerifyOTP ? 'Verifying...' : 'Verify & Register'}
                             </button>
 
                             <div className="text-center">
                                 <button
                                     type="button"
                                     onClick={() => setStep(1)}
-                                    className="text-sm text-gray-500 hover:text-primary-blue transition-colors"
+                                    className="text-xs font-medium text-gray-400 hover:text-black transition-colors border-b border-transparent hover:border-gray-200 pb-1"
                                 >
-                                    Change email or details?
+                                    Go back & edit details
                                 </button>
                             </div>
                         </form>
                     </>
                 )}
 
-                <div className="mt-6 text-center text-sm text-gray-600">
-                    <p>
+                <div className="mt-10 text-center border-t border-gray-100 pt-8">
+                    <p className="text-sm font-medium text-gray-400">
                         Already have an account?{' '}
-                        <Link to="/login" className="font-medium text-primary-blue hover:text-blue-600">
-                            Log in here
+                        <Link to="/login" className="text-[#024ad8] font-semibold hover:underline ml-1">
+                            Sign In
                         </Link>
                     </p>
                 </div>

@@ -6,62 +6,60 @@ import aboutImage3 from '../../public/hero/about.jpg';
 
 const About = () => {
     return (
-        <div className="bg-white text-black font-sans">
+        <div className="bg-white text-black">
             {/* Hero Section */}
-            <div className="relative bg-gray-50 text-black py-24 md:py-32 overflow-hidden">
+            <div className="relative bg-[#F8F9FA] text-black py-32 md:py-48 overflow-hidden border-b border-gray-100">
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 z-0">
                     <img
                         src={aboutImage}
                         alt="Office Background"
-                        className="w-full h-full object-cover opacity-95"
+                        className="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/40 to-white/90"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/80 to-white"></div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
-                    <span className="text-sm font-bold uppercase tracking-[0.3em] text-[#024ad8] mb-4 block">Innovation Dynamics Group</span>
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gray-900 leading-tight">Your Trusted Online <br/> <span className="text-[#024ad8]">Printer Store</span></h1>
-                    <div className="w-24 h-1.5 bg-[#024ad8] mx-auto mb-8 rounded-full"></div>
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span className="text-[10px] font-extrabold uppercase tracking-[0.5em] text-[#024ad8] mb-8 block">ESTABLISHED LOGISTICAL EXCELLENCE</span>
+                    <h1 className="text-6xl md:text-8xl font-extrabold mb-10 tracking-tighter text-black leading-[0.9] uppercase">
+                        Precision <br/> <span className="text-[#024ad8]">Imaging Solutions</span>
+                    </h1>
+                    <div className="w-24 h-2 bg-[#024ad8] mx-auto mb-12 shadow-xl shadow-[#024ad8]/20"></div>
                 </div>
             </div>
 
             {/* Who We Are & What We Offer */}
-            <section className="py-20">
+            <section className="py-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center">
                         {/* Image Side */}
-                        <div className="relative rounded-2xl overflow-hidden shadow-2xl group order-2 lg:order-1">
+                        <div className="relative rounded-sm overflow-hidden shadow-2xl group order-2 lg:order-1 border border-gray-50 bg-white p-4">
                             <img
                                 src={aboutImage2}
                                 alt="Modern Office Printer"
-                                className="w-full h-[600px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                className="w-full h-[700px] object-cover rounded-sm grayscale group-hover:grayscale-0 transition-all duration-1000"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                            <div className="absolute bottom-6 left-6 right-6 text-white p-6">
-                                <p className="font-bold text-xl mb-2 italic">Exclusively Focused on Printing</p>
-                                <p className="text-gray-200 text-sm">Specialized products, organized categories, and helpful guidance.</p>
+                            <div className="absolute bottom-12 left-12 right-12 text-white bg-black/80 backdrop-blur-md p-8 rounded-sm border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                                <p className="font-extrabold text-2xl mb-2 uppercase tracking-tight">SPECIALIZED ARCHITECTURE</p>
+                                <p className="text-gray-400 text-[9px] uppercase tracking-[0.3em] font-extrabold">Professional categories. Verified technical accuracy.</p>
                             </div>
                         </div>
 
                         {/* Who We Are Content */}
-                        <div className="space-y-8 order-1 lg:order-2">
-                            <div className="inline-flex items-center gap-3 bg-blue-50 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider">
-                                <Users size={18} /> Our Identity
+                        <div className="space-y-12 order-1 lg:order-2">
+                            <div className="inline-flex items-center gap-4 text-[#024ad8] text-[10px] font-extrabold uppercase tracking-[0.4em] bg-blue-50 px-5 py-2 rounded-sm border border-blue-100">
+                                <Users size={16} /> CORPORATE IDENTITY
                             </div>
-                            <h2 className="text-4xl font-bold text-gray-900">Who We Are</h2>
-                            <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
+                            <h2 className="text-5xl font-extrabold text-black uppercase tracking-tighter leading-tight">THE INFRASTRUCTURE <br/> BEHIND THE BRAND</h2>
+                            <div className="space-y-8 text-gray-500 leading-relaxed text-[15px] font-bold uppercase tracking-wider">
                                 <p>
-                                    Innovation Dynamics Group LLC is a specialized online store focused on printers and essential printing solutions for home users, professionals, and businesses. Our goal is to make printer shopping simple, transparent, and reliable so customers can choose the right printing products with confidence.
+                                    Innovation Dynamics Group LLC is a specialized enterprise hub focused on the procurement of precision printers and essential operational solutions. Our objective is to simplify the acquisition landscape, providing transparent and dependable assets for high-stakes environments.
                                 </p>
                                 <p>
-                                    Innovation Dynamics Group LLC operates as a registered business providing printer products and related solutions through a structured eCommerce platform designed for clarity and ease of use. We are also an HP Amplify Partner Program member, allowing us to provide trusted HP printing products as part of our product offerings.
+                                    Operated as a registered entity, we leverage a structured eCommerce framework designed for clarity and professional efficiency. As an HP Amplify Partner, we facilitate access to trusted HP hardware integrated within our specialized catalog.
                                 </p>
                                 <p>
-                                    Unlike large general marketplaces, our platform focuses specifically on printers and printing technology. This specialized approach allows us to present clear product information, organized categories, and helpful guidance so customers can easily find printers that meet their needs.
-                                </p>
-                                <p>
-                                    Our store features a range of printing solutions including inkjet printers, laser printers, multifunction printers, and wireless printing devices from trusted manufacturers.
+                                    We differentiate through focus. By isolating printer technology, we provide superior technical clarity, allowing organizations to identify and deploy hardware that meets specific performance metrics without the clutter of general marketplaces.
                                 </p>
                             </div>
                         </div>
@@ -70,22 +68,21 @@ const About = () => {
             </section>
 
             {/* Our Commitment Section */}
-            <section className="py-24 bg-gray-50 overflow-hidden relative">
+            <section className="py-32 bg-[#F8F9FA] border-y border-gray-100 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <div className="inline-flex items-center gap-3 bg-blue-100/50 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
-                            <ShieldCheck size={18} /> Our Standards
+                    <div className="text-center mb-24 max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-4 text-[#024ad8] text-[10px] font-extrabold uppercase tracking-[0.4em] mb-8 bg-white px-5 py-2 rounded-sm border border-gray-200">
+                            <ShieldCheck size={16} /> OPERATIONAL STANDARDS
                         </div>
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Commitment</h2>
-                        <h3 className="text-2xl text-[#024ad8] font-medium italic mb-8">Quality, Transparency, and Customer Satisfaction</h3>
-                        <div className="w-16 h-1 bg-[#024ad8] mx-auto rounded-full"></div>
+                        <h2 className="text-5xl font-extrabold text-black mb-8 uppercase tracking-tighter">OUR COMMITMENT</h2>
+                        <h3 className="text-sm text-gray-400 font-extrabold uppercase tracking-[0.4em]">SYSTEMIC QUALITY • TRANSPARENCY • PROFESSIONAL SATISFACTION</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-8">
-                            <div className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100 relative group">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform"></div>
-                                <div className="relative space-y-6 text-gray-600 text-lg leading-relaxed">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                        <div className="space-y-12">
+                            <div className="bg-white p-16 rounded-sm shadow-2xl border border-gray-50 relative group hover:-translate-y-2 transition-all duration-500">
+                                <div className="absolute top-0 right-0 w-32 h-1.5 bg-[#024ad8]"></div>
+                                <div className="relative space-y-8 text-gray-500 text-sm leading-[1.8] font-bold uppercase tracking-widest">
                                     <p>
                                         At Innovation Dynamics Group LLC, we believe buying a printer should be straightforward and stress-free. That is why we focus on clear product information, transparent pricing, and reliable service.
                                     </p>
@@ -95,15 +92,15 @@ const About = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="relative">
+                        <div className="relative p-4 bg-white rounded-sm shadow-2xl border border-gray-50">
                             <img
                                 src={aboutImage3}
                                 alt="Printer Supplies"
-                                className="rounded-[2.5rem] shadow-2xl w-full h-[450px] object-cover"
+                                className="rounded-sm w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-1000"
                             />
-                            <div className="absolute -bottom-6 -left-6 bg-[#024ad8] text-white p-10 rounded-3xl shadow-2xl max-w-xs">
-                                <Info size={40} className="mb-4 opacity-50" />
-                                <p className="font-bold text-lg leading-tight uppercase italic underline decoration-white/30 decoration-2 underline-offset-4">Straightforward & Stress-Free Experience</p>
+                            <div className="absolute -bottom-10 -left-10 bg-black text-white p-12 rounded-sm shadow-2xl max-w-xs border border-white/5">
+                                <Info size={36} className="mb-8 text-[#024ad8]" />
+                                <p className="font-extrabold text-xl leading-tight uppercase tracking-tighter">PROFESSIONAL <br/> ACQUISITION <br/> TERMINAL</p>
                             </div>
                         </div>
                     </div>
@@ -111,40 +108,40 @@ const About = () => {
             </section>
 
             {/* Why Choose Us */}
-            <section className="py-24">
+            <section className="py-32">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16 max-w-3xl mx-auto">
-                        <div className="inline-flex items-center gap-3 bg-blue-50 text-[#024ad8] px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
-                            <Target size={18} /> Why Innovation Dynamics?
+                    <div className="text-center mb-24 max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-4 text-[#024ad8] text-[10px] font-extrabold uppercase tracking-[0.4em] mb-8">
+                            <Target size={16} /> COMPETITIVE ADVANTAGE
                         </div>
-                        <h2 className="text-4xl font-bold text-gray-900 mb-6 font-serif italic">Why Choose Us</h2>
-                        <h3 className="text-2xl text-gray-500 font-light mb-8">A Store Built Around Printing Needs</h3>
+                        <h2 className="text-5xl font-extrabold text-black mb-8 uppercase tracking-tighter">STRATEGIC DIFFERENTIATION</h2>
+                        <h3 className="text-sm text-gray-300 font-extrabold uppercase tracking-[0.4em]">A FACILITY ENGINEERED FOR ENTERPRISE EFFICIENCY</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                         {[
                             {
-                                icon: <Printer size={32} className="text-[#024ad8]" />,
-                                title: "Right Selection",
-                                text: "Whether you need a compact printer for home use or a high-performance device for office environments, Innovation Dynamics Group LLC helps you choose the right printing solution."
+                                icon: <Printer size={32} />,
+                                title: "ASSET SELECTION",
+                                text: "Our catalog is curated for performance, ranging from compact home-office units to enterprise-grade multifunction systems."
                             },
                             {
-                                icon: <Box size={32} className="text-[#024ad8]" />,
-                                title: "Specialized Expertise",
-                                text: "By focusing specifically on printers and printing technology, we are able to better understand customer needs and provide solutions that truly match everyday printing requirements."
+                                icon: <Box size={32} />,
+                                title: "TECHNICAL DEPTH",
+                                text: "By isolating the printing sector, we provide granular technical specifications and deployment guidance for every hardware asset."
                             },
                             {
-                                icon: <ShieldCheck size={32} className="text-[#024ad8]" />,
-                                title: "Our Simple Goal",
-                                text: "Our goal is simple — to provide reliable printing solutions through a clear, trustworthy, and customer-focused platform."
+                                icon: <ShieldCheck size={32} />,
+                                title: "SYSTEMIC CLARITY",
+                                text: "Our objective is to provide absolute reliability through a transparent, high-fidelity, and corporate-aligned procurement engine."
                             }
                         ].map((item, idx) => (
-                            <div key={idx} className="bg-gray-50 p-10 rounded-[2rem] border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                                <div className="mb-6 bg-white w-16 h-16 rounded-2xl shadow-sm flex items-center justify-center border border-blue-50">
+                            <div key={idx} className="bg-[#F8F9FA] p-12 rounded-sm border border-gray-100 hover:shadow-2xl hover:bg-white transition-all duration-700 group hover:-translate-y-2">
+                                <div className="mb-10 bg-white w-20 h-20 rounded-sm shadow-sm flex items-center justify-center border border-gray-100 group-hover:bg-[#024ad8] group-hover:text-white transition-all duration-500">
                                     {item.icon}
                                 </div>
-                                <h4 className="text-xl font-bold text-gray-900 mb-4 font-serif italic">{item.title}</h4>
-                                <p className="text-gray-600 leading-relaxed text-sm">
+                                <h4 className="text-xl font-extrabold text-black mb-6 uppercase tracking-tight group-hover:text-[#024ad8] transition-colors">{item.title}</h4>
+                                <p className="text-gray-400 leading-relaxed text-[11px] font-extrabold uppercase tracking-widest">
                                     {item.text}
                                 </p>
                             </div>
@@ -154,17 +151,17 @@ const About = () => {
             </section>
 
             {/* Final Call to Action */}
-            <section className="py-20 bg-slate-900 text-white overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[#024ad8] opacity-10 rounded-full blur-3xl -mr-48 -mt-48"></div>
+            <section className="py-48 bg-black text-white relative border-t-8 border-[#024ad8] overflow-hidden">
+                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#024ad8]/5 rounded-full blur-[150px] -mr-96 -mt-96"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                    <Rocket className="text-[#024ad8] mx-auto mb-8" size={48} />
-                    <h2 className="text-3xl font-bold mb-6 italic underline decoration-[#024ad8] decoration-4 underline-offset-8">Dedicated to Better Printing</h2>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
-                        Join thousands of customers who trust Innovation Dynamics Group for their printing technology needs.
+                    <Rocket className="text-[#024ad8] mx-auto mb-12 animate-pulse" size={64} />
+                    <h2 className="text-6xl font-extrabold mb-10 uppercase tracking-tighter">POWERING PRODUCTIVITY</h2>
+                    <p className="text-lg text-gray-500 max-w-2xl mx-auto font-bold leading-relaxed uppercase tracking-[0.2em] mb-20">
+                        Join an elite network of organizations optimizing their imaging infrastructure through Innovation Dynamics Group.
                     </p>
-                    <div className="mt-12">
-                        <a href="/shop" className="inline-flex items-center gap-3 px-10 py-4 bg-[#024ad8] text-white font-bold rounded-full hover:bg-white hover:text-black transition-all duration-300 shadow-xl shadow-blue-500/20">
-                            Explore Our Catalog <Box size={20} />
+                    <div className="">
+                        <a href="/shop" className="inline-flex items-center gap-6 px-16 py-7 bg-[#024ad8] text-white font-extrabold rounded-sm hover:bg-white hover:text-black transition-all duration-500 shadow-2xl shadow-[#024ad8]/20 uppercase tracking-[0.4em] text-xs group">
+                            INITIATE PROCUREMENT <Box size={22} className="group-hover:rotate-12 transition-transform" />
                         </a>
                     </div>
                 </div>

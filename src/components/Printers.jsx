@@ -19,27 +19,27 @@ const getImageUrl = (product) => {
 const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
     const imageUrl = getImageUrl(product);
     return (
-        <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-primary-blue/30 transition-all duration-300 flex flex-col h-full relative">
-            <div className="relative aspect-[4/3] p-4 flex items-center justify-center bg-gray-50 overflow-hidden group-hover:bg-white transition-colors duration-300">
+        <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full relative rounded-sm overflow-hidden">
+            <div className="relative aspect-[4/3] p-6 flex items-center justify-center bg-gray-50/50 overflow-hidden group-hover:bg-white transition-colors duration-500">
                 <img
                     src={imageUrl}
                     alt={product.title}
-                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-1000"
                     onError={(e) => { e.target.src = 'https://placehold.co/400x300?text=No+Image'; }}
                 />
                 {product.countInStock === 0 && (
-                    <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest">Sold Out</div>
+                    <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-4 py-1.5 uppercase tracking-wider rounded-bl-sm">Sold Out</div>
                 )}
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3">
                     <button
-                        className={`p-3 rounded-full shadow-lg transition-all transform hover:scale-110 ${isWishlisted ? 'bg-red-50 text-red-500' : 'bg-white text-gray-900 hover:bg-primary-blue hover:text-white'}`}
+                        className={`p-3 shadow-lg transition-all transform hover:scale-110 rounded-sm ${isWishlisted ? 'bg-red-50 text-red-500' : 'bg-white text-gray-900 hover:bg-[#024ad8] hover:text-white'}`}
                         title="Wishlist"
                         onClick={(e) => { e.stopPropagation(); onWishlist(product); }}
                     >
                         <Heart size={18} fill={isWishlisted ? 'currentColor' : 'none'} />
                     </button>
                     <button
-                        className="p-3 bg-white text-gray-900 rounded-full shadow-lg hover:bg-primary-blue hover:text-white transition-all transform hover:scale-110"
+                        className="p-3 bg-white text-gray-900 shadow-lg hover:bg-[#024ad8] hover:text-white transition-all transform hover:scale-110 rounded-sm"
                         title="View Details"
                         onClick={() => onDetails(product)}
                     >
@@ -48,33 +48,34 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
                 </div>
             </div>
 
-            <div className="p-5 flex flex-col flex-1 border-t border-gray-100">
-                <div className="flex justify-between items-start mb-1">
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{product.brand}</span>
-                    <div className="flex text-primary-blue text-xs">
-                        {'★'.repeat(Math.round(product.rating || 0))}
-                        <span className="text-gray-200">{'★'.repeat(5 - Math.round(product.rating || 0))}</span>
+            <div className="p-6 flex flex-col flex-1 border-t border-gray-50">
+                <div className="flex justify-between items-start mb-2">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{product.brand || 'HP'}</span>
+                    <div className="flex text-[#024ad8] text-[10px]">
+                        {'★'.repeat(Math.min(5, Math.max(0, Math.round(product.rating || 0))))}
+                        <span className="text-gray-200">{'★'.repeat(Math.max(0, 5 - Math.min(5, Math.max(0, Math.round(product.rating || 0)))))}</span>
                     </div>
                 </div>
                 <h3
-                    className="text-sm font-bold text-gray-900 mb-2 leading-tight group-hover:text-primary-blue transition-colors cursor-pointer line-clamp-2"
+                    className="text-sm font-extrabold text-black mb-3 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2 uppercase tracking-tight"
                     onClick={() => onDetails(product)}
                 >
-                    {product.title}
+                    {product.title || 'HP Printer'}
                 </h3>
-                <p className="text-xs text-gray-500 mb-4 line-clamp-2 flex-1">{product.description}</p>
-                <div className="mt-auto pt-3 flex items-center justify-between border-t border-gray-50">
+                <p className="text-xs text-gray-500 mb-6 line-clamp-2 flex-grow font-medium leading-relaxed">{product.description || 'Professional printing solution for your needs.'}</p>
+                
+                <div className="mt-auto pt-6 flex items-center justify-between border-t border-gray-100">
                     <div className="flex flex-col">
-                        {product.oldPrice > 0 && (
-                            <span className="text-xs text-gray-400 line-through">${Number(product.oldPrice).toFixed(2)}</span>
+                        {Number(product.oldPrice) > 0 && (
+                            <span className="text-[10px] text-gray-400 line-through font-bold">${Number(product.oldPrice).toFixed(2)}</span>
                         )}
-                        <span className="text-lg font-bold text-gray-900">${Number(product.price).toFixed(2)}</span>
+                        <span className="text-xl font-black text-black tracking-tighter">${Number(product.price || 0).toFixed(2)}</span>
                     </div>
                     <button
                         onClick={() => onDetails(product)}
-                        className="px-4 py-2 bg-black text-white text-xs font-bold uppercase tracking-wider hover:bg-primary-blue transition-colors duration-300 flex items-center gap-2"
+                        className="px-6 py-2.5 bg-[#024ad8] text-white text-[11px] font-bold uppercase tracking-wider hover:bg-[#0133a1] transition-all duration-300 flex items-center gap-2 rounded-sm shadow-sm"
                     >
-                        <ShoppingBag size={13} /> Details
+                        <ShoppingBag size={14} /> Details
                     </button>
                 </div>
             </div>
@@ -101,21 +102,21 @@ const CategorySection = ({ catName, catSlug, onViewAll, onDetails, onWishlist, i
     return (
         <section className="mb-16">
             {/* Section header */}
-            <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                    <div className="w-1 h-8 bg-primary-blue rounded-full" />
-                    <h2 className="text-2xl font-bold text-gray-900">{catName}</h2>
+            <div className="flex items-center justify-between mb-8 border-b-2 border-gray-50 pb-4">
+                <div className="flex items-center gap-4">
+                    <div className="w-1 h-8 bg-[#024ad8]" />
+                    <h2 className="text-2xl font-extrabold text-black uppercase tracking-tight">{catName}</h2>
                     {!loading && (
-                        <span className="text-sm text-gray-400 font-medium">
-                            ({products.length} shown)
+                        <span className="text-[11px] text-gray-400 font-bold uppercase tracking-widest ml-2">
+                            [{products.length} Models]
                         </span>
                     )}
                 </div>
                 <button
                     onClick={() => onViewAll(catSlug, catName)}
-                    className="flex items-center gap-1 text-sm font-bold text-primary-blue hover:underline"
+                    className="flex items-center gap-2 text-xs font-bold text-[#024ad8] hover:text-[#0133a1] uppercase tracking-widest group transition-colors"
                 >
-                    View All <ChevronRight size={16} />
+                    View All <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </button>
             </div>
 
@@ -147,15 +148,30 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
     const [debounced, setDeb] = useState(initialSearch);
     const [sortBy, setSortBy] = useState('featured');
 
-    const { loading, error, products = [], pages = 1, page = 1 } = useSelector(s => s.productList);
+    const productList = useSelector(s => s.productList || {});
+    const { loading, error, products = [], pages = 1, page = 1 } = productList;
 
     useEffect(() => { setSearch(initialSearch); }, [initialSearch]);
     useEffect(() => { const t = setTimeout(() => setDeb(search), 400); return () => clearTimeout(t); }, [search]);
-    useEffect(() => { dispatch(listProducts(debounced, catName, 1, 'HP')); }, [dispatch, debounced, catName]);
+    useEffect(() => { 
+        console.log(`[DEBUG] FilteredView dispatching listProducts for: "${catName}"`);
+        dispatch(listProducts(debounced, catName, 1, 'HP')); 
+    }, [dispatch, debounced, catName]);
 
-    const sorted = [...products].sort((a, b) => {
-        if (sortBy === 'price-low') return a.price - b.price;
-        if (sortBy === 'price-high') return b.price - a.price;
+    if (error) {
+        return (
+            <div className="text-center py-20 text-red-500">
+                <p className="font-bold">{error}</p>
+                <button onClick={() => dispatch(listProducts('', catName, 1))} className="mt-4 px-6 py-2 bg-primary-blue text-white font-bold text-xs uppercase tracking-widest">Retry</button>
+            </div>
+        );
+    }
+
+    const safeProducts = Array.isArray(products) ? products : [];
+
+    const sorted = [...safeProducts].sort((a, b) => {
+        if (sortBy === 'price-low') return (a.price || 0) - (b.price || 0);
+        if (sortBy === 'price-high') return (b.price || 0) - (a.price || 0);
         if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0);
         return 0;
     });
@@ -163,66 +179,85 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
     return (
         <>
             {/* Toolbar */}
-            <div className="flex flex-col md:flex-row gap-4 mb-8 items-center justify-between bg-gray-50 p-4 border border-gray-100">
-                <div className="w-full md:w-1/3 relative">
+            <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between bg-white p-6 border-b-4 border-black shadow-2xl shadow-gray-100">
+                <div className="w-full md:w-1/2 relative">
                     <input
-                        type="text" placeholder={`Search ${catName}...`} value={search}
+                        type="text" placeholder={`ENTER SEARCH PARAMETERS...`} value={search}
                         onChange={e => setSearch(e.target.value)}
-                        className="w-full pl-10 pr-4 py-3 bg-white border border-gray-200 text-sm focus:outline-none focus:border-primary-blue focus:ring-1 focus:ring-primary-blue transition-all"
+                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-[0.1em] focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all placeholder:text-gray-300"
                     />
-                    <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
                 </div>
-                <select value={sortBy} onChange={e => setSortBy(e.target.value)}
-                    className="py-3 px-4 bg-white border border-gray-200 text-sm focus:outline-none focus:border-primary-blue">
-                    <option value="featured">Featured</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
-                    <option value="rating">Top Rated</option>
-                </select>
+                <div className="flex items-center gap-4 w-full md:w-auto">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">Sort Configuration:</span>
+                    <select value={sortBy} onChange={e => setSortBy(e.target.value)}
+                        className="py-4 px-6 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-wider focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all cursor-pointer">
+                        <option value="featured">Featured Priority</option>
+                        <option value="price-low">Economic Tier (Low-High)</option>
+                        <option value="price-high">Premium Tier (High-Low)</option>
+                        <option value="rating">Performance Rating</option>
+                    </select>
+                </div>
             </div>
-            <p className="text-gray-500 text-sm mb-6">Showing <span className="font-bold text-black">{sorted.length}</span> results</p>
+            
+            <div className="flex items-center gap-4 mb-10">
+                <div className="h-0.5 flex-grow bg-gray-100"></div>
+                <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
+                    Data Output: <span className="text-[#024ad8]">{sorted.length}</span> Identified Models
+                </p>
+                <div className="h-0.5 flex-grow bg-gray-100"></div>
+            </div>
 
             {loading ? (
-                <div className="flex justify-center py-20"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue" /></div>
-            ) : error ? (
-                <div className="text-center py-20 text-red-500">
-                    <p className="font-bold">{error}</p>
-                    <button onClick={() => dispatch(listProducts('', catName, 1))} className="mt-4 px-6 py-2 bg-primary-blue text-white font-bold">Retry</button>
+                <div className="flex justify-center py-32">
+                    <div className="animate-spin rounded-sm h-12 w-12 border-4 border-[#024ad8] border-t-transparent shadow-xl" />
                 </div>
             ) : sorted.length === 0 ? (
-                <div className="text-center py-20">
-                    <X size={40} className="text-gray-300 mx-auto mb-3" />
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">No products found</h3>
-                    <p className="text-gray-500">Try adjusting your search.</p>
+                <div className="text-center py-32 bg-gray-50/50 rounded-sm border-2 border-dashed border-gray-100">
+                    <X size={48} className="text-gray-200 mx-auto mb-6" />
+                    <h3 className="text-2xl font-extrabold text-black mb-3 uppercase tracking-tight">Null Result Set</h3>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">No operational models match your current filtering criteria.</p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
                     {sorted.map(p => (
-                        <ProductCard key={p._id} product={p} onDetails={onDetails} onWishlist={onWishlist} isWishlisted={isWishlisted(p._id)} />
+                        <ProductCard 
+                            key={p._id || Math.random()} 
+                            product={p} 
+                            onDetails={onDetails} 
+                            onWishlist={onWishlist} 
+                            isWishlisted={typeof isWishlisted === 'function' ? isWishlisted(p._id) : false} 
+                        />
                     ))}
                 </div>
             )}
 
-            {/* Pagination */}
+            {/* Pagination: Professional & Sharp */}
             {pages > 1 && (
-                <div className="flex justify-center items-center gap-2 mt-10">
-                    <button onClick={() => dispatch(listProducts(debounced, catName, page - 1, 'HP'))} disabled={page <= 1}
-                        className="p-2 border border-gray-200 rounded hover:bg-gray-50 disabled:opacity-40">
-                        <ChevronLeft size={18} />
+                <div className="flex justify-center items-center gap-3 mt-20 pb-16">
+                    <button 
+                        onClick={() => dispatch(listProducts(debounced, catName, page - 1, 'HP'))} 
+                        disabled={page <= 1}
+                        className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
+                    >
+                        <ChevronLeft size={20} />
                     </button>
-                    {[...Array(pages)].map((_, i) => (
+                    {[...Array(isNaN(pages) ? 0 : Number(pages))].map((_, i) => (
                         <button key={i + 1} onClick={() => dispatch(listProducts(debounced, catName, i + 1, 'HP'))}
-                            className={`w-9 h-9 text-sm font-bold rounded border transition-colors ${page === i + 1 ? 'bg-black text-white border-black' : 'border-gray-200 hover:bg-gray-50'}`}>
-                            {i + 1}
+                            className={`w-12 h-12 text-[11px] font-bold uppercase tracking-wider rounded-sm border transition-all shadow-sm ${page === i + 1 ? 'bg-black text-white border-black shadow-[#024ad8]/20' : 'bg-white text-gray-400 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}>
+                            {String(i + 1).padStart(2, '0')}
                         </button>
                     ))}
-                    <button onClick={() => dispatch(listProducts(debounced, catName, page + 1, 'HP'))} disabled={page >= pages}
-                        className="p-2 border border-gray-200 rounded hover:bg-gray-50 disabled:opacity-40">
-                        <ChevronRight size={18} />
+                    <button 
+                        onClick={() => dispatch(listProducts(debounced, catName, page + 1, 'HP'))} 
+                        disabled={page >= pages}
+                        className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
+                    >
+                        <ChevronRight size={20} />
                     </button>
                 </div>
             )}
@@ -268,33 +303,34 @@ const Printers = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
                 {/* ── Header ─────────────────────────────────────────────── */}
-                <div className="text-center mb-10">
-                    <h1 className="text-5xl font-bold mb-4 tracking-tight">
-                        {globalSearch ? `Search Results for "${globalSearch}"` : (activeCatName ? `HP ${activeCatName}` : 'Popular HP Printers & Best-Selling Supplies')}
+                <div className="text-center mb-16">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024ad8] mb-4 block">Official Catalog</span>
+                    <h1 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-black uppercase leading-tight">
+                        {globalSearch ? `Search: "${globalSearch}"` : (activeCatName ? `HP ${activeCatName}` : 'Reliable Printing Solutions')}
                     </h1>
-                    <div className="w-20 h-1 bg-primary-blue mx-auto" />
-                    <p className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
+                    <div className="w-16 h-1 bg-[#024ad8] mx-auto" />
+                    <p className="text-gray-500 mt-6 text-lg max-w-2xl mx-auto font-medium">
                         {globalSearch
-                            ? `Showing search results for HP products across all categories.`
+                            ? `Showing filtered search results from our professional HP inventory.`
                             : (activeCatName
-                                ? `Browse our range of high-performance HP ${activeCatName}.`
-                                : 'Browse customer favorites, top-rated HP items, and frequently purchased printing essentials.')}
+                                ? `Explore our high-performance range of ${activeCatName} designed for reliability.`
+                                : 'Browse our carefully selected range of professional HP printers and genuine supplies.')}
                     </p>
 
-                    {/* Category tabs */}
+                    {/* Category tabs: Sharp & Professional */}
                     {allCategories.length > 0 && (
-                        <div className="flex flex-wrap justify-center gap-2 mt-8">
+                        <div className="flex flex-wrap justify-center gap-3 mt-12 overflow-x-auto pb-4">
                             <button
                                 onClick={() => navigate('/shop')}
-                                className={`px-5 py-2 text-sm font-bold uppercase tracking-wide transition-colors border ${!catSlug ? 'bg-black text-white border-black' : 'bg-white text-gray-600 border-gray-200 hover:border-primary-blue hover:text-primary-blue'}`}
+                                className={`px-8 py-3 text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${!catSlug ? 'bg-black text-white border-black shadow-lg shadow-black/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
                             >
-                                All
+                                All Models
                             </button>
                             {allCategories.map(cat => (
                                 <button
                                     key={cat._id}
                                     onClick={() => navigate(`/shop/${cat.slug}`)}
-                                    className={`px-5 py-2 text-sm font-bold uppercase tracking-wide transition-colors border ${catSlug === cat.slug ? 'bg-primary-blue text-white border-primary-blue' : 'bg-white text-gray-600 border-gray-200 hover:border-primary-blue hover:text-primary-blue'}`}
+                                    className={`px-8 py-3 text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${catSlug === cat.slug ? 'bg-[#024ad8] text-white border-[#024ad8] shadow-lg shadow-[#024ad8]/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
                                 >
                                     {cat.name}
                                 </button>

@@ -1,54 +1,59 @@
 import React from 'react';
-import { Printer, Shield, Star, ShoppingBag, Info } from 'lucide-react';
+import { Target, FileText, CheckCircle, Lock } from 'lucide-react';
 
 const WhyChooseUs = () => {
     const advantages = [
         {
-            icon: <Printer className="text-primary-blue" size={32} />,
-            title: "100% Printing-Focused Retailer",
-            description: "Our entire catalog is dedicated to printers, ink, toner, and accessories."
+            icon: <Target className="text-[#024ad8]" size={36} />,
+            title: "Specialized Product Focus",
+            description: "A dedicated focus on printers ensures better organization and more relevant product selection."
         },
         {
-            icon: <Shield className="text-primary-blue" size={32} />,
-            title: "Independent & Transparent",
-            description: "We are not affiliated with any manufacturer; product information is unbiased and clear."
+            icon: <FileText className="text-[#024ad8]" size={36} />,
+            title: "Clear and Accurate Information",
+            description: "Product listings are structured to help customers understand features, specifications, and usability."
         },
         {
-            icon: <Star className="text-primary-blue" size={32} />,
-            title: "Curated Product Selection",
-            description: "Only reliable, high-quality printing essentials sourced from reputable suppliers."
+            icon: <CheckCircle className="text-[#024ad8]" size={36} />,
+            title: "Trusted Product Selection",
+            description: "Only reliable and widely recognized printer models are featured."
         },
         {
-            icon: <ShoppingBag className="text-primary-blue" size={32} />,
-            title: "Easy Shopping Experience",
-            description: "Simple navigation, organized categories, and secure checkout."
-        },
-        {
-            icon: <Info className="text-primary-blue" size={32} />,
-            title: "Accurate Product Information",
-            description: "Straightforward details to help you choose confidently."
+            icon: <Lock className="text-[#024ad8]" size={36} />,
+            title: "Secure Checkout Process",
+            description: "A smooth and secure purchasing experience from start to finish."
         }
     ];
 
     return (
-        <section className="py-20 bg-gray-50">
+        <section className="py-24 bg-[#F8F9FA] border-t border-gray-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Why Choose Us</h2>
-                    <div className="w-20 h-1.5 bg-primary-blue mx-auto rounded-full mb-6"></div>
-                    <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-                        Discover the printer-exclusive advantages of shopping with an independent specialist.
+                
+                {/* Header: HP-Inspired Minimalist Style */}
+                <div className="text-center mb-20 max-w-3xl mx-auto">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#024ad8] mb-4 block">Why Choose US</span>
+                    <h2 className="text-4xl font-extrabold text-black tracking-tight mb-6 uppercase leading-tight">
+                        Designed for Simplicity, <br/> Built for Reliability
+                    </h2>
+                    <div className="w-16 h-1 bg-[#024ad8] mx-auto mb-8"></div>
+                    <p className="text-gray-500 font-medium text-lg leading-relaxed">
+                        Choosing the right printer should not be complicated. Every part of the platform is designed to make the process clear, efficient, and dependable.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                {/* Grid: Sharp & Professional Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
                     {advantages.map((item, index) => (
-                        <div key={index} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                            <div className="mb-6 bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center">
+                        <div key={index} className="bg-white p-10 rounded-sm shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 group">
+                            <div className="mb-8 w-16 h-16 bg-[#F8F9FA] rounded-sm flex items-center justify-center border border-gray-100 group-hover:bg-[#024ad8]/5 transition-colors duration-500">
                                 {item.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">{item.title}</h3>
-                            <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                            <h3 className="text-lg font-extrabold text-black uppercase tracking-tight mb-4 group-hover:text-[#024ad8] transition-colors duration-500">
+                                {item.title}
+                            </h3>
+                            <p className="text-gray-500 text-sm leading-relaxed font-medium">
+                                {item.description}
+                            </p>
                         </div>
                     ))}
                 </div>

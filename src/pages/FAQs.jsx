@@ -60,67 +60,72 @@ const FAQs = () => {
     ];
 
     return (
-        <div className="bg-white text-black font-sans min-h-screen">
+        <div className="bg-white text-black min-h-screen">
             
             {/* Hero Section */}
-            <div className="relative bg-black text-white py-24 md:py-32 overflow-hidden">
+            <div className="relative bg-black text-white py-32 md:py-48 overflow-hidden border-b-8 border-[#024ad8]">
                 
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0">
                     <img
                         src={faq}
                         alt="FAQs Background"
-                        className="w-full h-full object-cover opacity-90"
+                        className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/90"></div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black"></div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <HelpCircle className="mx-auto mb-6 text-primary-blue" size={56} />
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-                        Frequently Asked Questions
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10">
+                    <HelpCircle className="mx-auto mb-12 text-[#024ad8] animate-bounce" size={64} />
+                    <h1 className="text-6xl md:text-8xl font-extrabold mb-10 tracking-tighter uppercase leading-[0.9]">
+                        KNOWLEDGE <br/> <span className="text-[#024ad8]">TERMINAL</span>
                     </h1>
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                        Clear and simple answers about our printers, ink, toner, and accessories.
+                    <div className="w-24 h-2 bg-[#024ad8] mx-auto mb-12 shadow-2xl shadow-[#024ad8]/30"></div>
+                    <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-extrabold uppercase tracking-[0.4em]">
+                        TECHNICAL CLARITY • PROCEDURAL DATA • LOGISTICAL INSIGHTS
                     </p>
                 </div>
             </div>
 
             {/* FAQ Accordion */}
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="space-y-4">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+                <div className="space-y-8">
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
-                            className={`border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 ${
+                            className={`border rounded-sm overflow-hidden transition-all duration-700 bg-white ${
                                 openIndex === index
-                                    ? 'shadow-md border-primary-blue/50'
-                                    : 'hover:border-gray-300'
+                                    ? 'shadow-2xl shadow-black/[0.05] border-[#024ad8] -translate-y-1'
+                                    : 'border-gray-100 hover:border-gray-200'
                             }`}
                         >
                             <button
                                 onClick={() => toggleAccordion(index)}
-                                className="w-full flex justify-between items-center p-5 text-left bg-white hover:bg-gray-50 transition-colors"
+                                className="w-full flex justify-between items-center p-10 text-left hover:bg-gray-50/50 transition-colors group"
                             >
-                                <span className="font-bold text-lg text-gray-900 pr-4">
+                                <span className={`font-extrabold text-xl uppercase tracking-tighter transition-all duration-500 ${openIndex === index ? 'text-[#024ad8] pl-4 border-l-4 border-[#024ad8]' : 'text-black'}`}>
                                     {faq.question}
                                 </span>
-                                {openIndex === index ? (
-                                    <Minus className="text-primary-blue flex-shrink-0" size={20} />
-                                ) : (
-                                    <Plus className="text-gray-400 flex-shrink-0" size={20} />
-                                )}
+                                <div className={`p-4 rounded-sm transition-all duration-500 ${openIndex === index ? 'bg-[#024ad8] text-white rotate-180' : 'bg-gray-50 text-gray-300'}`}>
+                                    {openIndex === index ? (
+                                        <Minus size={20} strokeWidth={3} />
+                                    ) : (
+                                        <Plus size={20} strokeWidth={3} />
+                                    )}
+                                </div>
                             </button>
 
                             <div
-                                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                                className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                                     openIndex === index
-                                        ? 'max-h-96 opacity-100'
+                                        ? 'max-h-[1000px] opacity-100'
                                         : 'max-h-0 opacity-0'
                                 }`}
                             >
-                                <div className="p-5 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 bg-gray-50/50">
-                                    {faq.answer}
+                                <div className="p-10 pt-4 text-gray-500 leading-relaxed border-t border-gray-50 bg-[#F8F9FA] text-[15px] font-bold uppercase tracking-wider">
+                                    <div className="p-8 bg-white rounded-sm border border-gray-100 shadow-sm leading-[1.8]">
+                                        {faq.answer}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,16 +134,18 @@ const FAQs = () => {
             </div>
 
             {/* Important Notice */}
-            <div className="bg-blue-50 py-12 border-t border-blue-100">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h3 className="text-xl font-bold mb-4 text-primary-blue uppercase tracking-wide">
-                        Important Notice
+            <div className="bg-black py-24 border-t-8 border-[#024ad8] relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-96 h-96 bg-[#024ad8]/5 rounded-full blur-[100px] -ml-48 -mt-48"></div>
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                    <h3 className="text-[10px] font-extrabold mb-8 text-[#024ad8] uppercase tracking-[0.5em]">
+                        OPERATIONAL PROTOCOL NOTICE
                     </h3>
-                    <p className="text-gray-700 text-sm leading-relaxed mb-6">
-                        Product availability, pricing, specifications, and delivery timelines are subject to change without prior notice. Please verify all current details before completing your purchase. Warranty coverage is provided directly by the manufacturer and may vary by product.
+                    <p className="text-gray-500 text-sm leading-[2] mb-12 font-extrabold uppercase tracking-[0.15em] max-w-4xl mx-auto italic">
+                        PRODUCT AVAILABILITY, PRICING, SYSTEM METRICS, AND LOGISTICAL TIMELINES ARE SUBJECT TO MODIFICATION WITHOUT PRIOR AUTHORIZATION. PLEASE VALIDATE ALL LIVE DATA BEFORE COMMITING TO PROCUREMENT. WARRANTY RECOVERY IS FACILITATED DIRECTLY BY OEM ENTITIES AND VARY BY ARCHITECTURE.
                     </p>
-                    <p className="text-gray-500 text-xs max-w-3xl mx-auto">
-                        Delivery timelines are estimates and may differ based on location, product availability, and selected shipping method. Express delivery options are available only in select service areas.
+                    <div className="w-12 h-1 bg-[#024ad8] mx-auto mb-10"></div>
+                    <p className="text-gray-700 text-[9px] max-w-3xl mx-auto uppercase tracking-[0.4em] font-extrabold">
+                        DELIVERY SEQUENCES ARE PROJECTIONS AND MAY DEVIATE BASED ON GEOSPATIAL PARAMETERS.
                     </p>
                 </div>
             </div>

@@ -1,11 +1,15 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@100..900&display=swap');
 
 @theme {
+  --font-sans: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   --color-primary-blue: #024ad8;
   --color-active-blue: #0133a1;
   /* Darker for hover/active */
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
