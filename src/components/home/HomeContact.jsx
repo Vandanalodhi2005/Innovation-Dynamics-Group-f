@@ -3,72 +3,75 @@ import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 const HomeContact = () => {
     return (
-        <section className="py-24 bg-gray-50/50">
+        <section className="py-16 sm:py-24 bg-gray-50/50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white rounded-sm shadow-2xl shadow-gray-100 overflow-hidden border border-gray-100">
+                <div className="bg-white rounded-sm shadow-xl shadow-gray-100 overflow-hidden border border-gray-100">
                     <div className="grid grid-cols-1 lg:grid-cols-2">
 
-                        {/* Info Side */}
-                        <div className="p-12 md:p-16 lg:p-24 bg-black text-white flex flex-col justify-center relative overflow-hidden">
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#024ad8]/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
-                            <div className="relative z-10 space-y-8 mb-16">
-                                <h2 className="text-5xl font-extrabold tracking-tight uppercase leading-tight">Professional <span className="text-[#024ad8]">Support</span> Gateway</h2>
-                                <p className="text-gray-400 text-[11px] font-bold uppercase tracking-[0.15em] max-w-md leading-relaxed">
-                                    Strategic printer solutions managed from our administrative center in Blaine, Minnesota.
+                        {/* Info Side — Black */}
+                        <div className="p-8 sm:p-12 lg:p-16 bg-black text-white flex flex-col justify-center relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-[#024ad8]/10 rounded-full blur-3xl -mr-24 -mt-24"></div>
+                            <div className="relative z-10 space-y-5 mb-10 sm:mb-12">
+                                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                                    Get in <span className="text-[#024ad8]">Touch</span> With Us
+                                </h2>
+                                <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                                    We're here to help with any questions about printer solutions, orders, or service.
+                                    Reach out from our administrative center in Blaine, Minnesota.
                                 </p>
-                                <div className="w-20 h-1.5 bg-[#024ad8] rounded-sm"></div>
+                                <div className="w-16 h-1 bg-[#024ad8] rounded-sm"></div>
                             </div>
 
-                            <div className="relative z-10 space-y-10">
-                                <div className="flex items-center gap-8 group">
-                                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8] shadow-lg">
-                                        <Mail size={22} className="text-[#024ad8] group-hover:text-white transition-colors" />
+                            <div className="relative z-10 space-y-6 sm:space-y-8">
+                                <div className="flex items-start gap-5 group">
+                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8]">
+                                        <Mail size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
                                     </div>
-                                    <div>
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.15em] mb-1.5">Communications</p>
-                                        <p className="text-base font-bold uppercase tracking-wider text-[#024ad8]">support@innovationdynamicsgroup.com</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-8 group">
-                                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8] shadow-lg">
-                                        <Phone size={22} className="text-[#024ad8] group-hover:text-white transition-colors" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.15em] mb-1.5">Direct Line</p>
-                                        <p className="text-base font-bold uppercase tracking-wider">+1 (651) 815-4630</p>
+                                    <div className="min-w-0">
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Email</p>
+                                        <p className="text-sm font-semibold text-[#024ad8] break-all leading-snug">support@innovationdynamicsgroup.com</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-8 group">
-                                    <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8] shadow-lg">
-                                        <Clock size={22} className="text-[#024ad8] group-hover:text-white transition-colors" />
+                                <div className="flex items-start gap-5 group">
+                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8]">
+                                        <Phone size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.15em] mb-1.5">Operational Window</p>
-                                        <p className="text-base font-bold uppercase tracking-wider text-gray-300">Mon-Fri / 09:00 - 18:00</p>
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Phone</p>
+                                        <p className="text-sm font-semibold text-white">+1 (651) 815-4630</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start gap-5 group">
+                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8]">
+                                        <Clock size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Business Hours</p>
+                                        <p className="text-sm font-semibold text-gray-300">Mon–Fri, 9:00 AM – 6:00 PM</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Address Side */}
-                        <div className="p-12 md:p-16 lg:p-24 flex flex-col justify-center items-center text-center bg-white relative">
-                            <div className="w-24 h-24 bg-gray-50 border border-gray-100 rounded-sm flex items-center justify-center mb-10 shadow-xl group hover:border-[#024ad8] transition-all">
-                                <MapPin className="text-[#024ad8]" size={40} />
+                        <div className="p-8 sm:p-12 lg:p-16 flex flex-col justify-center items-center text-center bg-white relative">
+                            <div className="w-18 h-18 sm:w-24 sm:h-24 bg-gray-50 border border-gray-100 rounded-sm flex items-center justify-center mb-6 sm:mb-8 shadow-lg">
+                                <MapPin className="text-[#024ad8]" size={32} />
                             </div>
 
-                            <h3 className="text-2xl font-extrabold text-black mb-4 uppercase tracking-tight">Strategic Hub</h3>
-                            <p className="text-[10px] font-bold text-gray-400 mb-10 uppercase tracking-[0.15em]">Innovation Dynamics Group LLC</p>
+                            <h3 className="text-xl sm:text-2xl font-bold text-black mb-2">Our Location</h3>
+                            <p className="text-xs font-medium text-gray-400 mb-6">Innovation Dynamics Group LLC</p>
 
-                            <div className="text-xl font-extrabold text-black space-y-1 mb-12 uppercase tracking-tight">
+                            <div className="text-lg sm:text-xl font-bold text-black space-y-1 mb-8">
                                 <p>11397 Quincy St NE</p>
                                 <p className="text-[#024ad8]">Blaine, MN 55434</p>
                             </div>
 
-                            <div className="pt-12 border-t border-gray-100 w-full max-w-sm">
-                                <p className="text-[11px] font-bold text-gray-300 uppercase tracking-[0.1em] leading-relaxed italic">
-                                    "Bringing High-Performance Printing Solutions to North America's Professional Sector."
+                            <div className="pt-6 border-t border-gray-100 w-full max-w-sm">
+                                <p className="text-xs text-gray-400 leading-relaxed italic">
+                                    "Bringing high-performance printing solutions to North America's professional sector."
                                 </p>
                             </div>
                         </div>

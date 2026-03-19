@@ -19,37 +19,42 @@ const getImageUrl = (product) => {
 const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
     const imageUrl = getImageUrl(product);
     return (
-        <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full relative rounded-sm overflow-hidden">
-            <div className="relative aspect-[4/3] p-6 flex items-center justify-center bg-gray-50/50 overflow-hidden group-hover:bg-white transition-colors duration-500">
+        <div
+            className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 relative rounded-sm overflow-hidden flex flex-row sm:flex-col h-full"
+        >
+            {/* Image area */}
+            <div className="relative flex-shrink-0 w-32 sm:w-auto sm:aspect-[4/3] sm:flex flex-col items-center justify-center bg-gray-50/50 overflow-hidden group-hover:bg-white transition-colors duration-500 aspect-square">
                 <img
                     src={imageUrl}
                     alt={product.title}
-                    className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-1000"
+                    className="w-full h-full object-contain p-4 sm:p-6 transform group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => { e.target.src = 'https://placehold.co/400x300?text=No+Image'; }}
                 />
                 {product.countInStock === 0 && (
-                    <div className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-4 py-1.5 uppercase tracking-wider rounded-bl-sm">Sold Out</div>
+                    <div className="absolute top-0 right-0 bg-red-600 text-white text-[9px] font-bold px-2 py-1 uppercase tracking-wider">Sold Out</div>
                 )}
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-3">
+                {/* Hover overlay buttons — only on sm+ */}
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden sm:flex items-center justify-center gap-2">
                     <button
-                        className={`p-3 shadow-lg transition-all transform hover:scale-110 rounded-sm ${isWishlisted ? 'bg-red-50 text-red-500' : 'bg-white text-gray-900 hover:bg-[#024ad8] hover:text-white'}`}
+                        className={`p-2.5 shadow-lg transition-all transform hover:scale-110 rounded-sm ${isWishlisted ? 'bg-red-50 text-red-500' : 'bg-white text-gray-900 hover:bg-[#024ad8] hover:text-white'}`}
                         title="Wishlist"
                         onClick={(e) => { e.stopPropagation(); onWishlist(product); }}
                     >
-                        <Heart size={18} fill={isWishlisted ? 'currentColor' : 'none'} />
+                        <Heart size={16} fill={isWishlisted ? 'currentColor' : 'none'} />
                     </button>
                     <button
-                        className="p-3 bg-white text-gray-900 shadow-lg hover:bg-[#024ad8] hover:text-white transition-all transform hover:scale-110 rounded-sm"
+                        className="p-2.5 bg-white text-gray-900 shadow-lg hover:bg-[#024ad8] hover:text-white transition-all transform hover:scale-110 rounded-sm"
                         title="View Details"
                         onClick={() => onDetails(product)}
                     >
-                        <Eye size={18} />
+                        <Eye size={16} />
                     </button>
                 </div>
             </div>
 
-            <div className="p-6 flex flex-col flex-1 border-t border-gray-50">
-                <div className="flex justify-between items-start mb-2">
+            {/* Content area */}
+            <div className="p-4 sm:p-6 flex flex-col flex-1 sm:border-t border-l sm:border-l-0 border-gray-50 min-w-0">
+                <div className="flex justify-between items-start mb-1">
                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{product.brand || 'HP'}</span>
                     <div className="flex text-[#024ad8] text-[10px]">
                         {'★'.repeat(Math.min(5, Math.max(0, Math.round(product.rating || 0))))}
@@ -57,25 +62,25 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
                     </div>
                 </div>
                 <h3
-                    className="text-sm font-extrabold text-black mb-3 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2 uppercase tracking-tight"
+                    className="text-sm font-bold text-black mb-2 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2"
                     onClick={() => onDetails(product)}
                 >
                     {product.title || 'HP Printer'}
                 </h3>
-                <p className="text-xs text-gray-500 mb-6 line-clamp-2 flex-grow font-medium leading-relaxed">{product.description || 'Professional printing solution for your needs.'}</p>
-                
-                <div className="mt-auto pt-6 flex items-center justify-between border-t border-gray-100">
+                <p className="text-xs text-gray-400 mb-3 line-clamp-2 flex-grow leading-relaxed hidden sm:block">{product.description || 'Professional printing solution for your needs.'}</p>
+
+                <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100">
                     <div className="flex flex-col">
                         {Number(product.oldPrice) > 0 && (
                             <span className="text-[10px] text-gray-400 line-through font-bold">${Number(product.oldPrice).toFixed(2)}</span>
                         )}
-                        <span className="text-xl font-black text-black tracking-tighter">${Number(product.price || 0).toFixed(2)}</span>
+                        <span className="text-base sm:text-lg font-black text-black tracking-tight">${Number(product.price || 0).toFixed(2)}</span>
                     </div>
                     <button
                         onClick={() => onDetails(product)}
-                        className="px-6 py-2.5 bg-[#024ad8] text-white text-[11px] font-bold uppercase tracking-wider hover:bg-[#0133a1] transition-all duration-300 flex items-center gap-2 rounded-sm shadow-sm"
+                        className="px-3 sm:px-5 py-2 bg-[#024ad8] text-white text-[10px] font-bold uppercase tracking-wider hover:bg-[#0133a1] transition-all duration-300 flex items-center gap-1.5 rounded-sm shadow-sm"
                     >
-                        <ShoppingBag size={14} /> Details
+                        <ShoppingBag size={13} /> Details
                     </button>
                 </div>
             </div>
@@ -179,12 +184,12 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
     return (
         <>
             {/* Toolbar */}
-            <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between bg-white p-6 border-b-4 border-black shadow-2xl shadow-gray-100">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-12 items-stretch md:items-center justify-between bg-white p-4 md:p-6 border-b-4 border-black shadow-2xl shadow-gray-100">
                 <div className="w-full md:w-1/2 relative">
                     <input
                         type="text" placeholder={`ENTER SEARCH PARAMETERS...`} value={search}
                         onChange={e => setSearch(e.target.value)}
-                        className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-[0.1em] focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all placeholder:text-gray-300"
+                        className="w-full pl-12 pr-4 py-3 md:py-4 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-[0.1em] focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all placeholder:text-gray-300"
                     />
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,22 +197,22 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
                         </svg>
                     </div>
                 </div>
-                <div className="flex items-center gap-4 w-full md:w-auto">
-                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">Sort Configuration:</span>
+                <div className="flex items-center gap-3 md:gap-4 w-full md:w-auto">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">Sort:</span>
                     <select value={sortBy} onChange={e => setSortBy(e.target.value)}
-                        className="py-4 px-6 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-wider focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all cursor-pointer">
-                        <option value="featured">Featured Priority</option>
-                        <option value="price-low">Economic Tier (Low-High)</option>
-                        <option value="price-high">Premium Tier (High-Low)</option>
-                        <option value="rating">Performance Rating</option>
+                        className="flex-1 md:flex-none py-3 md:py-4 px-4 md:px-6 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-wider focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all cursor-pointer">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
                     </select>
                 </div>
             </div>
             
-            <div className="flex items-center gap-4 mb-10">
+            <div className="flex items-center gap-4 mb-8">
                 <div className="h-0.5 flex-grow bg-gray-100"></div>
-                <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.15em] whitespace-nowrap">
-                    Data Output: <span className="text-[#024ad8]">{sorted.length}</span> Identified Models
+                <p className="text-gray-400 text-xs font-medium whitespace-nowrap">
+                    <span className="text-[#024ad8] font-bold">{sorted.length}</span> products found
                 </p>
                 <div className="h-0.5 flex-grow bg-gray-100"></div>
             </div>
@@ -217,13 +222,13 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
                     <div className="animate-spin rounded-sm h-12 w-12 border-4 border-[#024ad8] border-t-transparent shadow-xl" />
                 </div>
             ) : sorted.length === 0 ? (
-                <div className="text-center py-32 bg-gray-50/50 rounded-sm border-2 border-dashed border-gray-100">
-                    <X size={48} className="text-gray-200 mx-auto mb-6" />
-                    <h3 className="text-2xl font-extrabold text-black mb-3 uppercase tracking-tight">Null Result Set</h3>
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">No operational models match your current filtering criteria.</p>
+                <div className="text-center py-28 bg-gray-50 rounded-sm border border-dashed border-gray-200">
+                    <X size={40} className="text-gray-300 mx-auto mb-4" />
+                    <h3 className="text-xl font-bold text-black mb-2">No Products Found</h3>
+                    <p className="text-sm text-gray-400">Try adjusting your search or filter to find what you're looking for.</p>
                 </div>
             ) : (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                     {sorted.map(p => (
                         <ProductCard 
                             key={p._id || Math.random()} 
@@ -300,16 +305,16 @@ const Printers = () => {
 
     return (
         <div className="bg-white min-h-screen font-sans text-black">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
                 {/* ── Header ─────────────────────────────────────────────── */}
-                <div className="text-center mb-16">
+                <div className="text-center mb-10 md:mb-16">
                     <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024ad8] mb-4 block">Official Catalog</span>
-                    <h1 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-black uppercase leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6 tracking-tight text-black uppercase leading-tight">
                         {globalSearch ? `Search: "${globalSearch}"` : (activeCatName ? `HP ${activeCatName}` : 'Reliable Printing Solutions')}
                     </h1>
                     <div className="w-16 h-1 bg-[#024ad8] mx-auto" />
-                    <p className="text-gray-500 mt-6 text-lg max-w-2xl mx-auto font-medium">
+                    <p className="text-gray-500 mt-4 md:mt-6 text-base md:text-lg max-w-2xl mx-auto font-medium">
                         {globalSearch
                             ? `Showing filtered search results from our professional HP inventory.`
                             : (activeCatName
@@ -319,10 +324,10 @@ const Printers = () => {
 
                     {/* Category tabs: Sharp & Professional */}
                     {allCategories.length > 0 && (
-                        <div className="flex flex-wrap justify-center gap-3 mt-12 overflow-x-auto pb-4">
+                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 md:mt-12 pb-2">
                             <button
                                 onClick={() => navigate('/shop')}
-                                className={`px-8 py-3 text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${!catSlug ? 'bg-black text-white border-black shadow-lg shadow-black/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
+                                className={`px-4 sm:px-8 py-2 sm:py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${!catSlug ? 'bg-black text-white border-black shadow-lg shadow-black/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
                             >
                                 All Models
                             </button>
@@ -330,7 +335,7 @@ const Printers = () => {
                                 <button
                                     key={cat._id}
                                     onClick={() => navigate(`/shop/${cat.slug}`)}
-                                    className={`px-8 py-3 text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${catSlug === cat.slug ? 'bg-[#024ad8] text-white border-[#024ad8] shadow-lg shadow-[#024ad8]/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
+                                    className={`px-4 sm:px-8 py-2 sm:py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${catSlug === cat.slug ? 'bg-[#024ad8] text-white border-[#024ad8] shadow-lg shadow-[#024ad8]/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
                                 >
                                     {cat.name}
                                 </button>

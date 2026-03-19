@@ -21,7 +21,8 @@ const Footer = () => {
                         </a>
                         <p className="text-gray-500 text-[11px] leading-relaxed font-bold uppercase tracking-[0.05em]">
                             <span className="text-[#024ad8] block mb-2 tracking-[0.1em]">Printing Essentials Only.</span> 
-                            Shop high-quality printers, ink, and toner designed for professional results and dependable performance.
+This website operates as an independent retailer of printers and printing solutions.
+We are a member of the HP Amplify Partner Program. All trademarks, brand names, and logos belong to their respective owners and are used for identification purposes only.
                         </p>
                     </div>
 
@@ -59,7 +60,7 @@ const Footer = () => {
                             </li>
                             <li className="flex items-center gap-4">
                                 <Mail size={16} className="text-[#024ad8] flex-shrink-0" />
-                                <span className="lowercase">support@innovationdynamicsgroup.com</span>
+                                <span className="lowercase break-all">support@innovationdynamicsgroup.com</span>
                             </li>
                             <li className="flex items-center gap-4">
                                 <Phone size={16} className="text-[#024ad8] flex-shrink-0" />
@@ -78,7 +79,7 @@ const Footer = () => {
                         </p>
                     </div>
                     <div className="flex items-center gap-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg" alt="Visa" className="h-6 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" />
+                        {/* <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg" alt="Visa" className="h-6 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity" /> */}
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg" alt="MasterCard" className="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
                         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express" className="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Discover_Card_logo.svg" alt="Discover" className="h-6 object-contain opacity-70 hover:opacity-100 transition-opacity" />

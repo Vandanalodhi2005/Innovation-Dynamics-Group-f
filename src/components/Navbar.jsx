@@ -242,15 +242,15 @@ const Navbar = () => {
                             <>
                                 <div className="w-full flex items-center justify-between">
                                     <Link to="/profile" onClick={toggleMenu} className="flex items-center gap-2">
-                                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-primary-blue font-bold">
+                                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">
                                             {user.name.charAt(0)}
                                         </div>
                                         <div>
-                                            <p className="text-sm font-bold text-gray-900">{user.name}</p>
-                                            <p className="text-xs text-gray-500">View Profile</p>
+                                            <p className="text-sm font-bold text-white">{user.name}</p>
+                                            <p className="text-xs text-white/60">View Profile</p>
                                         </div>
                                     </Link>
-                                    <button onClick={handleLogout} className="text-red-600 hover:bg-red-50 p-2 rounded-full">
+                                    <button onClick={handleLogout} className="text-red-300 hover:bg-red-500/20 p-2 rounded-full">
                                         <LogOut size={20} />
                                     </button>
                                 </div>

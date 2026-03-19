@@ -26,44 +26,41 @@ const Wishlist = () => {
                     initial={{ scale: 0.5, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="w-32 h-32 bg-[#F8F9FA] rounded-sm flex items-center justify-center mb-10 border border-gray-100 shadow-sm"
+                    className="w-24 h-24 bg-[#F8F9FA] rounded-sm flex items-center justify-center mb-8 border border-gray-100 shadow-sm"
                 >
-                    <Heart size={64} className="text-[#024ad8]" />
+                    <Heart size={40} className="text-[#024ad8]" />
                 </motion.div>
-                <h2 className="text-4xl font-extrabold mb-4 uppercase tracking-tight text-black text-center">Saved Asset Manifest Empty</h2>
-                <p className="text-gray-400 mb-12 text-center max-w-sm text-[10px] font-bold uppercase tracking-[0.3em] leading-relaxed">System scan reveals no high-priority items currently staged for future procurement.</p>
+                <h2 className="text-2xl font-bold mb-3 text-black text-center">Your wishlist is empty</h2>
+                <p className="text-gray-400 mb-8 text-center max-w-sm text-sm leading-relaxed">Save items you love and come back to them anytime.</p>
                 <Link
                     to="/shop"
-                    className="px-12 py-5 bg-black text-white font-extrabold rounded-sm hover:bg-[#024ad8] transition-all flex items-center gap-4 text-[11px] uppercase tracking-[0.4em] shadow-2xl shadow-black/10 transform hover:-translate-y-1"
+                    className="px-8 py-3.5 bg-[#024ad8] text-white font-bold rounded-sm hover:bg-[#0133a1] transition-all flex items-center gap-3 text-sm shadow-lg"
                 >
-                    Consult Catalog <ArrowRight size={22} />
+                    Browse Products <ArrowRight size={16} />
                 </Link>
             </div>
         );
     }
 
     return (
-        <div className="bg-[#F8F9FA] min-h-screen py-32">
+        <div className="bg-[#F8F9FA] min-h-screen py-24 sm:py-28">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-                    <div className="flex-1">
-                        <div className="flex items-end gap-6 mb-4">
-                            <h1 className="text-5xl font-extrabold uppercase tracking-tight text-black">Asset <span className="text-[#024ad8]">Wishlist</span></h1>
-                            <div className="h-1 flex-1 bg-black mb-2 opacity-5"></div>
-                        </div>
-                        <p className="text-[#024ad8] text-[11px] font-extrabold uppercase tracking-[0.4em] bg-blue-50 px-4 py-2 rounded-sm border border-blue-100 inline-block">QUANTITY: {wishlist.length}</p>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+                    <div className="flex items-center gap-4">
+                        <h1 className="text-2xl sm:text-3xl font-bold text-black">My <span className="text-[#024ad8]">Wishlist</span></h1>
+                        <span className="text-xs font-bold text-[#024ad8] bg-blue-50 px-3 py-1.5 rounded-sm border border-blue-100">{wishlist.length} {wishlist.length === 1 ? 'item' : 'items'}</span>
                     </div>
                     <Link
                         to="/shop"
-                        className="flex items-center gap-3 text-black text-[11px] font-extrabold uppercase tracking-[.3em] hover:text-[#024ad8] transition-all pb-2 border-b-2 border-black/5 hover:border-[#024ad8]"
+                        className="flex items-center gap-2 text-gray-500 text-sm font-medium hover:text-[#024ad8] transition-all"
                     >
-                        Return to Procurement <ArrowRight size={18} />
+                        Continue Shopping <ArrowRight size={16} />
                     </Link>
                 </div>
 
                 <motion.div
                     layout
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
                     <AnimatePresence mode='popLayout'>
                         {wishlist.map((product) => (
@@ -95,12 +92,12 @@ const Wishlist = () => {
                                     />
 
                                     {/* Action Hover Overlay */}
-                                    <div className="absolute inset-x-0 bottom-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+                                    <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
                                         <button
                                             onClick={() => handleDetails(product)}
-                                            className="w-full bg-black text-white py-5 rounded-sm font-extrabold shadow-2xl hover:bg-[#024ad8] transition-all flex items-center justify-center gap-4 text-[11px] uppercase tracking-[0.4em]"
+                                            className="w-full bg-black text-white py-3.5 rounded-sm font-bold shadow-lg hover:bg-[#024ad8] transition-all flex items-center justify-center gap-3 text-sm"
                                         >
-                                            <Eye size={18} /> Protocol View
+                                            <Eye size={16} /> View Details
                                         </button>
                                     </div>
                                 </div>
@@ -116,7 +113,7 @@ const Wishlist = () => {
                                     </div>
 
                                     <h3
-                                        className="text-lg font-extrabold text-black mb-6 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2 uppercase tracking-tight"
+                                        className="text-sm font-bold text-black mb-4 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2"
                                         onClick={() => handleDetails(product)}
                                     >
                                         {product.title || product.name}
@@ -124,11 +121,11 @@ const Wishlist = () => {
 
                                     <div className="mt-auto pt-6 flex items-center justify-between border-t border-gray-50">
                                         <div className="flex flex-col">
-                                            <span className="text-2xl font-extrabold text-[#024ad8] tracking-tighter">${(product.price || 0).toFixed(2)}</span>
+                                            <span className="text-xl font-bold text-[#024ad8]">${(product.price || 0).toFixed(2)}</span>
                                             {product.countInStock > 0 ? (
-                                                <span className="text-[9px] text-green-600 font-extrabold uppercase tracking-[0.2em] mt-1">Operational</span>
+                                                <span className="text-xs text-green-600 font-medium mt-0.5">In Stock</span>
                                             ) : (
-                                                <span className="text-[9px] text-red-500 font-extrabold uppercase tracking-[0.2em] mt-1">Out of Cycle</span>
+                                                <span className="text-xs text-red-500 font-medium mt-0.5">Out of Stock</span>
                                             )}
                                         </div>
 
@@ -147,32 +144,32 @@ const Wishlist = () => {
                 </motion.div>
 
                 {/* Features Section */}
-                <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-gray-100 pt-20">
-                    <div className="flex items-start gap-6 group">
-                        <div className="p-5 bg-white rounded-sm shadow-xl border border-gray-50 group-hover:bg-[#024ad8] transition-colors duration-500 group-hover:text-white">
-                            <Heart size={28} />
+                <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-gray-100 pt-12">
+                    <div className="flex items-start gap-5">
+                        <div className="p-4 bg-white rounded-sm shadow-sm border border-gray-100 text-[#024ad8] flex-shrink-0">
+                            <Heart size={22} />
                         </div>
                         <div>
-                            <h4 className="font-extrabold text-black mb-2 uppercase tracking-tight">Preserve Assets</h4>
-                            <p className="text-gray-400 text-[11px] font-bold uppercase tracking-widest leading-relaxed">Systematically monitor preferred technology for strategic acquisition timing.</p>
+                            <h4 className="font-bold text-black mb-1 text-sm">Save for Later</h4>
+                            <p className="text-gray-400 text-sm leading-relaxed">Keep track of products you love and revisit them whenever you're ready.</p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-6 group">
-                        <div className="p-5 bg-white rounded-sm shadow-xl border border-gray-50 group-hover:bg-[#024ad8] transition-colors duration-500 group-hover:text-white">
-                            <ShoppingBag size={28} />
+                    <div className="flex items-start gap-5">
+                        <div className="p-4 bg-white rounded-sm shadow-sm border border-gray-100 text-[#024ad8] flex-shrink-0">
+                            <ShoppingBag size={22} />
                         </div>
                         <div>
-                            <h4 className="font-extrabold text-black mb-2 uppercase tracking-tight">Rapid Transfer</h4>
-                            <p className="text-gray-400 text-[11px] font-bold uppercase tracking-widest leading-relaxed">Direct synchronization between saved preferences and procurement pipeline.</p>
+                            <h4 className="font-bold text-black mb-1 text-sm">Quick Add to Cart</h4>
+                            <p className="text-gray-400 text-sm leading-relaxed">Move wishlist items directly into your cart with one click.</p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-6 group">
-                        <div className="p-5 bg-white rounded-sm shadow-xl border border-gray-50 group-hover:bg-[#024ad8] transition-colors duration-500 group-hover:text-white">
-                            <Star size={28} />
+                    <div className="flex items-start gap-5">
+                        <div className="p-4 bg-white rounded-sm shadow-sm border border-gray-100 text-[#024ad8] flex-shrink-0">
+                            <Star size={22} />
                         </div>
                         <div>
-                            <h4 className="font-extrabold text-black mb-2 uppercase tracking-tight">Curated Tier</h4>
-                            <p className="text-gray-400 text-[11px] font-bold uppercase tracking-widest leading-relaxed">Exclusive access to premium-grade equipment vetted for professional endurance.</p>
+                            <h4 className="font-bold text-black mb-1 text-sm">Top Rated Products</h4>
+                            <p className="text-gray-400 text-sm leading-relaxed">Discover and save highly rated HP printers and accessories.</p>
                         </div>
                     </div>
                 </div>

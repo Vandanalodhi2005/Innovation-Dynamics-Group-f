@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { saveShippingAddress } from '../redux/actions/cartActions';
 import axios from 'axios';
-import { Loader2, Truck, CreditCard, ChevronRight, Lock, Package, CheckCircle } from 'lucide-react';
+import { Loader2, Truck, CreditCard, ChevronRight, Lock, AlertCircle } from 'lucide-react';
+import { CART_CLEAR_ITEMS } from '../redux/constants/cartConstants';
 
 const Checkout = () => {
     const dispatch = useDispatch();
@@ -32,8 +33,8 @@ const Checkout = () => {
     const [clover, setClover] = useState(null);
 
     // Style configuration
-    const inputStyle = "w-full px-5 py-4 bg-white border border-gray-100 rounded-sm focus:border-[#024ad8] outline-none transition-all text-black placeholder:text-gray-300 font-medium text-sm shadow-sm";
-    const labelStyle = "block text-[10px] font-extrabold text-gray-400 mb-2 uppercase tracking-[0.3em]";
+    const inputStyle = "w-full px-4 py-3.5 bg-white border border-gray-200 rounded-sm focus:border-[#024ad8] outline-none transition-all text-black placeholder:text-gray-300 font-medium text-sm";
+    const labelStyle = "block text-xs font-semibold text-gray-500 mb-1.5";
 
     useEffect(() => {
         if (cartItems.length === 0) {
@@ -103,25 +104,12 @@ const Checkout = () => {
                 { headers: { Authorization: `Bearer ${userInfo.token}` } }
             );
 
-            // Filter rates by allowed EasyPost account IDs
-            const allowedAccounts = [
-                'ca_e3cbd16a6eb84914985d90875a6ec074', // Canada Post
-                'ca_76d0939dc1ce4c99870bbc2844d8d02b', // FedEx
-                'ca_c5f03a14c10d4fbab837e8a35b01c7df', // UPS
-                'ca_b82a2962176446d09a48bc649977f467',  // USPS
-                'ca_fb3ad562209b4e7d930bd0f31f44f2fe'   // DHL Express
-            ];
-            const filteredRates = Array.isArray(data)
-                ? data.filter(rate => allowedAccounts.includes(rate.carrier_account_id))
-                : [];
-
-            setShippingRates(filteredRates);
-            if (filteredRates.length > 0) {
-                // Auto-select the cheapest option by default
-                const sortedRates = [...filteredRates].sort((a, b) => parseFloat(a.rate) - parseFloat(b.rate));
+            setShippingRates(Array.isArray(data) ? data : []);
+            if (Array.isArray(data) && data.length > 0) {
+                const sortedRates = [...data].sort((a, b) => parseFloat(a.rate) - parseFloat(b.rate));
                 setSelectedRate(sortedRates[0]);
             } else {
-                setShippingError("No shipping rates found for this address.");
+                setShippingError("We couldn't find any shipping options for this address. Please verify your address and try again.");
             }
         } catch (error) {
             console.error(error);
@@ -173,21 +161,37 @@ const Checkout = () => {
                 { headers: { Authorization: `Bearer ${userInfo.token}` } }
             );
 
-            await axios.post(
-                `${import.meta.env.VITE_API_URL}/orders/clover/pay`,
-                {
-                    amount: totalPrice,
-                    orderId: createdOrder._id,
-                    source: result.token
-                },
-                { headers: { Authorization: `Bearer ${userInfo.token}` } }
-            );
-
-            navigate('/orders');
+            // Try to pay
+            try {
+                await axios.post(
+                    `${import.meta.env.VITE_API_URL}/orders/clover/pay`,
+                    {
+                        amount: totalPrice,
+                        orderId: createdOrder._id,
+                        source: result.token
+                    },
+                    { headers: { Authorization: `Bearer ${userInfo.token}` } }
+                );
+                
+                // Payment Success
+                dispatch({ type: CART_CLEAR_ITEMS });
+                localStorage.removeItem('cartItems');
+                navigate(`/order/${createdOrder._id}?success=true`);
+                
+            } catch (payErr) {
+                console.error("Payment Step Failed:", payErr);
+                // The order is created but payment failed
+                // Redirect to order page so they can try again with the 'Pay Now' button
+                alert('Your order was placed successfully, but the payment could not be processed. You can complete your payment on the Order Details page.');
+                
+                dispatch({ type: CART_CLEAR_ITEMS });
+                localStorage.removeItem('cartItems');
+                navigate(`/order/${createdOrder._id}`);
+            }
 
         } catch (error) {
-            console.error(error);
-            alert(error.response?.data?.message || 'Payment failed. Please try again.');
+            console.error("Order Creation Failed:", error);
+            alert(error.response?.data?.message || 'Failed to place order. Please try again or check your connection.');
         } finally {
             setLoading(false);
         }
@@ -196,69 +200,78 @@ const Checkout = () => {
     if (cartItems.length === 0) return null;
 
     return (
-        <div className="min-h-screen bg-[#F8F9FA] py-24 sm:py-32">
+        <div className="min-h-screen bg-[#F8F9FA] py-24 sm:py-28">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                <div className="mb-12 lg:mb-20">
-                    <h1 className="text-4xl lg:text-5xl font-extrabold text-black uppercase tracking-tight">Procurement <span className="text-[#024ad8]">Finalization</span></h1>
-                    <div className="mt-8 flex items-center gap-6 text-[11px] font-extrabold uppercase tracking-[0.4em]">
-                        <span className={step >= 1 ? "text-[#024ad8] bg-blue-50 px-4 py-2 border border-blue-100 rounded-sm" : "text-gray-300 px-4 py-2"}>01. Logistics</span>
-                        <ChevronRight size={14} className="text-gray-300" />
-                        <span className={step >= 2 ? "text-[#024ad8] bg-blue-50 px-4 py-2 border border-blue-100 rounded-sm" : "text-gray-300 px-4 py-2"}>02. Financial</span>
+                {/* Page Header */}
+                <div className="mb-8 md:mb-12">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-black">
+                        Checkout
+                    </h1>
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium">
+                        <span className={step >= 1 ? "text-[#024ad8] bg-blue-50 px-3 py-1.5 border border-blue-100 rounded-sm" : "text-gray-300 px-3 py-1.5"}>
+                            1. Shipping
+                        </span>
+                        <ChevronRight size={16} className="text-gray-300" />
+                        <span className={step >= 2 ? "text-[#024ad8] bg-blue-50 px-3 py-1.5 border border-blue-100 rounded-sm" : "text-gray-300 px-3 py-1.5"}>
+                            2. Payment
+                        </span>
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
-                    {/* Sidebar */}
+                    {/* Sidebar – Order Summary */}
                     <div className="lg:col-span-5 lg:order-last">
-                        <div className="bg-white rounded-sm shadow-2xl border-t-8 border-black p-10 lg:sticky lg:top-32">
-                            <h3 className="text-[12px] font-extrabold text-black mb-10 uppercase tracking-[0.5em]">Manifest Summary</h3>
+                        <div className="bg-white rounded-sm shadow-xl border-t-4 border-black p-7 lg:sticky lg:top-28">
+                            <h3 className="text-sm font-bold text-black mb-6">Order Summary</h3>
 
-                            <div className="space-y-6 mb-10 max-h-96 overflow-y-auto pr-4 custom-scrollbar">
+                            <div className="space-y-4 mb-6 max-h-80 overflow-y-auto pr-2">
                                 {cartItems.map((item, i) => (
-                                    <div key={i} className="flex gap-6 pb-6 border-b border-gray-50 last:border-0 group">
-                                        <div className="h-20 w-20 bg-[#F8F9FA] rounded-sm border border-gray-50 p-2 flex-shrink-0 group-hover:bg-white transition-colors">
+                                    <div key={i} className="flex gap-4 pb-4 border-b border-gray-50 last:border-0">
+                                        <div className="h-16 w-16 bg-[#F8F9FA] rounded-sm border border-gray-100 p-2 flex-shrink-0">
                                             <img
                                                 src={item.image ? (item.image.startsWith('http') ? item.image : `${import.meta.env.VITE_API_URL?.replace('/api', '') || ''}${item.image}`) : "https://placehold.co/100"}
                                                 alt={item.title}
-                                                className="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110"
+                                                className="w-full h-full object-contain mix-blend-multiply"
                                             />
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-xs font-extrabold text-black uppercase tracking-tight line-clamp-2 leading-snug group-hover:text-[#024ad8] transition-colors">{item.title}</p>
-                                            <p className="text-[9px] text-[#024ad8] font-bold mt-2 uppercase tracking-[0.2em] bg-blue-50/50 px-2 py-0.5 rounded-sm inline-block">QTY: {item.qty}</p>
+                                            <p className="text-sm font-semibold text-black line-clamp-2 leading-snug">{item.title}</p>
+                                            <p className="text-xs text-[#024ad8] font-medium mt-1">Qty: {item.qty}</p>
                                         </div>
-                                        <div className="text-right">
-                                            <p className="text-sm font-extrabold text-black tracking-tight">${(item.price * item.qty).toFixed(2)}</p>
+                                        <div className="text-right flex-shrink-0">
+                                            <p className="text-sm font-bold text-black">${(item.price * item.qty).toFixed(2)}</p>
                                         </div>
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="space-y-4 pt-8 border-t border-gray-100">
-                                <div className="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
-                                    <span>Subtotal (Net)</span>
-                                    <span className="text-black font-extrabold">${subtotal.toFixed(2)}</span>
+                            <div className="space-y-3 pt-5 border-t border-gray-100">
+                                <div className="flex justify-between text-sm text-gray-500">
+                                    <span>Subtotal</span>
+                                    <span className="text-black font-semibold">${subtotal.toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
-                                    <span>Logistics Quote</span>
-                                    <span className={shippingPrice === 0 ? "text-[#024ad8]" : "text-black font-extrabold"}>{shippingPrice === 0 ? 'PENDING CALCULATION' : `$${shippingPrice.toFixed(2)}`}</span>
+                                <div className="flex justify-between text-sm text-gray-500">
+                                    <span>Shipping</span>
+                                    <span className={shippingPrice === 0 ? "text-[#024ad8] font-medium text-xs" : "text-black font-semibold"}>
+                                        {shippingPrice === 0 ? 'Calculated at next step' : `$${shippingPrice.toFixed(2)}`}
+                                    </span>
                                 </div>
-                                <div className="flex justify-between text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
-                                    <span>Est. Surcharge (15%)</span>
-                                    <span className="text-black font-extrabold">${taxPrice.toFixed(2)}</span>
+                                <div className="flex justify-between text-sm text-gray-500">
+                                    <span>Tax (15%)</span>
+                                    <span className="text-black font-semibold">${taxPrice.toFixed(2)}</span>
                                 </div>
                             </div>
 
-                            <div className="flex justify-between items-end mt-10 pt-10 border-t border-gray-100">
-                                <span className="text-[10px] font-extrabold text-black uppercase tracking-[0.4em] mb-1">Total Payable</span>
-                                <span className="text-3xl font-extrabold text-[#024ad8] tracking-tight">${totalPrice.toFixed(2)}</span>
+                            <div className="flex justify-between items-center mt-5 pt-5 border-t border-gray-100">
+                                <span className="text-sm font-semibold text-black">Total</span>
+                                <span className="text-2xl font-bold text-[#024ad8]">${totalPrice.toFixed(2)}</span>
                             </div>
-                            
-                            <div className="mt-8 pt-8 border-t border-gray-50 flex items-center gap-3 text-gray-300">
-                                <Lock size={14} />
-                                <span className="text-[8px] font-extrabold uppercase tracking-[.4em]">Encrypted Financial Pipeline Active</span>
+
+                            <div className="mt-5 pt-5 border-t border-gray-50 flex items-center gap-2 text-gray-400">
+                                <Lock size={13} />
+                                <span className="text-xs">256-bit SSL encrypted checkout</span>
                             </div>
                         </div>
                     </div>
@@ -266,62 +279,62 @@ const Checkout = () => {
                     {/* Main Content */}
                     <div className="lg:col-span-7">
                         {step === 1 ? (
-                            <div className="bg-white rounded-sm shadow-sm border border-gray-50 p-10 sm:p-12">
-                                <div className="flex items-center gap-6 mb-12">
-                                    <div className="p-4 bg-[#F8F9FA] text-[#024ad8] rounded-sm shadow-sm">
-                                        <Truck size={32} />
+                            <div className="bg-white rounded-sm shadow-sm border border-gray-100 p-7 sm:p-10">
+                                <div className="flex items-center gap-4 mb-8">
+                                    <div className="p-3 bg-[#F8F9FA] text-[#024ad8] rounded-sm">
+                                        <Truck size={24} />
                                     </div>
-                                    <h2 className="text-2xl font-extrabold text-black uppercase tracking-tight">Logistics Destination</h2>
+                                    <h2 className="text-xl font-bold text-black">Shipping Address</h2>
                                 </div>
 
-                                <form onSubmit={calculateShipping} className="space-y-8">
-                                    <div className="space-y-2">
-                                        <label className={labelStyle}>Street Address (Required)</label>
+                                <form onSubmit={calculateShipping} className="space-y-5">
+                                    <div>
+                                        <label className={labelStyle}>Street Address</label>
                                         <input
                                             value={address}
                                             onChange={(e) => setAddress(e.target.value)}
                                             required
-                                            placeholder="OFFICE / RESIDENCE IDENTIFIER"
+                                            placeholder="123 Main Street, Apt 4B"
                                             className={inputStyle}
                                         />
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="space-y-2">
-                                            <label className={labelStyle}>Municipality</label>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                        <div>
+                                            <label className={labelStyle}>City</label>
                                             <input
                                                 value={city}
                                                 onChange={(e) => setCity(e.target.value)}
                                                 required
-                                                placeholder="CITY / DISTRICT"
+                                                placeholder="New York"
                                                 className={inputStyle}
                                             />
                                         </div>
-                                        <div className="space-y-2">
-                                            <label className={labelStyle}>Region / State</label>
+                                        <div>
+                                            <label className={labelStyle}>State / Province</label>
                                             <input
                                                 value={province}
                                                 onChange={(e) => setProvince(e.target.value)}
                                                 required
-                                                placeholder="STATE / PROVINCE"
+                                                placeholder="NY"
                                                 className={inputStyle}
                                             />
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        <div className="space-y-2">
-                                            <label className={labelStyle}>Postal Zone</label>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                        <div>
+                                            <label className={labelStyle}>Postal Code</label>
                                             <input
                                                 value={postalCode}
                                                 onChange={(e) => setPostalCode(e.target.value)}
                                                 required
-                                                placeholder="ZIP / POSTAL CODE"
+                                                placeholder="10001"
                                                 className={inputStyle}
                                             />
                                         </div>
-                                        <div className="space-y-2">
-                                            <label className={labelStyle}>National Identifier</label>
+                                        <div>
+                                            <label className={labelStyle}>Country</label>
                                             <input
                                                 value={country}
                                                 onChange={(e) => setCountry(e.target.value)}
@@ -332,8 +345,8 @@ const Checkout = () => {
                                         </div>
                                     </div>
 
-                                    <div className="space-y-2">
-                                        <label className={labelStyle}>Contact Frequency (Phone)</label>
+                                    <div>
+                                        <label className={labelStyle}>Phone Number</label>
                                         <input
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value)}
@@ -348,128 +361,132 @@ const Checkout = () => {
                                         <button
                                             type="submit"
                                             disabled={loadingShipping}
-                                            className="w-full mt-10 bg-black text-white py-6 rounded-sm font-extrabold hover:bg-[#024ad8] transition-all flex items-center justify-center gap-4 disabled:opacity-70 uppercase tracking-[0.4em] text-[11px] shadow-2xl shadow-black/10 transform hover:-translate-y-1"
+                                            className="w-full mt-4 bg-[#024ad8] text-white py-4 rounded-sm font-bold hover:bg-[#0133a1] transition-all flex items-center justify-center gap-3 disabled:opacity-70 text-sm shadow-lg"
                                         >
-                                            {loadingShipping ? <Loader2 className="animate-spin" size={20} /> : 'INITIALIZE LOGISTICS SCAN'}
+                                            {loadingShipping ? <><Loader2 className="animate-spin" size={18} /> Calculating rates...</> : 'Get Shipping Rates'}
                                         </button>
                                     ) : (
-                                        <div className="mt-12 pt-10 border-t border-gray-50">
-                                            <h3 className="text-[10px] font-extrabold text-gray-400 mb-8 uppercase tracking-[0.25em]">Select Protocol Method</h3>
-                                            <div className="space-y-4">
+                                        <div className="mt-6 pt-6 border-t border-gray-100">
+                                            <h3 className="text-sm font-semibold text-gray-600 mb-4">Select a Shipping Method</h3>
+                                            <div className="space-y-3">
                                                 {shippingRates.map((rate) => (
                                                     <div
                                                         key={rate.id}
                                                         onClick={() => setSelectedRate(rate)}
-                                                        className={`p-6 border-2 rounded-sm cursor-pointer flex items-center justify-between transition-all duration-500 ${selectedRate?.id === rate.id ? 'border-[#024ad8] bg-blue-50/50 shadow-xl' : 'border-gray-50 hover:border-[#024ad8]/30 bg-white'}`}
+                                                        className={`p-4 border-2 rounded-sm cursor-pointer flex items-center justify-between transition-all ${selectedRate?.id === rate.id ? 'border-[#024ad8] bg-blue-50/50' : 'border-gray-100 hover:border-[#024ad8]/30 bg-white'}`}
                                                     >
-                                                        <div className="flex items-center gap-6">
-                                                            <div className={`w-6 h-6 rounded-sm border-2 flex items-center justify-center transition-colors ${selectedRate?.id === rate.id ? 'border-[#024ad8] bg-[#024ad8]' : 'border-gray-200'}`}>
-                                                                {selectedRate?.id === rate.id && <div className="w-2 h-2 rounded-sm bg-white" />}
+                                                        <div className="flex items-center gap-4">
+                                                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${selectedRate?.id === rate.id ? 'border-[#024ad8] bg-[#024ad8]' : 'border-gray-300'}`}>
+                                                                {selectedRate?.id === rate.id && <div className="w-2 h-2 rounded-full bg-white" />}
                                                             </div>
                                                             <div>
-                                                                <p className="font-extrabold text-sm text-black uppercase tracking-tight leading-tight">{rate.service}</p>
-                                                                <p className="text-[9px] text-[#024ad8] font-bold mt-1 uppercase tracking-widest">{rate.carrier} • {rate.est_delivery_days ? `${rate.est_delivery_days} BUSINESS DAYS` : 'STANDARD FREIGHT'}</p>
+                                                                <p className="font-semibold text-sm text-black">{rate.service}</p>
+                                                                <p className="text-xs text-gray-400 mt-0.5">{rate.carrier} • {rate.est_delivery_days ? `${rate.est_delivery_days} business days` : 'Standard delivery'}</p>
                                                             </div>
                                                         </div>
-                                                        <span className="font-extrabold text-lg text-black tracking-tighter">${parseFloat(rate.rate).toFixed(2)}</span>
+                                                        <span className="font-bold text-base text-black">${parseFloat(rate.rate).toFixed(2)}</span>
                                                     </div>
                                                 ))}
                                             </div>
 
-                                            <div className="flex flex-col sm:flex-row gap-6 mt-12">
+                                            <div className="flex flex-col sm:flex-row gap-3 mt-6">
                                                 <button
                                                     type="button"
                                                     onClick={() => setShippingRates([])}
-                                                    className="px-8 py-5 border-2 border-gray-100 rounded-sm text-gray-400 font-extrabold text-[10px] uppercase tracking-[0.3em] hover:border-black hover:text-black transition-all"
+                                                    className="px-6 py-3 border border-gray-200 rounded-sm text-gray-500 font-medium text-sm hover:border-black hover:text-black transition-all"
                                                 >
-                                                    REVOKE ADDRESS
+                                                    Change Address
                                                 </button>
                                                 <button
                                                     type="button"
                                                     onClick={submitShippingHandler}
-                                                    className="flex-1 bg-black text-white py-5 rounded-sm font-extrabold text-[11px] uppercase tracking-[0.4em] hover:bg-[#024ad8] transition-all flex items-center justify-center gap-4 shadow-2xl shadow-black/10 transform hover:-translate-y-1"
+                                                    className="flex-1 bg-black text-white py-3 rounded-sm font-bold text-sm hover:bg-[#024ad8] transition-all flex items-center justify-center gap-3 shadow-lg"
                                                 >
-                                                    VALIDATE LOGISTICS & PROCEED <ChevronRight size={18} />
+                                                    Continue to Payment <ChevronRight size={16} />
                                                 </button>
                                             </div>
                                         </div>
                                     )}
+
                                     {shippingError && (
-                                        <div className="p-6 mt-6 bg-red-50 text-red-600 rounded-sm border border-red-100 text-[10px] font-extrabold uppercase tracking-widest leading-relaxed">
-                                            ERROR: {shippingError}
+                                        <div className="p-4 mt-4 bg-red-50 text-red-600 rounded-sm border border-red-100 text-sm">
+                                            {shippingError}
                                         </div>
                                     )}
                                 </form>
                             </div>
                         ) : (
-                            <div className="bg-white rounded-sm shadow-sm border border-gray-50 p-10 sm:p-12">
-                                <div className="flex items-center justify-between mb-12">
-                                    <div className="flex items-center gap-6">
-                                        <div className="p-4 bg-[#F8F9FA] text-[#024ad8] rounded-sm shadow-sm">
-                                            <CreditCard size={32} />
+                            <div className="bg-white rounded-sm shadow-sm border border-gray-100 p-7 sm:p-10">
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-3 bg-[#F8F9FA] text-[#024ad8] rounded-sm">
+                                            <CreditCard size={24} />
                                         </div>
-                                        <h2 className="text-2xl font-extrabold text-black uppercase tracking-tight">Financial Pipeline</h2>
+                                        <h2 className="text-xl font-bold text-black">Payment Details</h2>
                                     </div>
-                                    <button onClick={() => setStep(1)} className="text-[10px] text-[#024ad8] hover:text-black font-extrabold uppercase tracking-[.3em] transition-all border-b border-[#024ad8] hover:border-black">
-                                        ADJUST LOGISTICS
+                                    <button
+                                        onClick={() => setStep(1)}
+                                        className="text-sm text-[#024ad8] hover:text-black font-medium transition-all hover:underline"
+                                    >
+                                        Edit Shipping
                                     </button>
                                 </div>
 
-                                <div className="space-y-10">
-                                    <div className="p-8 bg-[#F8F9FA] rounded-sm border border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
+                                <div className="space-y-6">
+                                    <div className="p-5 bg-[#F8F9FA] rounded-sm border border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                                         <div>
-                                            <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-[0.3em] mb-2">Aggregate Authorization</p>
-                                            <p className="text-4xl font-extrabold text-black tracking-tighter">${totalPrice.toFixed(2)}</p>
+                                            <p className="text-xs text-gray-400 font-medium mb-1">Amount Due</p>
+                                            <p className="text-3xl font-bold text-black">${totalPrice.toFixed(2)}</p>
                                         </div>
-                                        <div className="text-right">
-                                            <p className="text-[9px] text-[#024ad8] font-bold uppercase tracking-[0.2em] bg-white px-4 py-2 rounded-sm border border-gray-100 shadow-sm leading-relaxed">
-                                                PROTOCOL: {selectedRate ? `${selectedRate.carrier} ${selectedRate.service}` : 'STANDARD'}
+                                        <div>
+                                            <p className="text-xs text-gray-500 bg-white px-3 py-2 rounded-sm border border-gray-100 shadow-sm">
+                                                {selectedRate ? `${selectedRate.carrier} — ${selectedRate.service}` : 'Standard shipping'}
                                             </p>
                                         </div>
                                     </div>
 
-                                    <div className="space-y-8">
-                                        <div className="space-y-2">
-                                            <label className={labelStyle}>Primary Asset Key (Card Number)</label>
-                                            <div className="w-full px-5 py-4 bg-white border border-gray-100 rounded-sm focus-within:border-[#024ad8] transition-all shadow-sm">
+                                    <div className="space-y-5">
+                                        <div>
+                                            <label className={labelStyle}>Card Number</label>
+                                            <div className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-sm focus-within:border-[#024ad8] transition-all">
                                                 <div id="card-number" className="h-6"></div>
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                            <div className="space-y-2">
-                                                <label className={labelStyle}>Temporal Validation (Expiry)</label>
-                                                <div className="w-full px-5 py-4 bg-white border border-gray-100 rounded-sm focus-within:border-[#024ad8] transition-all shadow-sm">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                            <div>
+                                                <label className={labelStyle}>Expiry Date</label>
+                                                <div className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-sm focus-within:border-[#024ad8] transition-all">
                                                     <div id="card-date" className="h-6"></div>
                                                 </div>
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className={labelStyle}>Security Coefficient (CVV)</label>
-                                                <div className="w-full px-5 py-4 bg-white border border-gray-100 rounded-sm focus-within:border-[#024ad8] transition-all shadow-sm">
+                                            <div>
+                                                <label className={labelStyle}>CVV</label>
+                                                <div className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-sm focus-within:border-[#024ad8] transition-all">
                                                     <div id="card-cvv" className="h-6"></div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div className="space-y-2">
-                                            <label className={labelStyle}>Authentication Zip Code</label>
-                                            <div className="w-full px-5 py-4 bg-white border border-gray-100 rounded-sm focus-within:border-[#024ad8] transition-all shadow-sm">
+                                        <div>
+                                            <label className={labelStyle}>Billing Zip Code</label>
+                                            <div className="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-sm focus-within:border-[#024ad8] transition-all">
                                                 <div id="card-postal-code" className="h-6"></div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="flex items-center gap-3 text-[9px] text-gray-300 font-extrabold uppercase tracking-[0.4em] bg-[#F8F9FA] p-4 rounded-sm border border-gray-50">
-                                        <Lock size={12} className="text-[#024ad8]" />
-                                        <span>Full End-to-End Encryption Sequence Active (AES-256)</span>
+                                    <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 p-3 rounded-sm border border-gray-100">
+                                        <Lock size={12} className="text-[#024ad8] flex-shrink-0" />
+                                        <span>Your payment info is encrypted and never stored on our servers.</span>
                                     </div>
 
                                     <button
                                         onClick={initPayment}
                                         disabled={loading}
-                                        className="w-full bg-[#024ad8] text-white py-6 rounded-sm font-extrabold text-[11px] uppercase tracking-[0.4em] hover:bg-black transition-all flex items-center justify-center gap-4 mt-10 disabled:opacity-70 disabled:cursor-not-allowed shadow-2xl shadow-[#024ad8]/20 transform hover:-translate-y-1"
+                                        className="w-full bg-[#024ad8] text-white py-4 rounded-sm font-bold text-sm hover:bg-black transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg"
                                     >
-                                        {loading ? <Loader2 className="animate-spin" size={20} /> : 'AUTHORIZE PROCUREMENT & COMPLETE'}
+                                        {loading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : 'Place Order & Pay'}
                                     </button>
                                 </div>
                             </div>
