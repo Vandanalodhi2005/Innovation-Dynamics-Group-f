@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Info, CheckCircle2 } from 'lucide-react';
-import contactImage from '../../public/images/contact.jpg';
+import axios from 'axios';
+import { Mail, Phone, MapPin, Send, Clock, Info, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
+import contactImage from '../../public/images/contact.jpg'; 
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -9,16 +10,32 @@ const Contact = () => {
         subject: '',
         message: ''
     });
+    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message. We will get back to you shortly!');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setStatus('loading');
+        setErrorMessage('');
+        
+        try {
+            const apiURL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+            await axios.post(`${apiURL}/contact`, formData);
+            
+            setStatus('success');
+            setFormData({ name: '', email: '', subject: '', message: '' });
+            
+            // Auto-reset success message after 5 seconds
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus('error');
+            setErrorMessage(error.response?.data?.message || 'Failed to send message. Please try again later.');
+        }
     };
 
     return (
@@ -31,6 +48,9 @@ const Contact = () => {
                         src={contactImage}
                         alt="Contact Support"
                         className="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
+                        onError={(e) => {
+                            e.target.src = "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&q=80&w=1920";
+                        }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent"></div>
                 </div>
@@ -73,6 +93,20 @@ const Contact = () => {
                                 Fill out the form below and we'll get back to you as soon as possible.
                             </p>
 
+                            {status === 'success' && (
+                                <div className="mb-8 p-4 bg-green-50 border border-green-100 rounded-sm flex items-center gap-4 text-green-700 font-medium text-sm animate-in fade-in slide-in-from-top-4">
+                                    <CheckCircle2 size={20} className="flex-shrink-0" />
+                                    Your message has been sent successfully. We'll get back to you soon!
+                                </div>
+                            )}
+
+                            {status === 'error' && (
+                                <div className="mb-8 p-4 bg-red-50 border border-red-100 rounded-sm flex items-center gap-4 text-red-700 font-medium text-sm animate-in fade-in slide-in-from-top-4">
+                                    <AlertCircle size={20} className="flex-shrink-0" />
+                                    {errorMessage}
+                                </div>
+                            )}
+
                             <form onSubmit={handleSubmit} className="space-y-5">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div>
@@ -105,6 +139,7 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         name="subject"
+                                        required
                                         value={formData.subject}
                                         onChange={handleChange}
                                         className="w-full px-4 py-3.5 rounded-sm border border-gray-200 focus:border-[#024ad8] outline-none transition-all bg-gray-50/50 text-sm font-medium placeholder:text-gray-300"
@@ -116,6 +151,7 @@ const Contact = () => {
                                     <textarea
                                         name="message"
                                         rows="5"
+                                        required
                                         value={formData.message}
                                         onChange={handleChange}
                                         className="w-full px-4 py-3.5 rounded-sm border border-gray-200 focus:border-[#024ad8] outline-none transition-all bg-gray-50/50 text-sm font-medium placeholder:text-gray-300 resize-none"
@@ -124,9 +160,14 @@ const Contact = () => {
                                 </div>
                                 <button
                                     type="submit"
-                                    className="w-full bg-black hover:bg-[#024ad8] text-white font-bold py-4 rounded-sm shadow-lg transition-all text-sm tracking-wide hover:-translate-y-0.5"
+                                    disabled={status === 'loading'}
+                                    className="w-full bg-black hover:bg-[#024ad8] text-white font-bold py-4 rounded-sm shadow-lg transition-all text-sm tracking-wide hover:-translate-y-0.5 disabled:opacity-50 flex items-center justify-center gap-3"
                                 >
-                                    Send Message
+                                    {status === 'loading' ? (
+                                        <><Loader2 className="animate-spin" size={18} /> Sending...</>
+                                    ) : (
+                                        <>Send Message</>
+                                    )}
                                 </button>
                             </form>
                         </div>
