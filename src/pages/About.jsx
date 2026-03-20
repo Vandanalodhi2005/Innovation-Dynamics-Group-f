@@ -1,10 +1,5 @@
 import React from 'react';
 import { Target, ShieldCheck, Printer, Users, ArrowRight, CheckCircle, Sparkles, Award, Eye, Lock, Zap } from 'lucide-react';
-import aboutHero from '../../public/about/hero.jpg';
-import aboutWho from '../../public/about/whoWeAre.jpg';
-import aboutOffer from '../../public/about/WhatWeOffer.jpg';
-import hpBadge from '../../public/hero/hero-right.png';
-
 const About = () => {
     return (
         <div className="bg-white text-black">
@@ -12,7 +7,7 @@ const About = () => {
             <div className="relative bg-black text-white py-32 md:py-44 overflow-hidden border-b-4 border-[#024ad8]">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={aboutHero}
+                        src="/about/hero.jpg"
                         alt="About Us Background"
                         className="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
                     />
@@ -43,7 +38,7 @@ const About = () => {
                         <div className="relative group">
                             <div className="rounded-sm overflow-hidden shadow-xl border border-gray-100">
                                 <img
-                                    src={aboutWho}
+                                    src="/about/whoWeAre.jpg"
                                     alt="Our Approach"
                                     className="w-full h-[520px] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                                 />
@@ -91,7 +86,7 @@ const About = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                     <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
                         <div className="flex-shrink-0">
-                            <img src={hpBadge} alt="HP Partner" className="h-24 md:h-32 w-auto object-contain" />
+                            <img src="/hero/hero-right.png" alt="HP Partner" className="h-24 md:h-32 w-auto object-contain" />
                         </div>
                         <div className="text-center md:text-left">
                             <h3 className="text-xl font-bold text-black mb-3">HP Amplify Partner Program</h3>
@@ -191,7 +186,7 @@ const About = () => {
                         <div className="relative group">
                             <div className="rounded-sm overflow-hidden shadow-xl border border-gray-100">
                                 <img
-                                    src={aboutOffer}
+                                    src="/about/WhatWeOffer.jpg"
                                     alt="What We Offer"
                                     className="w-full h-[480px] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                                 />
@@ -208,7 +203,7 @@ const About = () => {
                         <div className="relative group order-2 lg:order-1">
                             <div className="rounded-sm overflow-hidden shadow-xl border border-gray-100">
                                 <img
-                                    src={aboutWho}
+                                    src="/about/whoWeAre.jpg"
                                     alt="Trust and Transparency"
                                     className="w-full h-[480px] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
                                 />

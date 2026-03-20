@@ -1,6 +1,5 @@
 import React from "react";
 import { Truck, MapPin, Clock, Package, Search, AlertCircle } from "lucide-react";
-import shipping from '../../public/images/shipping.jpg';
 
 const sections = [
   {
@@ -82,7 +81,7 @@ const ShippingPolicy = () => {
       <div className="relative bg-black text-white py-20 sm:py-28 overflow-hidden border-b-4 border-[#024ad8]">
         <div className="absolute inset-0 z-0">
           <img
-            src={shipping}
+            src="/images/shipping.jpg"
             alt="Shipping and Delivery"
             className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
           />

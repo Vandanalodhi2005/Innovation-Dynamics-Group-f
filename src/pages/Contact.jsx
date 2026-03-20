@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Mail, Phone, MapPin, Send, Clock, Info, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
-import contactImage from '../../public/images/contact.jpg'; 
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -45,7 +44,7 @@ const Contact = () => {
             <div className="relative bg-black text-white py-32 md:py-44 overflow-hidden border-b-4 border-[#024ad8]">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={contactImage}
+                        src="/images/contact.jpg"
                         alt="Contact Support"
                         className="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
                         onError={(e) => {

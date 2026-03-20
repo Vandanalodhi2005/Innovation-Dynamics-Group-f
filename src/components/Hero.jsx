@@ -1,48 +1,41 @@
 import React from 'react';
 import { ArrowRight, Printer, Briefcase, Zap, Palette, Droplet, Activity, Check, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import homeImage from "../../public/homeImage/img1.jpg";
-import officeImage from "../../public/homeImage/img2.jpg";
-import inkjetImage from "../../public/homeImage/img3.jpg";
-import laserImage from "../../public/homeImage/img4.jpg";
-import inkImage from "../../public/homeImage/img5.jpg";
-import heroRightImage from "../../public/hero/hero-right.png";
-
 const Hero = () => {
     const categories = [
         {
             title: "Home Printers",
             description: "Perfect for families, students, and everyday household printing needs. Compact, efficient, and designed for regular home use.",
             icon: <Printer size={24} className="text-white" />,
-            image: homeImage,
+            image: "/homeImage/img1.jpg",
             link: "/shop/home-printers"
         },
         {
             title: "Office Printers",
             description: "Ideal for small businesses and workspaces needing consistent, high-volume output. Reliable, durable, and built for productivity.",
             icon: <Briefcase size={24} className="text-white" />,
-            image: officeImage,
+            image: "/homeImage/img2.jpg",
             link: "/shop/office-printers"
         },
         {
             title: "Inkjet Printers",
             description: "Best for color documents, photos, and creative printing. Smooth color output and versatile media compatibility.",
             icon: <Palette size={24} className="text-white" />,
-            image: inkjetImage,
+            image: "/homeImage/img3.jpg",
             link: "/shop/inkjet-printers"
         },
         {
             title: "Laser Printers",
             description: "Great for fast, high-volume black & white or color printing. Cost-efficient and optimized for busy work environments.",
             icon: <Zap size={24} className="text-white" />,
-            image: laserImage,
+            image: "/homeImage/img4.jpg",
             link: "/shop/laser-printers"
         },
         {
             title: "Ink & Toner",
             description: "A wide selection of genuine and compatible ink cartridges and high-quality toner options, including standard and high-yield versions.",
             icon: <Droplet size={24} className="text-white" />,
-            image: inkImage,
+            image: "/homeImage/img5.jpg",
             link: "/shop/ink-toner"
         }
     ];
@@ -112,7 +105,7 @@ const Hero = () => {
                             <div className="relative z-10 bg-white p-4 sm:p-6 md:p-10 rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden group">
                                 <div className="relative aspect-[4/3] overflow-hidden bg-[#FDFDFD]">
                                     <img
-                                        src={heroRightImage}
+                                        src="/hero/hero-right.png"
                                         alt="Modern Printing Solutions"
                                         className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-1000"
                                     />

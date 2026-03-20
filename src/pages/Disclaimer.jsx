@@ -1,6 +1,5 @@
 import React from "react";
 import { ShieldAlert, Info, ExternalLink, Scale, Mail, Phone, MapPin, AlertCircle, FileText, Layout } from "lucide-react";
-import disclaimerImage from '../../public/images/desclaimer.jpg';
 
 const Disclaimer = () => {
   const sections = [
@@ -19,7 +18,7 @@ const Disclaimer = () => {
       <div className="relative bg-black text-white py-20 sm:py-28 overflow-hidden border-b-4 border-[#024ad8]">
         <div className="absolute inset-0 z-0">
           <img
-            src={disclaimerImage}
+            src="/images/desclaimer.jpg"
             alt="Disclaimer Background"
             className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
           />

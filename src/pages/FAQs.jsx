@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Plus, Minus, HelpCircle, Info } from 'lucide-react';
-import faq from '../../public/images/faq-hero.jpg';
 
 const FAQs = () => {
     const [openIndex, setOpenIndex] = useState(0);
@@ -67,7 +66,7 @@ const FAQs = () => {
             <div className="relative bg-black text-white py-32 md:py-44 overflow-hidden border-b-4 border-[#024ad8]">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={faq}
+                        src="/images/faq-hero.jpg"
                         alt="FAQs Background"
                         className="w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
                     />
@@ -139,7 +138,7 @@ const FAQs = () => {
                 <div className="absolute top-0 left-0 w-96 h-96 bg-[#024ad8]/5 rounded-full blur-[100px] -ml-48 -mt-48"></div>
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="flex gap-5 items-start">
-                        <Info className="text-[#024ad8] flex-shrink-0 mt-1" size={22} />
+                        <HelpCircle className="text-[#024ad8] flex-shrink-0 mt-1" size={22} />
                         <div>
                             <h3 className="text-sm font-bold mb-3 text-white">Important Notice</h3>
                             <p className="text-sm text-gray-400 font-medium leading-relaxed">

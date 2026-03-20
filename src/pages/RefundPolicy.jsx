@@ -1,6 +1,5 @@
 import React from "react";
 import { RotateCcw } from "lucide-react";
-import refund from '../../public/images/return.jpg';
 
 const RefundPolicy = () => {
   return (
@@ -12,7 +11,7 @@ const RefundPolicy = () => {
         {/* New Professional Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src={refund}
+            src="/images/return.jpg"
             alt="Refund Policy Legal Background"
             className="w-full h-full object-cover opacity-70 grayscale hover:grayscale-0 transition-all duration-1000"
           />
