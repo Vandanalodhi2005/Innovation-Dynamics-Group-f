@@ -9,10 +9,12 @@ import api from '../utils/api';
 // Build image URL from product
 const getImageUrl = (product) => {
     if (!product.images || product.images.length === 0)
-        return 'https://placehold.co/400x300?text=No+Image';
+        return 'https://placehold.co/600x600?text=No+Image';
     const img = product.images[0];
     if (img.startsWith('http')) return img;
-    return `${import.meta.env.VITE_API_URL.replace('/api', '')}${img}`;
+    const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
+    const path = img.startsWith('/') ? img : `/${img}`;
+    return `${baseUrl}${path}`;
 };
 
 // ── Product Card ─────────────────────────────────────────────────────────────

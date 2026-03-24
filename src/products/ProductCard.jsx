@@ -30,11 +30,20 @@ const ProductCard = ({ product }) => {
     navigate('/cart?redirect=shipping');
   };
 
-  const imageUrl = product.image
-    ? (product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL.replace('/api', '')}${product.image}`)
-    : (product.images && product.images.length > 0
-      ? (product.images[0].startsWith('http') ? product.images[0] : `${import.meta.env.VITE_API_URL.replace('/api', '')}${product.images[0]}`)
-      : printerImg);
+  const getFullUrl = (img) => {
+    
+    
+    if (!img) return printerImg;
+    if (img.startsWith('https')) return img;
+    const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
+    const path = img.startsWith('/') ? img : `/${img}`;
+    return `${baseUrl}${path}`;
+ 
+  };
+
+  const imageUrl = product.image 
+    ? getFullUrl(product.image) 
+    : (product.images && product.images.length > 0 ? getFullUrl(product.images[0]) : printerImg);
 
   const price = typeof product.price === 'number' ? product.price.toFixed(2) : product.price;
 

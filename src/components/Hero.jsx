@@ -5,35 +5,35 @@ const Hero = () => {
     const categories = [
         {
             title: "Home Printers",
-            description: "Perfect for families, students, and everyday household printing needs. Compact, efficient, and designed for regular home use.",
+            description: "Compact and easy-to-use printers suitable for everyday tasks such as documents, schoolwork, and personal use.",
             icon: <Printer size={24} className="text-white" />,
             image: "/homeImage/img1.jpg",
             link: "/shop/home-printers"
         },
         {
             title: "Office Printers",
-            description: "Ideal for small businesses and workspaces needing consistent, high-volume output. Reliable, durable, and built for productivity.",
+            description: "Reliable and efficient printers built for productivity, ideal for business environments and regular document workflows.",
             icon: <Briefcase size={24} className="text-white" />,
             image: "/homeImage/img2.jpg",
             link: "/shop/office-printers"
         },
         {
             title: "Inkjet Printers",
-            description: "Best for color documents, photos, and creative printing. Smooth color output and versatile media compatibility.",
+            description: "Designed for high-quality color printing, making them suitable for photos, graphics, and detailed output.",
             icon: <Palette size={24} className="text-white" />,
             image: "/homeImage/img3.jpg",
             link: "/shop/inkjet-printers"
         },
         {
             title: "Laser Printers",
-            description: "Great for fast, high-volume black & white or color printing. Cost-efficient and optimized for busy work environments.",
+            description: "Fast and cost-efficient printing solutions for high-volume tasks and professional document handling.",
             icon: <Zap size={24} className="text-white" />,
             image: "/homeImage/img4.jpg",
             link: "/shop/laser-printers"
         },
         {
             title: "Ink & Toner",
-            description: "A wide selection of genuine and compatible ink cartridges and high-quality toner options, including standard and high-yield versions.",
+            description: "A range of compatible ink and toner supplies to support consistent print quality and long-term usage.",
             icon: <Droplet size={24} className="text-white" />,
             image: "/homeImage/img5.jpg",
             link: "/shop/ink-toner"
@@ -56,26 +56,25 @@ const Hero = () => {
                                     </span>
                                 </div>
                                 
-                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] text-black tracking-tight">
-                                    Smart Printing Solutions <br/>
-                                    for Every Need
+                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold leading-[1.1] text-black tracking-tight">
+                                    An Independent <br/> eCommerce Retailer
                                 </h1>
                                 
-                                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 leading-tight">
-                                    Reliable Printers for Home, Office, and Business Use
-                                </h2>
-                                
                                 <p className="text-base md:text-lg text-gray-600 leading-relaxed font-normal">
-                                    Explore a carefully selected range of printers designed to deliver performance, reliability, and ease of use. Whether you need a compact device for everyday tasks or high-efficiency for business, finding the right solution is straightforward.
+                                    Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
+                                </p>
+                                
+                                <p className="text-sm md:text-base text-gray-500 leading-relaxed">
+                                    Serving customers across the United States and Canada, the platform supports both individual users and businesses with reliable printing solutions and a structured online shopping experience.
                                 </p>
                             </div>
 
                             {/* HP-Style Minimalist Bullets */}
                             <div className="space-y-3 pt-4 border-t border-gray-200">
                                 {[
-                                    "Wide range of trusted printer models",
-                                    "Clear product details for informed decisions",
-                                    "Secure and user-friendly shopping experience"
+                                    "Free shipping on orders over $299 across USA & Canada",
+                                    "Manufacturer warranty on all products",
+                                    "Support for both business and home customers"
                                 ].map((text, i) => (
                                     <div key={i} className="flex items-start gap-3">
                                         <div className="mt-1.5 flex-shrink-0 w-2 h-2 rounded-full bg-[#024ad8]"></div>
@@ -136,10 +135,10 @@ const Hero = () => {
             <div className="py-16 md:py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-extrabold text-black uppercase tracking-tight mb-4">Explore Printing Categories</h2>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold text-black uppercase tracking-tight mb-4">What We Sell</h2>
                         <div className="w-16 h-1 bg-[#024ad8] mx-auto mb-6"></div>
-                        <p className="text-gray-500 font-medium text-sm sm:text-base">
-                            We make it easy to find the right printer by organizing our catalog into clear, professional categories.
+                        <p className="text-gray-500 font-medium text-sm sm:text-base leading-relaxed">
+                            We offer a focused selection of printers and essential printing supplies designed to meet the needs of both home users and business environments. Our product range is carefully organized to help you find the right solution.
                         </p>
                     </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import WhyChooseUs from '../components/home/WhyChooseUs';
 import Printers from '../components/Printers';
+import WhoWeServe from '../components/home/WhoWeServe';
 import TrustSection from '../components/home/TrustSection';
 import HomeContact from '../components/home/HomeContact';
 
@@ -11,6 +12,7 @@ const Home = () => {
             <Hero />
             <WhyChooseUs />
             <Printers />
+            <WhoWeServe />
             <TrustSection />
             <HomeContact />
         </div>

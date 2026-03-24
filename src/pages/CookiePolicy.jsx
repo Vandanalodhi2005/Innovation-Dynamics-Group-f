@@ -8,7 +8,7 @@ const CookiePolicy = () => {
 
       {/* Hero Section */}
       <div className="relative bg-black text-white py-16 md:py-24 overflow-hidden">
-        
+
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
@@ -21,7 +21,7 @@ const CookiePolicy = () => {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <Cookie className="mx-auto mb-4 text-primary-blue" size={48} />
-          
+
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Cookie Policy
           </h1>
@@ -40,7 +40,7 @@ const CookiePolicy = () => {
         </p>
 
         <p className="text-sm sm:text-base">
-          This Cookie Policy explains how <strong>Innovation Dynamics Group LLC</strong> (“we,” “our,” or “us”) uses cookies and similar tracking technologies on our website. 
+          This Cookie Policy explains how <strong>Innovation Dynamics Group LLC</strong> (“we,” “our,” or “us”) uses cookies and similar tracking technologies on our website.
           By continuing to browse or use our website, you consent to the use of cookies as described in this policy.
         </p>
 

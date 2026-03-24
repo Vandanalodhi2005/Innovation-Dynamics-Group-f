@@ -93,7 +93,10 @@ const ProductDetails = () => {
     /* helpers -------------------------------------------------------------- */
     const imgUrl = (src) => {
         if (!src) return 'https://placehold.co/600x600?text=No+Image';
-        return src.startsWith('http') ? src : `${import.meta.env.VITE_API_URL.replace('/api', '')}${src}`;
+        if (src.startsWith('http')) return src;
+        const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
+        const path = src.startsWith('/') ? src : `/${src}`;
+        return `${baseUrl}${path}`;
     };
 
     const images = product?.images?.length ? product.images : [];
