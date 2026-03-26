@@ -1,66 +1,69 @@
 import React from "react";
-import { ShieldAlert, Info, ExternalLink, Scale, Mail, Phone, MapPin, AlertCircle, FileText, Layout } from "lucide-react";
+import { ShieldAlert, Info, ExternalLink, Scale, Mail, Phone, MapPin, AlertCircle, FileText, Layout, ShieldCheck, CheckCircle, Bell, Landmark } from "lucide-react";
 
 const Disclaimer = () => {
   const sections = [
-    { id: 'business',  label: 'Business Info',         icon: <Layout size={15} /> },
-    { id: 'brand',     label: 'Manufacturer & Brand',  icon: <FileText size={15} /> },
-    { id: 'product',   label: 'Product Information',   icon: <Info size={15} /> },
-    { id: 'links',     label: 'External Links',        icon: <ExternalLink size={15} /> },
-    { id: 'liability', label: 'Limitation of Liability', icon: <Scale size={15} /> },
-    { id: 'contact',   label: 'Contact Us',            icon: <Mail size={15} /> },
+    { id: 'business',  label: '1. Business Info',    icon: <Layout size={15} /> },
+    { id: 'brand',     label: '2. Brand Disclaimer',  icon: <Landmark size={15} /> },
+    { id: 'product',   label: '3. Product Info',      icon: <Info size={15} /> },
+    { id: 'links',     label: '4. External Links',    icon: <ExternalLink size={15} /> },
+    { id: 'liability', label: '5. Liability Matrix',  icon: <Scale size={15} /> },
+    { id: 'changes',   label: '6. Future Changes',    icon: <Bell size={15} /> },
+    { id: 'contact',   label: '7. Contact Info',       icon: <Mail size={15} /> },
   ];
 
   return (
-    <div className="bg-white text-black min-h-screen">
-
+    <div className="bg-white text-black min-h-screen font-sans text-left">
       {/* Hero Section */}
-      <div className="relative bg-black text-white py-20 sm:py-28 overflow-hidden border-b-4 border-[#024ad8]">
-        <div className="absolute inset-0 z-0">
+      <div className="relative bg-black text-white py-28 md:py-40 overflow-hidden border-b-4 border-[#024ad8]">
+        <div className="absolute inset-0 z-0 text-gray-100 opacity-20 transform -rotate-12 pointer-events-none text-left">
+          <ShieldAlert size={500} className="absolute -top-20 -left-20" />
+        </div>
+
+        <div className="absolute inset-0 z-0 text-left">
           <img
             src="/images/desclaimer.jpg"
-            alt="Disclaimer Background"
-            className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-1000"
+            alt="Legal Disclosure Background"
+            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <div className="max-w-2xl mx-auto sm:mx-0">
-            <div className="inline-flex items-center gap-2 text-[#024ad8] text-xs font-semibold mb-5 tracking-wide">
-              <ShieldAlert size={16} /> Legal Disclaimer
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left text-left">
+          <div className="max-w-3xl text-left">
+            <div className="inline-flex items-center gap-3 text-[#024ad8] text-[10px] font-bold mb-8 tracking-[0.3em] uppercase bg-white/5 backdrop-blur-sm px-4 py-2 rounded-sm border border-white/10 text-left">
+              <ShieldAlert size={14} /> Legal Disclosure
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 text-white leading-tight">
-              Disclaimer
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight text-white leading-tight uppercase italic text-left">
+               <br/><span className="text-[#024ad8]">Disclaimer</span>
             </h1>
-            <div className="w-12 h-1 bg-[#024ad8] mb-6"></div>
-            <p className="text-sm sm:text-base text-gray-300 font-medium leading-relaxed mb-6">
-              Important information regarding product representation, trademarks, and website usage.
+            <div className="w-16 h-1.5 bg-[#024ad8] mb-8 mx-auto md:mx-0"></div>
+            <p className="text-base md:text-lg text-gray-400 font-medium leading-relaxed mb-8 max-w-xl text-left">
+              The information provided on the website operated by Innovation Dynamics Group LLC is for general informational and commercial purposes only.
             </p>
-            <div className="flex flex-wrap gap-x-6 gap-y-1 text-gray-500 font-medium text-xs">
-              <p>Effective Date: March 17, 2026</p>
-              <p>Last Updated: March 17, 2026</p>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 text-gray-500 text-[10px] font-semibold uppercase tracking-[0.2em] text-left">
+              <p>Effective: March 25, 2026</p>
+              <p>Updated: March 25, 2026</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 text-left">
 
-          {/* Sidebar – desktop only */}
-          <div className="hidden lg:block lg:col-span-1">
-            <div className="sticky top-24 space-y-1">
-              <h3 className="text-xs font-semibold text-[#024ad8] mb-5 tracking-wide uppercase">Sections</h3>
-              <nav className="space-y-0.5">
+          {/* Sidebar Navigation - Sticky */}
+          <div className="hidden lg:block lg:col-span-1 text-left">
+            <div className="sticky top-28 space-y-6 text-left">
+              <h3 className="text-[10px] font-bold text-[#024ad8] uppercase tracking-[0.3em] mb-8 text-left">Disclosure Sections</h3>
+              <nav className="space-y-1 text-left text-left">
                 {sections.map((item) => (
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className="flex items-center gap-3 px-3 py-2.5 rounded-sm transition-all hover:bg-[#024ad8]/5 hover:text-[#024ad8] text-gray-500 font-medium text-sm group border-l-2 border-transparent hover:border-[#024ad8]"
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-sm transition-all hover:bg-[#024ad8] hover:text-white text-gray-500 font-semibold text-[13px] group border border-transparent hover:shadow-md text-left"
                   >
-                    <span className="text-gray-300 group-hover:text-[#024ad8] transition-colors flex-shrink-0">
+                    <span className="text-[#024ad8] group-hover:text-white transition-colors text-left">
                       {item.icon}
                     </span>
                     {item.label}
@@ -70,180 +73,173 @@ const Disclaimer = () => {
             </div>
           </div>
 
-          {/* Mobile section nav pills */}
-          <div className="lg:hidden col-span-1 -mx-4 px-4 overflow-x-auto">
-            <div className="flex gap-2 pb-2 min-w-max">
-              {sections.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-sm bg-gray-50 border border-gray-100 text-gray-500 text-xs font-medium whitespace-nowrap hover:bg-[#024ad8]/5 hover:text-[#024ad8] hover:border-[#024ad8]/20 transition-all"
-                >
-                  <span className="flex-shrink-0">{item.icon}</span>
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
+          {/* Main Content */}
+          <div className="lg:col-span-3 space-y-20 text-gray-600 text-left text-left">
 
-          {/* Content Area */}
-          <div className="lg:col-span-3 space-y-12 sm:space-y-16 text-gray-600">
-
-            {/* Intro Quote */}
-            <section className="text-sm sm:text-base leading-relaxed border-l-4 border-[#024ad8] pl-5 sm:pl-8 py-3 font-medium italic bg-gray-50/70">
-              <p>
-                The information provided on the website operated by Innovation Dynamics Group LLC is for general informational and commercial purposes only. By using our website, you agree to the terms outlined in this disclaimer.
+            {/* Introduction */}
+            <section className="space-y-4 border-l-4 border-[#024ad8] pl-8 py-4 bg-gray-50/50 rounded-r-sm text-left">
+              <p className="text-base leading-relaxed font-semibold italic text-left text-left">
+                By using our website, you agree to the terms outlined in this disclaimer. Innovation Dynamics Group LLC provides this info to help customers browse and acquire printing products through a convenient online platform.
               </p>
             </section>
 
-            {/* Section helper */}
-            {[
-              {
-                id: 'business',
-                num: '01',
-                title: 'Business Information',
-                content: (
-                  <p className="leading-relaxed font-medium text-sm sm:text-base">
-                    Innovation Dynamics Group LLC is an online retailer specializing in printers and printing solutions for home users, professionals, and businesses. Our website is designed to help customers browse, compare, and purchase printing products through a convenient online platform.
+            {/* Content Sections */}
+            <div className="space-y-20 text-left">
+              <section id="business" className="space-y-8 text-left">
+                <div className="flex items-center gap-5 text-left">
+                  <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md text-left">01</span>
+                  <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Business Information</h2>
+                </div>
+                <div className="p-10 bg-white border border-gray-100 shadow-xl shadow-gray-50 rounded-sm text-left">
+                  <p className="text-[15px] leading-relaxed font-semibold italic text-left">
+                    Innovation Dynamics Group LLC is an online retailer specializing in printers and printing solutions for home users, professionals, and businesses. Our platform is designed for professional product comparison and procurement.
                   </p>
-                )
-              },
-              {
-                id: 'brand',
-                num: '02',
-                title: 'Manufacturer & Brand',
-                content: (
-                  <div className="bg-[#F8F9FA] p-5 sm:p-8 rounded-sm border border-gray-100 space-y-4">
-                    <p className="leading-relaxed font-semibold text-[#024ad8] text-sm sm:text-base">
-                      Innovation Dynamics Group LLC operates as an independent retailer.
-                    </p>
-                    <p className="leading-relaxed font-medium text-sm text-gray-500">
-                      We are a member of the HP Amplify Partner Program and offer printing products from trusted manufacturers. All trademarks, brand names, logos, and product images displayed on this website belong to their respective owners and are used strictly for identification and informational purposes.
-                    </p>
-                    <div className="flex gap-3 items-start bg-white p-4 rounded-sm border border-blue-100 text-gray-500 text-sm">
-                      <AlertCircle className="text-[#024ad8] flex-shrink-0 mt-0.5" size={16} />
-                      <p>Unless otherwise stated, Innovation Dynamics Group LLC is not owned, operated, or directly affiliated with any manufacturer.</p>
-                    </div>
-                  </div>
-                )
-              },
-              {
-                id: 'product',
-                num: '03',
-                title: 'Product Information',
-                content: (
-                  <div className="space-y-4">
-                    <p className="leading-relaxed font-medium text-sm sm:text-base text-gray-500">
-                      We make reasonable efforts to ensure that product descriptions, specifications, images, and pricing information on our website are accurate.
-                    </p>
-                    <div className="p-5 sm:p-7 bg-black text-white rounded-sm border-l-4 border-[#024ad8]">
-                      <h4 className="font-bold mb-3 text-sm">Policy Notice</h4>
-                      <p className="text-sm text-gray-300 leading-relaxed">
-                        Product details may occasionally change without notice, and Innovation Dynamics Group LLC does not guarantee that all information displayed on the website is always complete, current, or free from errors.
-                      </p>
-                    </div>
-                  </div>
-                )
-              },
-              {
-                id: 'links',
-                num: '04',
-                title: 'External Links',
-                content: (
-                  <div className="flex gap-4 sm:gap-6 items-start bg-[#F8F9FA] p-5 sm:p-8 rounded-sm border border-gray-100">
-                    <ExternalLink className="text-[#024ad8] flex-shrink-0 mt-1" size={22} />
-                    <div className="space-y-3 min-w-0">
-                      <p className="leading-relaxed font-medium text-sm sm:text-base">
-                        Our website may contain links to third-party websites for additional information or services. These websites operate independently and have their own policies.
-                      </p>
-                      <p className="font-semibold text-sm text-red-600">
-                        Innovation Dynamics Group LLC is not responsible for the content, accuracy, or practices of third-party websites.
-                      </p>
-                    </div>
-                  </div>
-                )
-              },
-              {
-                id: 'liability',
-                num: '05',
-                title: 'Limitation of Liability',
-                content: (
-                  <div className="bg-white p-5 sm:p-8 rounded-sm border border-gray-100 shadow-sm">
-                    <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                      <div className="p-4 bg-[#F8F9FA] rounded-sm border border-blue-50 flex-shrink-0">
-                        <Scale size={36} className="text-[#024ad8]" />
-                      </div>
-                      <div className="space-y-4">
-                        <p className="text-gray-500 leading-relaxed font-medium text-sm sm:text-base">
-                          Innovation Dynamics Group LLC shall not be held responsible for any direct, indirect, incidental, or consequential damages resulting from the use of our website or the purchase or use of products available through our platform.
-                        </p>
-                        <p className="text-[#024ad8] font-semibold text-sm border-t border-gray-100 pt-4">
-                          Customers are responsible for reviewing product specifications and ensuring that products meet their individual requirements before making a purchase.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )
-              }
-            ].map(({ id, num, title, content }) => (
-              <section key={id} id={id} className="space-y-5 sm:space-y-6">
-                <h2 className="text-xl sm:text-2xl font-bold flex items-center gap-3 text-black">
-                  <span className="bg-[#024ad8] text-white w-9 h-9 sm:w-10 sm:h-10 rounded-sm flex items-center justify-center text-sm font-bold flex-shrink-0">
-                    {num}
-                  </span>
-                  {title}
-                </h2>
-                {content}
+                </div>
               </section>
-            ))}
 
-            {/* Contact Section */}
-            <section id="contact" className="bg-black text-white p-6 sm:p-10 rounded-sm border-t-4 border-[#024ad8]">
-              <h2 className="text-xl sm:text-2xl font-bold mb-7 flex items-center gap-3">
-                <Mail className="text-[#024ad8] flex-shrink-0" size={24} />
-                Contact & Support
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-
-                <div className="space-y-5">
-                  <div className="flex gap-4 items-start">
-                    <div className="p-3 bg-white/5 rounded-sm border border-white/10 flex-shrink-0">
-                      <Mail className="text-[#024ad8]" size={20} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-xs text-[#024ad8] font-semibold mb-1">Email</p>
-                      <p className="text-sm font-semibold break-all">support@innovationdynamicsgroup.com</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 items-start">
-                    <div className="p-3 bg-white/5 rounded-sm border border-white/10 flex-shrink-0">
-                      <Phone className="text-[#024ad8]" size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs text-[#024ad8] font-semibold mb-1">Phone</p>
-                      <p className="text-sm font-semibold">+1 (651) 815-4630</p>
-                    </div>
+              <section id="brand" className="space-y-8 text-left text-left">
+                <div className="flex items-center gap-5 text-left">
+                  <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md text-left">02</span>
+                  <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left text-left">Brand Disclaimer</h2>
+                </div>
+                <div className="bg-gray-50 p-10 rounded-sm border border-gray-100 space-y-8 text-left">
+                  <p className="leading-relaxed font-bold text-[#024ad8] text-lg uppercase italic text-left">
+                    Innovation Dynamics Group LLC operates as an independent executive retailer.
+                  </p>
+                  <p className="leading-relaxed font-semibold text-gray-500 italic text-left">
+                    We are a member of the <span className="font-black">HP Amplify Partner Program</span> and offer printing products from trusted manufacturers. All trademarks, brand names, logos, and product images displayed belong to their respective owners and are used strictly for identification purposes.
+                  </p>
+                  <div className="flex gap-4 items-start bg-white p-6 rounded-sm border-l-4 border-[#024ad8] text-gray-500 text-xs font-bold uppercase tracking-widest text-left">
+                    <AlertCircle className="text-[#024ad8] flex-shrink-0" size={18} />
+                    <p className="text-left">Unless otherwise stated, Innovation Dynamics Group LLC is not owned, operated, or directly affiliated with any manufacturer.</p>
                   </div>
                 </div>
+              </section>
 
-                <div className="flex gap-4 items-start">
-                  <div className="p-3 bg-white/5 rounded-sm border border-white/10 flex-shrink-0">
-                    <MapPin className="text-[#024ad8]" size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs text-[#024ad8] font-semibold mb-1">Our Location</p>
-                    <p className="text-sm font-semibold leading-relaxed">
-                      Innovation Dynamics Group LLC<br />
-                      11397 Quincy St NE<br />
-                      Blaine, MN 55434
+              <section id="product" className="space-y-8 text-left text-left">
+                <div className="flex items-center gap-5 text-left">
+                  <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md text-left">03</span>
+                  <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Product Information</h2>
+                </div>
+                <div className="space-y-8 text-left">
+                  <p className="leading-relaxed font-semibold italic text-gray-500 text-left">
+                    We make reasonable efforts to ensure that product descriptions, specifications, images, and pricing information on our website are accurate.
+                  </p>
+                  <div className="p-10 bg-black text-white rounded-sm border-l-4 border-[#024ad8] shadow-xl text-left">
+                    <h4 className="font-extrabold mb-4 text-sm uppercase italic text-left">Data Accuracy Notice</h4>
+                    <p className="text-sm text-gray-400 leading-relaxed font-semibold italic text-left text-left">
+                      Product details may occasionally change without notice, and Innovation Dynamics Group LLC does not guarantee that all information displayed is always complete, current, or free from errors.
                     </p>
                   </div>
                 </div>
+              </section>
 
-              </div>
-            </section>
+              <section id="links" className="space-y-8 text-left">
+                <div className="flex items-center gap-5 text-left">
+                  <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md text-left">04</span>
+                  <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">External Links</h2>
+                </div>
+                <div className="flex flex-col md:flex-row gap-10 items-center bg-gray-50 p-10 rounded-sm border border-gray-100 text-left">
+                  <ExternalLink className="text-[#024ad8] shrink-0" size={48} />
+                  <div className="space-y-4 text-left">
+                    <p className="leading-relaxed font-semibold italic text-gray-600 text-left">
+                      Our website may contain links to third-party websites for additional information or services. These websites operate independently and have their own distinct policies.
+                    </p>
+                    <p className="font-black text-xs text-[#024ad8] uppercase tracking-widest italic text-left">
+                      Innovation Dynamics Group LLC is not responsible for the content, accuracy, or practices of third-party websites.
+                    </p>
+                  </div>
+                </div>
+              </section>
 
+              <section id="liability" className="space-y-8 text-left">
+                <div className="flex items-center gap-5 text-left">
+                  <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md text-left">05</span>
+                  <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Limitation of Liability</h2>
+                </div>
+                <div className="bg-white p-10 rounded-sm border border-gray-100 shadow-xl shadow-gray-50 text-left">
+                  <div className="flex flex-col md:flex-row gap-10 items-center text-left">
+                    <div className="p-6 bg-gray-50 rounded-sm border border-[#024ad8]/10 text-left">
+                      <Scale size={48} className="text-[#024ad8]" />
+                    </div>
+                    <div className="space-y-6 text-left">
+                      <p className="text-gray-500 leading-relaxed font-semibold italic text-left text-left">
+                        Innovation Dynamics Group LLC shall not be held responsible for any direct, indirect, incidental, or consequential damages resulting from the use of our website or the purchase or use of products available through our platform.
+                      </p>
+                      <p className="text-[#024ad8] font-black text-xs uppercase tracking-[0.2em] italic border-t border-gray-100 pt-6 text-left text-left">
+                         Customers are responsible for reviewing product specifications and ensuring products meet individual requirements before purchase.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section id="changes" className="space-y-8 text-left">
+                <div className="flex items-center gap-5 text-left">
+                  <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md text-left text-left">06</span>
+                  <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Future Changes</h2>
+                </div>
+                <div className="bg-gray-50 p-10 rounded-sm border border-gray-100 text-left">
+                  <p className="text-[15px] text-gray-600 leading-relaxed font-semibold italic text-left text-left">
+                    Innovation Dynamics Group LLC reserves the right to update or modify this Disclaimer at any time. Any updates will be posted on this page with the revised date.
+                  </p>
+                </div>
+              </section>
+
+              {/* Contact Section */}
+              <section id="contact" className="bg-black text-white p-10 md:p-14 rounded-sm shadow-xl relative overflow-hidden border-t-4 border-[#024ad8] text-left">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#024ad8]/5 rounded-full blur-3xl -mr-32 -mt-32 text-left"></div>
+                <h2 className="text-3xl font-extrabold mb-10 flex items-center gap-5 uppercase italic text-left text-left">
+                  <Mail className="text-[#024ad8]" size={36} />
+                  Contact Info
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+                  <div className="space-y-10 text-left">
+                    <div className="flex gap-6 items-start group text-left">
+                      <div className="p-4 bg-white/5 rounded-sm border border-white/10 group-hover:bg-[#024ad8]/20 transition-all text-left">
+                        <Mail className="text-[#024ad8]" size={24} />
+                      </div>
+                      <div className="text-left text-left">
+                        <p className="text-[10px] text-[#024ad8] font-bold uppercase tracking-[0.3em] mb-2 text-left">Direct Communication</p>
+                        <p className="text-sm text-white font-medium text-left">support@innovationdynamicsgroup.com</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-6 items-start group text-left">
+                      <div className="p-4 bg-white/5 rounded-sm border border-white/10 group-hover:bg-[#024ad8]/20 transition-all text-left text-left">
+                        <Phone className="text-[#024ad8]" size={24} />
+                      </div>
+                      <div className="text-left text-left">
+                        <p className="text-[10px] text-[#024ad8] font-bold uppercase tracking-[0.3em] mb-2 text-left">Terminal Support</p>
+                        <p className="text-sm text-white font-bold tracking-tight italic text-left">+1 (651) 815-4630</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-6 items-start group text-left text-left">
+                    <div className="p-4 bg-white/5 rounded-sm border border-white/10 group-hover:bg-[#024ad8]/20 transition-all text-left">
+                      <MapPin className="text-[#024ad8]" size={24} />
+                    </div>
+                    <div className="text-left text-left text-left">
+                      <p className="text-[10px] text-[#024ad8] font-bold uppercase tracking-[0.3em] mb-2 text-left">Operational HQ</p>
+                      <p className="text-sm text-white leading-relaxed font-semibold italic text-left text-left">
+                        Innovation Dynamics Group LLC<br />
+                        11397 Quincy St NE<br />
+                        Blaine, MN 55434
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Footer Status */}
+      <div className="bg-gray-50 py-10 border-t border-gray-100 text-left text-left text-left text-left">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em] leading-relaxed italic text-left text-left text-left">
+            Innovation Dynamics Group LLC © 2026 • Legal Framework Active • System Secure
+          </p>
         </div>
       </div>
     </div>

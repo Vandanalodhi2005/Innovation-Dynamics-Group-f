@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, User, Search, Heart, ShoppingCart, LogOut, Truck, Printer, Users, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, User, Search, Heart, ShoppingCart, LogOut, Truck, Printer, Users, ArrowRight, Zap, Droplets } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
 import { useDispatch } from 'react-redux';
@@ -29,9 +29,14 @@ const Navbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    // Toggle Shop Dropdown (Mobile)
     const toggleShopDropdown = () => {
         setIsShopDropdownOpen(!isShopDropdownOpen);
+    };
+
+    const closeAllMenus = () => {
+        setIsMenuOpen(false);
+        setIsShopDropdownOpen(false);
+        setIsUserDropdownOpen(false);
     };
 
     // Toggle User Dropdown (Desktop)
@@ -97,59 +102,70 @@ const Navbar = () => {
                         <Link to="/" className={getLinkClasses('/')}>Home</Link>
                         <Link to="/about" className={getLinkClasses('/about')}>About Us</Link>
 
-                        {/* Dropdown Container */}
-                        <div className="relative group">
-                            <button className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 focus:outline-none relative py-2 ${window.location.pathname.startsWith('/shop') ? "text-white after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-white after:rounded-full" : 'text-white/80 hover:text-white'}`}>
-                                Shop Specialist <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-500" />
+                        <div
+                            className="relative"
+                            onMouseEnter={() => setIsShopDropdownOpen(true)}
+                            onMouseLeave={() => setIsShopDropdownOpen(false)}
+                        >
+                            <button
+                                onClick={toggleShopDropdown}
+                                className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 focus:outline-none relative py-2 ${window.location.pathname.startsWith('/shop')
+                                        ? "text-white"
+                                        : 'text-white/80 hover:text-white'
+                                    }`}
+                            >
+                                Shop
+                                <ChevronDown size={14} className={`transition-transform duration-500 ${isShopDropdownOpen ? 'rotate-180' : ''}`} />
                             </button>
 
                             {/* Dropdown Menu - Premium Wide Version */}
-                            <div className="absolute left-1/2 -translate-x-1/2 mt-5 w-72 bg-white text-black rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-500 translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
+                            <div className={`absolute left-1/2 -translate-x-1/2 mt-5 w-72 bg-white text-black rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 transition-all duration-500 z-50 overflow-hidden ${isShopDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
                                 <div className="p-4 grid grid-cols-1 gap-1">
                                     <div className="px-4 py-2 border-b border-gray-50 mb-2">
                                         <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#024ad8]/50">Managed Categories</span>
                                     </div>
-                                    <Link to="/shop/home-printers" className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+
+                                    <Link to="/shop/home-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
                                                 <Printer size={16} />
                                             </div>
-                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Home Systems</span>
+                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Home Printers</span>
                                         </div>
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </Link>
 
-                                    <Link to="/shop/office-printers" className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+                                    <Link to="/shop/office-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
                                                 <Users size={16} />
                                             </div>
-                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Enterprise Office</span>
+                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Office Printers</span>
                                         </div>
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </Link>
 
-                                    <Link to="/shop/inkjet-printers" className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+                                    <Link to="/shop/laser-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
-                                                <Truck size={16} />
+                                                <Zap size={16} />
                                             </div>
-                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Inkjet Specialist</span>
+                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Laser Printers</span>
                                         </div>
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </Link>
 
-                                    <Link to="/shop/laser-printers" className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+                                    <Link to="/shop/inkjet-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
-                                                <Search size={16} />
+                                                <Droplets size={16} />
                                             </div>
-                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Laser Precision</span>
+                                            <span className="text-[11px] font-bold uppercase tracking-widest text-gray-600 group-hover/item:text-black">Inkjet Printers</span>
                                         </div>
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </Link>
 
-                                    <Link to="/shop/ink-toner" className="mt-4 group/item flex items-center gap-4 px-4 py-4 bg-gray-900 text-white hover:bg-[#024ad8] transition-all">
+                                    <Link to="/shop/ink-toner" onClick={closeAllMenus} className="mt-4 group/item flex items-center gap-4 px-4 py-4 bg-gray-900 text-white hover:bg-[#024ad8] transition-all">
                                         <ShoppingCart size={16} className="text-[#024ad8] group-hover/item:text-white" />
                                         <div className="flex flex-col">
                                             <span className="text-[10px] font-black uppercase tracking-[0.2em] leading-none">Global Catalog</span>
@@ -214,7 +230,7 @@ const Navbar = () => {
                                     <div className="p-2 grid grid-cols-1 gap-1">
                                         <Link to="/profile" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-50 transition-colors">
                                             <User size={16} className="text-[#024ad8]" />
-                                            <span className="text-[10px] font-bold uppercase tracking-widest">Global Profile</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-widest">Profile</span>
                                         </Link>
                                         <Link to="/track-order" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-50 transition-colors">
                                             <Truck size={16} className="text-[#024ad8]" />
@@ -223,7 +239,7 @@ const Navbar = () => {
                                         <div className="h-px bg-gray-100 my-1 mx-4"></div>
                                         <button onClick={handleLogout} className="w-full flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-red-50 text-red-600 transition-colors">
                                             <LogOut size={16} />
-                                            <span className="text-[10px] font-bold uppercase tracking-widest">Terminate Session</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-widest">Logout</span>
                                         </button>
                                     </div>
                                 </div>
@@ -287,15 +303,14 @@ const Navbar = () => {
                         <button
                             onClick={toggleShopDropdown}
                             className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-white bg-white/20' : 'text-white hover:text-white/80 hover:bg-white/10'}`}
-                        >
-                            Shop <ChevronDown size={16} className={`transform transition-transform duration-300 ${isShopDropdownOpen ? 'rotate-180' : ''}`} />
+                        > Shop <ChevronDown size={16} className={`transform transition-transform duration-300 ${isShopDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
                         <div className={`pl-6 space-y-1 transition-all duration-300 overflow-hidden ${isShopDropdownOpen ? 'max-h-60' : 'max-h-0'}`}>
-                            <Link to="/shop/home-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Home Printers</Link>
-                            <Link to="/shop/office-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Office Printers</Link>
-                            <Link to="/shop/inkjet-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</Link>
-                            <Link to="/shop/laser-printers" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</Link>
-                            <Link to="/shop/ink-toner" onClick={toggleMenu} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Ink & Toner</Link>
+                            <Link to="/shop/home-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Home Printers</Link>
+                            <Link to="/shop/office-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Office Printers</Link>
+                            <Link to="/shop/laser-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</Link>
+                            <Link to="/shop/inkjet-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</Link>
+                            <Link to="/shop/ink-toner" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Ink & Toner</Link>
                         </div>
                     </div>
 

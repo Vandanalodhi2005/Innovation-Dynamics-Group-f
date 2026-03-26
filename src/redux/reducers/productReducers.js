@@ -27,7 +27,7 @@ export const productListReducer = (state = { products: [] }, action) => {
         case PRODUCT_LIST_REQUEST:
             // Keep existing products/page/pages while loading to prevent UI flicker
             return { ...state, loading: true };
-        case PRODUCT_LIST_SUCCESS:
+        case PRODUCT_LIST_SUCCESS: {
             const isArray = Array.isArray(action.payload);
             const products = isArray ? action.payload : action.payload.products;
             
@@ -38,6 +38,7 @@ export const productListReducer = (state = { products: [] }, action) => {
                 pages: isArray ? 1 : Number(action.payload.pages),
                 total: isArray ? products.length : Number(action.payload.total)
             };
+        }
         case PRODUCT_LIST_FAIL:
             return { loading: false, error: action.payload, products: [] };
         default:

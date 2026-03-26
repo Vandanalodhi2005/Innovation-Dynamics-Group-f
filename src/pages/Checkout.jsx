@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { saveShippingAddress } from '../redux/actions/cartActions';
 import axios from 'axios';
-import { Loader2, Truck, CreditCard, ChevronRight, Lock, AlertCircle } from 'lucide-react';
+import { Loader2, Truck, CreditCard, ChevronRight, Lock, AlertCircle, Check } from 'lucide-react';
 import { CART_CLEAR_ITEMS } from '../redux/constants/cartConstants';
 
 const Checkout = () => {
@@ -31,6 +31,7 @@ const Checkout = () => {
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
     const [clover, setClover] = useState(null);
+    const [agreedToTerms, setAgreedToTerms] = useState(false);
 
     // Style configuration
     const inputStyle = "w-full px-4 py-3.5 bg-white border border-gray-200 rounded-sm focus:border-[#024ad8] outline-none transition-all text-black placeholder:text-gray-300 font-medium text-sm";
@@ -476,6 +477,16 @@ const Checkout = () => {
                                         </div>
                                     </div>
 
+                                    <div className="flex items-start gap-3 p-4 bg-gray-50/50 rounded-sm border border-gray-100 group cursor-pointer hover:bg-white transition-all select-none" onClick={() => setAgreedToTerms(!agreedToTerms)}>
+                                        <div className={`mt-0.5 w-5 h-5 rounded-sm border-2 flex items-center justify-center transition-all flex-shrink-0 ${agreedToTerms ? 'border-[#024ad8] bg-[#024ad8]' : 'border-gray-200'}`}>
+                                            {agreedToTerms && <Check size={14} className="text-white" />}
+                                        </div>
+                                        <span className="text-[11px] leading-relaxed text-gray-500 font-medium tracking-tight">
+                                            By placing your order, you confirm that you have read and agree to our 
+                                            <Link to="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-1">Terms & Conditions</Link>.
+                                        </span>
+                                    </div>
+
                                     <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 p-3 rounded-sm border border-gray-100">
                                         <Lock size={12} className="text-[#024ad8] flex-shrink-0" />
                                         <span>Your payment info is encrypted and never stored on our servers.</span>
@@ -483,8 +494,8 @@ const Checkout = () => {
 
                                     <button
                                         onClick={initPayment}
-                                        disabled={loading}
-                                        className="w-full bg-[#024ad8] text-white py-4 rounded-sm font-bold text-sm hover:bg-black transition-all flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg"
+                                        disabled={loading || !agreedToTerms}
+                                        className="w-full bg-[#024ad8] text-white py-4 rounded-sm font-bold text-sm hover:bg-black transition-all flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed shadow-lg"
                                     >
                                         {loading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : 'Place Order & Pay'}
                                     </button>

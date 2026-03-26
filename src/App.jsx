@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import CookieConsent from './components/common/CookieConsent';
 
 // Utility to scroll to top on route change
 const ScrollToTopOnNavigation = () => {
@@ -111,6 +112,7 @@ function App() {
             </main>
             <Footer />
             <ScrollToTop />
+            <CookieConsent />
           </div>
         </Router>
       </ShopProvider>

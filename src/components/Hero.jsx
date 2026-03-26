@@ -2,106 +2,59 @@ import React from 'react';
 import { ArrowRight, Printer, Briefcase, Zap, Palette, Droplet, Activity, Check, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 const Hero = () => {
-    const categories = [
-        {
-            title: "Home Printers",
-            description: "Compact and easy-to-use printers suitable for everyday tasks such as documents, schoolwork, and personal use.",
-            icon: <Printer size={24} className="text-white" />,
-            image: "/homeImage/img1.jpg",
-            link: "/shop/home-printers"
-        },
-        {
-            title: "Office Printers",
-            description: "Reliable and efficient printers built for productivity, ideal for business environments and regular document workflows.",
-            icon: <Briefcase size={24} className="text-white" />,
-            image: "/homeImage/img2.jpg",
-            link: "/shop/office-printers"
-        },
-        {
-            title: "Inkjet Printers",
-            description: "Designed for high-quality color printing, making them suitable for photos, graphics, and detailed output.",
-            icon: <Palette size={24} className="text-white" />,
-            image: "/homeImage/img3.jpg",
-            link: "/shop/inkjet-printers"
-        },
-        {
-            title: "Laser Printers",
-            description: "Fast and cost-efficient printing solutions for high-volume tasks and professional document handling.",
-            icon: <Zap size={24} className="text-white" />,
-            image: "/homeImage/img4.jpg",
-            link: "/shop/laser-printers"
-        },
-        {
-            title: "Ink & Toner",
-            description: "A range of compatible ink and toner supplies to support consistent print quality and long-term usage.",
-            icon: <Droplet size={24} className="text-white" />,
-            image: "/homeImage/img5.jpg",
-            link: "/shop/ink-toner"
-        }
-    ];
+
 
     return (
         <div className="bg-white text-gray-900">
-            {/* Hero Section: Clean HP-Store Aesthetic */}
+            {/* Hero Section: Clean & Authoritative Restoration */}
             <div className="relative overflow-hidden bg-[#F8F9FA] border-b border-gray-200">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-28 relative z-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                         
-                        {/* ── Left Content: Clean & Authoritative ────────────────── */}
-                        <div className="space-y-6 md:space-y-8 max-w-xl">
-                            <div className="space-y-4 md:space-y-6">
+                        {/* ── Left Content: Refined Typography ────────────────── */}
+                        <div className="space-y-8 max-w-2xl">
+                            <div className="space-y-6">
                                 <div className="inline-block">
-                                    <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#024ad8] border-b-2 border-[#024ad8] pb-1">
-                                        Premium Printing Solutions
+                                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024ad8] border-b-2 border-[#024ad8] pb-1">
+                                        Home & Office Printers
                                     </span>
                                 </div>
                                 
-                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold leading-[1.1] text-black tracking-tight">
-                                    An Independent <br/> eCommerce Retailer
-                                </h1>
+                                <div className="space-y-4">
+                                    
+                                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-black tracking-tight">
+                                        Professional Printing Hardware <br className="hidden md:block" />
+                                        <span className="text-gray-400">for the Modern Workplace.</span>
+                                    </h2>
+                                </div>
                                 
-                                <p className="text-base md:text-lg text-gray-600 leading-relaxed font-normal">
-                                    Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
-                                </p>
-                                
-                                <p className="text-sm md:text-base text-gray-500 leading-relaxed">
-                                    Serving customers across the United States and Canada, the platform supports both individual users and businesses with reliable printing solutions and a structured online shopping experience.
+                                <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium max-w-xl">
+                                    Experience high-end precision engineered for elite durability and professional output mastery.
                                 </p>
                             </div>
 
-                            {/* HP-Style Minimalist Bullets */}
-                            <div className="space-y-3 pt-4 border-t border-gray-200">
-                                {[
-                                    "Free shipping on orders over $299 across USA & Canada",
-                                    "Manufacturer warranty on all products",
-                                    "Support for both business and home customers"
-                                ].map((text, i) => (
-                                    <div key={i} className="flex items-start gap-3">
-                                        <div className="mt-1.5 flex-shrink-0 w-2 h-2 rounded-full bg-[#024ad8]"></div>
-                                        <span className="text-sm font-medium text-gray-700">{text}</span>
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Clean CTA Section */}
-                            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 pt-4 md:pt-6">
-                                <Link to="/shop" className="w-full sm:w-auto px-8 sm:px-12 py-4 bg-[#024ad8] text-white text-sm font-bold rounded-sm hover:bg-[#0133a1] transition-all duration-300 flex items-center justify-center gap-3 group shadow-lg shadow-[#024ad8]/10">
+                            {/* CTAs */}
+                            <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">
+                                <Link 
+                                    to="/shop" 
+                                    className="w-full sm:w-auto px-10 py-5 bg-[#024ad8] text-white text-sm font-bold rounded-sm hover:bg-[#0133a1] transition-all duration-300 flex items-center justify-center gap-3 group shadow-xl shadow-[#024ad8]/10"
+                                >
                                     SHOP NOW
                                     <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
                                 </Link>
                                 
-                                <div className="flex items-center py-0 px-0 bg-white shadow-sm cursor-default">
-                                    <a href="https://locator.hp.com/us/en?ml___task=search_zip&ml___id=416103&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___lang=en-US%20(1)&ml___redirect_commercial_destination_Itemid=1" target="_blank">
-                                        <img src="/logo/hp-partner.png" alt="HP Authorized Partner" className="h-14 sm:h-16 w-auto object-contain" />
+                                <div className="flex items-center gap-6">
+                                    <div className="h-12 w-px bg-gray-200 hidden sm:block"></div>
+                                    <a href="https://locator.hp.com/us/en" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
+                                        <img src="/logo/hp-partner.png" alt="HP Partner" className="h-14 lg:h-16 w-auto object-contain" />
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        {/* ── Right Content: Sharp & Professional ────────────────── */}
-                        <div className="relative animate-in fade-in duration-1000">
-                            {/* Product Image on Clean Presentation Layer */}
-                            <div className="relative z-10 bg-white p-4 sm:p-6 md:p-10 rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden group">
+                        {/* ── Right Content: Original Product Visual ────────────────── */}
+                        <div className="relative">
+                            <div className="relative z-10 bg-white p-6 md:p-12 rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-100 overflow-hidden group">
                                 <div className="relative aspect-[4/3] overflow-hidden bg-[#FDFDFD]">
                                     <img
                                         src="/hero/hero-right.png"
@@ -109,73 +62,28 @@ const Hero = () => {
                                         className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-1000"
                                     />
                                 </div>
-                            </div>
-
-                            {/* Minimalist Floating Specs Label */}
-                            <div className="absolute -bottom-6 -right-6 z-20 bg-white p-4 md:p-6 shadow-2xl border border-gray-100 hidden md:block">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-3 bg-gray-50 text-black border border-gray-200">
-                                        <Activity size={24} />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] font-bold text-[#024ad8] uppercase tracking-[0.1em] mb-0.5">Performance</p>
-                                        <p className="text-sm font-bold text-black uppercase tracking-tight">Optimized Output</p>
+                                
+                                {/* Floating Specs Label */}
+                                <div className="absolute -bottom-2 -right-2 z-20 bg-white p-4 md:p-6 shadow-2xl border border-gray-100 hidden md:block">
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-3 bg-gray-50 text-black border border-gray-200">
+                                            <Activity size={24} />
+                                        </div>
+                                        <div>
+                                            <p className="text-[10px] font-bold text-[#024ad8] uppercase tracking-[0.1em] mb-0.5">Specifications</p>
+                                            <p className="text-sm font-bold text-black uppercase tracking-tight">Precision Output</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Background Accents (Subtle) */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[#024ad8]/5 rounded-full blur-[100px] pointer-events-none"></div>
+                            {/* Background Accents */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-[#024ad8]/5 rounded-full blur-[120px] pointer-events-none"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Categories Grid: Keeping the structured approach */}
-            <div className="py-16 md:py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-10 md:mb-16 max-w-2xl mx-auto">
-                        <h2 className="text-2xl sm:text-3xl font-extrabold text-black uppercase tracking-tight mb-4">What We Sell</h2>
-                        <div className="w-16 h-1 bg-[#024ad8] mx-auto mb-6"></div>
-                        <p className="text-gray-500 font-medium text-sm sm:text-base leading-relaxed">
-                            We offer a focused selection of printers and essential printing supplies designed to meet the needs of both home users and business environments. Our product range is carefully organized to help you find the right solution.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
-                        {categories.map((type, index) => (
-                            <Link key={index} to={type.link} className={`block group h-full ${index === 4 ? 'sm:col-span-2 lg:col-span-1 lg:col-start-2' : ''}`}>
-                                <div className="bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col border border-gray-100 group-hover:-translate-y-1">
-                                    {/* Card Image */}
-                                    <div className="relative h-48 sm:h-56 overflow-hidden bg-gray-50 p-4">
-                                        <img
-                                            src={type.image}
-                                            alt={type.title}
-                                            className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-1000"
-                                        />
-                                        <div className="absolute top-4 right-4 bg-black p-2.5 rounded-sm text-white shadow-lg">
-                                            {type.icon}
-                                        </div>
-                                    </div>
-
-                                    {/* Card Content */}
-                                    <div className="p-6 md:p-8 flex-grow flex flex-col">
-                                        <h3 className="text-sm md:text-base font-extrabold text-black uppercase tracking-tight mb-3 group-hover:text-[#024ad8] transition-colors">
-                                            {type.title}
-                                        </h3>
-                                        <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow font-medium">
-                                            {type.description}
-                                        </p>
-                                        <div className="flex items-center text-[#024ad8] font-bold text-xs uppercase tracking-wider group-hover:translate-x-2 transition-transform">
-                                            VIEW ALL MODELS <ArrowRight size={14} className="ml-2" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };
