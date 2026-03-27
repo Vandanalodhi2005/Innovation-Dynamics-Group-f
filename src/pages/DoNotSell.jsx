@@ -1,253 +1,220 @@
 import React from "react";
-import { ShieldX, AlertCircle, Mail, Phone, MapPin, UserCheck, Lock, Info, Landmark, ShieldCheck, FileText, Send } from "lucide-react";
 
 const DoNotSell = () => {
-  const sections = [
-    { id: 'rights', label: '1. Your Rights', icon: <Lock size={15} /> },
-    { id: 'definitions', label: '2. Definitions', icon: <Info size={15} /> },
-    { id: 'opt-out', label: '3. Opt-Out Request', icon: <Send size={15} /> },
-    { id: 'verification', label: '4. Verification', icon: <UserCheck size={15} /> },
-    { id: 'agents', label: '5. Authorized Agents', icon: <Landmark size={15} /> },
-    { id: 'minors', label: '6. Minors Protection', icon: <ShieldCheck size={15} /> },
-    { id: 'policy', label: '7. Full Privacy Policy', icon: <FileText size={15} /> },
-    { id: 'contact', label: '8. Contact Support', icon: <Mail size={15} /> }
-  ];
+    return (
+        <div className="bg-white min-h-screen pt-28 pb-16 px-6 font-sans text-left text-gray-800">
+            <div className="max-w-4xl mx-auto">
+                <header className="mb-12 border-b border-gray-100 pb-8 text-left">
+                    <h1 className="text-4xl font-bold text-black mb-2">Do Not Sell or Share My Personal Information</h1>
+                    <h2 className="text-xl font-medium text-gray-500 mb-4">CCPA/CPRA Notice</h2>
+                    <div className="mt-6 flex flex-col sm:flex-row gap-6 text-xs text-gray-400 font-bold uppercase tracking-widest">
+                        <span>Last Updated: March 25, 2026</span>
+                    </div>
+                </header>
 
-  return (
-    <div className="bg-white text-black min-h-screen font-sans">
-      {/* Hero Section */}
-      <div className="relative bg-black text-white py-28 md:py-40 overflow-hidden border-b-4 border-[#024ad8]">
-        <div className="absolute inset-0 z-0 text-gray-100 opacity-20 transform rotate-12 pointer-events-none">
-          <ShieldX size={500} className="absolute -top-20 -right-20" />
-        </div>
+                <div className="space-y-12 leading-relaxed text-gray-700 font-normal">
+                    <section className="border-l-4 border-gray-100 pl-6 py-2 text-gray-600 font-medium italic">
+                        <p>This page is provided in accordance with the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA). These laws provide California residents with specific rights regarding their personal information.</p>
+                    </section>
 
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/doNotSell.jpg"
-            alt="Data Privacy Background"
-            className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-[2000ms]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
-        </div>
+                    <section id="commitment">
+                        <h2 className="text-2xl font-bold text-black mb-6">1. Our Commitment to Your Privacy</h2>
+                        <p className="font-medium mb-6">Innovation Dynamics Group LLC respects your privacy and is committed to transparent data practices.</p>
+                        <ul className="space-y-4 font-medium">
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                <p>We do NOT sell personal information</p>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                <p>We do NOT share personal information for cross-context behavioral advertising</p>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                <p>We do NOT use advertising cookies, tracking pixels, or profiling technologies</p>
+                            </li>
+                        </ul>
+                        <p className="mt-6 text-sm text-gray-500 italic">Even though we do not sell or share data, California residents have the right to submit requests under applicable laws.</p>
+                    </section>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-3 text-[#024ad8] text-[10px] font-bold mb-8 tracking-[0.3em] uppercase bg-white/5 backdrop-blur-sm px-4 py-2 rounded-sm border border-white/10">
-              <Lock size={14} /> CCPA / CPRA Compliance
-            </div>
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-white leading-tight uppercase italic">
-              Do Not Sell <br/><span className="text-[#024ad8]">My Information</span>
-            </h1>
-            <div className="w-16 h-1.5 bg-[#024ad8] mb-8 mx-auto md:mx-0"></div>
-            <p className="text-base md:text-lg text-gray-400 font-medium leading-relaxed mb-8 max-w-xl">
-              California residents have the right to opt-out of the "sale" or "sharing" of their personal information.
-            </p>
-            <div className="flex flex-col md:flex-row gap-6 md:gap-10 text-gray-500 text-[10px] font-semibold uppercase tracking-[0.2em]">
-              <p>Legal Framework: CCPA/CPRA</p>
-              <p>Updated: March 26, 2026</p>
-            </div>
-          </div>
-        </div>
-      </div>
+                    <section id="rights">
+                        <h2 className="text-2xl font-bold text-black mb-6">2. Your Rights Under CCPA/CPRA</h2>
+                        <p className="font-medium mb-8 text-gray-600">California residents have the following specific rights:</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-medium">
+                            <div className="p-6 border border-gray-100 rounded-sm">
+                                <h3 className="font-bold text-black mb-3 text-xs uppercase tracking-wider">Right to Know</h3>
+                                <p className="text-sm text-gray-500">Request and receive information about the personal information we collect, use, or share.</p>
+                            </div>
+                            <div className="p-6 border border-gray-100 rounded-sm">
+                                <h3 className="font-bold text-black mb-3 text-xs uppercase tracking-wider">Right to Delete</h3>
+                                <p className="text-sm text-gray-500">Request deletion of your personal information (subject to legal exceptions).</p>
+                            </div>
+                            <div className="p-6 border border-gray-100 rounded-sm">
+                                <h3 className="font-bold text-black mb-3 text-xs uppercase tracking-wider">Right to Correct</h3>
+                                <p className="text-sm text-gray-500">Request correction of inaccurate personal information.</p>
+                            </div>
+                            <div className="p-6 border border-gray-100 rounded-sm">
+                                <h3 className="font-bold text-black mb-3 text-xs uppercase tracking-wider">Right to Opt-Out</h3>
+                                <p className="text-sm text-gray-500">Opt out of the "sale" or "sharing" of personal information (though we don't engage in these practices).</p>
+                            </div>
+                            <div className="p-6 border border-gray-100 rounded-sm">
+                                <h3 className="font-bold text-black mb-3 text-xs uppercase tracking-wider">Right to Limit Use</h3>
+                                <p className="text-sm text-gray-500">Limit use of sensitive personal information to necessary business purposes (we do not use sensitive data).</p>
+                            </div>
+                            <div className="p-6 border border-gray-100 rounded-sm">
+                                <h3 className="font-bold text-black mb-3 text-xs uppercase tracking-wider">Right to Non-Discrimination</h3>
+                                <p className="text-sm text-gray-500">Exercise these rights without experiencing discrimination, including denial of service or different pricing.</p>
+                            </div>
+                        </div>
+                        <p className="mt-8 text-sm text-gray-500 italic">You may submit requests at any time, and we will respond within the timeframes mandated by law (typically 45 days).</p>
+                    </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
+                    <section id="practices">
+                        <h2 className="text-2xl font-bold text-black mb-6">3. Our Data Practices</h2>
+                        <ul className="space-y-4 font-medium">
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                <p>We do NOT sell personal information to third parties.</p>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                <p>We do NOT share personal information for advertising purposes.</p>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                <p>We only disclose information to trusted service providers under strict contractual obligations.</p>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                <p>We maintain industry-standard security measures to protect your data at all times.</p>
+                            </li>
+                        </ul>
+                    </section>
 
-          {/* Sidebar Navigation - Sticky */}
-          <div className="hidden lg:block lg:col-span-1">
-            <div className="sticky top-28 space-y-6">
-              <h3 className="text-[10px] font-bold text-[#024ad8] uppercase tracking-[0.3em] mb-8 text-left">Quick Actions</h3>
-              <nav className="space-y-1">
-                {sections.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-sm transition-all hover:bg-[#024ad8] hover:text-white text-gray-500 font-semibold text-[13px] group border border-transparent hover:shadow-md text-left"
-                  >
-                    <span className="text-[#024ad8] group-hover:text-white transition-colors">
-                      {item.icon}
-                    </span>
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </div>
+                    <section id="categories">
+                        <h2 className="text-2xl font-bold text-black mb-6">4. Categories of Personal Information We Collect</h2>
+                        <p className="font-medium mb-6">We collect only limited information required for our eCommerce operations, including:</p>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-medium bg-gray-50 p-8 border border-gray-100 rounded-sm">
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div><p className="text-sm">Contact information (Name, Email, Phone)</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div><p className="text-sm">Billing and shipping address</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div><p className="text-sm">Order details and transaction history</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div><p className="text-sm">Customer support communications</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div><p className="text-sm">Essential technical/session data (Cookies)</p></li>
+                        </ul>
+                        <p className="mt-6 text-sm text-gray-500 font-medium">We do not use or disclose sensitive personal information for advertising purposes.</p>
+                    </section>
 
-          {/* Main Content Area */}
-          <div className="lg:col-span-3 space-y-20 text-gray-600">
-            
-            {/* 1. Commitment */}
-            <section id="rights" className="space-y-10">
-              <div className="flex items-center gap-5">
-                <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md">01</span>
-                <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic">Your Privacy Rights</h2>
-              </div>
-              <div className="bg-gray-50/50 border-l-4 border-[#024ad8] p-8 space-y-4 rounded-r-sm">
-                <p className="text-base font-medium leading-relaxed italic text-left">
-                  Under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA), California residents have the right to request that a business not sell or share their personal information.
-                </p>
-              </div>
-            </section>
+                    <section id="no-sale">
+                        <h2 className="text-2xl font-bold text-black mb-6">5. No Sale or Sharing of Personal Information</h2>
+                        <p className="font-medium mb-6">In the preceding 12 months, Innovation Dynamics Group LLC has:</p>
+                        <ul className="space-y-4 font-medium">
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div><p>Not sold personal information</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div><p>Not shared personal information for cross-context behavioral advertising</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div><p>Only disclosed information to trusted service providers strictly for business operations</p></li>
+                        </ul>
+                        <p className="mt-6 text-sm text-gray-500 font-medium italic">All service providers are contractually required to use data only for authorized purposes.</p>
+                    </section>
 
-            {/* 2. Definitions */}
-            <section id="definitions" className="space-y-8 text-left">
-              <div className="flex items-center gap-5">
-                <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md">02</span>
-                <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">What “Sell” or “Share” Means</h2>
-              </div>
-              <div className="bg-black text-white p-10 rounded-sm shadow-xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#024ad8]/10 rounded-full blur-3xl group-hover:bg-[#024ad8]/20 transition-all duration-700"></div>
-                <div className="space-y-4 relative z-10 text-left">
-                  <p className="text-sm font-medium leading-relaxed italic text-gray-400">
-                    Innovation Dynamics Group LLC does NOT sell personal information for monetary compensation. However, under California law, sharing data for cross-context behavioral advertising or transferring data through certain third-party cookies may be classified as "selling" or "sharing."
-                  </p>
-                  <p className="text-[#024ad8] font-bold text-sm uppercase tracking-widest">We do not sell customer data lists.</p>
+                    <section id="cookies">
+                        <h2 className="text-2xl font-bold text-black mb-6">6. Cookies & Tracking Technologies</h2>
+                        <p className="font-medium mb-6">Innovation Dynamics Group LLC does not use:</p>
+                        <ul className="space-y-3 font-medium mb-8">
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div><p>Advertising or tracking cookies</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div><p>Analytics tools or behavioral profiling technologies</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1.5 h-1.5 bg-red-400 rounded-full"></div><p>Third-party marketing or retargeting pixels</p></li>
+                        </ul>
+                        <p className="font-medium mb-6">We only use strictly necessary cookies required for:</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-medium">
+                            <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-sm"><div className="w-1 h-1 bg-black rounded-full"></div><p className="text-sm">Cart functionality</p></div>
+                            <div className="flex items-center gap-3 p-4 bg-gray-100 rounded-sm"><div className="w-1 h-1 bg-black rounded-full"></div><p className="text-sm">Secure checkout</p></div>
+                            <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-sm"><div className="w-1 h-1 bg-black rounded-full"></div><p className="text-sm">Account login</p></div>
+                            <div className="flex items-center gap-3 p-4 bg-gray-100 rounded-sm"><div className="w-1 h-1 bg-black rounded-full"></div><p className="text-sm">Website security and performance</p></div>
+                        </div>
+                    </section>
+
+                    <section id="submit">
+                        <h2 className="text-2xl font-bold text-black mb-6">7. How to Submit a Request</h2>
+                        <p className="font-medium mb-8">You may submit a request to exercise your rights using the method below:</p>
+                        <div className="p-8 border border-gray-100 rounded-sm bg-gray-50">
+                            <h3 className="font-bold text-[#024ad8] text-xs uppercase tracking-widest mb-4">Email Request</h3>
+                            <p className="font-bold text-black mb-1">support@innovationdynamicsgroup.com</p>
+                            <p className="text-sm text-gray-500 mb-6 font-medium">Subject Line: "CCPA Request"</p>
+                            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Please include:</p>
+                            <ul className="text-sm space-y-2 font-medium">
+                                <li>• Full name</li>
+                                <li>• Email address</li>
+                                <li>• Order number (if applicable)</li>
+                                <li>• Type of request (Access, Delete, Correct, or Opt-Out)</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="verification">
+                        <h2 className="text-2xl font-bold text-black mb-6">8. Verification Process</h2>
+                        <p className="font-medium mb-6">To protect your personal information, we may verify your identity by requesting:</p>
+                        <ul className="space-y-4 font-medium text-sm text-gray-600">
+                            <li className="flex items-center gap-3"><div className="w-1 h-1 bg-gray-400 rounded-full"></div><p>Email confirmation</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1 h-1 bg-gray-400 rounded-full"></div><p>Order details or transaction history</p></li>
+                            <li className="flex items-center gap-3"><div className="w-1 h-1 bg-gray-400 rounded-full"></div><p>Basic account information</p></li>
+                        </ul>
+                        <p className="mt-6 text-sm text-gray-500 font-medium font-bold">We will respond to verified requests within 45 days, as required by law.</p>
+                    </section>
+
+                    <section id="agents">
+                        <h2 className="text-2xl font-bold text-black mb-6">9. Authorized Agents</h2>
+                        <p className="font-medium text-gray-600">
+                            You may designate an authorized agent to submit a request on your behalf. We may require proof of authorization and identity verification before processing such requests.
+                        </p>
+                    </section>
+
+                    <section id="non-discrimination">
+                        <h2 className="text-2xl font-bold text-black mb-6">10. Non-Discrimination Statement</h2>
+                        <p className="font-medium text-gray-600 mb-6">Innovation Dynamics Group LLC will not:</p>
+                        <ul className="space-y-3 font-medium text-sm text-gray-500">
+                            <li>• Deny goods or services</li>
+                            <li>• Charge different prices</li>
+                            <li>• Provide a lower level of service</li>
+                            <li>• Discriminate against you in any way</li>
+                        </ul>
+                        <p className="mt-6 font-bold text-black text-sm italic">...for exercising your privacy rights under applicable laws.</p>
+                    </section>
+
+                    <section id="contact" className="mt-16 pt-12 border-t border-gray-100">
+                        <h2 className="text-2xl font-bold text-black mb-10">11. Contact Us</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <div className="space-y-10">
+                                <div className="space-y-2">
+                                    <p className="text-xs font-bold text-[#024ad8] uppercase tracking-wider">Direct Access</p>
+                                    <p className="font-bold text-black text-sm">support@innovationdynamicsgroup.com</p>
+                                    <p className="font-bold text-black text-sm">+1 (651) 815-4630</p>
+                                </div>
+                                <div className="space-y-2">
+                                    <p className="text-xs font-bold text-[#024ad8] uppercase tracking-wider">Registered Address</p>
+                                    <div className="text-sm font-medium text-gray-500">
+                                        <p>Innovation Dynamics Group LLC</p>
+                                        <p>11397 Quincy St NE</p>
+                                        <p>Blaine, MN 55434</p>
+                                        <p>United States</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-gray-50 p-8 rounded-sm">
+                                <p className="text-xs text-gray-400 font-medium leading-relaxed">
+                                    We are committed to handling all privacy-related requests promptly and in accordance with applicable California data protection laws.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-              </div>
-            </section>
 
-            {/* 3. Opt-Out Request */}
-            <section id="opt-out" className="space-y-12 text-left">
-              <div className="flex items-center gap-5">
-                <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md">03</span>
-                <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">How to Opt-Out</h2>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                <div className="p-8 bg-white border border-gray-100 shadow-xl shadow-gray-50 rounded-sm space-y-6 hover:border-[#024ad8]/30 transition-all text-left">
-                  <h3 className="font-extrabold text-black flex items-center gap-4 text-lg italic text-left">
-                    <Mail className="text-[#024ad8]" size={22} /> Digital Submission
-                  </h3>
-                  <p className="text-[13px] font-medium leading-relaxed text-left">
-                    Email our privacy team with the statement "Do Not Sell My Personal Information."
-                  </p>
-                  <p className="text-[#024ad8] font-black text-sm text-left">support@innovationdynamicsgroup.com</p>
-                </div>
-
-                <div className="p-8 bg-white border border-gray-100 shadow-xl shadow-gray-50 rounded-sm space-y-6 hover:border-[#024ad8]/30 transition-all text-left">
-                  <h3 className="font-extrabold text-black flex items-center gap-4 text-lg italic text-left">
-                    <Phone className="text-[#024ad8]" size={22} /> Voice Support
-                  </h3>
-                  <p className="text-[13px] font-medium leading-relaxed text-left">
-                    Call our support terminal during business hours for assistance with your request.
-                  </p>
-                  <p className="text-black font-black text-sm text-left">+1 (651) 815-4630</p>
-                </div>
-              </div>
-            </section>
-
-            {/* 4. Verification */}
-            <section id="verification" className="space-y-8 text-left">
-              <div className="flex items-center gap-5">
-                <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md">04</span>
-                <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Verification Process</h2>
-              </div>
-              <div className="p-8 bg-gray-50 border border-gray-100 rounded-sm space-y-4 text-left">
-                <p className="text-sm font-medium leading-relaxed text-left">
-                  To protect your privacy, we must verify your identity before processing any opt-out request. This may include matching information you provide against our internal records (such as order email address).
-                </p>
-              </div>
-            </section>
-
-            {/* 5. Authorized Agents */}
-            <section id="agents" className="space-y-8 text-left">
-              <div className="flex items-center gap-5">
-                <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md">05</span>
-                <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Authorized Agents</h2>
-              </div>
-              <p className="text-[15px] font-medium leading-relaxed text-left">
-                You may designate an authorized agent to submit an opt-out request on your behalf. We require written proof of the agent's permission and direct verification of your identity.
-              </p>
-            </section>
-
-            {/* 6. Minors Protection */}
-            <section id="minors" className="space-y-8 text-left">
-              <div className="flex items-center gap-5 text-left">
-                <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md">06</span>
-                <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Protection for Minors</h2>
-              </div>
-              <div className="bg-red-50 p-10 rounded-sm border border-red-100 flex flex-col md:flex-row gap-10 items-center text-left">
-                <AlertCircle className="text-red-500 shrink-0" size={48} />
-                <p className="text-sm font-medium leading-relaxed text-left">
-                  We do not knowingly sell or share the personal information of consumers who are under 16 years of age.
-                </p>
-              </div>
-            </section>
-
-            {/* 7. Full Policy */}
-            <section id="policy" className="space-y-8 text-left">
-                <div className="flex items-center gap-5 text-left">
-                    <span className="bg-[#024ad8] text-white w-12 h-12 rounded-sm flex items-center justify-center text-lg font-bold shadow-md">07</span>
-                    <h2 className="text-3xl font-bold text-black tracking-tight uppercase italic text-left">Full Privacy Disclosure</h2>
-                </div>
-                <div className="p-8 bg-gray-50 rounded-sm border border-gray-100 space-y-6 text-left">
-                    <p className="text-sm font-medium leading-relaxed text-left italic">
-                        For complete details on the types of information we collect and how it is used, please visit our comprehensive Privacy Policy.
+                <footer className="mt-24 pt-10 border-t border-gray-100 text-center">
+                    <p className="text-xs text-gray-300 font-medium tracking-wide">
+                        Innovation Dynamics Group LLC © 2026 • Verified Privacy Operations
                     </p>
-                </div>
-            </section>
-
-            {/* 8. Contact Section */}
-            <section id="contact" className="bg-black text-white p-10 md:p-14 rounded-sm shadow-lg relative overflow-hidden border-t-4 border-[#024ad8]">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#024ad8]/5 rounded-full blur-3xl -mr-24 -mt-24"></div>
-              <h2 className="text-3xl font-bold mb-10 flex items-center gap-5 relative z-10 text-left">
-                <Landmark className="text-[#024ad8]" size={36} />
-                Legal Inquiries
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 relative z-10 text-left">
-                <div className="space-y-8 text-left">
-                  <div className="flex gap-5 items-start group text-left">
-                    <div className="p-4 bg-white/5 rounded-sm border border-white/10 group-hover:bg-[#024ad8]/20 transition-all">
-                      <Mail className="text-[#024ad8]" size={24} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-[#024ad8] font-bold uppercase tracking-[0.3em] mb-2 text-left">Privacy Comms</p>
-                      <p className="text-sm text-white text-left">privacy@innovationdynamicsgroup.com</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-5 items-start group text-left">
-                    <div className="p-4 bg-white/5 rounded-sm border border-white/10 group-hover:bg-[#024ad8]/20 transition-all">
-                      <MapPin className="text-[#024ad8]" size={24} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] text-[#024ad8] font-bold uppercase tracking-[0.3em] mb-2 text-left">Corporate HQ</p>
-                      <p className="text-sm text-white text-left font-medium leading-relaxed italic">
-                        11397 Quincy St NE<br />
-                        Blaine, MN 55434
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-5 items-start group text-left">
-                    <div className="p-4 bg-white/5 rounded-sm border border-white/10 group-hover:bg-[#024ad8]/20 transition-all shrink-0">
-                        <UserCheck className="text-[#024ad8]" size={24} />
-                    </div>
-                    <div>
-                       <p className="text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em] mb-4 text-left">Compliance Protocol</p>
-                       <p className="text-xs text-gray-400 font-medium leading-relaxed text-left italic">
-                         Your request will be processed within the statutory timeframe mandated by the CCPA/CPRA (typically 15 business days for opt-out requests).
-                       </p>
-                    </div>
-                </div>
-              </div>
-            </section>
-
-          </div>
+                </footer>
+            </div>
         </div>
-      </div>
-
-      {/* Footer Notice */}
-      <div className="bg-gray-50 py-10 border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em] leading-relaxed">
-            Innovation Dynamics Group LLC © 2026 • Verified Privacy Operations
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default DoNotSell;
-

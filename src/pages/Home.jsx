@@ -8,6 +8,7 @@ import WhyChooseUs from '../components/home/WhyChooseUs';
 import Printers from '../components/Printers';
 import WhoWeServe from '../components/home/WhoWeServe';
 import TrustSection from '../components/home/TrustSection';
+import CallToAction from '../components/home/CallToAction';
 import HomeContact from '../components/home/HomeContact';
 
 const Home = () => {
@@ -17,12 +18,13 @@ const Home = () => {
             <Hero />
             <CorporateAccountability />
             <HomeCategories />
+            <WhoWeServe />
+            <Printers />
 
             <WhyChooseUs />
-            <Printers />
-            <WhoWeServe />
             <TrustSection />
             <CustomerReviews />
+            <CallToAction />
             <HomeContact />
         </div>
     );

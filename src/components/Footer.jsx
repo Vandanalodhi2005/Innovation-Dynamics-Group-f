@@ -14,30 +14,18 @@ import {
 
 const Footer = () => {
   useEffect(() => {
-    const sealId = "godaddy-seal-script";
+    // Re-inject script on mount to ensure it targets the correct element
     const container = document.getElementById("siteseal");
-
-    // Clear previous seal content to avoid shadow root conflicts
-    if (container) container.innerHTML = "";
-
-    // Load GoDaddy script globally if not already present
-    if (!document.getElementById(sealId)) {
+    if (container) {
+      container.innerHTML = "";
       const script = document.createElement("script");
-      script.id = sealId;
       script.type = "text/javascript";
-      script.src =
-        "https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1";
+      script.src = "https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1";
       script.async = true;
-      document.body.appendChild(script);
+      container.appendChild(script);
     }
-
-    return () => {
-      // In SPA/React, it's often safer to NOT remove the script node globally
-      // if it's used across page navigations, but if we really want to:
-      // const script = document.getElementById(sealId);
-      // if (script) script.remove();
-    };
   }, []);
+
 
   return (
     <footer className="bg-black text-white relative border-t border-white/10 overflow-hidden font-sans">
@@ -57,9 +45,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
-              Operationally focused on high-performance printing solutions and
-              enterprise-grade equipment. Authorized independent retailer
-              delivering excellence to home and office environments worldwide.
+            Innovation Dynamics Group LLC is an independent U.S.-based retailer providing printers and related products with verified sourcing, reliable fulfillment, and a seamless shopping experience across the U.S. and Canada.
             </p>
             {/* <div className="flex items-center gap-4">
               <a
@@ -119,12 +105,12 @@ const Footer = () => {
                   { name: "Return & Exchange", link: "/return-exchange" },
                   { name: "Refund Policy", link: "/return-refund" },
                   { name: "Buying Guide", link: "/buying-guide" },
-                  { name: "Support Hub", link: "/contact" },
+                  { name: "Support Hub", link: "/resources" },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link
                       to={item.link}
-                      className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block italic"
+                      className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
                     </Link>
@@ -149,7 +135,7 @@ const Footer = () => {
                   <li key={item.name}>
                     <Link
                       to={item.link}
-                      className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block italic"
+                      className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
                     </Link>
@@ -195,7 +181,13 @@ const Footer = () => {
           <div className="flex flex-wrap items-center gap-3 justify-center lg:justify-start">
             {/* GoDaddy Verified & Secured */}
             <div className="min-h-[64px] w-44 bg-white rounded flex items-center justify-center p-2 shadow-sm border border-white/10 shrink-0">
-              <span id="siteseal"></span>
+              <span id="siteseal" className="flex items-center justify-center w-full h-full">
+                <img 
+                  src="https://img1.wsimg.com/shared/img/seal_godaddy.png" 
+                  alt="GoDaddy Verified & Secured" 
+                  className="h-10 opacity-40 grayscale hover:grayscale-0 transition-opacity"
+                />
+              </span>
             </div>
 
             {/* Google Safe Browsing */}
@@ -282,11 +274,9 @@ const Footer = () => {
             <span className="text-neutral-500 font-bold">
               Trademark Notice:
             </span>{" "}
-            Innovation Dynamics Group LLC is an independent authorized retailer.
-            All third-party trademarks, logos, and brand names are the property
-            of their respective owners. Use of these names does not imply
-            affiliation or endorsement. Registered under license in Blaine,
-            Minnesota.
+           
+All product names, images, brand logos, and trademarks displayed on this website are the property of their respective owners and are used for identification purposes only. Innovation Dynamics Group LLC operates as an independent e-commerce retailer and is not affiliated with, endorsed by, or sponsored by any manufacturer unless explicitly stated. Product availability, specifications, and pricing are subject to change without prior notice. While we strive to provide accurate and up-to-date information, Innovation Dynamics Group LLC does not guarantee that all content on this site is complete, current, or free from errors.
+
           </p>
         </div>
       </div>

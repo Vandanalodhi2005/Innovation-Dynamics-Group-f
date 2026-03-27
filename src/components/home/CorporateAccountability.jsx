@@ -33,7 +33,10 @@ const CorporateAccountability = () => {
                                     Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
                                 </p>
                                 <p className="text-black font-semibold border-l-4 border-[#024ad8] pl-6 leading-relaxed py-2">
-                                    "We are not a marketplace or a multi-seller platform. Every product is sourced through verified distribution and managed directly under our operational responsibility."
+                                    "We are not a marketplace or a multi-seller platform. Every product available on the website is sourced through verified distribution channels and managed directly under our operational responsibility."
+                                </p>
+                                <p className="text-sm">
+                                    This approach allows for better control over product accuracy, availability, and fulfillment, ensuring customers interact with a single, accountable retailer rather than multiple sellers with inconsistent policies.
                                 </p>
                             </div>
                         </div>
@@ -41,9 +44,9 @@ const CorporateAccountability = () => {
                         {/* Simplified Benefit Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
                             {[
-                                { icon: <Truck size={22} className="text-[#024ad8]" />, title: "USA & Canada Shipping" },
+                                { icon: <Truck size={22} className="text-[#024ad8]" />, title: "Free Shipping" },
                                 { icon: <Shield size={22} className="text-[#024ad8]" />, title: "Manufacturer Warranty" },
-                                { icon: <Globe size={22} className="text-[#024ad8]" />, title: "Business & Home Support" },
+                                { icon: <Globe size={22} className="text-[#024ad8]" />, title: "Dedicated Support" },
                                 { icon: <Award size={22} className="text-[#024ad8]" />, title: "Verified Distribution" }
                             ].map((item, idx) => (
                                 <div key={idx} className="flex items-center gap-4 transition-transform hover:translate-x-1 duration-300">
@@ -57,10 +60,10 @@ const CorporateAccountability = () => {
 
                         <div className="pt-6">
                             <Link 
-                                to="/about" 
+                                to="/shop" 
                                 className="inline-flex items-center text-[11px] font-black uppercase tracking-[0.3em] text-[#024ad8] hover:translate-x-2 transition-transform duration-300"
                             >
-                                Our Operations Integrity <ArrowRight size={16} className="ml-3" />
+                                EXPLORE PRODUCTS <ArrowRight size={16} className="ml-3" />
                             </Link>
                         </div>
                     </div>

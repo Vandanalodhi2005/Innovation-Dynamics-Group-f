@@ -190,7 +190,7 @@ const CustomerReviews = () => {
                                             </div>
 
                                             {/* Content */}
-                                            <p className="text-gray-600 text-base leading-relaxed mb-8 italic">
+                                            <p className="text-gray-600 text-base leading-relaxed mb-8">
                                                 "{review.content}"
                                             </p>
 

@@ -483,7 +483,7 @@ const Checkout = () => {
                                         </div>
                                         <span className="text-[11px] leading-relaxed text-gray-500 font-medium tracking-tight">
                                             By placing your order, you confirm that you have read and agree to our 
-                                            <Link to="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-1">Terms & Conditions</Link>.
+                                            <Link to="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-1">Terms & Conditions</Link>. By placing your order, you confirm that you have read and agree to our Terms & Conditions and understand how your personal information is collected and used as described in our Privacy Policy.
                                         </span>
                                     </div>
 

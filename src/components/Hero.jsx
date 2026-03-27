@@ -12,40 +12,62 @@ const Hero = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
                         
                         {/* ── Left Content: Refined Typography ────────────────── */}
-                        <div className="space-y-8 max-w-2xl">
+                        <div className="space-y-8 max-w-2xl text-left">
                             <div className="space-y-6">
                                 <div className="inline-block">
-                                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024ad8] border-b-2 border-[#024ad8] pb-1">
-                                        Home & Office Printers
+                                    <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#024ad8] border-b-2 border-[#024ad8] pb-2">
+                                        An Independent eCommerce Retailer
                                     </span>
                                 </div>
                                 
                                 <div className="space-y-4">
-                                    
-                                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-black tracking-tight">
-                                        Professional Printing Hardware <br className="hidden md:block" />
-                                        <span className="text-gray-400">for the Modern Workplace.</span>
+                                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black leading-[1.1] text-black tracking-tighter uppercase">
+                                        Innovation Dynamics Group <br className="hidden md:block" />
+                                        <span className="text-[#024ad8]">LLC</span>
+                                    </h1>
+                                    <h2 className="text-lg md:text-xl font-bold text-gray-500 uppercase tracking-tight">
+                                        Focused Exclusively on Printers and Related Equipment
                                     </h2>
                                 </div>
                                 
-                                <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-medium max-w-xl">
-                                    Experience high-end precision engineered for elite durability and professional output mastery.
+                                <p className="text-sm md:text-base text-gray-500 leading-relaxed font-medium max-w-xl">
+                                    Serving customers across the United States and Canada, our platform supports both individual users and businesses with reliable printing solutions and a structured online shopping experience.
                                 </p>
+
+                                <ul className="space-y-3 pt-2">
+                                    {[
+                                        "Free shipping across the United States and Canada",
+                                        "Manufacturer warranty on all products",
+                                        "Support for both business and home customers"
+                                    ].map((item, idx) => (
+                                        <li key={idx} className="flex items-center gap-3 text-xs font-bold uppercase tracking-tight text-gray-700">
+                                            <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
 
                             {/* CTAs */}
                             <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">
-                                <Link 
-                                    to="/shop" 
-                                    className="w-full sm:w-auto px-10 py-5 bg-[#024ad8] text-white text-sm font-bold rounded-sm hover:bg-[#0133a1] transition-all duration-300 flex items-center justify-center gap-3 group shadow-xl shadow-[#024ad8]/10"
-                                >
-                                    SHOP NOW
-                                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
-                                </Link>
+                                <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                                    <Link 
+                                        to="/shop" 
+                                        className="w-full sm:w-auto px-10 py-5 bg-[#024ad8] text-white text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-[#0133a1] transition-all duration-300 flex items-center justify-center gap-3 group shadow-xl shadow-[#024ad8]/20"
+                                    >
+                                        Shop Printers
+                                    </Link>
+                                    <Link 
+                                        to="/shop/home-printers" 
+                                        className="w-full sm:w-auto px-10 py-5 bg-white border border-gray-200 text-black text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
+                                    >
+                                        Browse Categories
+                                    </Link>
+                                </div>
                                 
                                 <div className="flex items-center gap-6">
                                     <div className="h-12 w-px bg-gray-200 hidden sm:block"></div>
-                                    <a href="https://locator.hp.com/us/en" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
+                                    <a href="https://locator.hp.com/us/en?ml___task=search_zip&ml___id=569440&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___lang=en-US%20(1)&ml___redirect_commercial_destination_Itemid=1" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
                                         <img src="/logo/hp-partner.png" alt="HP Partner" className="h-14 lg:h-16 w-auto object-contain" />
                                     </a>
                                 </div>

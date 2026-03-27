@@ -11,32 +11,32 @@ const About = () => {
         {
             icon: <Search size={24} />,
             title: "Product Evaluation & Selection",
-            text: "Before a product is listed, it is evaluated based on availability, intended use, consumable access, and long-term support. Each listing is selected because it serves a clear purpose."
+            text: "Before a product is listed, it is evaluated based on availability, intended use, consumable access, and long-term support. Products are not added just to expand the catalog. Each listing is selected because it serves a clear purpose."
         },
         {
             icon: <FileText size={24} />,
             title: "Accurate Listings & Documentation",
-            text: "Product pages are structured to provide clear and useful information. Specifications, compatibility details, and usage guidance are written to help customers understand the product."
+            text: "Product pages are structured to provide clear and useful information. Specifications, compatibility details, and usage guidance are written to help customers understand the product, not to promote it."
         },
         {
             icon: <DollarSign size={24} />,
             title: "Transparent Pricing & Checkout",
-            text: "Pricing reflects actual value based on sourcing and logistics. There are no artificial discounts or misleading offers. Customers see clear pricing without hidden fees."
+            text: "Pricing reflects actual value based on sourcing and logistics. There are no artificial discounts or misleading offers. Customers see clear pricing without hidden fees or unexpected conditions."
         },
         {
             icon: <Truck size={24} />,
             title: "Order Handling & Fulfillment",
-            text: "Orders are processed through a consistent workflow. Products are packed securely and shipped through reliable carriers. Inventory reflects actual availability."
+            text: "Orders are processed through a consistent workflow. Products are packed securely and shipped through reliable carriers. Inventory is managed to reflect actual availability at the time of purchase."
         },
         {
             icon: <MessageSquare size={24} />,
             title: "Customer Communication",
-            text: "Communication is handled in a clear and structured way. Support is available for product questions and order updates with accurate and helpful information."
+            text: "Communication is handled in a clear and structured way. Support is available for product questions, order updates, and post-purchase assistance. Responses focus on providing accurate and helpful information."
         },
         {
             icon: <Scale size={24} />,
             title: "Policy-Driven Operations",
-            text: "Returns, refunds, and order-related issues are handled according to clearly defined policies, ensuring consistency and transparency throughout the process."
+            text: "Returns, refunds, and order-related issues are handled according to clearly defined policies. This ensures consistency and helps customers understand what to expect throughout the process."
         }
     ];
 
@@ -44,32 +44,32 @@ const About = () => {
         {
             icon: <Target size={24} />,
             title: "Focused Catalog, Not Overloaded Listings",
-            text: "Our catalog is intentionally selective. Products are included because they serve a specific purpose—whether for home use, office work, or professional environments."
+            text: "Many online stores list a large number of similar products, which can make choosing difficult. Here, the catalog is intentionally selective. Products are included because they serve a specific purpose."
         },
         {
             icon: <Eye size={24} />,
             title: "Clarity Over Marketing Language",
-            text: "We avoid promotional language. Listings focus on real-world usage, compatibility, and performance so customers can make informed decisions."
+            text: "Product information is presented clearly and factually. Instead of relying on promotional language, listings focus on real-world usage, compatibility, and performance."
         },
         {
             icon: <RefreshCcw size={24} />,
             title: "Long-Term Usability in Mind",
-            text: "Product selection considers long-term use, including consumable availability and ongoing support, reducing post-purchase issues."
+            text: "Product selection considers long-term use, including consumable availability and ongoing support. This helps reduce issues that often arise after purchase."
         },
         {
             icon: <UserCheck size={24} />,
             title: "Clear Responsibility",
-            text: "Every operational step is handled within a single system. Customers know exactly who they are buying from and who is responsible for the process."
+            text: "All operations—from product listings to order fulfillment and support—are handled within a single system. Customers know exactly who they are buying from."
         },
         {
             icon: <Clock size={24} />,
             title: "Predictable Process",
-            text: "Delivery timelines and order handling are based on realistic expectations rather than best-case scenarios to ensure a reliable experience."
+            text: "Delivery timelines and order handling are based on realistic expectations rather than best-case scenarios. This helps create a more predictable and reliable experience."
         },
         {
             icon: <Award size={24} />,
             title: "Built for Informed Buyers",
-            text: "This platform is designed for customers who value clarity and accuracy. The focus is on helping people make informed decisions without pressure."
+            text: "This platform is designed for customers who value clarity, accuracy, and reliability. The focus is on helping people make informed decisions without pressure or confusion."
         }
     ];
 
@@ -92,7 +92,9 @@ const About = () => {
                         </h1>
                         <p className="text-lg md:text-xl text-gray-400 font-medium leading-relaxed max-w-3xl mb-10">
                             Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
-                        </p>
+                     <br />
+          Serving customers across the United States and Canada, the platform supports both individual users and businesses with reliable printing solutions and a structured online shopping experience.
+</p>
 
                         <div className="mt-16 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-10">
                             <div className="flex flex-col gap-2">
@@ -176,9 +178,9 @@ const About = () => {
                             <ul className="space-y-4">
                                 {[
                                     "Accuracy Over Promotion",
-                                    "Practical Printer Use Focus",
+                                    "Focused on Practical Printer Use",
                                     "Structured Fulfillment & Logistics",
-                                    "Realistic Expectations"
+                                    "Dedicated Manufacturer Warranty Support"
                                 ].map((item, idx) => (
                                     <li key={idx} className="flex items-center gap-3 text-sm font-bold text-gray-300">
                                         <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
@@ -201,7 +203,7 @@ const About = () => {
                             </div>
                             <h3 className="text-xl font-extrabold text-black">Focused on Practical Use</h3>
                             <p className="text-sm text-gray-500 font-medium leading-relaxed">
-                                Printers are chosen based on workload, compatibility, consumables, and long-term usability. We focus only on models that serve clear and practical use cases, avoiding unnecessary complexity.
+                                Printers are not simple purchases. They are chosen based on workload, compatibility, consumables, and long-term usability. Instead of listing hundreds of similar options, products are organized to help customers quickly identify what fits their needs without unnecessary complexity.
                             </p>
                         </div>
                         <div className="space-y-5">
@@ -210,7 +212,7 @@ const About = () => {
                             </div>
                             <h3 className="text-xl font-extrabold text-black">Accuracy Over Promotion</h3>
                             <p className="text-sm text-gray-500 font-medium leading-relaxed">
-                                Specifications and compatibility details are presented clearly and factually. We avoid exaggerated claims, allowing customers to make decisions based on real information, not marketing statements.
+                                Product listings are designed to inform, not persuade. Specifications, compatibility details, and features are presented clearly and factually. We avoid exaggerated claims, allowing customers to make decisions based on real information.
                             </p>
                         </div>
                         <div className="space-y-5">
@@ -219,7 +221,7 @@ const About = () => {
                             </div>
                             <h3 className="text-xl font-extrabold text-black">Structured Logistics</h3>
                             <p className="text-sm text-gray-500 font-medium leading-relaxed">
-                                Orders are handled through established processes. Products are shipped as factory-sealed units and packaged carefully to reduce transit risks. Delivery timelines are realistic and clearly communicated.
+                                Orders are handled through established processes designed to keep things reliable and predictable. Products are shipped as factory-sealed units and packaged carefully. Delivery timelines are communicated based on realistic expectations.
                             </p>
                         </div>
                     </div>
@@ -236,7 +238,7 @@ const About = () => {
                     <div className="text-center mb-16 max-w-2xl mx-auto">
                         <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-6">How We Work</h2>
                         <div className="w-20 h-1 bg-[#024ad8] mx-auto mb-6"></div>
-                        <p className="text-gray-400 font-medium italic">
+                        <p className="text-gray-400 font-medium leading-relaxed">
                             Every part of the process is built around clarity and consistency—from product selection to post-purchase support.
                         </p>
                     </div>
@@ -281,7 +283,7 @@ const About = () => {
                     </div>
 
                     <div className="mt-20 p-10 bg-gray-50 border border-gray-100 rounded-sm text-center">
-                        <p className="text-sm text-gray-600 font-semibold mb-0 italic">
+                        <p className="text-sm text-gray-600 font-semibold mb-0">
                             "This platform is designed for customers who value clarity, accuracy, and reliability. The focus is on helping people make informed decisions without pressure, confusion, or unnecessary complexity."
                         </p>
                     </div>
@@ -348,7 +350,7 @@ const About = () => {
             {/* ── Final CTA ──────────────────────────────────────────────── */}
             <section className="py-24 bg-white border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-8 italic">Focusing on clarity so you can focus on clarity.</h2>
+                    <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-8">Focusing on clarity so you can focus on clarity.</h2>
                     <Link to="/shop" className="inline-flex items-center gap-4 px-12 py-5 bg-[#024ad8] text-white font-black rounded-sm hover:bg-black transition-all shadow-2xl hover:-translate-y-1">
                         VIEW OUR FOCUSED CATALOG <ArrowRight size={20} />
                     </Link>

@@ -50,11 +50,11 @@ const HomeCategories = () => {
                     <div className="max-w-2xl space-y-4">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-1 bg-[#024ad8]"></div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#024ad8]">The Catalog</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#024ad8]">Catalog</span>
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-black text-black tracking-tighter uppercase">Professional <br />Inventory</h2>
+                        <h2 className="text-3xl md:text-5xl font-black text-black tracking-tighter uppercase">What We Sell</h2>
                         <p className="text-gray-500 font-medium text-sm md:text-base leading-relaxed">
-                            We curate an elite selection of hardware and high-yield supplies. Each category represents our commitment to precision, durability, and operational efficiency.
+                            We offer a focused selection of printers and essential printing supplies designed to meet the needs of both home users and business environments.
                         </p>
                     </div>
                     <div className="hidden md:block">

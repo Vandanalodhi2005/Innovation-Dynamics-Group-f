@@ -70,8 +70,8 @@ const HomeContact = () => {
                             </div>
 
                             <div className="pt-6 border-t border-gray-100 w-full max-w-sm">
-                                <p className="text-xs text-gray-400 leading-relaxed italic">
-                                    "Bringing high-performance printing solutions to North America's professional sector."
+                                <p className="text-xs text-gray-400 font-medium leading-relaxed">
+                                    Focused on delivering a clear, reliable, and professional purchasing experience from product selection through delivery.
                                 </p>
                             </div>
                         </div>
