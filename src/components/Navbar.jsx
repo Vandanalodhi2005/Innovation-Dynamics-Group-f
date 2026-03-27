@@ -228,6 +228,12 @@ const Navbar = () => {
                                         <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mt-1">{user.email}</p>
                                     </div>
                                     <div className="p-2 grid grid-cols-1 gap-1">
+                                        {user?.isAdmin && (
+                                            <Link to="/admin/dashboard" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 text-[#024ad8] transition-colors border-b border-gray-50 mb-1">
+                                                <Zap size={16} className="animate-pulse" />
+                                                <span className="text-[10px] font-black uppercase tracking-widest">Admin Dashboard</span>
+                                            </Link>
+                                        )}
                                         <Link to="/profile" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-50 transition-colors">
                                             <User size={16} className="text-[#024ad8]" />
                                             <span className="text-[10px] font-bold uppercase tracking-widest">Profile</span>
@@ -320,6 +326,12 @@ const Navbar = () => {
                     <div className="border-t border-white/10 pt-4 mt-4 flex items-center gap-4 px-3 flex-wrap">
                         {isAuthenticated ? (
                             <>
+                                {user?.isAdmin && (
+                                    <Link to="/admin/dashboard" onClick={toggleMenu} className="w-full flex items-center gap-3 px-3 py-3 bg-white/10 rounded-lg text-white mb-2">
+                                        <Zap size={18} className="text-yellow-400" />
+                                        <span className="text-sm font-black uppercase tracking-widest">Admin Panel</span>
+                                    </Link>
+                                )}
                                 <div className="w-full flex items-center justify-between">
                                     <Link to="/profile" onClick={toggleMenu} className="flex items-center gap-2">
                                         <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">

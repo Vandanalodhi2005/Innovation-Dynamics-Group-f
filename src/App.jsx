@@ -56,6 +56,7 @@ import AdminAnalytics from './components/admin/Pages/AdminAnalytics';
 import AdminSettings from './components/admin/Pages/AdminSettings';
 
 import './App.css';
+import AdminLogin from './components/admin/Auth/AdminLogin';
 
 function App() {
   return (
@@ -98,7 +99,9 @@ function App() {
                 <Route path="/return-exchange" element={<ReturnExchange />} />
 
                 {/* Admin Routes */}
+                <Route path="/admin/login" element={<AdminLogin />} />
                 <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<AdminDashboard />} />
                   <Route path="dashboard" element={<AdminDashboard />} />
                   <Route path="categories" element={<AdminCategories />} />
                   <Route path="products" element={<AdminProducts />} />
