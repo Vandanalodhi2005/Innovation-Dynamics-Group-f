@@ -14,14 +14,13 @@ import {
 
 const Footer = () => {
   useEffect(() => {
-    // Re-inject script on mount to ensure it targets the correct element
-    const container = document.getElementById("siteseal");
+    const container = document.getElementById('siteseal');
     if (container) {
-      container.innerHTML = "";
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1";
+      container.innerHTML = '';
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
       script.async = true;
+      script.src = 'https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1';
       container.appendChild(script);
     }
   }, []);
@@ -179,15 +178,9 @@ const Footer = () => {
 
         <div className="py-12 border-b border-white/5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="flex flex-wrap items-center gap-3 justify-center lg:justify-start">
-            {/* GoDaddy Verified & Secured */}
+            {/* GoDaddy Verified & Secured — official seal embed */}
             <div className="min-h-[64px] w-44 bg-white rounded flex items-center justify-center p-2 shadow-sm border border-white/10 shrink-0">
-              <span id="siteseal" className="flex items-center justify-center w-full h-full">
-                <img 
-                  src="https://img1.wsimg.com/shared/img/seal_godaddy.png" 
-                  alt="GoDaddy Verified & Secured" 
-                  className="h-10 opacity-40 grayscale hover:grayscale-0 transition-opacity"
-                />
-              </span>
+              <span id="siteseal" className="flex items-center justify-center w-full h-full" />  
             </div>
 
             {/* Google Safe Browsing */}
