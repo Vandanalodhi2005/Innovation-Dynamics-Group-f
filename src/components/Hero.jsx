@@ -70,7 +70,7 @@ Explore a carefully selected range of printers designed to deliver performance, 
                                 <div className="flex items-center gap-6">
                                     <div className="h-12 w-px bg-gray-200 hidden sm:block"></div>
                                     <a href="https://locator.hp.com/us/en?ml___task=search_zip&ml___id=569440&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___lang=en-US%20(1)&ml___redirect_commercial_destination_Itemid=1" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
-                                        <img src="/logo/hp-partner.png" alt="HP Partner" className="h-14 lg:h-16 w-auto object-contain" />
+                                        <img src="/logo/hp-partner.png" alt="HP Partner" width="120" height="64" loading="lazy" className="h-14 lg:h-16 w-auto object-contain" />
                                     </a>
                                 </div>
                             </div>
@@ -80,11 +80,17 @@ Explore a carefully selected range of printers designed to deliver performance, 
                         <div className="relative">
                             <div className="relative z-10 bg-white p-6 md:p-12 rounded-sm shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-100 overflow-hidden group">
                                 <div className="relative aspect-[4/3] overflow-hidden bg-[#FDFDFD]">
-                                    <img
-                                        src="/hero/hero-right.png"
-                                        alt="Modern Printing Solutions"
-                                        className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-1000"
-                                    />
+                                    <picture>
+                                        <source srcSet="/hero/hero-right.webp" type="image/webp" />
+                                        <img
+                                            src="/hero/hero-right.png"
+                                            alt="Modern Printing Solutions"
+                                            width="700"
+                                            height="525"
+                                            fetchpriority="high"
+                                            className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-1000"
+                                        />
+                                    </picture>
                                 </div>
                                 
                                 {/* Floating Specs Label */}

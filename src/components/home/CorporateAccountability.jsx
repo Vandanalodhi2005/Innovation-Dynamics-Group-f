@@ -4,70 +4,73 @@ import { Truck, Shield, Globe, Award, ArrowRight } from 'lucide-react';
 
 const CorporateAccountability = () => {
     return (
-        <section className="py-24 bg-white relative overflow-hidden">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
-                    
-                    {/* ── Left Side: Pure Studio Product Visual ─────────── */}
-                    <div className="flex justify-center lg:justify-end">
-                        <div className="relative w-full max-w-[340px] aspect-square rounded-full bg-gray-50 flex items-center justify-center p-12 overflow-hidden shadow-inner group">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#024ad8]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                            <img 
-                                src="/images/corporate_accountability_product.png" 
-                                alt="Innovation Dynamics Direct Distribution" 
-                                className="w-full h-auto object-contain transform group-hover:scale-110 transition-transform duration-1000 drop-shadow-2xl"
-                            />
-                        </div>
-                    </div>
+        <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+            {/* Subtle background accent */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#024ad8]/3 blur-[120px] rounded-full pointer-events-none" />
 
-                    {/* ── Right Side: Clean Modern Narrative ────────────────── */}
-                    <div className="space-y-10 group">
-                        <div className="space-y-6">
-                            <h2 className="text-4xl md:text-5xl font-extrabold text-black tracking-tighter leading-tight">
-                                An Independent <br />
-                                <span className="text-[#024ad8]">eCommerce Retailer</span>
-                            </h2>
-                            
-                            <div className="space-y-6 text-gray-600 text-lg leading-relaxed font-normal max-w-xl">
-                                <p>
-                                    Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
-                                </p>
-                                <p className="text-black font-semibold border-l-4 border-[#024ad8] pl-6 leading-relaxed py-2">
-                                    "We are not a marketplace or a multi-seller platform. Every product available on the website is sourced through verified distribution channels and managed directly under our operational responsibility."
-                                </p>
-                                <p className="text-sm">
-                                    This approach allows for better control over product accuracy, availability, and fulfillment, ensuring customers interact with a single, accountable retailer rather than multiple sellers with inconsistent policies.
-                                </p>
-                            </div>
-                        </div>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-                        {/* Simplified Benefit Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
-                            {[
-                                { icon: <Truck size={22} className="text-[#024ad8]" />, title: "Free Shipping" },
-                                { icon: <Shield size={22} className="text-[#024ad8]" />, title: "Manufacturer Warranty" },
-                                { icon: <Globe size={22} className="text-[#024ad8]" />, title: "Dedicated Support" },
-                                { icon: <Award size={22} className="text-[#024ad8]" />, title: "Verified Distribution" }
-                            ].map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-4 transition-transform hover:translate-x-1 duration-300">
-                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center">
-                                        {item.icon}
-                                    </div>
-                                    <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">{item.title}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="pt-6">
-                            <Link 
-                                to="/shop" 
-                                className="inline-flex items-center text-[11px] font-black uppercase tracking-[0.3em] text-[#024ad8] hover:translate-x-2 transition-transform duration-300"
-                            >
-                                EXPLORE PRODUCTS <ArrowRight size={16} className="ml-3" />
-                            </Link>
-                        </div>
-                    </div>
+                {/* Label */}
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="w-10 h-0.5 bg-[#024ad8]" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.35em] text-[#024ad8]">
+                        Innovation Dynamics Direct Distribution
+                    </span>
                 </div>
+
+                {/* Heading */}
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-black tracking-tighter leading-tight mb-8">
+                    An Independent <span className="text-[#024ad8]">eCommerce Retailer</span>
+                </h2>
+
+                {/* Body paragraphs */}
+                <div className="space-y-5 mb-10">
+                    <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl">
+                        Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
+                    </p>
+
+                    {/* Blockquote */}
+                    <blockquote className="border-l-4 border-[#024ad8] pl-6 py-3 bg-gray-50 rounded-r-sm">
+                        <p className="text-black font-semibold text-base md:text-lg leading-relaxed">
+                            "We are not a marketplace or a multi-seller platform. Every product available on the website is sourced through verified distribution channels and managed directly under our operational responsibility."
+                        </p>
+                    </blockquote>
+
+                    <p className="text-gray-500 text-sm md:text-base leading-relaxed max-w-3xl">
+                        This approach allows for better control over product accuracy, availability, and fulfillment, ensuring customers interact with a single, accountable retailer rather than multiple sellers with inconsistent policies.
+                    </p>
+                </div>
+
+                {/* Benefit pills */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                    {[
+                        { icon: <Truck size={20} className="text-[#024ad8]" />,  title: "Free Shipping" },
+                        { icon: <Shield size={20} className="text-[#024ad8]" />, title: "Manufacturer Warranty" },
+                        { icon: <Globe size={20} className="text-[#024ad8]" />,  title: "Dedicated Support" },
+                        { icon: <Award size={20} className="text-[#024ad8]" />,  title: "Verified Distribution" },
+                    ].map((item, idx) => (
+                        <div
+                            key={idx}
+                            className="flex flex-col sm:flex-row items-center sm:items-center gap-3 bg-gray-50 border border-gray-100 rounded-sm px-4 py-4 hover:border-[#024ad8]/30 hover:bg-[#024ad8]/3 transition-all duration-300"
+                        >
+                            <div className="flex-shrink-0 w-9 h-9 rounded-full bg-white flex items-center justify-center shadow-sm border border-gray-100">
+                                {item.icon}
+                            </div>
+                            <span className="text-[10px] font-black text-gray-800 uppercase tracking-widest text-center sm:text-left leading-tight">
+                                {item.title}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+
+                {/* CTA */}
+                <Link
+                    to="/shop"
+                    className="inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.3em] text-[#024ad8] hover:translate-x-2 transition-transform duration-300 group"
+                >
+                    EXPLORE PRODUCTS
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
             </div>
         </section>
     );

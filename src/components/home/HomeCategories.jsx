@@ -8,36 +8,41 @@ const HomeCategories = () => {
             title: "Home Printers",
             description: "Compact and easy-to-use printers suitable for everyday tasks such as documents, schoolwork, and personal use.",
             icon: <Printer size={24} />,
-            image: "/homeImage/img1.jpg",
-            link: "/shop/home-printers"
+            webp: "/homeImage/img1.webp",
+            jpg:  "/homeImage/img1.jpg",
+            link: "/shop?filter=home-printers"
         },
         {
             title: "Office Printers",
             description: "Reliable and efficient printers built for productivity, ideal for business environments and regular document workflows.",
             icon: <Briefcase size={24} />,
-            image: "/homeImage/img2.jpg",
-            link: "/shop/office-printers"
+            webp: "/homeImage/img2.webp",
+            jpg:  "/homeImage/img2.jpg",
+            link: "/shop?filter=office-printers"
         },
         {
             title: "Inkjet Printers",
             description: "Designed for high-quality color printing, making them suitable for photos, graphics, and detailed output.",
             icon: <Palette size={24} />,
-            image: "/homeImage/img3.jpg",
-            link: "/shop/inkjet-printers"
+            webp: "/homeImage/img3.webp",
+            jpg:  "/homeImage/img3.jpg",
+            link: "/shop?filter=inkjet-printers"
         },
         {
             title: "Laser Printers",
             description: "Fast and cost-efficient printing solutions for high-volume tasks and professional document handling.",
             icon: <Zap size={24} />,
-            image: "/homeImage/img4.jpg",
-            link: "/shop/laser-printers"
+            webp: "/homeImage/img4.webp",
+            jpg:  "/homeImage/img4.jpg",
+            link: "/shop?filter=laser-printers"
         },
         {
             title: "Ink & Toner",
             description: "A range of compatible ink and toner supplies to support consistent print quality and long-term usage.",
             icon: <Droplet size={24} />,
-            image: "/homeImage/img5.jpg",
-            link: "/shop/ink-toner"
+            webp: "/homeImage/img5.webp",
+            jpg:  "/homeImage/img5.jpg",
+            link: "/shop?filter=ink-toner"
         }
     ];
 
@@ -75,11 +80,17 @@ const HomeCategories = () => {
                                 {/* Card Image Area */}
                                 <div className="relative h-56 sm:h-64 overflow-hidden bg-[#fafafa] p-6 lg:p-10">
                                     <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                    <img
-                                        src={type.image}
-                                        alt={type.title}
-                                        className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-1000 mix-blend-multiply"
-                                    />
+                                    <picture>
+                                        <source srcSet={type.webp} type="image/webp" />
+                                        <img
+                                            src={type.jpg}
+                                            alt={type.title}
+                                            width="800"
+                                            height="600"
+                                            loading="lazy"
+                                            className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-1000 mix-blend-multiply"
+                                        />
+                                    </picture>
                                     <div className="absolute top-6 left-6 flex flex-col items-center">
                                         <div className="bg-white w-10 h-10 rounded-sm flex items-center justify-center text-black shadow-sm border border-gray-100 group-hover:bg-[#024ad8] group-hover:text-white transition-colors duration-500">
                                             {type.icon}
