@@ -22,23 +22,25 @@ const Hero = () => {
                                 
                                 <div className="space-y-4">
                                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black leading-[1.1] text-black tracking-tighter uppercase">
-                                        Innovation Dynamics Group <br className="hidden md:block" />
-                                        <span className="text-[#024ad8]">LLC</span>
+                                     Smart Printing Solutions<br className="hidden md:block" />
+                                        <span className="text-[#024ad8]"> for Every Need
+</span>
                                     </h1>
                                     <h2 className="text-lg md:text-xl font-bold text-gray-500 uppercase tracking-tight">
-                                        Focused Exclusively on Printers and Related Equipment
+                                       Reliable Printers for Home, Office, and Business Use
+
                                     </h2>
                                 </div>
                                 
                                 <p className="text-sm md:text-base text-gray-500 leading-relaxed font-medium max-w-xl">
-                                    Serving customers across the United States and Canada, our platform supports both individual users and businesses with reliable printing solutions and a structured online shopping experience.
+Explore a carefully selected range of printers designed to deliver performance, reliability, and ease of use. Whether you need a compact device for everyday tasks or a high-efficiency printer for business operations, finding the right solution is simple and straightforward.
                                 </p>
 
                                 <ul className="space-y-3 pt-2">
                                     {[
-                                        "Free shipping across the United States and Canada",
-                                        "Manufacturer warranty on all products",
-                                        "Support for both business and home customers"
+                                        "Wide range of trusted printer models",
+                                        "Clear product details for informed decisions",
+                                        "Secure and user-friendly shopping experience"
                                     ].map((item, idx) => (
                                         <li key={idx} className="flex items-center gap-3 text-xs font-bold uppercase tracking-tight text-gray-700">
                                             <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
