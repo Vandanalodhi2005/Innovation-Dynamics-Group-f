@@ -8,12 +8,12 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import CookieConsent from './components/common/CookieConsent';
 
-// Utility to scroll to top on route change
+// Utility to scroll to top on route change (including query param changes)
 const ScrollToTopOnNavigation = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, search]);
   return null;
 };
 import Home from './pages/Home';

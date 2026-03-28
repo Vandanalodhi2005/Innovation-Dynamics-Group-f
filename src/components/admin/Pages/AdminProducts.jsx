@@ -142,9 +142,22 @@ const AdminProducts = () => {
         setSpecType('text');
     };
 
+    const ARRAY_FIELDS = ['technology', 'usageCategory', 'allInOneType', 'mainFunction'];
+
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        const { name, value, type, checked } = e.target;
+        if (type === 'checkbox' && ARRAY_FIELDS.includes(name)) {
+            setFormData(prev => {
+                const current = Array.isArray(prev[name]) ? prev[name] : [];
+                if (checked) {
+                    return { ...prev, [name]: [...current, value] };
+                } else {
+                    return { ...prev, [name]: current.filter(v => v !== value) };
+                }
+            });
+        } else {
+            setFormData(prev => ({ ...prev, [name]: value }));
+        }
     };
 
     const handleQuillChange = (name, value) => {
@@ -309,6 +322,7 @@ const AdminProducts = () => {
         }
 
         // Add form fields
+        const ARRAY_FORM_FIELDS = ['technology', 'usageCategory', 'allInOneType', 'mainFunction'];
         Object.keys(formData).forEach(key => {
             if (key === 'images') {
                 data.append('existingImages', JSON.stringify(formData.images));
@@ -316,6 +330,9 @@ const AdminProducts = () => {
                 data.append('reviews', JSON.stringify(formData.reviews));
             } else if (key === 'technicalSpecification') {
                 data.append('technicalSpecification', finalTechSpecs);
+            } else if (ARRAY_FORM_FIELDS.includes(key)) {
+                // Serialize arrays as JSON strings so the backend parseArrayField() can decode them
+                data.append(key, JSON.stringify(Array.isArray(formData[key]) ? formData[key] : []));
             } else {
                 data.append(key, formData[key]);
             }

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../redux/actions/productActions';
 import { Eye, ShoppingBag, Heart, ChevronRight, X, ChevronLeft } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
-import api from '../utils/api';
 
 // Build image URL from product
 const getImageUrl = (product) => {
@@ -21,9 +20,7 @@ const getImageUrl = (product) => {
 const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
     const imageUrl = getImageUrl(product);
     return (
-        <div
-            className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 relative rounded-sm overflow-hidden flex flex-row sm:flex-col h-full"
-        >
+        <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 relative rounded-sm overflow-hidden flex flex-row sm:flex-col h-full">
             {/* Image area */}
             <div className="relative flex-shrink-0 w-32 sm:w-auto sm:aspect-[4/3] sm:flex flex-col items-center justify-center bg-gray-50/50 overflow-hidden group-hover:bg-white transition-colors duration-500 aspect-square">
                 <img
@@ -67,7 +64,7 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
                     className="text-sm font-bold text-black mb-2 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2"
                     onClick={() => onDetails(product)}
                 >
-                    {product.title || 'HP Printer'}
+                    {product.title || 'Printer'}
                 </h3>
                 <p className="text-xs text-gray-400 mb-3 line-clamp-2 flex-grow leading-relaxed hidden sm:block">{product.description || 'Professional printing solution for your needs.'}</p>
 
@@ -90,19 +87,23 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
     );
 };
 
-// ── Single Category Section (used on the overview page) ──────────────────────
-const CategorySection = ({ catName, catSlug, onViewAll, onDetails, onWishlist, isWishlisted }) => {
+// ── Category Section (overview page preview) ──────────────────────────────────
+// Fetches up to 4 products for a given catName OR usageCategory and shows them
+const CategorySection = ({ catName = '', usageCategory = '', sectionLabel, onViewAll, onDetails, onWishlist, isWishlisted }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        fetch(`${import.meta.env.VITE_API_URL}/products?category=${encodeURIComponent(catName)}&limit=4&brand=HP`)
+        let url = `${import.meta.env.VITE_API_URL}/products?limit=4`;
+        if (catName)      url += `&category=${encodeURIComponent(catName)}`;
+        if (usageCategory) url += `&usageCategory=${encodeURIComponent(usageCategory)}`;
+        fetch(url)
             .then(r => r.json())
             .then(d => setProducts(d.products || []))
             .catch(() => setProducts([]))
             .finally(() => setLoading(false));
-    }, [catName]);
+    }, [catName, usageCategory]);
 
     if (!loading && products.length === 0) return null;
 
@@ -112,7 +113,7 @@ const CategorySection = ({ catName, catSlug, onViewAll, onDetails, onWishlist, i
             <div className="flex items-center justify-between mb-8 border-b-2 border-gray-50 pb-4">
                 <div className="flex items-center gap-4">
                     <div className="w-1 h-8 bg-[#024ad8]" />
-                    <h2 className="text-2xl font-extrabold text-black uppercase tracking-tight">{catName}</h2>
+                    <h2 className="text-2xl font-extrabold text-black uppercase tracking-tight">{sectionLabel}</h2>
                     {!loading && (
                         <span className="text-[11px] text-gray-400 font-bold uppercase tracking-widest ml-2">
                             [{products.length} Models]
@@ -120,7 +121,7 @@ const CategorySection = ({ catName, catSlug, onViewAll, onDetails, onWishlist, i
                     )}
                 </div>
                 <button
-                    onClick={() => onViewAll(catSlug, catName)}
+                    onClick={onViewAll}
                     className="flex items-center gap-2 text-xs font-bold text-[#024ad8] hover:text-[#0133a1] uppercase tracking-widest group transition-colors"
                 >
                     View All <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -148,8 +149,8 @@ const CategorySection = ({ catName, catSlug, onViewAll, onDetails, onWishlist, i
     );
 };
 
-// ── Filtered View (single category or search, with search/sort/pagination) ─────────────
-const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWishlisted }) => {
+// ── Filtered View (full paginated listing with search & sort) ─────────────────
+const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetails, onWishlist, isWishlisted }) => {
     const dispatch = useDispatch();
     const [search, setSearch] = useState(initialSearch);
     const [debounced, setDeb] = useState(initialSearch);
@@ -160,16 +161,15 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
 
     useEffect(() => { setSearch(initialSearch); }, [initialSearch]);
     useEffect(() => { const t = setTimeout(() => setDeb(search), 400); return () => clearTimeout(t); }, [search]);
-    useEffect(() => { 
-        console.log(`[DEBUG] FilteredView dispatching listProducts for: "${catName}"`);
-        dispatch(listProducts(debounced, catName, 1, 'HP')); 
-    }, [dispatch, debounced, catName]);
+    useEffect(() => {
+        dispatch(listProducts(debounced, catName, 1, '', usageCategory));
+    }, [dispatch, debounced, catName, usageCategory]);
 
     if (error) {
         return (
             <div className="text-center py-20 text-red-500">
                 <p className="font-bold">{error}</p>
-                <button onClick={() => dispatch(listProducts('', catName, 1))} className="mt-4 px-6 py-2 bg-primary-blue text-white font-bold text-xs uppercase tracking-widest">Retry</button>
+                <button onClick={() => dispatch(listProducts('', catName, 1, '', usageCategory))} className="mt-4 px-6 py-2 bg-[#024ad8] text-white font-bold text-xs uppercase tracking-widest">Retry</button>
             </div>
         );
     }
@@ -189,7 +189,7 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
             <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 md:mb-12 items-stretch md:items-center justify-between bg-white p-4 md:p-6 border-b-4 border-black shadow-2xl shadow-gray-100">
                 <div className="w-full md:w-1/2 relative">
                     <input
-                        type="text" placeholder={`ENTER SEARCH PARAMETERS...`} value={search}
+                        type="text" placeholder="ENTER SEARCH PARAMETERS..." value={search}
                         onChange={e => setSearch(e.target.value)}
                         className="w-full pl-12 pr-4 py-3 md:py-4 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-[0.1em] focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all placeholder:text-gray-300"
                     />
@@ -210,7 +210,7 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
                     </select>
                 </div>
             </div>
-            
+
             <div className="flex items-center gap-4 mb-8">
                 <div className="h-0.5 flex-grow bg-gray-100"></div>
                 <p className="text-gray-400 text-xs font-medium whitespace-nowrap">
@@ -227,40 +227,40 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
                 <div className="text-center py-28 bg-gray-50 rounded-sm border border-dashed border-gray-200">
                     <X size={40} className="text-gray-300 mx-auto mb-4" />
                     <h3 className="text-xl font-bold text-black mb-2">No Products Found</h3>
-                    <p className="text-sm text-gray-400">Try adjusting your search or filter to find what you're looking for.</p>
+                    <p className="text-sm text-gray-400">Try adjusting your search or selecting a different category.</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                     {sorted.map(p => (
-                        <ProductCard 
-                            key={p._id || Math.random()} 
-                            product={p} 
-                            onDetails={onDetails} 
-                            onWishlist={onWishlist} 
-                            isWishlisted={typeof isWishlisted === 'function' ? isWishlisted(p._id) : false} 
+                        <ProductCard
+                            key={p._id || Math.random()}
+                            product={p}
+                            onDetails={onDetails}
+                            onWishlist={onWishlist}
+                            isWishlisted={typeof isWishlisted === 'function' ? isWishlisted(p._id) : false}
                         />
                     ))}
                 </div>
             )}
 
-            {/* Pagination: Professional & Sharp */}
+            {/* Pagination */}
             {pages > 1 && (
                 <div className="flex justify-center items-center gap-3 mt-20 pb-16">
-                    <button 
-                        onClick={() => dispatch(listProducts(debounced, catName, page - 1, 'HP'))} 
+                    <button
+                        onClick={() => dispatch(listProducts(debounced, catName, page - 1, '', usageCategory))}
                         disabled={page <= 1}
                         className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
                     >
                         <ChevronLeft size={20} />
                     </button>
                     {[...Array(isNaN(pages) ? 0 : Number(pages))].map((_, i) => (
-                        <button key={i + 1} onClick={() => dispatch(listProducts(debounced, catName, i + 1, 'HP'))}
-                            className={`w-12 h-12 text-[11px] font-bold uppercase tracking-wider rounded-sm border transition-all shadow-sm ${page === i + 1 ? 'bg-black text-white border-black shadow-[#024ad8]/20' : 'bg-white text-gray-400 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}>
+                        <button key={i + 1} onClick={() => dispatch(listProducts(debounced, catName, i + 1, '', usageCategory))}
+                            className={`w-12 h-12 text-[11px] font-bold uppercase tracking-wider rounded-sm border transition-all shadow-sm ${page === i + 1 ? 'bg-black text-white border-black' : 'bg-white text-gray-400 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}>
                             {String(i + 1).padStart(2, '0')}
                         </button>
                     ))}
-                    <button 
-                        onClick={() => dispatch(listProducts(debounced, catName, page + 1, 'HP'))} 
+                    <button
+                        onClick={() => dispatch(listProducts(debounced, catName, page + 1, '', usageCategory))}
                         disabled={page >= pages}
                         className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
                     >
@@ -276,110 +276,138 @@ const FilteredView = ({ catName, initialSearch = '', onDetails, onWishlist, isWi
 const Printers = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { category: catSlug } = useParams();
     const { addToWishlist, isInWishlist } = useShop();
 
-    // Get search query from URL
+    // Search query from URL (from navbar search)
     const searchParams = new URLSearchParams(location.search);
     const globalSearch = searchParams.get('search') || '';
+    const filterParam  = searchParams.get('filter')  || '';
 
-    // Load all categories dynamically from the backend
-    const [allCategories, setAllCategories] = useState([]);
+    // Map ?filter= values from navbar links to tab objects
+    const FILTER_MAP = {
+        'home-printers':   { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home' },
+        'office-printers': { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office' },
+        'laser-printers':  { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser' },
+        'inkjet-printers': { label: 'Inkjet Printers', filterType: 'catName',       filterValue: 'Inkjet' },
+        'ink-toner':       { label: 'Ink & Toner',     filterType: 'catName',       filterValue: 'Ink & Toner' },
+    };
 
+    // Hardcoded navigation tabs
+    const NAV_TABS = [
+        { label: 'All Models',      filterType: null,            filterValue: '' },
+        { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home' },
+        { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office' },
+        { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser' },
+        { label: 'Inkjet Printers', filterType: 'catName',       filterValue: 'Inkjet' },
+        { label: 'Ink & Toner',     filterType: 'catName',       filterValue: 'Ink & Toner' },
+    ];
+
+    const [activeTab, setActiveTab] = useState(null); // null = All Models
+
+    // Sync activeTab with the ?filter= query param (navbar navigation)
     useEffect(() => {
-        api.get('/categories')
-            .then(res => {
-                setAllCategories(Array.isArray(res.data) ? res.data : []);
-            })
-            .catch(() => setAllCategories([]));
-    }, []);
+        if (filterParam && FILTER_MAP[filterParam]) {
+            setActiveTab(FILTER_MAP[filterParam]);
+        } else if (!filterParam && !globalSearch) {
+            // Only reset if there's no search active
+            setActiveTab(null);
+        }
+    }, [filterParam]);
 
-    // Resolve active category from URL slug
-    const activeCatObj = allCategories.find(c => c.slug === catSlug) || null;
-    const activeCatName = activeCatObj?.name || '';
+    // Reset to All Models when a new global search is made
+    useEffect(() => { if (globalSearch) setActiveTab(null); }, [globalSearch]);
 
     const handleDetails = (product) => navigate(`/product/${product.slug || product._id}`);
     const handleWishlist = (product) => {
         const ok = addToWishlist(product);
         if (!ok) { alert('Please log in to save items to your wishlist.'); navigate('/login'); }
     };
-    const handleViewAll = (slug, name) => navigate(`/shop/${slug}`);
+
+    // Derive filter values from the active tab
+    const activeCatName  = activeTab?.filterType === 'catName'       ? activeTab.filterValue : '';
+    const activeUsageCat = activeTab?.filterType === 'usageCategory' ? activeTab.filterValue : '';
+    const headingLabel   = globalSearch
+        ? `Search: "${globalSearch}"`
+        : (activeTab?.label || 'Reliable Printing Solutions');
 
     return (
         <div className="bg-white min-h-screen font-sans text-black">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
-                {/* ── Header ─────────────────────────────────────────────── */}
+                {/* ── Header ──────────────────────────────────────────────── */}
                 <div className="text-center mb-10 md:mb-16">
                     <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024ad8] mb-4 block">Official Catalog</span>
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6 tracking-tight text-black uppercase leading-tight">
-                        {globalSearch ? `Search: "${globalSearch}"` : (activeCatName ? `HP ${activeCatName}` : 'Reliable Printing Solutions')}
+                        {headingLabel}
                     </h1>
                     <div className="w-16 h-1 bg-[#024ad8] mx-auto" />
                     <p className="text-gray-500 mt-4 md:mt-6 text-base md:text-lg max-w-2xl mx-auto font-medium">
                         {globalSearch
-                            ? `Showing filtered search results from our professional HP inventory.`
-                            : (activeCatName
-                                ? `Explore our high-performance range of ${activeCatName} designed for reliability.`
-                                : 'Browse our carefully selected range of professional HP printers and genuine supplies.')}
+                            ? 'Showing filtered results from our professional inventory.'
+                            : (activeTab
+                                ? `Explore our carefully selected range of ${activeTab.label} built for performance and reliability.`
+                                : 'Browse our full range of professional printers and genuine supplies.')}
                     </p>
 
-                    {/* Category tabs: Sharp & Professional */}
-                    {allCategories.length > 0 && (
-                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 md:mt-12 pb-2">
-                            <button
-                                onClick={() => navigate('/shop')}
-                                className={`px-4 sm:px-8 py-2 sm:py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${!catSlug ? 'bg-black text-white border-black shadow-lg shadow-black/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
-                            >
-                                All Models
-                            </button>
-                            {allCategories.map(cat => (
-                                <button
-                                    key={cat._id}
-                                    onClick={() => navigate(`/shop/${cat.slug}`)}
-                                    className={`px-4 sm:px-8 py-2 sm:py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm ${catSlug === cat.slug ? 'bg-[#024ad8] text-white border-[#024ad8] shadow-lg shadow-[#024ad8]/10' : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
-                                >
-                                    {cat.name}
-                                </button>
-                            ))}
+                    {/* ── Navigation Tabs — scrollable on mobile ────────── */}
+                    <div className="w-full overflow-x-auto mt-8 md:mt-12 pb-2 -mb-2">
+                        <div className="flex flex-nowrap justify-start md:justify-center gap-2 sm:gap-3 px-1 md:px-0 min-w-max md:min-w-0 mx-auto">
+                            {NAV_TABS.map((tab) => {
+                                const isActive = !globalSearch && (
+                                    tab.filterType === null
+                                        ? activeTab === null
+                                        : activeTab?.filterValue === tab.filterValue && activeTab?.filterType === tab.filterType
+                                );
+                                return (
+                                    <button
+                                        key={tab.label}
+                                        onClick={() => setActiveTab(tab.filterType === null ? null : tab)}
+                                        className={`flex-shrink-0 px-5 sm:px-8 py-2.5 sm:py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm whitespace-nowrap ${
+                                            isActive
+                                                ? 'bg-[#024ad8] text-white border-[#024ad8] shadow-lg shadow-[#024ad8]/10'
+                                                : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                );
+                            })}
                         </div>
-                    )}
+                    </div>
                 </div>
 
-                {/* ── Content ────────────────────────────────────────────── */}
+                {/* ── Content ─────────────────────────────────────────────── */}
                 {globalSearch ? (
                     <FilteredView
                         catName=""
                         initialSearch={globalSearch}
+                        usageCategory=""
                         onDetails={handleDetails}
                         onWishlist={handleWishlist}
                         isWishlisted={isInWishlist}
                     />
-                ) : activeCatName ? (
+                ) : activeTab ? (
                     <FilteredView
                         catName={activeCatName}
+                        usageCategory={activeUsageCat}
                         onDetails={handleDetails}
                         onWishlist={handleWishlist}
                         isWishlisted={isInWishlist}
                     />
                 ) : (
-                    allCategories.length === 0 ? (
-                        <div className="flex justify-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue" />
-                        </div>
-                    ) : (
-                        allCategories.map(cat => (
-                            <CategorySection
-                                key={cat._id}
-                                catName={cat.name}
-                                catSlug={cat.slug}
-                                onViewAll={handleViewAll}
-                                onDetails={handleDetails}
-                                onWishlist={handleWishlist}
-                                isWishlisted={isInWishlist}
-                            />
-                        ))
-                    )
+                    // All Models overview — preview section for each tab
+                    NAV_TABS.filter(t => t.filterType !== null).map(tab => (
+                        <CategorySection
+                            key={tab.label}
+                            catName={tab.filterType === 'catName' ? tab.filterValue : ''}
+                            usageCategory={tab.filterType === 'usageCategory' ? tab.filterValue : ''}
+                            sectionLabel={tab.label}
+                            onViewAll={() => setActiveTab(tab)}
+                            onDetails={handleDetails}
+                            onWishlist={handleWishlist}
+                            isWishlisted={isInWishlist}
+                        />
+                    ))
                 )}
             </div>
         </div>

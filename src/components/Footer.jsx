@@ -41,7 +41,7 @@ const Footer = () => {
               <div className="h-8 w-px bg-white/20"></div>
               <div className="flex flex-col text-[10px] uppercase font-bold tracking-[0.15em]">
                 <span className="text-[#024ad8]">Innovation Dynamics</span>
-                <span className="text-neutral-500">Global Logistics</span>
+                <span className="text-neutral-500">Group LLC</span>
               </div>
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
@@ -76,18 +76,18 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  "Home Printers",
-                  "Office Printers",
-                  "Inkjet Printers",
-                  "Laser Printers",
-                  "Ink & Toner",
+                  { name: "Home Printers",   link: "/shop?filter=home-printers"   },
+                  { name: "Office Printers", link: "/shop?filter=office-printers" },
+                  { name: "Inkjet Printers", link: "/shop?filter=inkjet-printers" },
+                  { name: "Laser Printers",  link: "/shop?filter=laser-printers"  },
+                  { name: "Ink & Toner",     link: "/shop?filter=ink-toner"       },
                 ].map((item) => (
-                  <li key={item}>
+                  <li key={item.name}>
                     <Link
-                      to={`/shop/${item.toLowerCase().replace(/ /g, "-")}`}
+                      to={item.link}
                       className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block"
                     >
-                      {item}
+                      {item.name}
                     </Link>
                   </li>
                 ))}
