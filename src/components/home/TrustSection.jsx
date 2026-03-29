@@ -39,13 +39,13 @@ const TrustSection = () => {
                                     Our Service <br/> Commitment
                                 </h2>
                                 <div className="w-16 h-1 bg-[#024ad8]"></div>
-                                <p className="text-gray-500 font-medium text-base sm:text-lg leading-relaxed">
+                                <p className="text-gray-700 font-medium text-base sm:text-lg leading-relaxed">
                                     We focus on providing a reliable and transparent experience at every step — from ordering to delivery and ongoing support.
                                 </p>
                             </div>
 
                             <div className="space-y-4">
-                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Our promise to you:</p>
+                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-600">Our promise to you:</p>
                                 <ul className="grid grid-cols-1 gap-4">
                                     {[
                                         "Free shipping on qualifying orders",
@@ -73,7 +73,7 @@ const TrustSection = () => {
                                     {item.icon}
                                 </div>
                                 <h3 className="text-sm font-black uppercase tracking-tight mb-4">{item.title}</h3>
-                                <p className="text-gray-400 text-[11px] leading-relaxed font-medium group-hover:text-blue-50 transition-colors">
+                                <p className="text-neutral-200 text-[11px] leading-relaxed font-medium group-hover:text-blue-50 transition-colors">
                                     {item.description}
                                 </p>
                                 

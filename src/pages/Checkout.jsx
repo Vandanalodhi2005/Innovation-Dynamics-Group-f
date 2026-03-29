@@ -31,18 +31,42 @@ const Checkout = () => {
     const [step, setStep] = useState(1);
     const [loading, setLoading] = useState(false);
     const [clover, setClover] = useState(null);
+    const [cloverReady, setCloverReady] = useState(false);
     const [agreedToTerms, setAgreedToTerms] = useState(false);
 
     // Style configuration
     const inputStyle = "w-full px-4 py-3.5 bg-white border border-gray-200 rounded-sm focus:border-[#024ad8] outline-none transition-all text-black placeholder:text-gray-300 font-medium text-sm";
     const labelStyle = "block text-xs font-semibold text-gray-500 mb-1.5";
 
+    // ── Pre-load Clover SDK ──────────────────────────────────────────────────
+    useEffect(() => {
+        if (window.Clover) {
+            setCloverReady(true);
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://checkout.clover.com/sdk.js';
+        script.id = 'clover-sdk';
+        script.async = true;
+        script.onload = () => {
+            console.log("Clover SDK loaded dynamically.");
+            setCloverReady(true);
+        };
+        document.body.appendChild(script);
+
+        return () => {
+            const existingScript = document.getElementById('clover-sdk');
+            if (existingScript) existingScript.remove();
+        };
+    }, []);
+
     useEffect(() => {
         if (cartItems.length === 0) {
             navigate('/cart');
         } else if (!userInfo) {
             navigate('/login?redirect=checkout');
-        } else if (step === 2 && window.Clover) {
+        } else if (step === 2 && cloverReady && window.Clover) {
             setTimeout(() => {
                 const numberEl = document.querySelector('#card-number');
                 const dateEl = document.querySelector('#card-date');

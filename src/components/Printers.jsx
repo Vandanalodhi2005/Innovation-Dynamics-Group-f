@@ -4,21 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../redux/actions/productActions';
 import { Eye, ShoppingBag, Heart, ChevronRight, X, ChevronLeft } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { getImageUrl } from '../utils/imageUtils';
 
-// Build image URL from product
-const getImageUrl = (product) => {
-    if (!product.images || product.images.length === 0)
-        return 'https://placehold.co/600x600?text=No+Image';
-    const img = product.images[0];
-    if (img.startsWith('http')) return img;
-    const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
-    const path = img.startsWith('/') ? img : `/${img}`;
-    return `${baseUrl}${path}`;
-};
+
 
 // ── Product Card ─────────────────────────────────────────────────────────────
 const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
-    const imageUrl = getImageUrl(product);
+    const imageUrl = getImageUrl(product.images, 300);
     return (
         <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 relative rounded-sm overflow-hidden flex flex-row sm:flex-col h-full">
             {/* Image area */}
@@ -27,6 +19,8 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
                     src={imageUrl}
                     alt={product.title}
                     className="w-full h-full object-contain p-4 sm:p-6 transform group-hover:scale-105 transition-transform duration-700"
+                    loading={product.isLCP ? "eager" : "lazy"}
+                    fetchPriority={product.isLCP ? "high" : "auto"}
                     onError={(e) => { e.target.src = 'https://placehold.co/400x300?text=No+Image'; }}
                 />
                 {product.countInStock === 0 && (
@@ -54,24 +48,24 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
             {/* Content area */}
             <div className="p-4 sm:p-6 flex flex-col flex-1 sm:border-t border-l sm:border-l-0 border-gray-50 min-w-0">
                 <div className="flex justify-between items-start mb-1">
-                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{product.brand || 'HP'}</span>
+                    <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">{product.brand || 'HP'}</span>
                     <div className="flex text-[#024ad8] text-[10px]">
                         {'★'.repeat(Math.min(5, Math.max(0, Math.round(product.rating || 0))))}
                         <span className="text-gray-200">{'★'.repeat(Math.max(0, 5 - Math.min(5, Math.max(0, Math.round(product.rating || 0)))))}</span>
                     </div>
                 </div>
-                <h3
+                <h2
                     className="text-sm font-bold text-black mb-2 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2"
                     onClick={() => onDetails(product)}
                 >
                     {product.title || 'Printer'}
-                </h3>
-                <p className="text-xs text-gray-400 mb-3 line-clamp-2 flex-grow leading-relaxed hidden sm:block">{product.description || 'Professional printing solution for your needs.'}</p>
+                </h2>
+                <p className="text-xs text-gray-600 mb-3 line-clamp-2 flex-grow leading-relaxed hidden sm:block">{product.description || 'Professional printing solution for your needs.'}</p>
 
                 <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100">
                     <div className="flex flex-col">
                         {Number(product.oldPrice) > 0 && (
-                            <span className="text-[10px] text-gray-400 line-through font-bold">${Number(product.oldPrice).toFixed(2)}</span>
+                            <span className="text-[10px] text-gray-600 line-through font-bold">${Number(product.oldPrice).toFixed(2)}</span>
                         )}
                         <span className="text-base sm:text-lg font-black text-black tracking-tight">${Number(product.price || 0).toFixed(2)}</span>
                     </div>
@@ -88,34 +82,17 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
 };
 
 // ── Category Section (overview page preview) ──────────────────────────────────
-// Fetches up to 4 products for a given catName OR usageCategory and shows them
-const CategorySection = ({ catName = '', usageCategory = '', sectionLabel, onViewAll, onDetails, onWishlist, isWishlisted }) => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setLoading(true);
-        let url = `${import.meta.env.VITE_API_URL}/products?limit=4`;
-        if (catName)      url += `&category=${encodeURIComponent(catName)}`;
-        if (usageCategory) url += `&usageCategory=${encodeURIComponent(usageCategory)}`;
-        fetch(url)
-            .then(r => r.json())
-            .then(d => setProducts(d.products || []))
-            .catch(() => setProducts([]))
-            .finally(() => setLoading(false));
-    }, [catName, usageCategory]);
-
+const CategorySection = ({ products = [], loading = false, sectionLabel, onViewAll, onDetails, onWishlist, isWishlisted }) => {
     if (!loading && products.length === 0) return null;
 
     return (
         <section className="mb-16">
-            {/* Section header */}
             <div className="flex items-center justify-between mb-8 border-b-2 border-gray-50 pb-4">
                 <div className="flex items-center gap-4">
                     <div className="w-1 h-8 bg-[#024ad8]" />
                     <h2 className="text-2xl font-extrabold text-black uppercase tracking-tight">{sectionLabel}</h2>
                     {!loading && (
-                        <span className="text-[11px] text-gray-400 font-bold uppercase tracking-widest ml-2">
+                        <span className="text-[11px] text-gray-600 font-bold uppercase tracking-widest ml-2">
                             [{products.length} Models]
                         </span>
                     )}
@@ -135,13 +112,7 @@ const CategorySection = ({ catName = '', usageCategory = '', sectionLabel, onVie
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {products.map(p => (
-                        <ProductCard
-                            key={p._id}
-                            product={p}
-                            onDetails={onDetails}
-                            onWishlist={onWishlist}
-                            isWishlisted={isWishlisted(p._id)}
-                        />
+                        <ProductCard key={p._id} product={p} onDetails={onDetails} onWishlist={onWishlist} isWishlisted={isWishlisted(p._id)} />
                     ))}
                 </div>
             )}
@@ -191,17 +162,18 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                     <input
                         type="text" placeholder="ENTER SEARCH PARAMETERS..." value={search}
                         onChange={e => setSearch(e.target.value)}
+                        aria-label="Search products"
                         className="w-full pl-12 pr-4 py-3 md:py-4 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-[0.1em] focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all placeholder:text-gray-300"
                     />
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none">
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
                 </div>
                 <div className="flex items-center gap-3 md:gap-4 w-full md:w-auto">
-                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap">Sort:</span>
-                    <select value={sortBy} onChange={e => setSortBy(e.target.value)}
+                    <label htmlFor="sort-select" className="text-[10px] font-bold text-gray-600 uppercase tracking-wider whitespace-nowrap">Sort:</label>
+                    <select id="sort-select" value={sortBy} onChange={e => setSortBy(e.target.value)}
                         className="flex-1 md:flex-none py-3 md:py-4 px-4 md:px-6 bg-gray-50 border border-gray-100 text-[11px] font-bold uppercase tracking-wider focus:outline-none focus:ring-1 focus:ring-[#024ad8] focus:bg-white rounded-sm transition-all cursor-pointer">
                         <option value="featured">Featured</option>
                         <option value="price-low">Price: Low to High</option>
@@ -213,7 +185,7 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
 
             <div className="flex items-center gap-4 mb-8">
                 <div className="h-0.5 flex-grow bg-gray-100"></div>
-                <p className="text-gray-400 text-xs font-medium whitespace-nowrap">
+                <p className="text-gray-600 text-xs font-medium whitespace-nowrap">
                     <span className="text-[#024ad8] font-bold">{sorted.length}</span> products found
                 </p>
                 <div className="h-0.5 flex-grow bg-gray-100"></div>
@@ -227,14 +199,14 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                 <div className="text-center py-28 bg-gray-50 rounded-sm border border-dashed border-gray-200">
                     <X size={40} className="text-gray-300 mx-auto mb-4" />
                     <h3 className="text-xl font-bold text-black mb-2">No Products Found</h3>
-                    <p className="text-sm text-gray-400">Try adjusting your search or selecting a different category.</p>
+                    <p className="text-sm text-gray-600">Try adjusting your search or selecting a different category.</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {sorted.map(p => (
+                    {sorted.map((p, index) => (
                         <ProductCard
                             key={p._id || Math.random()}
-                            product={p}
+                            product={{ ...p, isLCP: index === 0 }}
                             onDetails={onDetails}
                             onWishlist={onWishlist}
                             isWishlisted={typeof isWishlisted === 'function' ? isWishlisted(p._id) : false}
@@ -250,12 +222,16 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                         onClick={() => dispatch(listProducts(debounced, catName, page - 1, '', usageCategory))}
                         disabled={page <= 1}
                         className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
+                        aria-label="Previous Page"
                     >
                         <ChevronLeft size={20} />
                     </button>
                     {[...Array(isNaN(pages) ? 0 : Number(pages))].map((_, i) => (
                         <button key={i + 1} onClick={() => dispatch(listProducts(debounced, catName, i + 1, '', usageCategory))}
-                            className={`w-12 h-12 text-[11px] font-bold uppercase tracking-wider rounded-sm border transition-all shadow-sm ${page === i + 1 ? 'bg-black text-white border-black' : 'bg-white text-gray-400 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}>
+                            className={`w-12 h-12 text-[11px] font-bold uppercase tracking-wider rounded-sm border transition-all shadow-sm ${page === i + 1 ? 'bg-black text-white border-black' : 'bg-white text-gray-600 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
+                            aria-label={`Page ${i + 1}`}
+                            aria-current={page === i + 1 ? "page" : undefined}
+                        >
                             {String(i + 1).padStart(2, '0')}
                         </button>
                     ))}
@@ -263,6 +239,7 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                         onClick={() => dispatch(listProducts(debounced, catName, page + 1, '', usageCategory))}
                         disabled={page >= pages}
                         className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
+                        aria-label="Next Page"
                     >
                         <ChevronRight size={20} />
                     </button>
@@ -294,7 +271,6 @@ const Printers = () => {
 
     // Hardcoded navigation tabs
     const NAV_TABS = [
-        { label: 'All Models',      filterType: null,            filterValue: '' },
         { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home' },
         { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office' },
         { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser' },
@@ -302,20 +278,19 @@ const Printers = () => {
         { label: 'Ink & Toner',     filterType: 'catName',       filterValue: 'Ink & Toner' },
     ];
 
-    const [activeTab, setActiveTab] = useState(null); // null = All Models
+    const [activeTab, setActiveTab] = useState(NAV_TABS[0]); // Default to Home Printers
 
     // Sync activeTab with the ?filter= query param (navbar navigation)
     useEffect(() => {
         if (filterParam && FILTER_MAP[filterParam]) {
             setActiveTab(FILTER_MAP[filterParam]);
         } else if (!filterParam && !globalSearch) {
-            // Only reset if there's no search active
-            setActiveTab(null);
+            setActiveTab(NAV_TABS[0]);
         }
     }, [filterParam]);
 
-    // Reset to All Models when a new global search is made
-    useEffect(() => { if (globalSearch) setActiveTab(null); }, [globalSearch]);
+    // Reset to Home Printers when a new global search is made
+    useEffect(() => { if (globalSearch) setActiveTab(NAV_TABS[0]); }, [globalSearch]);
 
     const handleDetails = (product) => navigate(`/product/${product.slug || product._id}`);
     const handleWishlist = (product) => {
@@ -353,11 +328,9 @@ const Printers = () => {
                     <div className="w-full overflow-x-auto mt-8 md:mt-12 pb-2 -mb-2">
                         <div className="flex flex-nowrap justify-start md:justify-center gap-2 sm:gap-3 px-1 md:px-0 min-w-max md:min-w-0 mx-auto">
                             {NAV_TABS.map((tab) => {
-                                const isActive = !globalSearch && (
-                                    tab.filterType === null
-                                        ? activeTab === null
-                                        : activeTab?.filterValue === tab.filterValue && activeTab?.filterType === tab.filterType
-                                );
+                                const isActive = !globalSearch && 
+                                    tab.filterValue === activeTab?.filterValue && 
+                                    tab.filterType === activeTab?.filterType;
                                 return (
                                     <button
                                         key={tab.label}
@@ -386,7 +359,7 @@ const Printers = () => {
                         onWishlist={handleWishlist}
                         isWishlisted={isInWishlist}
                     />
-                ) : activeTab ? (
+                ) : (
                     <FilteredView
                         catName={activeCatName}
                         usageCategory={activeUsageCat}
@@ -394,20 +367,6 @@ const Printers = () => {
                         onWishlist={handleWishlist}
                         isWishlisted={isInWishlist}
                     />
-                ) : (
-                    // All Models overview — preview section for each tab
-                    NAV_TABS.filter(t => t.filterType !== null).map(tab => (
-                        <CategorySection
-                            key={tab.label}
-                            catName={tab.filterType === 'catName' ? tab.filterValue : ''}
-                            usageCategory={tab.filterType === 'usageCategory' ? tab.filterValue : ''}
-                            sectionLabel={tab.label}
-                            onViewAll={() => setActiveTab(tab)}
-                            onDetails={handleDetails}
-                            onWishlist={handleWishlist}
-                            isWishlisted={isInWishlist}
-                        />
-                    ))
                 )}
             </div>
         </div>

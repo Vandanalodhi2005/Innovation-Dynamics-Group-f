@@ -145,21 +145,23 @@ const CustomerReviews = () => {
                     {/* Navigation Buttons */}
                     <button 
                         onClick={prevSlide}
+                        aria-label="Previous slide"
                         className="absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 z-20 p-4 bg-white border border-gray-100 rounded-full shadow-xl hover:bg-[#024ad8] hover:text-white transition-all duration-300 hidden md:block"
                     >
                         <ChevronLeft size={24} />
                     </button>
                     <button 
                         onClick={nextSlide}
+                        aria-label="Next slide"
                         className="absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 z-20 p-4 bg-white border border-gray-100 rounded-full shadow-xl hover:bg-[#024ad8] hover:text-white transition-all duration-300 hidden md:block"
                     >
                         <ChevronRight size={24} />
                     </button>
 
                     {/* Responsive Controls for Mobile */}
-                    <div className="flex md:hidden justify-end gap-2 mb-4">
-                         <button onClick={prevSlide} className="p-2 bg-[#F8F9FA] rounded-full border border-gray-100"><ChevronLeft size={20}/></button>
-                         <button onClick={nextSlide} className="p-2 bg-[#F8F9FA] rounded-full border border-gray-100"><ChevronRight size={20}/></button>
+                    <div className="flex md:hidden justify-end gap-3 mb-4">
+                         <button onClick={prevSlide} aria-label="Previous slide" className="p-3 bg-gray-50 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all outline-none"><ChevronLeft size={20}/></button>
+                         <button onClick={nextSlide} aria-label="Next slide" className="p-3 bg-gray-50 rounded-full border border-gray-100 flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all outline-none"><ChevronRight size={20}/></button>
                     </div>
 
                     {/* Review Cards Slider */}
@@ -204,11 +206,11 @@ const CustomerReviews = () => {
                                                                 <CheckCircle2 size={14} className="text-[#024ad8]" />
                                                             )}
                                                         </div>
-                                                        <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{review.role}</span>
+                                                        <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">{review.role}</span>
                                                     </div>
                                                 </div>
                                                 <div className="hidden sm:block">
-                                                    <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">{review.location}</span>
+                                                    <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">{review.location}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,13 +221,16 @@ const CustomerReviews = () => {
                     </div>
 
                     {/* Progress Dots */}
-                    <div className="flex justify-center gap-2 mt-8">
+                    <div className="flex justify-center gap-1 mt-8">
                         {reviews.map((_, i) => (
                             <button 
                                 key={i}
                                 onClick={() => setCurrentIndex(i)}
-                                className={`h-1 cursor-pointer transition-all duration-500 rounded-full ${currentIndex === i ? 'w-8 bg-[#024ad8]' : 'w-2 bg-gray-200 hover:bg-gray-300'}`}
-                            />
+                                aria-label={`Go to slide ${i + 1}`}
+                                className="p-4 group flex items-center justify-center transition-all border-none bg-transparent"
+                            >
+                                <div className={`h-1.5 transition-all duration-500 rounded-full ${currentIndex === i ? 'w-8 bg-[#024ad8]' : 'w-2 bg-gray-300 group-hover:bg-gray-400'}`} />
+                            </button>
                         ))}
                     </div>
                 </div>

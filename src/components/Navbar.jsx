@@ -206,12 +206,12 @@ const Navbar = () => {
                                     <ChevronDown size={14} className="text-white group-hover/user:text-[#024ad8] group-hover/user:rotate-180 transition-all" />
                                 </button>
                             ) : (
-                                <Link to="/login" className="flex items-center gap-2 group/login">
+                                <Link to="/login" className="flex items-center gap-2 group/login" aria-label="Login">
                                     <div className="w-9 h-9 border border-white/20 rounded-full flex items-center justify-center group-hover/login:bg-white group-hover/login:border-white transition-all">
-                                        <User size={18} className="text-white group-hover/login:text-[#024ad8]" />
+                                         <User size={18} className="text-white group-hover/login:text-[#024ad8]" />
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className="text-[8px] font-black uppercase tracking-widest text-white/50">Elite Portal</span>
+                                        <span className="text-[8px] font-black uppercase tracking-widest text-white/90">Elite Portal</span>
                                         <span className="text-[10px] font-black uppercase tracking-widest text-white">LOGIN</span>
                                     </div>
                                 </Link>
@@ -219,31 +219,35 @@ const Navbar = () => {
 
                             {/* User Dropdown Redesigned */}
                             {isAuthenticated && (
-                                <div className="absolute right-0 mt-4 w-60 bg-white text-black rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 opacity-0 invisible group-hover/user:opacity-100 group-hover/user:visible transition-all duration-500 translate-y-2 group-hover/user:translate-y-0 z-50 overflow-hidden">
+                                <div className="absolute right-0 mt-4 w-60 bg-white text-black rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-200 opacity-0 invisible group-hover/user:opacity-100 group-hover/user:visible transition-all duration-500 translate-y-2 group-hover/user:translate-y-0 z-50 overflow-hidden">
                                     <div className="p-5 bg-gray-50 flex flex-col items-center">
                                         <div className="w-16 h-16 bg-[#024ad8] text-white rounded-full flex items-center justify-center text-2xl font-black mb-3 shadow-lg">
                                             {user.name.charAt(0)}
                                         </div>
                                         <p className="text-xs font-black uppercase tracking-widest text-gray-900 leading-tight">{user.name}</p>
-                                        <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mt-1">{user.email}</p>
+                                        <div className="text-center">
+                                            <p className="text-sm text-gray-700 font-bold uppercase tracking-widest bg-white inline-block px-8 py-4 border border-gray-100 rounded-sm">
+                                                Focusing on Transparency and Efficiency
+                                            </p>
+                                        </div>
                                     </div>
                                     <div className="p-2 grid grid-cols-1 gap-1">
                                         {user?.isAdmin && (
-                                            <Link to="/admin/dashboard" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 text-[#024ad8] transition-colors border-b border-gray-50 mb-1">
+                                            <Link to="/admin/dashboard" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-[#024ad8]/10 text-[#024ad8] transition-colors border-b border-gray-100 mb-1">
                                                 <Zap size={16} className="animate-pulse" />
                                                 <span className="text-[10px] font-black uppercase tracking-widest">Admin Dashboard</span>
                                             </Link>
                                         )}
-                                        <Link to="/profile" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-50 transition-colors">
+                                        <Link to="/profile" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
                                             <User size={16} className="text-[#024ad8]" />
                                             <span className="text-[10px] font-bold uppercase tracking-widest">Profile</span>
                                         </Link>
-                                        <Link to="/track-order" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-50 transition-colors">
+                                        <Link to="/track-order" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
                                             <Truck size={16} className="text-[#024ad8]" />
                                             <span className="text-[10px] font-bold uppercase tracking-widest">Logistic Status</span>
                                         </Link>
-                                        <div className="h-px bg-gray-100 my-1 mx-4"></div>
-                                        <button onClick={handleLogout} className="w-full flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-red-50 text-red-600 transition-colors">
+                                        <div className="h-px bg-gray-200 my-1 mx-4"></div>
+                                        <button onClick={handleLogout} className="w-full flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-red-50 text-red-700 transition-colors">
                                             <LogOut size={16} />
                                             <span className="text-[10px] font-bold uppercase tracking-widest">Logout</span>
                                         </button>
@@ -255,14 +259,19 @@ const Navbar = () => {
                         <Link
                             to="/wishlist"
                             onClick={handleWishlistClick}
-                            className="text-white hover:text-white/80 transition-colors duration-300 relative group"
+                            aria-label={`Wishlist, ${wishlistCount} items`}
+                            className="text-white hover:text-white/90 transition-colors duration-300 relative group"
                         >
                             <Heart size={22} />
                             {wishlistCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{wishlistCount}</span>
+                                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{wishlistCount}</span>
                             )}
                         </Link>
-                        <Link to="/cart" className="text-white hover:text-white/80 transition-colors duration-300 relative group">
+                        <Link 
+                            to="/cart" 
+                            aria-label={`Shopping Cart, ${cartCount} items`}
+                            className="text-white hover:text-white/90 transition-colors duration-300 relative group"
+                        >
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
                                 <span className="absolute -top-2 -right-2 bg-white text-[#024ad8] text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
@@ -271,15 +280,17 @@ const Navbar = () => {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="lg:hidden flex items-center gap-4">
-                        <Link to="/cart" className="text-white hover:text-white/80 transition-colors duration-300 relative">
-                            <ShoppingCart size={22} />
+                    <div className="lg:hidden flex items-center gap-2">
+                        <Link to="/cart" aria-label={`Shopping Cart, ${cartCount} items`} className="text-white hover:text-white/90 transition-colors duration-300 relative p-3 flex items-center justify-center">
+                            <ShoppingCart size={22} className="relative z-10" />
                             {cartCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-white text-[#024ad8] text-[0.6rem] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow-lg transform scale-110">{cartCount}</span>
+                                <span className="absolute top-1.5 right-1.5 bg-white text-[#024ad8] text-[0.6rem] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-md">
+                                    {cartCount}
+                                </span>
                             )}
                         </Link>
-                        <button onClick={toggleMenu} className="text-white hover:text-white/80 focus:outline-none focus:text-white/80 transition-colors">
-                            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        <button onClick={toggleMenu} aria-label="Toggle Menu" className="text-white hover:text-white/90 focus:outline-none transition-colors p-3 flex items-center justify-center rounded-sm hover:bg-white/10">
+                            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
                         </button>
                     </div>
                 </div>
@@ -287,18 +298,19 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             <div className={`lg:hidden transition-all duration-300 ease-in-out bg-[#024ad8] overflow-hidden ${isMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'}`}>
-                <div className="px-4 pt-2 pb-6 space-y-2 border-t border-white/10">
+                <div className="px-4 pt-2 pb-6 space-y-2 border-t border-white/20">
                     {/* Mobile Search */}
                     <div className="relative mb-4 mt-4">
                         <input
                             type="text"
+                            aria-label="Search products"
                             placeholder="Search products..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             onKeyUp={handleSearch}
-                            className="w-full bg-white/10 text-white placeholder-white/60 rounded-lg pl-10 pr-4 py-2 focus:outline-none focus:ring-1 focus:ring-white/30"
+                            className="w-full bg-white/10 text-white placeholder-white/70 rounded-lg pl-10 pr-4 py-2 border border-white/20 focus:outline-none focus:ring-1 focus:ring-white"
                         />
-                        <Search className="absolute left-3 top-2.5 text-white/60 w-5 h-5" />
+                        <Search className="absolute left-3 top-2.5 text-white/70 w-5 h-5" />
                     </div>
 
                     <Link to="/" onClick={toggleMenu} className={getMobileLinkClasses('/')}>Home</Link>
@@ -308,41 +320,42 @@ const Navbar = () => {
                     <div>
                         <button
                             onClick={toggleShopDropdown}
-                            className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-white bg-white/20' : 'text-white hover:text-white/80 hover:bg-white/10'}`}
+                            aria-expanded={isShopDropdownOpen}
+                            className={`w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium transition-colors focus:outline-none ${window.location.pathname.startsWith('/shop') ? 'text-white bg-white/20' : 'text-white hover:text-white/90 hover:bg-white/10'}`}
                         > Shop <ChevronDown size={16} className={`transform transition-transform duration-300 ${isShopDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
                         <div className={`pl-6 space-y-1 transition-all duration-300 overflow-hidden ${isShopDropdownOpen ? 'max-h-60' : 'max-h-0'}`}>
-                            <Link to="/shop?filter=home-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Home Printers</Link>
-                            <Link to="/shop?filter=office-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Office Printers</Link>
-                            <Link to="/shop?filter=laser-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</Link>
-                            <Link to="/shop?filter=inkjet-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</Link>
-                            <Link to="/shop?filter=ink-toner" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/70 hover:text-white hover:bg-white/10 transition-colors">Ink & Toner</Link>
+                            <Link to="/shop?filter=home-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Home Printers</Link>
+                            <Link to="/shop?filter=office-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Office Printers</Link>
+                            <Link to="/shop?filter=laser-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</Link>
+                            <Link to="/shop?filter=inkjet-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</Link>
+                            <Link to="/shop?filter=ink-toner" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Ink & Toner</Link>
                         </div>
                     </div>
 
                     <Link to="/faqs" onClick={toggleMenu} className={getMobileLinkClasses('/faqs')}>FAQs</Link>
                     <Link to="/contact" onClick={toggleMenu} className={getMobileLinkClasses('/contact')}>Contact Us</Link>
 
-                    <div className="border-t border-white/10 pt-4 mt-4 flex items-center gap-4 px-3 flex-wrap">
+                    <div className="border-t border-white/20 pt-4 mt-4 flex items-center gap-4 px-3 flex-wrap">
                         {isAuthenticated ? (
                             <>
                                 {user?.isAdmin && (
-                                    <Link to="/admin/dashboard" onClick={toggleMenu} className="w-full flex items-center gap-3 px-3 py-3 bg-white/10 rounded-lg text-white mb-2">
-                                        <Zap size={18} className="text-yellow-400" />
+                                    <Link to="/admin/dashboard" onClick={toggleMenu} className="w-full flex items-center gap-3 px-3 py-3 bg-white/20 rounded-lg text-white mb-2">
+                                        <Zap size={18} className="text-yellow-300" />
                                         <span className="text-sm font-black uppercase tracking-widest">Admin Panel</span>
                                     </Link>
                                 )}
                                 <div className="w-full flex items-center justify-between">
                                     <Link to="/profile" onClick={toggleMenu} className="flex items-center gap-2">
-                                        <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">
+                                        <div className="w-8 h-8 rounded-full bg-white/30 flex items-center justify-center text-white font-bold">
                                             {user.name.charAt(0)}
                                         </div>
-                                        <div>
-                                            <p className="text-sm font-bold text-white">{user.name}</p>
-                                            <p className="text-xs text-white/60">View Profile</p>
-                                        </div>
+                                        <div className="w-16 h-1 bg-[#024ad8]"></div>
+                                        <p className="text-white font-medium text-base sm:text-lg leading-relaxed">
+                                            We focus on providing a reliable and transparent experience at every step — from ordering to delivery and ongoing support.
+                                        </p>
                                     </Link>
-                                    <button onClick={handleLogout} className="text-red-300 hover:bg-red-500/20 p-2 rounded-full">
+                                    <button onClick={handleLogout} className="text-red-200 hover:bg-red-500/30 p-2 rounded-full">
                                         <LogOut size={20} />
                                     </button>
                                 </div>

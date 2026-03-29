@@ -25,7 +25,7 @@ const CorporateAccountability = () => {
 
                 {/* Body paragraphs */}
                 <div className="space-y-5 mb-10">
-                    <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl">
+                    <p className="text-gray-700 text-base md:text-lg leading-relaxed max-w-3xl">
                         Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
                     </p>
 
@@ -36,7 +36,7 @@ const CorporateAccountability = () => {
                         </p>
                     </blockquote>
 
-                    <p className="text-gray-500 text-sm md:text-base leading-relaxed max-w-3xl">
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed max-w-3xl">
                         This approach allows for better control over product accuracy, availability, and fulfillment, ensuring customers interact with a single, accountable retailer rather than multiple sellers with inconsistent policies.
                     </p>
                 </div>

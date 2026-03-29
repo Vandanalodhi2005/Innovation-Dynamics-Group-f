@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
                 </div>
 
                 <div className="text-center">
-                    <p className="text-sm text-gray-400 font-bold uppercase tracking-widest bg-white inline-block px-8 py-4 border border-gray-100 rounded-sm">
+                    <p className="text-sm text-gray-700 font-bold uppercase tracking-widest bg-white inline-block px-8 py-4 border border-gray-100 rounded-sm">
                         Focusing on Transparency and Efficiency
                     </p>
                 </div>

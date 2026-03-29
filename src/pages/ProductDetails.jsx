@@ -10,6 +10,7 @@ import {
     Star, ShoppingBag, ShoppingCart, Heart, Truck, Shield,
     ChevronLeft, ChevronRight, Check, RotateCcw, Award
 } from 'lucide-react';
+import { getImageUrl } from '../utils/imageUtils';
 
 /* ── Micro components ─────────────────────────────────────────────────────── */
 const Loader = () => (
@@ -90,17 +91,10 @@ const ProductDetails = () => {
         }
     }, [dispatch, id, okReview]);
 
-    /* helpers -------------------------------------------------------------- */
-    const imgUrl = (src) => {
-        if (!src) return 'https://placehold.co/600x600?text=No+Image';
-        if (src.startsWith('http')) return src;
-        const baseUrl = import.meta.env.VITE_API_URL.replace('/api', '');
-        const path = src.startsWith('/') ? src : `/${src}`;
-        return `${baseUrl}${path}`;
-    };
+
 
     const images = product?.images?.length ? product.images : [];
-    const mainImg = images[activeImg] ? imgUrl(images[activeImg]) : 'https://placehold.co/600x600?text=No+Image';
+    const mainImg = getImageUrl(images[activeImg], 800);
     const toCart = () => {
         if (!isAuthenticated) { alert('Please sign in to add items to cart.'); navigate('/login'); return; }
         ctxAddToCart(product, qty); navigate('/cart');
@@ -207,7 +201,7 @@ const ProductDetails = () => {
                                         {images.map((img, i) => (
                                             <button key={i} onClick={() => setActiveImg(i)}
                                                 className={`flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-sm overflow-hidden border-2 transition-all bg-white ${activeImg === i ? 'border-[#024ad8] shadow-md' : 'border-gray-100 hover:border-gray-300'}`}>
-                                                <img src={imgUrl(img)} alt={`view ${i + 1}`}
+                                                <img src={getImageUrl(img, 200)} alt={`view ${i + 1}`}
                                                     className="w-full h-full object-contain p-2 mix-blend-multiply"
                                                     onError={(e) => { e.target.src = 'https://placehold.co/80x80?text=x'; }} />
                                             </button>

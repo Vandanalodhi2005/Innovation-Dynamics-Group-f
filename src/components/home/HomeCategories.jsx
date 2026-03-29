@@ -85,8 +85,8 @@ const HomeCategories = () => {
                                         <img
                                             src={type.jpg}
                                             alt={type.title}
-                                            width="800"
-                                            height="600"
+                                            width="400"
+                                            height="300"
                                             loading="lazy"
                                             className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-1000 mix-blend-multiply"
                                         />

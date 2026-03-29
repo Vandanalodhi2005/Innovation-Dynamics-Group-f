@@ -15,7 +15,7 @@ const HomeContact = () => {
                                 <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
                                     Get in <span className="text-[#024ad8]">Touch</span> With Us
                                 </h2>
-                                <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                                <p className="text-neutral-200 text-sm leading-relaxed max-w-md">
                                     We're here to help with any questions about printer solutions, orders, or service.
                                     Reach out from our administrative center in Blaine, Minnesota.
                                 </p>
@@ -28,8 +28,8 @@ const HomeContact = () => {
                                         <Mail size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
                                     </div>
                                     <div className="min-w-0">
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Email</p>
-                                        <p className="text-sm font-semibold text-[#024ad8] break-all leading-snug">support@innovationdynamicsgroup.com</p>
+                                        <p className="text-[10px] text-neutral-300 font-extrabold uppercase tracking-wider mb-1">Email</p>
+                                        <p className="text-sm font-bold text-blue-400 break-all leading-snug">support@innovationdynamicsgroup.com</p>
                                     </div>
                                 </div>
 
@@ -38,7 +38,7 @@ const HomeContact = () => {
                                         <Phone size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Phone</p>
+                                        <p className="text-[10px] text-neutral-300 font-extrabold uppercase tracking-wider mb-1">Phone</p>
                                         <p className="text-sm font-semibold text-white">+1 (651) 815-4630</p>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@ const HomeContact = () => {
                                         <Clock size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-1">Business Hours</p>
+                                        <p className="text-[10px] text-neutral-300 font-extrabold uppercase tracking-wider mb-1">Business Hours</p>
                                         <p className="text-sm font-semibold text-gray-300">Mon–Fri, 9:00 AM – 6:00 PM</p>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@ const HomeContact = () => {
                             </div>
 
                             <h3 className="text-xl sm:text-2xl font-bold text-black mb-2">Our Location</h3>
-                            <p className="text-xs font-medium text-gray-400 mb-6">Innovation Dynamics Group LLC</p>
+                            <p className="text-xs font-bold text-gray-700 mb-6">Innovation Dynamics Group LLC</p>
 
                             <div className="text-lg sm:text-xl font-bold text-black space-y-1 mb-8">
                                 <p>11397 Quincy St NE</p>
@@ -70,7 +70,7 @@ const HomeContact = () => {
                             </div>
 
                             <div className="pt-6 border-t border-gray-100 w-full max-w-sm">
-                                <p className="text-xs text-gray-400 font-medium leading-relaxed">
+                                <p className="text-xs text-black font-medium leading-relaxed">
                                     Focused on delivering a clear, reliable, and professional purchasing experience from product selection through delivery.
                                 </p>
                             </div>

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import image from "../../public/logo/start_inno.jpeg";
 import {
   Facebook,
   Twitter,
@@ -15,14 +14,31 @@ import {
 const Footer = () => {
   useEffect(() => {
     const container = document.getElementById('siteseal');
-    if (container) {
-      container.innerHTML = '';
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.async = true;
-      script.src = 'https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1';
-      container.appendChild(script);
-    }
+    if (!container) return;
+
+    const loadSeal = () => {
+      if (!container.getAttribute('data-loaded')) {
+        container.setAttribute('data-loaded', 'true');
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        // Load dynamically when scrolled into view
+        script.src = 'https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1';
+        container.appendChild(script);
+      }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        // Use a small delay after intersection for ultra-smooth scrolling
+        setTimeout(loadSeal, 300);
+        observer.disconnect();
+      }
+    }, { rootMargin: '300px' });
+
+    observer.observe(container);
+
+    return () => observer.disconnect();
   }, []);
 
 
@@ -33,18 +49,18 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-0 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/5">
           <div className="lg:col-span-3 space-y-6">
-            <Link to="/" className="flex items-center gap-3">
-              <span className="font-bold text-4xl tracking-tighter text-white lowercase">
+            <Link to="/" className="flex items-center gap-3 min-h-[40px] select-none h-10 overflow-hidden">
+              <span className="font-bold text-4xl tracking-tighter text-white lowercase leading-[0.8] py-1">
                 idg
               </span>
               <div className="h-8 w-px bg-white/20"></div>
               <div className="flex flex-col text-[10px] uppercase font-bold tracking-[0.15em]">
                 <span className="text-[#024ad8]">Innovation Dynamics</span>
-                <span className="text-neutral-500">Group LLC</span>
+                <span className="text-neutral-300">Group LLC</span>
               </div>
             </Link>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
-            Innovation Dynamics Group LLC is an independent U.S.-based retailer providing printers and related products with verified sourcing, reliable fulfillment, and a seamless shopping experience across the U.S. and Canada.
+              Innovation Dynamics Group LLC is an independent U.S.-based retailer providing printers and related products with verified sourcing, reliable fulfillment, and a seamless shopping experience across the U.S. and Canada.
             </p>
             {/* <div className="flex items-center gap-4">
               <a
@@ -70,21 +86,21 @@ const Footer = () => {
 
           <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="space-y-6">
-              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/40">
+              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/70">
                 Our Inventory
               </h4>
               <ul className="space-y-3">
                 {[
-                  { name: "Home Printers",   link: "/shop?filter=home-printers"   },
+                  { name: "Home Printers", link: "/shop?filter=home-printers" },
                   { name: "Office Printers", link: "/shop?filter=office-printers" },
                   { name: "Inkjet Printers", link: "/shop?filter=inkjet-printers" },
-                  { name: "Laser Printers",  link: "/shop?filter=laser-printers"  },
-                  { name: "Ink & Toner",     link: "/shop?filter=ink-toner"       },
+                  { name: "Laser Printers", link: "/shop?filter=laser-printers" },
+                  { name: "Ink & Toner", link: "/shop?filter=ink-toner" },
                 ].map((item) => (
                   <li key={item.name}>
                     <Link
                       to={item.link}
-                      className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block"
+                      className="text-sm font-semibold text-neutral-400 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
                     </Link>
@@ -94,7 +110,7 @@ const Footer = () => {
             </div>
 
             <div className="space-y-6">
-              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/40">
+              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/70">
                 Support
               </h4>
               <ul className="space-y-3">
@@ -109,7 +125,7 @@ const Footer = () => {
                   <li key={item.name}>
                     <Link
                       to={item.link}
-                      className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block"
+                      className="text-sm font-semibold text-neutral-400 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
                     </Link>
@@ -119,7 +135,7 @@ const Footer = () => {
             </div>
 
             <div className="space-y-6">
-              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/40">
+              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/70">
                 Policy Center
               </h4>
               <ul className="space-y-3">
@@ -134,7 +150,7 @@ const Footer = () => {
                   <li key={item.name}>
                     <Link
                       to={item.link}
-                      className="text-sm font-semibold text-neutral-500 hover:text-[#024ad8] transition-colors block"
+                      className="text-sm font-semibold text-neutral-400 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
                     </Link>
@@ -144,24 +160,24 @@ const Footer = () => {
             </div>
 
             <div className="col-span-2 md:col-span-1 space-y-6">
-              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/40">
+              <h4 className="text-xs font-black uppercase tracking-[0.25em] text-white/70">
                 Direct Contact
               </h4>
               <div className="space-y-4">
                 <div className="flex items-start gap-3 group">
                   <MapPin
                     size={16}
-                    className="text-[#024ad8] mt-0.5 shrink-0"
+                    className="text-[#3b82f6] mt-0.5 shrink-0"
                   />
-                  <span className="text-sm font-bold text-neutral-400 group-hover:text-white transition-colors">
+                  <span className="text-sm font-bold text-neutral-300 group-hover:text-white transition-colors">
                     11397 Quincy St NE,
                     <br />
                     Blaine, MN 55434
                   </span>
                 </div>
                 <div className="flex items-center gap-3 group">
-                  <Mail size={16} className="text-[#024ad8] shrink-0" />
-                  <span className="text-sm font-bold text-neutral-400 group-hover:text-white transition-colors truncate">
+                  <Mail size={16} className="text-[#3b82f6] shrink-0" />
+                  <span className="text-sm font-bold text-neutral-300 group-hover:text-white transition-colors truncate">
                     support@innovationdynamicsgroup.com
                   </span>
                 </div>
@@ -176,11 +192,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="py-12 border-b border-white/5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="flex flex-wrap items-center gap-3 justify-center lg:justify-start">
+        <div className="py-12 border-b grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="flex flex-wrap md:flex-nowrap items-center gap-4 justify-center lg:justify-start">
             {/* GoDaddy Verified & Secured — official seal embed */}
-            <div className="min-h-[64px] w-44 bg-white rounded flex items-center justify-center p-2 shadow-sm border border-white/10 shrink-0">
-              <span id="siteseal" className="flex items-center justify-center w-full h-full" />  
+            <div className="h-[52px]  rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0">
+              <span id="siteseal" className="flex items-center justify-center h-full w-auto" />
             </div>
 
             {/* Google Safe Browsing */}
@@ -188,12 +204,12 @@ const Footer = () => {
               href="https://transparencyreport.google.com/safe-browsing/search?url=http:%2F%2Finnovationdynamicsgroup.com&hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-[64px] w-44 bg-white rounded flex items-center justify-center p-2 shadow-sm border border-white/10 shrink-0 group"
+              className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
             >
               <img
                 src="/footer_google.png"
                 alt="Google Safe Browsing"
-                className="h-full w-full object-contain transition-all duration-500"
+                className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>
 
@@ -202,12 +218,12 @@ const Footer = () => {
               href="https://www.trustpilot.com/review/innovationdynamicsgroup.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-[64px] w-44 bg-white rounded flex items-center justify-center p-2 shadow-sm border border-white/10 shrink-0 group"
+              className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
             >
               <img
-                src={image}
+                src="/logo/start_inno.jpeg"
                 alt="Trustpilot Reviews"
-                className="h-full w-full object-contain transition-all duration-500"
+                className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>
           </div>
@@ -215,31 +231,39 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center lg:justify-end items-center gap-6">
             <div className="flex items-center gap-5 px-6 py-3 bg-neutral-900/50 border border-white/5 rounded-full">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/b/b7/MasterCard_Logo.svg"
+                src="/payment/mastercard.svg"
                 alt="MasterCard"
-                className="h-4 opacity-30 hover:opacity-100 transition-all"
+                width="26"
+                height="16"
+                className="h-4 w-auto opacity-30 hover:opacity-100 transition-all aspect-[26/16]"
               />
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg"
+                src="/payment/amex.svg"
                 alt="Amex"
-                className="h-4 opacity-30 hover:opacity-100 transition-all"
+                width="26"
+                height="16"
+                className="h-4 w-auto opacity-30 hover:opacity-100 transition-all aspect-[26/16]"
               />
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/57/Discover_Card_logo.svg"
+                src="/payment/discover.svg"
                 alt="Discover"
-                className="h-3 opacity-30 hover:opacity-100 transition-all"
+                width="36"
+                height="12"
+                className="h-3 w-auto opacity-30 hover:opacity-100 transition-all aspect-[36/12]"
               />
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/3/39/PayPal_logo.svg"
+                src="/payment/paypal.svg"
                 alt="PayPal"
-                className="h-4 opacity-30 hover:opacity-100 transition-all"
+                width="50"
+                height="16"
+                className="h-4 w-auto opacity-30 hover:opacity-100 transition-all aspect-[50/16]"
               />
             </div>
             <div className="flex flex-col items-center lg:items-end">
-              <span className="text-[10px] font-black text-[#024ad8] tracking-[0.2em] uppercase">
+              <span className="text-[10px] font-black text-blue-400 tracking-[0.2em] uppercase">
                 Secure Payments Powered by Clover
               </span>
-              <span className="text-[10px] font-bold text-neutral-600">
+              <span className="text-[10px] font-bold text-neutral-400">
                 256-bit SSL Data Encryption
               </span>
             </div>
@@ -248,27 +272,27 @@ const Footer = () => {
 
         <div className="pt-10 pb-4 flex flex-col gap-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-[10px] font-black text-neutral-700 uppercase tracking-[0.3em]">
+            <p className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.3em]">
               &copy; 2026{" "}
-              <span className="text-neutral-300">
+              <span className="text-neutral-200">
                 Innovation Dynamics Group LLC
               </span>{" "}
               • Minnesota, USA
             </p>
             <div className="flex items-center gap-3 text-neutral-800">
               <Award size={14} />
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em]">
+              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/80">
                 Industry Partner Since 1997
               </span>
             </div>
           </div>
 
           <p className="text-center text-[9px] text-neutral-300 font-medium leading-relaxed uppercase tracking-wider max-w-4xl mx-auto px-4">
-            <span className="text-neutral-500 font-bold">
+            <span className="text-neutral-400 font-bold">
               Trademark Notice:
             </span>{" "}
-           
-All product names, images, brand logos, and trademarks displayed on this website are the property of their respective owners and are used for identification purposes only. Innovation Dynamics Group LLC operates as an independent e-commerce retailer and is not affiliated with, endorsed by, or sponsored by any manufacturer unless explicitly stated. Product availability, specifications, and pricing are subject to change without prior notice. While we strive to provide accurate and up-to-date information, Innovation Dynamics Group LLC does not guarantee that all content on this site is complete, current, or free from errors.
+
+            All product names, images, brand logos, and trademarks displayed on this website are the property of their respective owners and are used for identification purposes only. Innovation Dynamics Group LLC operates as an independent e-commerce retailer and is not affiliated with, endorsed by, or sponsored by any manufacturer unless explicitly stated. Product availability, specifications, and pricing are subject to change without prior notice. While we strive to provide accurate and up-to-date information, Innovation Dynamics Group LLC does not guarantee that all content on this site is complete, current, or free from errors.
 
           </p>
         </div>

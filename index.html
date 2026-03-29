@@ -2,22 +2,111 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Innovation Dynamics Group</title>
 
-    <!-- Preconnect to Google Fonts origins early -->
+    <!-- ── Primary SEO ───────────────────────────────────────────────────── -->
+    <title>Innovation Dynamics Group | Printers for Home & Office | Blaine, MN</title>
+    <meta
+      name="description"
+      content="Innovation Dynamics Group LLC is a U.S.-based independent online retailer specializing in home printers, office printers, laser printers, inkjet printers, and ink & toner supplies. Shop verified products with free shipping, manufacturer warranty, and dedicated support."
+    />
+    <meta
+      name="keywords"
+      content="printers, home printers, office printers, laser printers, inkjet printers, ink and toner, buy printers online, Innovation Dynamics Group, IDG printers, Minnesota printer retailer"
+    />
+    <meta name="author" content="Innovation Dynamics Group LLC" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://innovationdynamicsgroup.com/" />
+
+    <!-- ── Favicon ───────────────────────────────────────────────────────── -->
+    <link rel="icon" type="image/png" href="/vite.png" />
+
+    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp previews) ───────────── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Innovation Dynamics Group" />
+    <meta property="og:title" content="Innovation Dynamics Group | Printers for Home & Office" />
+    <meta
+      property="og:description"
+      content="Shop home, office, laser & inkjet printers plus ink & toner from Innovation Dynamics Group LLC — a verified U.S. independent retailer based in Blaine, Minnesota. Free shipping & manufacturer warranty."
+    />
+    <meta property="og:url" content="https://innovationdynamicsgroup.com/" />
+    <meta property="og:image" content="https://innovationdynamicsgroup.com/hero/hero-right.png" />
+    <meta property="og:image:width" content="700" />
+    <meta property="og:image:height" content="525" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ── Twitter / X Card ─────────────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Innovation Dynamics Group | Printers for Home & Office" />
+    <meta
+      name="twitter:description"
+      content="Shop verified printers and ink & toner from a trusted U.S. independent retailer. Free shipping, manufacturer warranty, dedicated support."
+    />
+    <meta name="twitter:image" content="https://innovationdynamicsgroup.com/hero/hero-right.png" />
+
+    <!-- ── Business / Local SEO structured data ─────────────────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Innovation Dynamics Group LLC",
+      "description": "Independent U.S. online retailer specializing in home printers, office printers, laser printers, inkjet printers, and ink & toner supplies.",
+      "url": "https://innovationdynamicsgroup.com",
+      "logo": "https://innovationdynamicsgroup.com/vite.png",
+      "image": "https://innovationdynamicsgroup.com/hero/hero-right.png",
+      "telephone": "+1-651-815-4630",
+      "email": "support@innovationdynamicsgroup.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "11397 Quincy St NE",
+        "addressLocality": "Blaine",
+        "addressRegion": "MN",
+        "postalCode": "55434",
+        "addressCountry": "US"
+      },
+      "areaServed": ["US", "CA"],
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Credit Card, Debit Card",
+      "priceRange": "$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Printers & Supplies",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Home Printers" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Office Printers" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Laser Printers" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Inkjet Printers" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Ink & Toner" } }
+        ]
+      }
+    }
+    </script>
+
+    <!-- ── Performance hints ─────────────────────────────────────────── -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://innovation-dynamics-group-backend.onrender.com" />
 
-    <!-- Non-blocking Google Fonts: loads as print first, switches to all once loaded -->
+    <!-- ── LCP Image Preload ─────────────────────────────────────────── -->
+    <link rel="preload" href="/hero/hero-right.webp" as="image" type="image/webp" fetchpriority="high" />
+
+    <!-- ── Google Fonts (non-blocking) ──────────────────────────────────── -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    
+    <!-- Non-blocking Google Fonts: fallback for some browsers -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
       media="print"
       onload="this.media='all'"
     />
-    <!-- Fallback for no-JS -->
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" />
     </noscript>
@@ -25,8 +114,6 @@
   <body>
     <div id="root"></div>
 
-    <!-- Clover SDK deferred — no longer blocks rendering -->
-    <script src="https://checkout.clover.com/sdk.js" defer></script>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx" fetchpriority="high"></script>
   </body>
 </html>
