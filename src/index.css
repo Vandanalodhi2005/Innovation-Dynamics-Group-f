@@ -19,3 +19,21 @@ html, body {
   width: 100%;
   overflow-x: hidden;
 }
+
+@font-face {
+  font-family: 'GDSherpa';
+  src: url('https://img6.wsimg.com/ux-assets/@ux/fonts/4.5.0/GDSherpa-vf4.woff2') format('woff2');
+  font-display: swap;
+}
+
+.godaddy-hack {
+  font-family: 'GDSherpa';
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

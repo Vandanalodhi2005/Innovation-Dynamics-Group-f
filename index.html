@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- ── Security & Anti-Telemetry Policy ──────────────────────────────── -->
-    <!-- This CSP strictly permits local scripts and the GoDaddy Seal, deliberately aborting unauthorized tracking scripts (img1.wsimg.com) injected by hosting panels. -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://seal.godaddy.com;" />
+    <!-- ── Security Policy ──────────────────────────────── -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://seal.godaddy.com https://img1.wsimg.com;" />
 
     <!-- ── Primary SEO ───────────────────────────────────────────────────── -->
     <title>Innovation Dynamics Group | Printers for Home & Office | Blaine, MN</title>
@@ -93,21 +92,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://innovation-dynamics-group-backend.onrender.com" crossorigin />
 
-    <!-- ── LCP Image Preload ─────────────────────────────────────────── -->
-    <link rel="preload" href="/hero/hero-right.webp" as="image" type="image/webp" fetchpriority="high" />
-
     <!-- ── Google Fonts (non-blocking) ────────────────────────────────── -->
     <link
-      rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=optional"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
     />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=optional" />
-    </noscript>
   </head>
   <body>
+    <!-- Consume GoDaddy's injected font preload to clear console warnings -->
+    <div class="godaddy-hack">GoDaddyPreloadFix</div>
     <div id="root"></div>
 
     <script type="module" src="/src/main.jsx" fetchpriority="high"></script>

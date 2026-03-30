@@ -4,8 +4,10 @@ const ReturnExchange = () => {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
+        phone: '',
         orderNumber: '',
         reason: '',
+        preferredResolution: '',
         details: ''
     });
 
@@ -113,14 +115,14 @@ const ReturnExchange = () => {
                         <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-6 md:p-8 rounded-md border border-gray-200">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="font-bold text-black">Order Number *</label>
+                                    <label className="font-bold text-black">Full Name *</label>
                                     <input
                                         required
-                                        name="orderNumber"
-                                        value={formData.orderNumber}
+                                        name="fullName"
+                                        value={formData.fullName}
                                         onChange={handleChange}
                                         className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm"
-                                        placeholder="e.g., ORD-2026-001234"
+                                        placeholder="Enter your full name"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -132,27 +134,66 @@ const ReturnExchange = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm"
-                                        placeholder="your.email@example.com"
+                                        placeholder="Enter your email address"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="font-bold text-black">Phone Number</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm"
+                                        placeholder="Enter your phone number"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="font-bold text-black">Order Number *</label>
+                                    <input
+                                        required
+                                        name="orderNumber"
+                                        value={formData.orderNumber}
+                                        onChange={handleChange}
+                                        className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm"
+                                        placeholder="Enter your order number"
                                     />
                                 </div>
                             </div>
-
-                            <div className="space-y-2">
-                                <label className="font-bold text-black">Reason for Return *</label>
-                                <select
-                                    required
-                                    name="reason"
-                                    value={formData.reason}
-                                    onChange={handleChange}
-                                    className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm bg-white"
-                                >
-                                    <option value="">Select a reason</option>
-                                    <option value="Incorrect Item">Received Wrong Item</option>
-                                    <option value="Damaged/Defective">Item Arrived Damaged/Defective</option>
-                                    <option value="Quality Issues">Quality Issues</option>
-                                    <option value="Changed My Mind">Changed My Mind</option>
-                                    <option value="Other">Other Issues</option>
-                                </select>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="font-bold text-black">Reason for Return / Exchange *</label>
+                                    <select
+                                        required
+                                        name="reason"
+                                        value={formData.reason}
+                                        onChange={handleChange}
+                                        className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm bg-white"
+                                    >
+                                        <option value="">Select a reason</option>
+                                        <option value="Incorrect Item">Received Wrong Item</option>
+                                        <option value="Damaged/Defective">Item Arrived Damaged/Defective</option>
+                                        <option value="Quality Issues">Quality Issues</option>
+                                        <option value="Changed My Mind">Changed My Mind</option>
+                                        <option value="Other">Other Issues</option>
+                                    </select>
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="font-bold text-black">Preferred Resolution *</label>
+                                    <select
+                                        required
+                                        name="preferredResolution"
+                                        value={formData.preferredResolution}
+                                        onChange={handleChange}
+                                        className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm bg-white"
+                                    >
+                                        <option value="">Choose an option</option>
+                                        <option value="Refund">Refund to Original Payment Method</option>
+                                        <option value="Store Credit">Store Credit (Fastest)</option>
+                                        <option value="Replacement">Replacement Item</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div className="space-y-2">
@@ -163,7 +204,7 @@ const ReturnExchange = () => {
                                     onChange={handleChange}
                                     rows="4"
                                     className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all resize-none rounded-sm"
-                                    placeholder="Provide any helpful information such as packaging condition, issue details, or notes for our support team."
+                                    placeholder="Write here… Provide any helpful information such as packaging condition, issue details, or notes for our support team."
                                 ></textarea>
                             </div>
 
