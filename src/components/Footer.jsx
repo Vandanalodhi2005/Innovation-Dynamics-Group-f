@@ -114,9 +114,9 @@ const Footer = () => {
               <ul className="space-y-3">
                 {[
                   { name: "Track Order", link: "/track-order" },
-                  { name: "Shipping & Delivery", link: "/shipping-policy" },
+                  { name: "Shipping & Policy", link: "/shipping-policy" },
                   { name: "Return & Exchange", link: "/return-exchange" },
-                  { name: "Refund Policy", link: "/return-refund" },
+                  { name: "Refund & Return Policy", link: "/return-refund" },
                   { name: "Buying Guide", link: "/buying-guide" },
                   { name: "Support Hub", link: "/resources" },
                 ].map((item) => (
@@ -191,9 +191,9 @@ const Footer = () => {
         </div>
 
         <div className="py-12 border-b grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="flex flex-wrap md:flex-nowrap items-center gap-4 justify-center lg:justify-start">
+          <div className="flex flex-wrap md:flex-nowrap items-center gap-4 justify-center  lg:justify-start">
             {/* GoDaddy Verified & Secured — official seal embed */}
-            <div className="h-[80px] w-[150px] rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0">
+            <div className="h-[100px] w-[150px] rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0 bg-white">
               <span id="siteseal" className="flex items-center justify-center h-full w-full overflow-hidden" />
             </div>
 
@@ -202,13 +202,13 @@ const Footer = () => {
               href="https://transparencyreport.google.com/safe-browsing/search?url=http:%2F%2Finnovationdynamicsgroup.com&hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
+              className="h-[100px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
               >
               <img
                 src="/footer_google.webp"
                 alt="Google Safe Browsing"
-                width="150"
-                height="80"
+                // width="150"
+                // height="100"
                 className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>
@@ -217,13 +217,13 @@ const Footer = () => {
               href="https://www.trustpilot.com/review/innovationdynamicsgroup.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
+              className="h-[100px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
             >
               <img
                 src="/logo/start_inno.webp"
                 alt="Trustpilot Reviews"
-                width="250"
-                height="125"
+                // width="250"
+                // height="100"
                 className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>

@@ -517,8 +517,14 @@ const Checkout = () => {
                                     </div>
 
                                     <button
-                                        onClick={initPayment}
-                                        disabled={loading || !agreedToTerms}
+                                        onClick={() => {
+                                            if (!agreedToTerms) {
+                                                alert("Please agree to the Terms & Conditions before placing your order.");
+                                                return;
+                                            }
+                                            initPayment();
+                                        }}
+                                        disabled={loading}
                                         className="w-full bg-[#024ad8] text-white py-4 rounded-sm font-bold text-sm hover:bg-black transition-all flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed shadow-lg"
                                     >
                                         {loading ? <><Loader2 className="animate-spin" size={18} /> Processing...</> : 'Place Order & Pay'}
