@@ -16,7 +16,7 @@ const HomeCategories = () => {
             title: "Office Printers",
             description: "Reliable and efficient printers built for productivity, ideal for business environments and regular document workflows.",
             icon: <Briefcase size={24} />,
-            webp: "/homeImage/img2.webp",
+            webp: "/homeImage/img2_opt.webp",
             jpg:  "/homeImage/img2.jpg",
             link: "/shop?filter=office-printers"
         },
@@ -40,7 +40,7 @@ const HomeCategories = () => {
             title: "Ink & Toner",
             description: "A range of compatible ink and toner supplies to support consistent print quality and long-term usage.",
             icon: <Droplet size={24} />,
-            webp: "/homeImage/img5.webp",
+            webp: "/homeImage/img5_opt_super.webp",
             jpg:  "/homeImage/img5.jpg",
             link: "/shop?filter=ink-toner"
         }
@@ -55,7 +55,7 @@ const HomeCategories = () => {
                     <div className="max-w-2xl space-y-4">
                         <div className="flex items-center gap-4">
                             <div className="w-12 h-1 bg-[#024ad8]"></div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#024ad8]">Catalog</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#0133a1]">Catalog</span>
                         </div>
                         <h2 className="text-3xl md:text-5xl font-black text-black tracking-tighter uppercase">What We Sell</h2>
                         <p className="text-gray-500 font-medium text-sm md:text-base leading-relaxed">
@@ -101,7 +101,7 @@ const HomeCategories = () => {
                                 {/* Card Content Area */}
                                 <div className="p-8 lg:p-10 flex-grow flex flex-col border-t border-gray-50">
                                     <div className="flex items-center gap-3 mb-4">
-                                        <span className="text-[8px] font-black text-[#024ad8] uppercase tracking-[0.2em]">Category 0{index + 1}</span>
+                                        <span className="text-[8px] font-black text-[#0133a1] uppercase tracking-[0.2em]">Category 0{index + 1}</span>
                                         <div className="flex-grow h-px bg-gray-100"></div>
                                     </div>
                                     <h3 className="text-xl md:text-2xl font-black text-black uppercase tracking-tighter mb-4 group-hover:text-[#024ad8] transition-colors">

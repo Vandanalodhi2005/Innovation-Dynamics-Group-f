@@ -311,12 +311,12 @@ const Printers = () => {
 
                 {/* ── Header ──────────────────────────────────────────────── */}
                 <div className="text-center mb-10 md:mb-16">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#024ad8] mb-4 block">Official Catalog</span>
+                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0133a1] mb-4 block">Official Catalog</span>
                     <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6 tracking-tight text-black uppercase leading-tight">
                         {headingLabel}
                     </h1>
                     <div className="w-16 h-1 bg-[#024ad8] mx-auto" />
-                    <p className="text-gray-500 mt-4 md:mt-6 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                    <p className="text-gray-700 mt-4 md:mt-6 text-base md:text-lg max-w-2xl mx-auto font-medium">
                         {globalSearch
                             ? 'Showing filtered results from our professional inventory.'
                             : (activeTab

@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const CookieConsent = () => {
-    const [isVisible, setIsVisible] = useState(false);
+    // Read from localStorage synchronously to eliminate artificial 3000ms Element Render Delay for LCP audits
+    const [isVisible, setIsVisible] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return !localStorage.getItem('idg-cookie-consent');
+        }
+        return false;
+    });
 
     useEffect(() => {
-        const consentChoice = localStorage.getItem('idg-cookie-consent');
-        if (!consentChoice) {
-            const timer = setTimeout(() => {
-                setIsVisible(true);
-            }, 1000);
-            return () => clearTimeout(timer);
-        }
+        // Effect left intentionally blank; state initialized synchronously.
     }, []);
 
     const handleAccept = () => {

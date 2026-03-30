@@ -17,12 +17,13 @@ const ScrollToTopOnNavigation = () => {
   return null;
 };
 
+import Home from './pages/Home';
+import Printers from './components/Printers';
+
 // ── Lazy-loaded pages (code-split into separate chunks) ──────────────────────
-const Home           = lazy(() => import('./pages/Home'));
 const About          = lazy(() => import('./pages/About'));
 const FAQs           = lazy(() => import('./pages/FAQs'));
 const Contact        = lazy(() => import('./pages/Contact'));
-const Printers       = lazy(() => import('./components/Printers'));
 const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const Cart           = lazy(() => import('./pages/Cart'));
 const Wishlist       = lazy(() => import('./pages/Wishlist'));

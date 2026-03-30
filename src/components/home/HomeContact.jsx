@@ -13,29 +13,29 @@ const HomeContact = () => {
                             <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-[#024ad8]/10 rounded-full blur-3xl -mr-24 -mt-24"></div>
                             <div className="relative z-10 space-y-5 mb-10 sm:mb-12">
                                 <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-                                    Get in <span className="text-[#024ad8]">Touch</span> With Us
+                                    Get in <span className="text-[#4fa2ff]">Touch</span> With Us
                                 </h2>
                                 <p className="text-neutral-200 text-sm leading-relaxed max-w-md">
                                     We're here to help with any questions about printer solutions, orders, or service.
                                     Reach out from our administrative center in Blaine, Minnesota.
                                 </p>
-                                <div className="w-16 h-1 bg-[#024ad8] rounded-sm"></div>
+                                <div className="w-16 h-1 bg-[#4fa2ff] rounded-sm"></div>
                             </div>
 
                             <div className="relative z-10 space-y-6 sm:space-y-8">
                                 <div className="flex items-start gap-5 group">
-                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8]">
-                                        <Mail size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
+                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#4fa2ff] transition-all group-hover:border-[#4fa2ff]">
+                                        <Mail size={18} className="text-[#4fa2ff] group-hover:text-white transition-colors" />
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-[10px] text-neutral-300 font-extrabold uppercase tracking-wider mb-1">Email</p>
-                                        <p className="text-sm font-bold text-blue-400 break-all leading-snug">support@innovationdynamicsgroup.com</p>
+                                        <p className="text-sm font-bold text-[#4fa2ff] break-all leading-snug">support@innovationdynamicsgroup.com</p>
                                     </div>
                                 </div>
 
                                 <div className="flex items-start gap-5 group">
-                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8]">
-                                        <Phone size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
+                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#4fa2ff] transition-all group-hover:border-[#4fa2ff]">
+                                        <Phone size={18} className="text-[#4fa2ff] group-hover:text-white transition-colors" />
                                     </div>
                                     <div>
                                         <p className="text-[10px] text-neutral-300 font-extrabold uppercase tracking-wider mb-1">Phone</p>
@@ -44,8 +44,8 @@ const HomeContact = () => {
                                 </div>
 
                                 <div className="flex items-start gap-5 group">
-                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#024ad8] transition-all group-hover:border-[#024ad8]">
-                                        <Clock size={18} className="text-[#024ad8] group-hover:text-white transition-colors" />
+                                    <div className="w-12 h-12 flex-shrink-0 bg-white/5 border border-white/10 rounded-sm flex items-center justify-center group-hover:bg-[#4fa2ff] transition-all group-hover:border-[#4fa2ff]">
+                                        <Clock size={18} className="text-[#4fa2ff] group-hover:text-white transition-colors" />
                                     </div>
                                     <div>
                                         <p className="text-[10px] text-neutral-300 font-extrabold uppercase tracking-wider mb-1">Business Hours</p>

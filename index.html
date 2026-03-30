@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ── Security & Anti-Telemetry Policy ──────────────────────────────── -->
+    <!-- This CSP strictly permits local scripts and the GoDaddy Seal, deliberately aborting unauthorized tracking scripts (img1.wsimg.com) injected by hosting panels. -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://seal.godaddy.com;" />
 
     <!-- ── Primary SEO ───────────────────────────────────────────────────── -->
     <title>Innovation Dynamics Group | Printers for Home & Office | Blaine, MN</title>
@@ -87,28 +91,20 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://innovation-dynamics-group-backend.onrender.com" />
+    <link rel="preconnect" href="https://innovation-dynamics-group-backend.onrender.com" crossorigin />
 
     <!-- ── LCP Image Preload ─────────────────────────────────────────── -->
     <link rel="preload" href="/hero/hero-right.webp" as="image" type="image/webp" fetchpriority="high" />
 
-    <!-- ── Google Fonts (non-blocking) ──────────────────────────────────── -->
+    <!-- ── Google Fonts (non-blocking) ────────────────────────────────── -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=optional"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
-    
-    <!-- Non-blocking Google Fonts: fallback for some browsers -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
-      media="print"
-      onload="this.media='all'"
-    />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=optional" />
     </noscript>
   </head>
   <body>

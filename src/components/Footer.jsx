@@ -13,34 +13,32 @@ import {
 
 const Footer = () => {
   useEffect(() => {
-    const container = document.getElementById('siteseal');
-    if (!container) return;
+    const sealContainer = document.getElementById("siteseal");
+    if (!sealContainer) return;
 
-    const loadSeal = () => {
-      if (!container.getAttribute('data-loaded')) {
-        container.setAttribute('data-loaded', 'true');
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
+    const loadGodaddy = () => {
+      if (!sealContainer.getAttribute("data-loaded")) {
+        sealContainer.setAttribute("data-loaded", "true");
+        const script = document.createElement("script");
+        script.type = "text/javascript";
         script.async = true;
-        // Load dynamically when scrolled into view
-        script.src = 'https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1';
-        container.appendChild(script);
+        script.src = "https://seal.godaddy.com/getSealBasic?sealID=fA5q8U4ngWQoJeQEXnOBnpptwPqM7bmoMSuTzJZg8anUXt6Iwh86nBMt5ys1";
+        sealContainer.appendChild(script);
       }
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        // Use a small delay after intersection for ultra-smooth scrolling
-        setTimeout(loadSeal, 300);
-        observer.disconnect();
-      }
-    }, { rootMargin: '300px' });
+    const events = ['mousemove', 'touchmove', 'wheel', 'keydown'];
+    const initGodaddy = () => {
+      loadGodaddy();
+      events.forEach(e => window.removeEventListener(e, initGodaddy));
+    };
+    
+    events.forEach(e => window.addEventListener(e, initGodaddy, { once: true, passive: true }));
 
-    observer.observe(container);
-
-    return () => observer.disconnect();
+    return () => {
+      events.forEach(e => window.removeEventListener(e, initGodaddy));
+    };
   }, []);
-
 
   return (
     <footer className="bg-black text-white relative border-t border-white/10 overflow-hidden font-sans">
@@ -55,7 +53,7 @@ const Footer = () => {
               </span>
               <div className="h-8 w-px bg-white/20"></div>
               <div className="flex flex-col text-[10px] uppercase font-bold tracking-[0.15em]">
-                <span className="text-[#024ad8]">Innovation Dynamics</span>
+                <span className="text-blue-400">Innovation Dynamics</span>
                 <span className="text-neutral-300">Group LLC</span>
               </div>
             </Link>
@@ -195,8 +193,8 @@ const Footer = () => {
         <div className="py-12 border-b grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="flex flex-wrap md:flex-nowrap items-center gap-4 justify-center lg:justify-start">
             {/* GoDaddy Verified & Secured — official seal embed */}
-            <div className="h-[52px]  rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0">
-              <span id="siteseal" className="flex items-center justify-center h-full w-auto" />
+            <div className="h-[80px] w-[150px] rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0">
+              <span id="siteseal" className="flex items-center justify-center h-full w-full overflow-hidden" />
             </div>
 
             {/* Google Safe Browsing */}
@@ -205,15 +203,16 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
-            >
+              >
               <img
-                src="/footer_google.png"
+                src="/footer_google.webp"
                 alt="Google Safe Browsing"
+                width="150"
+                height="80"
                 className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>
 
-            {/* Trustpilot Excellence */}
             <a
               href="https://www.trustpilot.com/review/innovationdynamicsgroup.com"
               target="_blank"
@@ -221,8 +220,10 @@ const Footer = () => {
               className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
             >
               <img
-                src="/logo/start_inno.jpeg"
+                src="/logo/start_inno.webp"
                 alt="Trustpilot Reviews"
+                width="250"
+                height="125"
                 className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>

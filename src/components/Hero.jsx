@@ -70,7 +70,7 @@ Explore a carefully selected range of printers designed to deliver performance, 
                                 <div className="flex items-center gap-6">
                                     <div className="h-12 w-px bg-gray-200 hidden sm:block"></div>
                                     <a href="https://locator.hp.com/us/en?ml___task=search_zip&ml___id=569440&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___lang=en-US%20(1)&ml___redirect_commercial_destination_Itemid=1" target="_blank" rel="noopener noreferrer" className="opacity-90 hover:opacity-100 transition-opacity">
-                                        <img src="/logo/hp-partner.png" alt="HP Partner" width="120" height="64" className="h-14 lg:h-16 w-auto object-contain aspect-[120/64]" />
+                                        <img src="/logo/hp-partner.webp" alt="HP Partner" width="184" height="90" className="h-14 lg:h-16 w-auto object-contain aspect-[120/64]" />
                                     </a>
                                 </div>
                             </div>
