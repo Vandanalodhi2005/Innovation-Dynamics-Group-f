@@ -114,7 +114,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 {[
                   { name: "Track Order", link: "/track-order" },
-                  { name: "Shipping & Policy", link: "/shipping-policy" },
+                  { name: "Shipping Policy", link: "/shipping-policy" },
                   { name: "Return & Exchange", link: "/return-exchange" },
                   { name: "Refund & Return Policy", link: "/return-refund" },
                   { name: "Buying Guide", link: "/buying-guide" },
@@ -271,7 +271,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-10 pb-4 flex flex-col gap-6">
+        <div className="pt-10 pb-4 flex flex-col gap-6 justify-center items-center">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.3em]">
               &copy; 2026{" "}
@@ -280,12 +280,7 @@ const Footer = () => {
               </span>{" "}
               • Minnesota, USA
             </p>
-            <div className="flex items-center gap-3 text-neutral-800">
-              <Award size={14} />
-              <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/80">
-                Industry Partner Since 1997
-              </span>
-            </div>
+            
           </div>
 
           <p className="text-center text-[9px] text-neutral-300 font-medium leading-relaxed uppercase tracking-wider max-w-4xl mx-auto px-4">

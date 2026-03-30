@@ -6,7 +6,7 @@ const RefundPolicy = () => {
         <div className="bg-white min-h-screen pt-28 pb-16 px-6 font-sans text-left text-gray-800">
             <div className="max-w-4xl mx-auto text-left">
                 <header className="mb-12 border-b border-gray-100 pb-8 text-left">
-                    <h1 className="text-4xl font-bold text-black mb-4">Refund Policy</h1>
+                    <h1 className="text-4xl font-bold text-black mb-4">Refund & Return Policy</h1>
                     <div className="flex flex-col sm:flex-row gap-6 text-xs text-gray-400 font-medium whitespace-nowrap">
                         <p>Last Updated: March 25, 2026</p>
                     </div>
