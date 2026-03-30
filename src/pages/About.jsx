@@ -98,37 +98,37 @@ const About = () => {
 
                         <div className="mt-16 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-10">
                             <div className="flex flex-col gap-2">
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-2">Verified Distribution</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white-700 mb-2">Verified Distribution</span>
                                 <a 
                                     href="https://locator.hp.com/us/en/?ml___task=search_zip&ml___id=569440&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___lang=en-US%20(1)&ml___redirect_commercial_destination_Itemid=1" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="group flex items-center gap-4 pl-1 pr-6 py-1.5 bg-white/5 border border-white/10 rounded-full hover:bg-white hover:border-white transition-all duration-500"
+                                    className="group flex items-center gap-4 pl-1 pr-6 py-1.5 bg-white shadow-xl rounded-full hover:scale-105 transition-all duration-500"
                                 >
-                                    <div className="w-10 h-10 bg-[#024ad8] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <div className="w-10 h-10 bg-[#024ad8] rounded-full flex items-center justify-center">
                                         <ShieldCheck size={18} className="text-white" />
                                     </div>
                                     <div className="flex flex-col">
                                         <span className="text-[9px] font-black uppercase tracking-widest text-[#024ad8]">Official License</span>
-                                        <span className="text-[11px] font-bold text-white group-hover:text-black transition-colors uppercase tracking-widest">HP AUTHORISED PARTNER</span>
+                                        <span className="text-[11px] font-bold text-black uppercase tracking-widest">HP AUTHORISED PARTNER</span>
                                     </div>
                                 </a>
                             </div>
 
                             <div className="flex flex-col items-center md:items-end gap-2">
-                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-2">Corporate Registration</span>
+                                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white-700 mb-2">Corporate Registration</span>
                                 <a 
                                     href="https://mblsportal.sos.mn.gov/Business/SearchDetails?filingGuid=f20eb44b-2111-ef11-9081-00155d01c440" 
                                     target="_blank" 
                                     rel="noopener noreferrer" 
-                                    className="group flex flex-row-reverse items-center gap-4 pr-1 pl-6 py-1.5 bg-white/5 border border-white/10 rounded-full hover:bg-white hover:border-white transition-all duration-500"
+                                    className="group flex flex-row-reverse items-center gap-4 pr-1 pl-6 py-1.5 bg-white shadow-xl rounded-full hover:scale-105 transition-all duration-500"
                                 >
-                                    <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center border border-white/10 group-hover:bg-[#024ad8] group-hover:border-[#024ad8] transition-all">
+                                    <div className="w-10 h-10 bg-[#024ad8] rounded-full flex items-center justify-center">
                                         <Award size={18} className="text-white" />
                                     </div>
-                                    <div className="flex flex-col items-end">
+                                    <div className="flex flex-col items-end ">
                                         <span className="text-[9px] font-black uppercase tracking-widest text-[#024ad8]">Verified Entity</span>
-                                        <span className="text-[11px] font-bold text-white group-hover:text-black transition-colors uppercase tracking-widest">REGISTERED BUSINESS</span>
+                                        <span className="text-[11px] font-bold text-black uppercase tracking-widest">REGISTERED BUSINESS</span>
                                     </div>
                                 </a>
                             </div>
@@ -156,7 +156,7 @@ const About = () => {
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6">
                                 {[
-                                    { title: "Free Shipping", text: "Across USA & Canada" },
+                                    { title: "Free Shipping", text: "Above $249" },
                                     { title: "Full Warranty", text: "Manufacturer Backed" },
                                     { title: "Expert Support", text: "Dedicated Assistance" }
                                 ].map((item, idx) => (
@@ -249,7 +249,7 @@ const About = () => {
                                 <div className="text-[#024ad8] mb-6 transform group-hover:scale-110 transition-transform">
                                     {item.icon}
                                 </div>
-                                <h4 className="text-lg font-black uppercase tracking-tight mb-4 group-hover:text-[#024ad8] transition-colors">{item.title}</h4>
+                                <h4 className="text-lg font-black uppercase mb-4 group-hover:text-[#024ad8] transition-colors">{item.title}</h4>
                                 <p className="text-sm text-gray-400 font-medium leading-relaxed">{item.text}</p>
                                 <span className="absolute top-4 right-4 text-[40px] font-black text-white/5 group-hover:text-[#024ad8]/10 transition-colors">0{idx + 1}</span>
                             </div>
@@ -275,7 +275,7 @@ const About = () => {
                                     {item.icon}
                                 </div>
                                 <div className="space-y-3">
-                                    <h4 className="text-lg font-bold text-black uppercase tracking-tight">{item.title}</h4>
+                                    <h4 className="text-lg font-bold text-black uppercase">{item.title}</h4>
                                     <p className="text-sm text-gray-500 font-medium leading-relaxed">{item.text}</p>
                                 </div>
                             </div>
@@ -296,7 +296,7 @@ const About = () => {
                     <div className="bg-white rounded-sm shadow-xl border border-gray-100 overflow-hidden">
                         <div className="grid grid-cols-1 lg:grid-cols-3">
                             <div className="p-10 lg:p-14 bg-black text-white space-y-8">
-                                <h3 className="text-2xl font-black uppercase tracking-tight">Business <br /> Information</h3>
+                                <h3 className="text-2xl font-black uppercase">Business <br /> Information</h3>
                                 <div className="w-12 h-1 bg-[#024ad8]"></div>
                                 <p className="text-sm text-gray-400 font-medium leading-relaxed">
                                     Innovation Dynamics Group LLC is a registered and legitimate business entity committed to professional standards in eCommerce.
@@ -350,8 +350,8 @@ const About = () => {
             {/* ── Final CTA ──────────────────────────────────────────────── */}
             <section className="py-24 bg-white border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-8">Focusing on clarity so you can focus on clarity.</h2>
-                    <Link to="/shop" className="inline-flex items-center gap-4 px-12 py-5 bg-[#024ad8] text-white font-black rounded-sm hover:bg-black transition-all shadow-2xl hover:-translate-y-1">
+                    <h2 className="text-3xl md:text-4xl font-black uppercase mb-8">Focusing on clarity so you can focus on clarity.</h2>
+                    <Link to="/shop" className="inline-flex items-center gap-10 px-12 py-5 bg-[#024ad8] text-white font-black rounded-sm hover:bg-black transition-all shadow-2xl hover:-translate-y-1">
                         VIEW OUR FOCUSED CATALOG <ArrowRight size={20} />
                     </Link>
                 </div>

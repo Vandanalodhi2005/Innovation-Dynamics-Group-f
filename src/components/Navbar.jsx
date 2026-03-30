@@ -224,12 +224,8 @@ const Navbar = () => {
                                         <div className="w-16 h-16 bg-[#024ad8] text-white rounded-full flex items-center justify-center text-2xl font-black mb-3 shadow-lg">
                                             {user.name.charAt(0)}
                                         </div>
-                                        <p className="text-xs font-black uppercase tracking-widest text-gray-900 leading-tight">{user.name}</p>
-                                        <div className="text-center">
-                                            <p className="text-sm text-gray-700 font-bold uppercase tracking-widest bg-white inline-block px-8 py-4 border border-gray-100 rounded-sm">
-                                                Focusing on Transparency and Efficiency
-                                            </p>
-                                        </div>
+                                        <p className="text-xs font-black uppercase tracking-widest text-gray-900 leading-tight mb-2">{user.name}</p>
+                                        <p className="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Verified User</p>
                                     </div>
                                     <div className="p-2 grid grid-cols-1 gap-1">
                                         {user?.isAdmin && (
@@ -345,25 +341,32 @@ const Navbar = () => {
                                         <span className="text-sm font-black uppercase tracking-widest">Admin Panel</span>
                                     </Link>
                                 )}
-                                <div className="w-full flex items-center justify-between">
-                                    <Link to="/profile" onClick={toggleMenu} className="flex items-center gap-2">
-                                        <div className="w-8 h-8 rounded-full bg-white/30 flex items-center justify-center text-white font-bold">
+                                <div className="w-full flex items-center justify-between bg-white/10 p-3 rounded-lg border border-white/20 mb-2">
+                                    <Link to="/profile" onClick={toggleMenu} className="flex items-center gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-[#024ad8] shadow-inner flex items-center justify-center text-white font-black text-lg">
                                             {user.name.charAt(0)}
                                         </div>
-                                        <div className="w-16 h-1 bg-[#024ad8]"></div>
-                                        <p className="text-white font-medium text-base sm:text-lg leading-relaxed">
-                                            We focus on providing a reliable and transparent experience at every step — from ordering to delivery and ongoing support.
-                                        </p>
+                                        <div className="flex flex-col">
+                                            <span className="text-white/70 text-[9px] uppercase tracking-widest font-black">Welcome</span>
+                                            <p className="text-white font-black text-sm uppercase tracking-widest truncate max-w-[150px]">
+                                                {user.name}
+                                            </p>
+                                        </div>
                                     </Link>
-                                    <button onClick={handleLogout} className="text-red-200 hover:bg-red-500/30 p-2 rounded-full">
+                                    <button onClick={handleLogout} className="text-white/60 hover:text-red-400 p-2 rounded-full transition-colors">
                                         <LogOut size={20} />
                                     </button>
                                 </div>
                             </>
                         ) : (
-                            <Link to="/login" className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full">
-                                <User size={20} />
-                                <span>Login / Sign Up</span>
+                            <Link to="/login" onClick={toggleMenu} className="flex items-center gap-3 bg-white/10 p-3 rounded-lg border border-white/20 mb-2 w-full hover:bg-white/20 transition-colors">
+                                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white">
+                                    <User size={20} />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-white/70 text-[9px] uppercase tracking-widest font-black">Account</span>
+                                    <span className="text-white font-black text-sm uppercase tracking-widest">Sign In</span>
+                                </div>
                             </Link>
                         )}
 

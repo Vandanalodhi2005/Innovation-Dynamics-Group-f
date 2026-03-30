@@ -191,7 +191,7 @@ const Footer = () => {
         </div>
 
         <div className="py-12 border-b grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="flex flex-wrap md:flex-nowrap items-center gap-4 justify-center  lg:justify-start">
+          <div className="flex flex-wrap border-radius-2xl md:flex-nowrap items-center gap-4 justify-center  lg:justify-start">
             {/* GoDaddy Verified & Secured — official seal embed */}
             <div className="h-[100px] w-[150px] rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0 bg-white">
               <span id="siteseal" className="flex items-center justify-center h-full w-full overflow-hidden" />
@@ -230,34 +230,34 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-wrap justify-center lg:justify-end items-center gap-6">
-            <div className="flex items-center gap-5 px-6 py-3 bg-neutral-900/50 border border-white/5 rounded-full">
+            <div className="flex items-center gap-6 px-7 py-3.5 bg-neutral-900/50 border border-white/10 rounded-full">
               <img
                 src="/payment/mastercard.svg"
                 alt="MasterCard"
                 width="26"
                 height="16"
-                className="h-4 w-auto opacity-30 hover:opacity-100 transition-all aspect-[26/16]"
+                className="h-6 w-auto opacity-100 hover:scale-110 transition-all aspect-[26/16]"
               />
               <img
                 src="/payment/amex.svg"
                 alt="Amex"
                 width="26"
                 height="16"
-                className="h-4 w-auto opacity-30 hover:opacity-100 transition-all aspect-[26/16]"
+                className="h-6 w-auto opacity-100 hover:scale-110 transition-all aspect-[26/16]"
               />
               <img
                 src="/payment/discover.svg"
                 alt="Discover"
-                width="36"
+                width="26"
                 height="12"
-                className="h-3 w-auto opacity-30 hover:opacity-100 transition-all aspect-[36/12]"
+                className="h-6 w-16 bg-white opacity-100 hover:scale-110 transition-all aspect-[26/12]"
               />
               <img
                 src="/payment/paypal.svg"
                 alt="PayPal"
                 width="50"
                 height="16"
-                className="h-4 w-auto opacity-30 hover:opacity-100 transition-all aspect-[50/16]"
+                className="h-6 w-auto  opacity-100 hover:scale-110 transition-all aspect-[50/16]"
               />
             </div>
             <div className="flex flex-col items-center lg:items-end">
