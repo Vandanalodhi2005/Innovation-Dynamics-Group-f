@@ -193,7 +193,7 @@ const Footer = () => {
         <div className="py-12 border-b grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="flex flex-wrap border-radius-2xl md:flex-nowrap items-center gap-4 justify-center  lg:justify-start">
             {/* GoDaddy Verified & Secured — official seal embed */}
-            <div className="h-[100px] w-[150px] rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0 bg-white">
+            <div className="h-[80px] w-[150px] rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0 bg-white">
               <span id="siteseal" className="flex items-center justify-center h-full w-full overflow-hidden" />
             </div>
 
@@ -202,7 +202,7 @@ const Footer = () => {
               href="https://transparencyreport.google.com/safe-browsing/search?url=http:%2F%2Finnovationdynamicsgroup.com&hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-[100px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
+              className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
               >
               <img
                 src="/footer_google.webp"
@@ -217,7 +217,7 @@ const Footer = () => {
               href="https://www.trustpilot.com/review/innovationdynamicsgroup.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="h-[100px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
+              className="h-[80px] w-[150px] rounded-sm flex items-center justify-center shadow-sm shrink-0 group overflow-hidden"
             >
               <img
                 src="/logo/start_inno.webp"
@@ -229,58 +229,39 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="flex flex-wrap justify-center lg:justify-end items-center gap-6">
-            <div className="flex items-center gap-6 px-7 py-3.5 bg-neutral-900/50 border border-white/10 rounded-full">
+          <div className="flex flex-col items-center lg:items-end justify-center gap-4 w-full h-full">
+            <div className="w-full max-w-[240px] rounded-sm p-4 shadow-xl flex flex-col items-center gap-3 hover:-translate-y-1 transition-transform duration-300">
+             <a href="https://www.clover.com/" target="_blank" rel="noopener noreferrer">
               <img
-                src="/payment/mastercard.svg"
-                alt="MasterCard"
-                width="26"
-                height="16"
-                className="h-6 w-auto opacity-100 hover:scale-110 transition-all aspect-[26/16]"
+                src="/clover-payment.png"
+                alt="Secure Payments Powered by Clover"
+                className="w-full h-auto object-contain"
               />
-              <img
-                src="/payment/amex.svg"
-                alt="Amex"
-                width="26"
-                height="16"
-                className="h-6 w-auto opacity-100 hover:scale-110 transition-all aspect-[26/16]"
-              />
-              <img
-                src="/payment/discover.svg"
-                alt="Discover"
-                width="26"
-                height="12"
-                className="h-6 w-16 bg-white opacity-100 hover:scale-110 transition-all aspect-[26/12]"
-              />
-              <img
-                src="/payment/paypal.svg"
-                alt="PayPal"
-                width="50"
-                height="16"
-                className="h-6 w-auto  opacity-100 hover:scale-110 transition-all aspect-[50/16]"
-              />
-            </div>
-            <div className="flex flex-col items-center lg:items-end">
-              <span className="text-[10px] font-black text-blue-400 tracking-[0.2em] uppercase">
-                Secure Payments Powered by Clover
-              </span>
-              <span className="text-[10px] font-bold text-neutral-400">
-                256-bit SSL Data Encryption
+             </a>
+              <div className="w-full h-px bg-gray-100"></div>
+              <span className="text-[9px] font-black text-gray-500 tracking-[0.2em] uppercase text-center w-full">
+                256-Bit SSL Encrypted
               </span>
             </div>
           </div>
         </div>
 
-        <div className="pt-10 pb-4 flex flex-col gap-6 justify-center items-center">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.3em]">
+        <div className="pt-10 pb-4 flex flex-col gap-8 justify-center items-center">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-6 w-full px-4 lg:px-0">
+            <p className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.3em] text-center lg:text-left">
               &copy; 2026{" "}
               <span className="text-neutral-200">
                 Innovation Dynamics Group LLC
               </span>{" "}
               • Minnesota, USA
             </p>
-            
+
+            <div className="flex items-center gap-6 px-6 py-2.5 bg-neutral-900/50 border border-white/5 hover:border-white/20 rounded-full transition-colors">
+              <img src="/payment/mastercard.svg" alt="MasterCard" className="h-5 w-auto opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
+              <img src="/payment/amex.svg" alt="Amex" className="h-5 w-auto opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
+              <img src="/payment/discover.svg" alt="Discover" className="h-5 w-14 bg-white p-0.5 rounded-sm opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
+              <img src="/payment/paypal.svg" alt="PayPal" className="h-5 w-auto opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
+            </div>
           </div>
 
           <p className="text-center text-[9px] text-neutral-300 font-medium leading-relaxed uppercase tracking-wider max-w-4xl mx-auto px-4">

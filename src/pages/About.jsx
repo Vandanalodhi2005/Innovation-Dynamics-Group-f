@@ -90,19 +90,20 @@ const About = () => {
                             An Independent <br />
                             <span className="text-[#024ad8]">eCommerce Retailer</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-400 font-medium leading-relaxed max-w-3xl mb-10">
-                            Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, operates as an independent online retailer focused exclusively on printers and related equipment for home, office, and professional use.
-                     <br />
-          Serving customers across the United States and Canada, the platform supports both individual users and businesses with reliable printing solutions and a structured online shopping experience.
-</p>
+                        <p className="text-sm md:text-lg text-gray-400 font-medium leading-relaxed max-w-3xl mb-10">
+                            Innovation Dynamics Group LLC, based in Blaine, Minnesota, USA, is a registered and legitimate business operating as an independent online retailer specializing in printers and related equipment for home, office, and professional use.
+                            <br />
+
+                            Established in 2024, we have successfully served 1,000+ customers across the United States and Canada, supporting both individual users and businesses with reliable printing solutions and a structured, transparent online shopping experience.
+                        </p>
 
                         <div className="mt-16 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-10">
                             <div className="flex flex-col gap-2">
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white-700 mb-2">Verified Distribution</span>
-                                <a 
-                                    href="https://locator.hp.com/us/en/?ml___task=search_zip&ml___id=569440&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___lang=en-US%20(1)&ml___redirect_commercial_destination_Itemid=1" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
+                                <a
+                                    href="https://locator.hp.com/us/en/?ml___task=search_zip&ml___id=569440&ml___ml_skip_interstitial=1&ml___url_share_action=1&ml___lang=en-US%20(1)&ml___redirect_commercial_destination_Itemid=1"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group flex items-center gap-4 pl-1 pr-6 py-1.5 bg-white shadow-xl rounded-full hover:scale-105 transition-all duration-500"
                                 >
                                     <div className="w-10 h-10 bg-[#024ad8] rounded-full flex items-center justify-center">
@@ -117,10 +118,10 @@ const About = () => {
 
                             <div className="flex flex-col items-center md:items-end gap-2">
                                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white-700 mb-2">Corporate Registration</span>
-                                <a 
-                                    href="https://mblsportal.sos.mn.gov/Business/SearchDetails?filingGuid=f20eb44b-2111-ef11-9081-00155d01c440" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
+                                <a
+                                    href="https://mblsportal.sos.mn.gov/Business/SearchDetails?filingGuid=f20eb44b-2111-ef11-9081-00155d01c440"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="group flex flex-row-reverse items-center gap-4 pr-1 pl-6 py-1.5 bg-white shadow-xl rounded-full hover:scale-105 transition-all duration-500"
                                 >
                                     <div className="w-10 h-10 bg-[#024ad8] rounded-full flex items-center justify-center">

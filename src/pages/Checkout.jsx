@@ -62,7 +62,7 @@ const Checkout = () => {
     }, []);
 
     useEffect(() => {
-        if (cartItems.length === 0) {
+        if (!loading && cartItems.length === 0) {
             navigate('/cart');
         } else if (!userInfo) {
             navigate('/login?redirect=checkout');
@@ -163,13 +163,6 @@ const Checkout = () => {
                 return;
             }
 
-            const result = await clover.createToken();
-            if (result.errors) {
-                alert('Payment Error: ' + Object.values(result.errors).join(', '));
-                setLoading(false);
-                return;
-            }
-
             const orderData = {
                 orderItems: cartItems,
                 shippingAddress: { address, city, state: province, postalCode, country, phone },
@@ -180,13 +173,27 @@ const Checkout = () => {
                 totalPrice,
             };
 
+            // 1. Create the Order first in DB
             const { data: createdOrder } = await axios.post(
                 `${import.meta.env.VITE_API_URL}/orders`,
                 orderData,
                 { headers: { Authorization: `Bearer ${userInfo.token}` } }
             );
 
-            // Try to pay
+            // 2. Try to get payment token
+            const result = await clover.createToken();
+            if (result.errors) {
+                console.error("Clover Tokenization Failed:", result.errors);
+                alert('Your order was placed successfully, but the payment could not be processed due to invalid card details. You can complete your payment on the Order Details page.');
+                
+                dispatch({ type: CART_CLEAR_ITEMS });
+                localStorage.removeItem('cartItems');
+                navigate(`/order/${createdOrder._id}`);
+                setLoading(false);
+                return;
+            }
+
+            // 3. Try to pay
             try {
                 await axios.post(
                     `${import.meta.env.VITE_API_URL}/orders/clover/pay`,
@@ -205,8 +212,6 @@ const Checkout = () => {
                 
             } catch (payErr) {
                 console.error("Payment Step Failed:", payErr);
-                // The order is created but payment failed
-                // Redirect to order page so they can try again with the 'Pay Now' button
                 alert('Your order was placed successfully, but the payment could not be processed. You can complete your payment on the Order Details page.');
                 
                 dispatch({ type: CART_CLEAR_ITEMS });
@@ -506,7 +511,7 @@ const Checkout = () => {
                                             {agreedToTerms && <Check size={14} className="text-white" />}
                                         </div>
                                         <span className="text-[11px] leading-relaxed text-gray-500 font-medium tracking-tight">
-                                            By placing your order, you confirm that you have read and agree to our 
+                                            By placing your order, you confirm that you have read and agree to our
                                             <Link to="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-1">Terms & Conditions</Link>. By placing your order, you confirm that you have read and agree to our Terms & Conditions and understand how your personal information is collected and used as described in our Privacy Policy.
                                         </span>
                                     </div>

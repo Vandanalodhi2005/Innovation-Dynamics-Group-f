@@ -36,7 +36,7 @@ const OrderDetails = () => {
         <html lang="en">
         <head>
             <meta charset="UTF-8" />
-            <title>Invoice #${order._id.slice(-8).toUpperCase()}</title>
+            <title>Invoice #${order._id}</title>
             <style>
                 * { margin:0; padding:0; box-sizing:border-box; }
                 body { font-family: 'Segoe UI', Arial, sans-serif; color:#111; background:#fff; padding:48px; }
@@ -222,7 +222,7 @@ const OrderDetails = () => {
                         </Link>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
                             Order Details
-                            <span className="text-gray-400 text-xl font-medium font-mono">#{order._id.slice(-8).toUpperCase()}</span>
+                            <span className="text-gray-400 text-xl font-medium font-mono">#{order._id}</span>
                         </h1>
                     </div>
                     <div className="flex items-center gap-3">

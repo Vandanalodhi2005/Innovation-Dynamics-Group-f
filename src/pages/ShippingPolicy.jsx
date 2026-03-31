@@ -42,6 +42,9 @@ const ShippingPolicy = () => {
 
                     <div>
                         <h2 className="text-xl font-bold text-black mb-2 mt-8">3. Shipping Methods & Delivery Estimates</h2>
+                        <p className="mb-4">
+                            We partner with reliable and recognized logistics providers to ensure safe, secure, and timely delivery of all orders. Shipping methods are selected based on delivery location, order size, and service availability.
+                        </p>
                         <div className="overflow-x-auto mt-4 mb-4">
                             <table className="w-full text-left border-collapse border border-gray-200">
                                 <thead>
@@ -66,11 +69,12 @@ const ShippingPolicy = () => {
                             </table>
                         </div>
                         
-                        <h3 className="text-lg font-bold text-black mb-2 mt-6">Important Notice</h3>
+                        <h3 className="text-lg font-bold text-black mb-2 mt-6">Important Notice:</h3>
                         <ul className="list-disc pl-6 space-y-1 mt-2 mb-4">
-                            <li>Delivery timelines are estimates only and not guaranteed</li>
-                            <li>Remote or rural locations may require additional time</li>
-                            <li>Delays may occur due to weather, carrier issues, or other external factors beyond our control</li>
+                            <li>Delivery timelines are estimated and not guaranteed</li>
+                            <li>Additional transit time may be required for remote or rural areas</li>
+                            <li>Delivery delays may occur due to weather conditions, transportation disruptions, or other external factors beyond our control</li>
+                            <li>Shipping services are subject to availability based on destination and operational constraints</li>
                         </ul>
                     </div>
 
@@ -82,7 +86,9 @@ const ShippingPolicy = () => {
                             <li>Package weight and dimensions</li>
                             <li>Selected shipping method</li>
                         </ul>
-                        <p>Promotional shipping offers (e.g., free shipping) may apply during specific campaigns.</p>
+                        <h3 className="text-lg font-bold text-black mb-2 mt-6">Free Shipping Offer:</h3>
+                        <p className="mb-4">We offer free standard shipping on orders over $249 (where applicable).</p>
+                        <p>Promotional shipping offers, including free shipping, may be available during specific campaigns and are subject to change without prior notice.</p>
                     </div>
 
                     <div>

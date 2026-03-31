@@ -185,7 +185,7 @@ const AdminOrders = () => {
                                             <span className="text-blue-600">ORD-{order._id.toUpperCase()}</span>
                                             <div className="text-xs font-normal text-slate-400">{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</div>
                                             {!order.isPaid && (
-                                                <div className="text-xs font-bold text-red-600 uppercase tracking-wider mt-1">Payment Failed</div>
+                                                <div className="text-xs font-bold text-amber-600 uppercase tracking-wider mt-1">Payment Pending</div>
                                             )}
                                         </div>
                                     </td>

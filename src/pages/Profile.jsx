@@ -213,7 +213,7 @@ const Profile = () => {
                                         displayedOrders.map(order => (
                                             <div key={order._id} className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-gray-50 transition-all">
                                                 <div className="space-y-1">
-                                                    <p className="font-bold text-sm">Order #{order._id.slice(-8).toUpperCase()}</p>
+                                                    <p className="font-bold text-sm">Order #{order._id}</p>
                                                     <p className="text-xs text-gray-400">{new Date(order.createdAt).toLocaleDateString()}</p>
                                                 </div>
                                                 <div>

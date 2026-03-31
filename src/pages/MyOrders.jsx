@@ -90,8 +90,8 @@ const MyOrders = () => {
                                                     <Truck size={14} /> Processing
                                                 </span>
                                             ) : (
-                                                <span className="flex items-center gap-1.5 px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-[10px] font-bold uppercase tracking-wider">
-                                                    <Clock size={14} /> Pending
+                                                <span className="flex items-center gap-1.5 px-3 py-1 bg-amber-100 text-amber-600 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                                    <Clock size={14} /> Payment Pending
                                                 </span>
                                             )}
                                         </div>
