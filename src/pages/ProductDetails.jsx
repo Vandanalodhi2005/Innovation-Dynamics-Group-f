@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails, createProductReview } from '../redux/actions/productActions';
-import { addToCart } from '../redux/actions/cartActions';
+// import { addToCart } from '../redux/actions/cartActions';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../redux/constants/productConstants';
 import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
 import {
-    Star, ShoppingBag, ShoppingCart, Heart, Truck, Shield,
+    Star, ShoppingBag, ShoppingCart, Truck, Shield,
     ChevronLeft, ChevronRight, Check, RotateCcw, Award
 } from 'lucide-react';
 import { getImageUrl } from '../utils/imageUtils';
@@ -65,7 +65,7 @@ const ProductDetails = () => {
     const [hoverRating, setHoverRating] = useState(0);
     const [comment, setComment] = useState('');
 
-    const { addToWishlist, isInWishlist, addToCart: ctxAddToCart } = useShop();
+    const { addToCart: ctxAddToCart } = useShop();
     const { isAuthenticated } = useAuth();
 
     const { loading, error, product } = useSelector((s) => s.productDetails);
@@ -103,10 +103,7 @@ const ProductDetails = () => {
         if (!isAuthenticated) { alert('Please sign in to buy products.'); navigate('/login'); return; }
         ctxAddToCart(product, qty); navigate('/cart?redirect=shipping');
     };
-    const wishlist = () => {
-        if (!isAuthenticated) { alert('Please sign in to save items.'); navigate('/login'); return; }
-        if (!addToWishlist(product)) { alert('Please sign in to save items.'); navigate('/login'); }
-    };
+
 
     const submitReview = (e) => {
         e.preventDefault();
@@ -170,15 +167,7 @@ const ProductDetails = () => {
                                         )}
                                     </div>
 
-                                    {/* Wishlist floating btn */}
-                                    <button
-                                        onClick={wishlist}
-                                        className={`absolute top-4 right-4 w-10 h-10 rounded-sm shadow-md flex items-center justify-center transition-all duration-300
-                                            ${isInWishlist(product._id) ? 'bg-red-500 text-white' : 'bg-white text-gray-400 hover:text-red-500 hover:bg-red-50'}`}
-                                        title="Save to Wishlist"
-                                    >
-                                        <Heart size={18} fill={isInWishlist(product._id) ? 'currentColor' : 'none'} strokeWidth={isInWishlist(product._id) ? 0 : 2} />
-                                    </button>
+
 
                                     {/* Arrow nav */}
                                     {images.length > 1 && (
@@ -233,7 +222,7 @@ const ProductDetails = () => {
                                 </h1>
 
                                 {/* Rating row */}
-                                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
+                                {/* <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
                                     <Stars value={Math.round(product.rating || 0)} size={16} />
                                     <div className="flex items-center gap-2">
                                         <span className="text-sm font-semibold text-gray-700">
@@ -243,7 +232,7 @@ const ProductDetails = () => {
                                             ({product.numReviews || 0} {product.numReviews === 1 ? 'review' : 'reviews'})
                                         </span>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 {/* Price */}
                                 <div className="flex items-baseline gap-4 mb-6">

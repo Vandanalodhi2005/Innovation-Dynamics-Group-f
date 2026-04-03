@@ -26,7 +26,7 @@ const FAQs           = lazy(() => import('./pages/FAQs'));
 const Contact        = lazy(() => import('./pages/Contact'));
 const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const Cart           = lazy(() => import('./pages/Cart'));
-const Wishlist       = lazy(() => import('./pages/Wishlist'));
+
 const Checkout       = lazy(() => import('./pages/Checkout'));
 const Login          = lazy(() => import('./pages/Login'));
 const Signup         = lazy(() => import('./pages/Signup'));
@@ -88,7 +88,7 @@ function App() {
                   <Route path="/shop/:category" element={<Printers />} />
                   <Route path="/product/:id" element={<ProductDetails />} />
                   <Route path="/cart" element={<Cart />} />
-                  <Route path="/wishlist" element={<Wishlist />} />
+
                   <Route path="/checkout" element={<Checkout />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />

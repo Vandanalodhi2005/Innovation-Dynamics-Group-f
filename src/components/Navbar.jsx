@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ChevronDown, User, Search, Heart, ShoppingCart, LogOut, Truck, Printer, Users, ArrowRight, Zap, Droplets } from 'lucide-react';
+import { Menu, X, ChevronDown, User, Search, ShoppingCart, LogOut, Truck, Printer, Users, ArrowRight, Zap, Droplets } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
 import { useDispatch } from 'react-redux';
@@ -11,7 +11,7 @@ const Navbar = () => {
     const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    const { cartCount, wishlistCount } = useShop();
+    const { cartCount } = useShop();
     const { user, isAuthenticated, logout } = useAuth();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -51,12 +51,7 @@ const Navbar = () => {
         navigate('/');
     };
 
-    const handleWishlistClick = (e) => {
-        if (!isAuthenticated) {
-            e.preventDefault();
-            navigate('/login');
-        }
-    };
+
 
     // Helper to determine active class
     const getLinkClasses = (path) => {
@@ -252,17 +247,7 @@ const Navbar = () => {
                             )}
                         </div>
 
-                        <Link
-                            to="/wishlist"
-                            onClick={handleWishlistClick}
-                            aria-label={`Wishlist, ${wishlistCount} items`}
-                            className="text-white hover:text-white/90 transition-colors duration-300 relative group"
-                        >
-                            <Heart size={22} />
-                            {wishlistCount > 0 && (
-                                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{wishlistCount}</span>
-                            )}
-                        </Link>
+
                         <Link 
                             to="/cart" 
                             aria-label={`Shopping Cart, ${cartCount} items`}
@@ -378,14 +363,7 @@ const Navbar = () => {
                             <Truck size={20} />
                             <span>Track Order</span>
                         </Link>
-                        <Link
-                            to="/wishlist"
-                            onClick={handleWishlistClick}
-                            className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full"
-                        >
-                            <Heart size={20} />
-                            <span>Wishlist</span>
-                        </Link>
+
                     </div>
                 </div>
             </div>

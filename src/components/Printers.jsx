@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../redux/actions/productActions';
-import { Eye, ShoppingBag, Heart, ChevronRight, X, ChevronLeft } from 'lucide-react';
+import { Eye, ShoppingBag, ChevronRight, X, ChevronLeft } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { getImageUrl } from '../utils/imageUtils';
 
 
 
 // ── Product Card ─────────────────────────────────────────────────────────────
-const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
+const ProductCard = ({ product, onDetails }) => {
     const imageUrl = getImageUrl(product.images, 300);
     return (
         <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 relative rounded-sm overflow-hidden flex flex-row sm:flex-col h-full">
@@ -28,13 +28,7 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
                 )}
                 {/* Hover overlay buttons — only on sm+ */}
                 <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden sm:flex items-center justify-center gap-2">
-                    <button
-                        className={`p-2.5 shadow-lg transition-all transform hover:scale-110 rounded-sm ${isWishlisted ? 'bg-red-50 text-red-500' : 'bg-white text-gray-900 hover:bg-[#024ad8] hover:text-white'}`}
-                        title="Wishlist"
-                        onClick={(e) => { e.stopPropagation(); onWishlist(product); }}
-                    >
-                        <Heart size={16} fill={isWishlisted ? 'currentColor' : 'none'} />
-                    </button>
+
                     <button
                         className="p-2.5 bg-white text-gray-900 shadow-lg hover:bg-[#024ad8] hover:text-white transition-all transform hover:scale-110 rounded-sm"
                         title="View Details"
@@ -49,10 +43,10 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
             <div className="p-4 sm:p-6 flex flex-col flex-1 sm:border-t border-l sm:border-l-0 border-gray-50 min-w-0">
                 <div className="flex justify-between items-start mb-1">
                     <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">{product.brand || 'HP'}</span>
-                    <div className="flex text-[#024ad8] text-[10px]">
+                    {/* <div className="flex text-[#024ad8] text-[10px]">
                         {'★'.repeat(Math.min(5, Math.max(0, Math.round(product.rating || 0))))}
                         <span className="text-gray-200">{'★'.repeat(Math.max(0, 5 - Math.min(5, Math.max(0, Math.round(product.rating || 0)))))}</span>
-                    </div>
+                    </div> */}
                 </div>
                 <h2
                     className="text-sm font-bold text-black mb-2 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2"
@@ -60,7 +54,7 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
                 >
                     {product.title || 'Printer'}
                 </h2>
-                <p className="text-xs text-gray-600 mb-3 line-clamp-2 flex-grow leading-relaxed hidden sm:block">{product.description || 'Professional printing solution for your needs.'}</p>
+                <p className="text-xs text-gray-600 mb-3 line-clamp-2 flex-grow leading-relaxed hidden sm:block">{product.description}</p>
 
                 <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100">
                     <div className="flex flex-col">
@@ -82,7 +76,7 @@ const ProductCard = ({ product, onDetails, onWishlist, isWishlisted }) => {
 };
 
 // ── Category Section (overview page preview) ──────────────────────────────────
-const CategorySection = ({ products = [], loading = false, sectionLabel, onViewAll, onDetails, onWishlist, isWishlisted }) => {
+const CategorySection = ({ products = [], loading = false, sectionLabel, onViewAll, onDetails }) => {
     if (!loading && products.length === 0) return null;
 
     return (
@@ -112,7 +106,7 @@ const CategorySection = ({ products = [], loading = false, sectionLabel, onViewA
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {products.map(p => (
-                        <ProductCard key={p._id} product={p} onDetails={onDetails} onWishlist={onWishlist} isWishlisted={isWishlisted(p._id)} />
+                        <ProductCard key={p._id} product={p} onDetails={onDetails} />
                     ))}
                 </div>
             )}
@@ -121,7 +115,7 @@ const CategorySection = ({ products = [], loading = false, sectionLabel, onViewA
 };
 
 // ── Filtered View (full paginated listing with search & sort) ─────────────────
-const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetails, onWishlist, isWishlisted }) => {
+const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetails }) => {
     const dispatch = useDispatch();
     const [search, setSearch] = useState(initialSearch);
     const [debounced, setDeb] = useState(initialSearch);
@@ -208,8 +202,6 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                             key={p._id || Math.random()}
                             product={{ ...p, isLCP: index === 0 }}
                             onDetails={onDetails}
-                            onWishlist={onWishlist}
-                            isWishlisted={typeof isWishlisted === 'function' ? isWishlisted(p._id) : false}
                         />
                     ))}
                 </div>
@@ -253,7 +245,7 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
 const Printers = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { addToWishlist, isInWishlist } = useShop();
+
 
     // Search query from URL (from navbar search)
     const searchParams = new URLSearchParams(location.search);
@@ -293,10 +285,7 @@ const Printers = () => {
     useEffect(() => { if (globalSearch) setActiveTab(NAV_TABS[0]); }, [globalSearch]);
 
     const handleDetails = (product) => navigate(`/product/${product.slug || product._id}`);
-    const handleWishlist = (product) => {
-        const ok = addToWishlist(product);
-        if (!ok) { alert('Please log in to save items to your wishlist.'); navigate('/login'); }
-    };
+
 
     // Derive filter values from the active tab
     const activeCatName  = activeTab?.filterType === 'catName'       ? activeTab.filterValue : '';
@@ -356,16 +345,12 @@ const Printers = () => {
                         initialSearch={globalSearch}
                         usageCategory=""
                         onDetails={handleDetails}
-                        onWishlist={handleWishlist}
-                        isWishlisted={isInWishlist}
                     />
                 ) : (
                     <FilteredView
                         catName={activeCatName}
                         usageCategory={activeUsageCat}
                         onDetails={handleDetails}
-                        onWishlist={handleWishlist}
-                        isWishlisted={isInWishlist}
                     />
                 )}
             </div>
