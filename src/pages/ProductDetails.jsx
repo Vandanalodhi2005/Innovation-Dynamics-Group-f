@@ -239,16 +239,7 @@ const ProductDetails = () => {
                                     <span className="text-3xl sm:text-4xl font-bold text-black">
                                         ${Number(product.price || 0).toFixed(2)}
                                     </span>
-                                    {product.oldPrice > 0 && (
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-base text-gray-400 line-through">
-                                                ${Number(product.oldPrice).toFixed(2)}
-                                            </span>
-                                            <span className="text-xs font-bold text-white bg-[#024ad8] px-2 py-0.5 rounded-sm">
-                                                Save ${(product.oldPrice - product.price).toFixed(2)}
-                                            </span>
-                                        </div>
-                                    )}
+
                                 </div>
 
                                 {/* Attributes */}

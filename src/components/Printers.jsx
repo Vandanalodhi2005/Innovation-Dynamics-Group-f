@@ -58,9 +58,7 @@ const ProductCard = ({ product, onDetails }) => {
 
                 <div className="mt-auto flex items-center justify-between pt-3 border-t border-gray-100">
                     <div className="flex flex-col">
-                        {Number(product.oldPrice) > 0 && (
-                            <span className="text-[10px] text-gray-600 line-through font-bold">${Number(product.oldPrice).toFixed(2)}</span>
-                        )}
+
                         <span className="text-base sm:text-lg font-black text-black tracking-tight">${Number(product.price || 0).toFixed(2)}</span>
                     </div>
                     <button
