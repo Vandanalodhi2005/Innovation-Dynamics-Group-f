@@ -235,7 +235,7 @@ const Navbar = () => {
                                         </Link>
                                         <Link to="/track-order" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
                                             <Truck size={16} className="text-[#024ad8]" />
-                                            <span className="text-[10px] font-bold uppercase tracking-widest">Logistic Status</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-widest">Track Order</span>
                                         </Link>
                                         <div className="h-px bg-gray-200 my-1 mx-4"></div>
                                         <button onClick={handleLogout} className="w-full flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-red-50 text-red-700 transition-colors">

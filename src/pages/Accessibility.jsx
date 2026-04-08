@@ -1,88 +1,75 @@
-import React from "react";
+import React from 'react';
 
 const Accessibility = () => {
     return (
         <div className="bg-white min-h-screen pt-28 pb-16 px-6 font-sans text-left text-gray-800">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto text-left">
                 <header className="mb-12 border-b border-gray-100 pb-8 text-left">
-                    <h1 className="text-4xl font-bold text-black mb-4">Accessibility</h1>
-                    <p className="text-gray-500 text-sm font-medium">Innovation Dynamics Group LLC protocol for providing an inclusive digital environment accessible to the widest possible audience.</p>
-                    <div className="mt-6 flex flex-col sm:flex-row gap-6 text-xs text-gray-400 font-bold uppercase tracking-widest">
-                        <span>Updated: March 25, 2026</span>
+                    <h1 className="text-4xl font-bold text-black mb-4">Accessibility Statement</h1>
+                    <div className="flex flex-col sm:flex-row gap-6 text-xs text-gray-400 font-medium whitespace-nowrap">
+                        <p>Effective Date: March 25, 2026</p>
+                        <p>Last Updated: March 25, 2026</p>
                     </div>
                 </header>
 
-                <div className="space-y-12 leading-relaxed text-gray-700 font-normal">
-                    <section id="commitment">
-                        <h2 className="text-2xl font-bold text-black mb-6">Our Commitment</h2>
-                        <p className="text-lg text-gray-600 mb-6 font-medium">
-                            Innovation Dynamics Group LLC strives to ensure that its services are accessible to people with disabilities. We hold that every user has the right to navigate the digital world with dignity, equality, and independence.
+                <div className="space-y-6 text-gray-700 leading-relaxed font-normal text-sm md:text-base">
+                    <p>
+                        Innovation Dynamics Group LLC is committed to providing a website that is accessible to the widest possible audience, regardless of technology or ability. We are actively working to increase the accessibility and usability of our website and in doing so adhere to many of the available standards and guidelines.
+                    </p>
+
+                    <div>
+                        <h2 className="text-xl font-bold text-black mb-2 mt-8">1. Our Commitment</h2>
+                        <p>
+                            Innovation Dynamics Group LLC strives to ensure that its services are accessible to people with disabilities. We believe that every user has the right to navigate the digital world with dignity, equality, and independence.
                         </p>
-                    </section>
+                    </div>
 
-                    <section id="standards">
-                        <h2 className="text-2xl font-bold text-black mb-6">Standards & Guidelines</h2>
-                        <div className="p-8 bg-gray-50 border border-gray-100 rounded-sm">
-                            <p className="font-semibold text-gray-600 mb-6 font-medium">
-                                We utilize the <strong>Web Content Accessibility Guidelines (WCAG 2.1)</strong> as our primary framework. These protocols ensure our digital touchpoints are Perceivable, Operable, Understandable, and Robust.
-                            </p>
-                            <div className="flex items-center gap-3">
-                                <div className="w-1.5 h-1.5 bg-[#024ad8] rounded-full"></div>
-                                <p className="text-xs font-bold text-black uppercase tracking-wider">
-                                    Target Compliance: WCAG 2.1 Level AA
-                                </p>
-                            </div>
-                        </div>
-                    </section>
+                    <div>
+                        <h2 className="text-xl font-bold text-black mb-2 mt-8">2. Standards & Guidelines</h2>
+                        <p>
+                            We utilize the Web Content Accessibility Guidelines (WCAG 2.1) as our primary framework. These protocols ensure our digital touchpoints are Perceivable, Operable, Understandable, and Robust. Our target compliance is WCAG 2.1 Level AA.
+                        </p>
+                    </div>
 
-                    <section id="features">
-                        <h2 className="text-2xl font-bold text-black mb-8">Technical Features</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-medium">
-                            <div className="p-6 border border-gray-100 rounded-sm">
-                                <h3 className="font-bold text-black mb-3 text-sm uppercase tracking-wide">Keyboard Control</h3>
-                                <p className="text-sm text-gray-500">All interactive elements on our storefront can be triggered via keyboard commands, supporting users who operate without traditional pointer devices.</p>
-                            </div>
-                            <div className="p-6 border border-gray-100 rounded-sm">
-                                <h3 className="font-bold text-black mb-3 text-sm uppercase tracking-wide">Contrast Fidelity</h3>
-                                <p className="text-sm text-gray-500">We maintain rigorous color contrast ratios across all textual and UI elements to optimize visibility for users with visual impairments.</p>
-                            </div>
-                        </div>
-                    </section>
+                    <div>
+                        <h2 className="text-xl font-bold text-black mb-2 mt-8">3. Technical Features</h2>
+                        
+                        <h3 className="text-lg font-bold text-black mb-2 mt-4">3.1 Keyboard Control</h3>
+                        <p>All interactive elements on our storefront can be triggered via keyboard commands, supporting users who operate without traditional pointer devices.</p>
+                        
+                        <h3 className="text-lg font-bold text-black mb-2 mt-4">3.2 Contrast Fidelity</h3>
+                        <p>We maintain rigorous color contrast ratios across all textual and UI elements to optimize visibility for users with visual impairments.</p>
+                        
+                        <h3 className="text-lg font-bold text-black mb-2 mt-4">3.3 Alt Text & Semantic HTML</h3>
+                        <p>We use descriptive alternative text for images and follow semantic HTML structures to improve compatibility with screen readers and assistive technologies.</p>
+                    </div>
 
-                    <section id="ongoing">
-                        <h2 className="text-2xl font-bold text-black mb-6">Continuous Evolution</h2>
-                        <p className="text-gray-600 font-medium">
+                    <div>
+                        <h2 className="text-xl font-bold text-black mb-2 mt-8">4. Continuous Evolution</h2>
+                        <p>
                             Digital accessibility is an ongoing journey. We perform quarterly audits of our checkout flow and product pages to identify and dismantle barriers to access, ensuring a first-class experience for every user.
                         </p>
-                    </section>
+                    </div>
 
-                    <section id="contact" className="mt-16 pt-12 border-t border-gray-100">
-                        <h2 className="text-2xl font-bold text-black mb-10">Support Center</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            <div className="space-y-6">
-                                <div className="space-y-2">
-                                    <p className="text-xs font-bold text-[#024ad8] uppercase tracking-wider">Direct Message</p>
-                                    <p className="font-bold text-black text-sm break-all">support@innovationdynamicsgroup.com</p>
-                                </div>
-                                <div className="space-y-2">
-                                    <p className="text-xs font-bold text-[#024ad8] uppercase tracking-wider">Operational Voice</p>
-                                    <p className="font-bold text-black text-sm">+1 (651) 815-4630</p>
-                                </div>
-                            </div>
-                            <div className="space-y-2">
-                                <p className="text-xs font-bold text-[#024ad8] uppercase tracking-wider">Operational HQ</p>
-                                <div className="text-sm font-medium text-gray-500">
-                                    <p>Innovation Dynamics Group LLC</p>
-                                    <p>11397 Quincy St NE</p>
-                                    <p>Blaine, MN 55434</p>
-                                </div>
-                            </div>
+                    <div>
+                        <h2 className="text-xl font-bold text-black mb-2 mt-8">5. Assistance & Feedback</h2>
+                        <p>If you experience any difficulty in accessing any part of this website, please feel free to call us or email us. We will work with you to provide the information, item, or transaction you seek through an alternate communication method or one that is accessible for you consistent with applicable law.</p>
+                        <div className="mt-4 space-y-2">
+                            <p className="font-bold text-black">Innovation Dynamics Group LLC</p>
+                            <p>📧 Email: support@innovationdynamicsgroup.com</p>
+                            <p>📞 Phone: +1 (651) 815-4630</p>
+                            <p>📍 Address: 11397 Quincy St NE, Blaine, MN 55434, United States</p>
                         </div>
-                    </section>
+                    </div>
+
+                    <div>
+                        <h2 className="text-xl font-bold text-black mb-2 mt-8">6. Third-Party Content</h2>
+                        <p>While we strive to adhere to the accepted guidelines and standards for accessibility and usability, it is not always possible to do so in all areas of the website. Some content or functionality on our site is provided by third-party vendors. We monitor these providers closely to ensure they also prioritize an inclusive digital experience.</p>
+                    </div>
                 </div>
 
                 <footer className="mt-24 pt-10 border-t border-gray-100 text-center">
-                    <p className="text-xs text-gray-300 font-medium tracking-wide">
+                    <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">
                         Innovation Dynamics Group LLC © 2026
                     </p>
                 </footer>
@@ -92,3 +79,4 @@ const Accessibility = () => {
 };
 
 export default Accessibility;
+

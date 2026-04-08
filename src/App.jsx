@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import { useEffect, lazy, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import CookieConsent from './components/common/CookieConsent';
+
 
 // Utility to scroll to top on route change (including query param changes)
 const ScrollToTopOnNavigation = () => {
@@ -128,7 +128,7 @@ function App() {
             </main>
             <Footer />
             <ScrollToTop />
-            <CookieConsent />
+
           </div>
         </Router>
       </ShopProvider>

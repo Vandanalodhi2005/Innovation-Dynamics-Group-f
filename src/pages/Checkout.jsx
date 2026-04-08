@@ -184,11 +184,17 @@ const Checkout = () => {
             const result = await clover.createToken();
             if (result.errors) {
                 console.error("Clover Tokenization Failed:", result.errors);
-                alert('Your order was placed successfully, but the payment could not be processed due to invalid card details. You can complete your payment on the Order Details page.');
                 
-                dispatch({ type: CART_CLEAR_ITEMS });
-                localStorage.removeItem('cartItems');
-                navigate(`/order/${createdOrder._id}`);
+                // If tokenization fails, delete the order we just created
+                try {
+                    await axios.delete(`${import.meta.env.VITE_API_URL}/orders/${createdOrder._id}`, {
+                        headers: { Authorization: `Bearer ${userInfo.token}` }
+                    });
+                } catch (delErr) {
+                    console.error("Failed to cleanup order after tokenization error:", delErr);
+                }
+
+                alert('Payment failed. Order not placed. Please check your card details and try again.');
                 setLoading(false);
                 return;
             }
@@ -212,11 +218,9 @@ const Checkout = () => {
                 
             } catch (payErr) {
                 console.error("Payment Step Failed:", payErr);
-                alert('Your order was placed successfully, but the payment could not be processed. You can complete your payment on the Order Details page.');
-                
-                dispatch({ type: CART_CLEAR_ITEMS });
-                localStorage.removeItem('cartItems');
-                navigate(`/order/${createdOrder._id}`);
+                alert(payErr.response?.data?.message || 'Payment failed. Order not placed. Please try again.');
+                // Note: The backend already deletes the order in this case (Order.findByIdAndDelete)
+                setLoading(false);
             }
 
         } catch (error) {

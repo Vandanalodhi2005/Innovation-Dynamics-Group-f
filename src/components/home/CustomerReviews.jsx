@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Star, Quote, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { User, Quote, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const reviews = [
@@ -100,44 +100,16 @@ const CustomerReviews = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-                    <div className="max-w-2xl">
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-[#024ad8] text-[10px] font-bold uppercase tracking-widest rounded-full mb-4"
-                        >
-                            <Star size={12} fill="currentColor" />
-                            <span>Premium Client Experiences</span>
-                        </motion.div>
-                        <motion.h2 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-3xl sm:text-4xl lg:text-5xl font-black text-black leading-none tracking-tight"
-                        >
-                            Trusted by Industry Leaders. <br />
-                            <span className="text-gray-300">Read our success stories.</span>
-                        </motion.h2>
-                    </div>
-                    
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                <div className="text-center mb-16">
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="flex items-center gap-4 bg-[#F8F9FA] p-4 border border-gray-100 rounded-sm shadow-sm"
+                        transition={{ delay: 0.1 }}
+                        className="text-3xl sm:text-4xl lg:text-5xl font-black text-black leading-none tracking-tight"
                     >
-                        <div className="flex text-[#024ad8]">
-                            {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
-                        </div>
-                        <div className="h-8 w-px bg-gray-200"></div>
-                        <div>
-                            <p className="text-lg font-black text-black leading-none">4.9/5.0</p>
-                            <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">Average Satisfaction</p>
-                        </div>
-                    </motion.div>
+                        What Our Customers Say
+                    </motion.h2>
                 </div>
 
                 {/* Slider Container */}
@@ -184,33 +156,33 @@ const CustomerReviews = () => {
                                         </div>
 
                                         <div className="relative z-10 flex flex-col h-full">
-                                            {/* Stars */}
-                                            <div className="flex gap-1 mb-6 text-[#024ad8]">
-                                                {[...Array(review.rating)].map((_, i) => (
-                                                    <Star key={i} size={14} fill="currentColor" />
-                                                ))}
+                                            {/* User Info at Top */}
+                                            <div className="flex items-center gap-4 mb-6">
+                                                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#024ad8] shrink-0 border border-blue-100">
+                                                    <User size={24} />
+                                                </div>
+                                                <div className="flex flex-col">
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="text-base font-black text-black leading-tight">{review.name}</span>
+                                                        {review.verified && (
+                                                            <CheckCircle2 size={14} className="text-[#024ad8]" />
+                                                        )}
+                                                    </div>
+                                                    <span className="text-[11px] font-bold text-gray-400 uppercase tracking-[0.1em]">{review.role}</span>
+                                                </div>
                                             </div>
 
                                             {/* Content */}
-                                            <p className="text-gray-600 text-base leading-relaxed mb-8">
-                                                "{review.content}"
-                                            </p>
+                                            <div className="relative mb-8">
+                                                <p className="text-gray-600 text-base leading-relaxed italic">
+                                                    "{review.content}"
+                                                </p>
+                                            </div>
 
-                                            {/* Author Section */}
-                                            <div className="mt-auto pt-8 border-t border-gray-50 flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="flex flex-col">
-                                                        <div className="flex items-center gap-2">
-                                                            <span className="text-sm font-black text-black">{review.name}</span>
-                                                            {review.verified && (
-                                                                <CheckCircle2 size={14} className="text-[#024ad8]" />
-                                                            )}
-                                                        </div>
-                                                        <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">{review.role}</span>
-                                                    </div>
-                                                </div>
-                                                <div className="hidden sm:block">
-                                                    <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">{review.location}</span>
+                                            {/* Footer with Location */}
+                                            <div className="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
+                                                <div className="flex items-center gap-1.5">
+                                                    <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest">{review.location}</span>
                                                 </div>
                                             </div>
                                         </div>
