@@ -44,7 +44,14 @@ const Footer = () => {
     <footer className="bg-black text-white relative border-t border-white/10 overflow-hidden font-sans">
       <div className="absolute top-0 left-1/4 w-[500px] h-[300px] bg-[#024ad8]/5 blur-[120px] rounded-full pointer-events-none -translate-y-1/2"></div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-0 relative z-10">
+      <div className="max-w-7xl mx-auto px-10 pt-16 pb-0 relative z-10 justify-center align-center">
+        <div className="mb-12 pb-8 border-b border-white flex flex-col items-center">
+          <p className="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-5xl text-center mx-auto">
+            <span className="text-white font-bold mr-1">Trademark Notice:</span>
+            All product names, images, brand logos, and trademarks displayed on this website are the property of their respective owners and are used for identification purposes only. Innovation Dynamics Group LLC operates as an independent e-commerce retailer and is not affiliated with, endorsed by, or sponsored by any manufacturer unless explicitly stated. Product availability, specifications, and pricing are subject to change without prior notice. While we strive to provide accurate and up-to-date information, Innovation Dynamics Group LLC does not guarantee that all content on this site is complete, current, or free from errors.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/5">
           <div className="lg:col-span-3 space-y-6">
             <Link to="/" className="flex items-center gap-3 min-h-[40px] select-none h-10 overflow-hidden">
@@ -246,32 +253,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-10 pb-4 flex flex-col gap-8 justify-center items-center">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-6 w-full px-4 lg:px-0">
-            <p className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.3em] text-center lg:text-left">
-              &copy; 2026{" "}
-              <span className="text-neutral-200">
-                Innovation Dynamics Group LLC
-              </span>{" "}
-              • Minnesota, USA
-            </p>
-
-            <div className="flex items-center gap-6 px-6 py-2.5 bg-neutral-900/50 border border-white/5 hover:border-white/20 rounded-full transition-colors">
-              <img src="/payment/mastercard.svg" alt="MasterCard" className="h-5 w-auto opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
-              <img src="/payment/amex.svg" alt="Amex" className="h-5 w-auto opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
-              <img src="/payment/discover.svg" alt="Discover" className="h-5 w-14 bg-white p-0.5 rounded-sm opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
-              <img src="/payment/paypal.svg" alt="PayPal" className="h-5 w-auto opacity-80 hover:opacity-100 hover:scale-110 transition-all" />
-            </div>
+        <div className="pt-10 pb-12 flex justify-center items-center">
+          <div className="flex items-center gap-8 px-8 py-3 bg-neutral-900/50 border border-white/5 rounded-full backdrop-blur-sm">
+            <img src="/payment/mastercard.svg" alt="MasterCard" className="h-6 w-auto opacity-70 hover:opacity-100 transition-all hover:scale-110" />
+            <img src="/payment/amex.svg" alt="Amex" className="h-6 w-auto opacity-70 hover:opacity-100 transition-all hover:scale-110" />
+            <img src="/payment/discover.svg" alt="Discover" className="h-6 w-16 bg-white p-0.5 rounded-sm opacity-70 hover:opacity-100 transition-all hover:scale-110" />
+            <img src="/payment/paypal.svg" alt="PayPal" className="h-6 w-auto opacity-70 hover:opacity-100 transition-all hover:scale-110" />
           </div>
-
-          <p className="text-center text-[9px] text-neutral-300 font-medium leading-relaxed uppercase tracking-wider max-w-4xl mx-auto px-4">
-            <span className="text-neutral-400 font-bold">
-              Trademark Notice:
-            </span>{" "}
-
-            All product names, images, brand logos, and trademarks displayed on this website are the property of their respective owners and are used for identification purposes only. Innovation Dynamics Group LLC operates as an independent e-commerce retailer and is not affiliated with, endorsed by, or sponsored by any manufacturer unless explicitly stated. Product availability, specifications, and pricing are subject to change without prior notice. While we strive to provide accurate and up-to-date information, Innovation Dynamics Group LLC does not guarantee that all content on this site is complete, current, or free from errors.
-
-          </p>
         </div>
       </div>
     </footer>

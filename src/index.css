@@ -1,17 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
   --color-primary-blue: #024ad8;
   --color-active-blue: #0133a1;
   /* Darker for hover/active */
 }
 
 :root {
-  font-family: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 
 html, body {
   margin: 0;

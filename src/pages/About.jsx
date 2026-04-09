@@ -351,7 +351,7 @@ const About = () => {
             {/* ── Final CTA ──────────────────────────────────────────────── */}
             <section className="py-24 bg-white border-t border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl md:text-4xl font-black uppercase mb-8">Focusing on clarity so you can focus on clarity.</h2>
+                    <h2 className="text-3xl font-shadow-lg font-black uppercase mb-8">Focusing on clarity so you can focus on clarity.</h2>
                     <Link to="/shop" className="inline-flex items-center gap-10 px-12 py-5 bg-[#024ad8] text-white font-black rounded-sm hover:bg-black transition-all shadow-2xl hover:-translate-y-1">
                         VIEW OUR FOCUSED CATALOG <ArrowRight size={20} />
                     </Link>

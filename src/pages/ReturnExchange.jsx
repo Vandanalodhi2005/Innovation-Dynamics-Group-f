@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ReturnExchange = () => {
     const [formData, setFormData] = useState({
@@ -210,7 +211,9 @@ const ReturnExchange = () => {
 
                             <div className="flex items-start gap-3 mt-4">
                                 <input type="checkbox" required className="mt-1 accent-black" />
-                                <p className="text-sm">I agree that my data is collected and stored according to the privacy policy for processing this return request.</p>
+                                <p className="text-sm">
+                                    I agree that my data is collected and stored according to our <Link to="/privacy-policy" target="_blank" className="text-black font-bold hover:underline">Privacy Policy</Link>, <Link to="/terms-conditions" target="_blank" className="text-black font-bold hover:underline">Terms & Conditions</Link>, <Link to="/return-refund" target="_blank" className="text-black font-bold hover:underline">Refund & Return Policy</Link> and consent to us using your information for processing this return request.
+                                </p>
                             </div>
 
                             <button

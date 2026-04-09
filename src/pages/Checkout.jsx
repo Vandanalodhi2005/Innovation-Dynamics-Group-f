@@ -32,6 +32,7 @@ const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [clover, setClover] = useState(null);
     const [cloverReady, setCloverReady] = useState(false);
+    const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
     const [agreedToTerms, setAgreedToTerms] = useState(false);
 
     // Style configuration
@@ -184,7 +185,7 @@ const Checkout = () => {
             const result = await clover.createToken();
             if (result.errors) {
                 console.error("Clover Tokenization Failed:", result.errors);
-                
+
                 // If tokenization fails, delete the order we just created
                 try {
                     await axios.delete(`${import.meta.env.VITE_API_URL}/orders/${createdOrder._id}`, {
@@ -210,12 +211,12 @@ const Checkout = () => {
                     },
                     { headers: { Authorization: `Bearer ${userInfo.token}` } }
                 );
-                
+
                 // Payment Success
                 dispatch({ type: CART_CLEAR_ITEMS });
                 localStorage.removeItem('cartItems');
                 navigate(`/order/${createdOrder._id}?success=true`);
-                
+
             } catch (payErr) {
                 console.error("Payment Step Failed:", payErr);
                 alert(payErr.response?.data?.message || 'Payment failed. Order not placed. Please try again.');
@@ -510,14 +511,18 @@ const Checkout = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex items-start gap-3 p-4 bg-gray-50/50 rounded-sm border border-gray-100 group cursor-pointer hover:bg-white transition-all select-none" onClick={() => setAgreedToTerms(!agreedToTerms)}>
-                                        <div className={`mt-0.5 w-5 h-5 rounded-sm border-2 flex items-center justify-center transition-all flex-shrink-0 ${agreedToTerms ? 'border-[#024ad8] bg-[#024ad8]' : 'border-gray-200'}`}>
-                                            {agreedToTerms && <Check size={14} className="text-white" />}
+                                    <div className="space-y-3">
+
+
+                                        {/* Terms & Conditions Checkbox */}
+                                        <div className="flex items-start gap-3 p-4 bg-gray-50/50 rounded-sm border border-gray-100 group cursor-pointer hover:bg-white transition-all select-none" onClick={() => setAgreedToTerms(!agreedToTerms)}>
+                                            <div className={`mt-0.5 w-5 h-5 rounded-sm border-2 flex items-center justify-center transition-all flex-shrink-0 ${agreedToTerms ? 'border-[#024ad8] bg-[#024ad8]' : 'border-gray-200'}`}>
+                                                {agreedToTerms && <Check size={14} className="text-white" />}
+                                            </div>
+                                            <span className="text-[11px] leading-relaxed text-gray-500 font-medium tracking-tight">
+                                                By placing your order, you confirm that you have read and agree to our <Link to="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Terms & Conditions</Link>, <Link to="/return-refund" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Refund & Return Policy</Link> and understand how your personal information is collected and used as described in our <Link to="/privacy-policy" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Privacy Policy</Link>.
+                                            </span>
                                         </div>
-                                        <span className="text-[11px] leading-relaxed text-gray-500 font-medium tracking-tight">
-                                            By placing your order, you confirm that you have read and agree to our
-                                            <Link to="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-1">Terms & Conditions</Link>. By placing your order, you confirm that you have read and agree to our Terms & Conditions and understand how your personal information is collected and used as described in our Privacy Policy.
-                                        </span>
                                     </div>
 
                                     <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 p-3 rounded-sm border border-gray-100">
@@ -527,8 +532,8 @@ const Checkout = () => {
 
                                     <button
                                         onClick={() => {
-                                            if (!agreedToTerms) {
-                                                alert("Please agree to the Terms & Conditions before placing your order.");
+                                            if (!agreedToPrivacy || !agreedToTerms) {
+                                                alert("Please agree to the Privacy Policy and Terms & Conditions before placing your order.");
                                                 return;
                                             }
                                             initPayment();
