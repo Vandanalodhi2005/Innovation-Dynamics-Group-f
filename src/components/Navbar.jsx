@@ -113,7 +113,7 @@ const Navbar = () => {
 
                     <div className="hidden lg:flex space-x-8 items-center">
                         <a href="/" className={getLinkClasses('/')}>Home</a>
-                        <a href="/about" className={getLinkClasses('/about')}>About Us</a>
+                        <a href="/about/" className={getLinkClasses('/about')}>About Us</a>
 
                         <div
                             className="relative"
@@ -133,7 +133,7 @@ const Navbar = () => {
 
                             <div className={`absolute left-1/2 -translate-x-1/2 mt-5 w-72 bg-white text-black rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 transition-all duration-500 z-50 overflow-hidden ${isShopDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
                                 <div className="p-4 grid grid-cols-1 gap-1">
-                                    <a href="/shop" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-4 mb-2 bg-[#024ad8] text-white hover:bg-black transition-all">
+                                    <a href="/shop/" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-4 mb-2 bg-[#024ad8] text-white hover:bg-black transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
                                                 <ShoppingBag size={16} />
@@ -147,7 +147,7 @@ const Navbar = () => {
                                         <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#024ad8]/50">Browse By Category</span>
                                     </div>
 
-                                    <a href="/home-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+                                    <a href="/home-printers/" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
                                                 <Printer size={16} />
@@ -157,7 +157,7 @@ const Navbar = () => {
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </a>
 
-                                    <a href="/office-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+                                    <a href="/office-printers/" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
                                                 <Users size={16} />
@@ -167,7 +167,7 @@ const Navbar = () => {
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </a>
 
-                                    <a href="/laser-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+                                    <a href="/laser-printers/" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
                                                 <Zap size={16} />
@@ -177,7 +177,7 @@ const Navbar = () => {
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </a>
 
-                                    <a href="/inkjet-printers" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
+                                    <a href="/inkjet-printers/" onClick={closeAllMenus} className="group/item flex items-center justify-between px-4 py-3 rounded-sm hover:bg-[#024ad8]/5 transition-all">
                                         <div className="flex items-center gap-4">
                                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center text-gray-400 group-hover/item:text-[#024ad8] group-hover/item:bg-white transition-all">
                                                 <Droplets size={16} />
@@ -187,7 +187,7 @@ const Navbar = () => {
                                         <ArrowRight size={12} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-[#024ad8]" />
                                     </a>
 
-                                    <a href="/ink-toner" onClick={closeAllMenus} className="mt-4 group/item flex items-center gap-4 px-4 py-4 bg-gray-900 text-white hover:bg-[#024ad8] transition-all">
+                                    <a href="/ink-toner/" onClick={closeAllMenus} className="mt-4 group/item flex items-center gap-4 px-4 py-4 bg-gray-900 text-white hover:bg-[#024ad8] transition-all">
                                         <ShoppingCart size={16} className="text-[#024ad8] group-hover/item:text-white" />
                                         <div className="flex flex-col">
                                             <span className="text-[10px] font-black uppercase tracking-[0.2em] leading-none">Ink & Toner</span>
@@ -198,8 +198,8 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        <a href="/faqs" className={getLinkClasses('/faqs')}>FAQs</a>
-                        <a href="/contact" className={getLinkClasses('/contact')}>Contact Us</a>
+                        <a href="/faqs/" className={getLinkClasses('/faqs')}>FAQs</a>
+                        <a href="/contact/" className={getLinkClasses('/contact')}>Contact Us</a>
                     </div>
 
                     <div className="hidden lg:flex items-center space-x-6">
@@ -225,7 +225,7 @@ const Navbar = () => {
                                     <ChevronDown size={14} className="text-white group-hover/user:text-[#024ad8] group-hover/user:rotate-180 transition-all" />
                                 </button>
                             ) : (
-                                <a href="/login" className="flex items-center gap-2 group/login" aria-label="Login">
+                                <a href="/login/" className="flex items-center gap-2 group/login" aria-label="Login">
                                     <div className="w-9 h-9 border border-white/20 rounded-full flex items-center justify-center group-hover/login:bg-white group-hover/login:border-white transition-all">
                                          <User size={18} className="text-white group-hover/login:text-[#024ad8]" />
                                     </div>
@@ -252,11 +252,11 @@ const Navbar = () => {
                                                 <span className="text-[10px] font-black uppercase tracking-widest">Admin Dashboard</span>
                                             </Link>
                                         )}
-                                        <a href="/profile" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
+                                        <a href="/profile/" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
                                             <User size={16} className="text-[#024ad8]" />
                                             <span className="text-[10px] font-bold uppercase tracking-widest">Profile</span>
                                         </a>
-                                        <a href="/track-order" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
+                                        <a href="/track-order/" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
                                             <Truck size={16} className="text-[#024ad8]" />
                                             <span className="text-[10px] font-bold uppercase tracking-widest">Track Order</span>
                                         </a>
@@ -270,7 +270,7 @@ const Navbar = () => {
                             )}
                         </div>
 
-                        <a href="/cart" aria-label={`Shopping Cart, ${cartCount} items`} className="text-white hover:text-white/90 transition-colors duration-300 relative group">
+                        <a href="/cart/" aria-label={`Shopping Cart, ${cartCount} items`} className="text-white hover:text-white/90 transition-colors duration-300 relative group">
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
                                 <span className="absolute -top-2 -right-2 bg-white text-[#024ad8] text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">{cartCount}</span>
@@ -279,7 +279,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="lg:hidden flex items-center gap-2">
-                        <a href="/cart" aria-label={`Shopping Cart, ${cartCount} items`} className="text-white hover:text-white/90 transition-colors duration-300 relative p-3 flex items-center justify-center">
+                        <a href="/cart/" aria-label={`Shopping Cart, ${cartCount} items`} className="text-white hover:text-white/90 transition-colors duration-300 relative p-3 flex items-center justify-center">
                             <ShoppingCart size={22} className="relative z-10" />
                             {cartCount > 0 && (
                                 <span className="absolute top-1.5 right-1.5 bg-white text-[#024ad8] text-[0.6rem] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-md">
@@ -310,7 +310,7 @@ const Navbar = () => {
                     </div>
 
                     <a href="/" onClick={toggleMenu} className={getMobileLinkClasses('/')}>Home</a>
-                    <a href="/about" onClick={toggleMenu} className={getMobileLinkClasses('/about')}>About Us</a>
+                    <a href="/about/" onClick={toggleMenu} className={getMobileLinkClasses('/about')}>About Us</a>
 
                     <div>
                         <button
@@ -320,17 +320,17 @@ const Navbar = () => {
                         > Shop <ChevronDown size={16} className={`transform transition-transform duration-300 ${isShopDropdownOpen ? 'rotate-180' : ''}`} />
                         </button>
                         <div className={`pl-6 space-y-1 transition-all duration-300 overflow-hidden ${isShopDropdownOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
-                            <a href="/shop" onClick={closeAllMenus} className="block px-3 py-3 rounded-md text-sm font-black uppercase tracking-widest text-white bg-white/10 mb-2">Shop All Products</a>
-                            <a href="/home-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Home Printers</a>
-                            <a href="/office-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Office Printers</a>
-                            <a href="/laser-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</a>
-                            <a href="/inkjet-printers" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</a>
-                            <a href="/ink-toner" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Ink & Toner</a>
+                            <a href="/shop/" onClick={closeAllMenus} className="block px-3 py-3 rounded-md text-sm font-black uppercase tracking-widest text-white bg-white/10 mb-2">Shop All Products</a>
+                            <a href="/home-printers/" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Home Printers</a>
+                            <a href="/office-printers/" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Office Printers</a>
+                            <a href="/laser-printers/" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Laser Printers</a>
+                            <a href="/inkjet-printers/" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Inkjet Printers</a>
+                            <a href="/ink-toner/" onClick={closeAllMenus} className="block px-3 py-2 rounded-md text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors">Ink & Toner</a>
                         </div>
                     </div>
 
-                    <a href="/faqs" onClick={toggleMenu} className={getMobileLinkClasses('/faqs')}>FAQs</a>
-                    <a href="/contact" onClick={toggleMenu} className={getMobileLinkClasses('/contact')}>Contact Us</a>
+                    <a href="/faqs/" onClick={toggleMenu} className={getMobileLinkClasses('/faqs')}>FAQs</a>
+                    <a href="/contact/" onClick={toggleMenu} className={getMobileLinkClasses('/contact')}>Contact Us</a>
 
                     <div className="border-t border-white/20 pt-4 mt-4 flex items-center gap-4 px-3 flex-wrap">
                         {isAuthenticated ? (
@@ -342,7 +342,7 @@ const Navbar = () => {
                                     </Link>
                                 )}
                                 <div className="w-full flex items-center justify-between bg-white/10 p-3 rounded-lg border border-white/20 mb-2">
-                                    <a href="/profile" onClick={toggleMenu} className="flex items-center gap-3">
+                                    <a href="/profile/" onClick={toggleMenu} className="flex items-center gap-3">
                                         <div className="w-10 h-10 rounded-full bg-[#024ad8] shadow-inner flex items-center justify-center text-white font-black text-lg">
                                             {user.name.charAt(0)}
                                         </div>
@@ -359,7 +359,7 @@ const Navbar = () => {
                                 </div>
                             </>
                         ) : (
-                            <a href="/login" onClick={toggleMenu} className="flex items-center gap-3 bg-white/10 p-3 rounded-lg border border-white/20 mb-2 w-full hover:bg-white/20 transition-colors">
+                            <a href="/login/" onClick={toggleMenu} className="flex items-center gap-3 bg-white/10 p-3 rounded-lg border border-white/20 mb-2 w-full hover:bg-white/20 transition-colors">
                                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white">
                                     <User size={20} />
                                 </div>
@@ -370,7 +370,7 @@ const Navbar = () => {
                             </a>
                         )}
 
-                        <a href="/track-order" onClick={toggleMenu} className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full">
+                        <a href="/track-order/" onClick={toggleMenu} className="flex items-center gap-2 text-white hover:text-white/80 transition-colors w-full">
                             <Truck size={20} />
                             <span>Track Order</span>
                         </a>

@@ -325,7 +325,7 @@ const Printers = ({ hideHero = false }) => {
 
             {/* ── Hero Banner (Full Width) ─────────────────────────────────── */}
             {!hideHero && (
-                <div className="relative h-[600px] overflow-hidden">
+                <div className="relative h-[300px] sm:h-[450px] md:h-[550px] lg:h-[600px] overflow-hidden">
                     {/* Background Image */}
                     <img 
                         src="/printer-banner.webp" 
@@ -365,11 +365,11 @@ const Printers = ({ hideHero = false }) => {
                         <div className="flex flex-wrap gap-3 sm:gap-4 mt-8">
                             {NAV_TABS.map((tab) => {
                                 const isActive = activeTab?.label === tab.label;
-                                const tabPath = tab.label === 'Home Printers' ? '/home-printers' :
-                                               tab.label === 'Office Printers' ? '/office-printers' :
-                                               tab.label === 'Laser Printers' ? '/laser-printers' :
-                                               tab.label === 'Inkjet Printers' ? '/inkjet-printers' :
-                                               tab.label === 'Ink & Toner' ? '/ink-toner' : '/shop';
+                                const tabPath = tab.label === 'Home Printers' ? '/home-printers/' :
+                                               tab.label === 'Office Printers' ? '/office-printers/' :
+                                               tab.label === 'Laser Printers' ? '/laser-printers/' :
+                                               tab.label === 'Inkjet Printers' ? '/inkjet-printers/' :
+                                               tab.label === 'Ink & Toner' ? '/ink-toner/' : '/shop/';
 
                                 return (
                                     <button
