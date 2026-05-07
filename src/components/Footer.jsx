@@ -76,11 +76,11 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  { name: "Home Printers", link: "/home-printers.html" },
-                  { name: "Office Printers", link: "/office-printers.html" },
-                  { name: "Inkjet Printers", link: "/inkjet-printers.html" },
-                  { name: "Laser Printers", link: "/laser-printers.html" },
-                  { name: "Ink & Toner", link: "/ink-toner.html" },
+                  { name: "Home Printers", link: "/home-printers" },
+                  { name: "Office Printers", link: "/office-printers" },
+                  { name: "Inkjet Printers", link: "/inkjet-printers" },
+                  { name: "Laser Printers", link: "/laser-printers" },
+                  { name: "Ink & Toner", link: "/ink-toner" },
                 ].map((item) => (
                   <li key={item.name}>
                     <a
@@ -100,12 +100,12 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  { name: "Track Order", link: "/track-order.html" },
-                  { name: "Shipping Policy", link: "/shipping-policy.html" },
-                  { name: "Return & Exchange", link: "/return-exchange.html" },
-                  { name: "Refund & Return Policy", link: "/refund-policy.html" },
-                  { name: "Buying Guide", link: "/buying-guide.html" },
-                  { name: "Support Hub", link: "/resources.html" },
+                  { name: "Track Order", link: "/track-order" },
+                  { name: "Shipping Policy", link: "/shipping-policy" },
+                  { name: "Return & Exchange", link: "/return-exchange" },
+                  { name: "Refund & Return Policy", link: "/refund-policy" },
+                  { name: "Buying Guide", link: "/buying-guide" },
+                  { name: "Support Hub", link: "/resources" },
                 ].map((item) => (
                   <li key={item.name}>
                     <a
@@ -125,12 +125,12 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  { name: "Privacy Policy", link: "/privacy-policy.html" },
-                  { name: "Terms & Conditions", link: "/terms-conditions.html" },
-                  { name: "Cookie Policy", link: "/cookie-policy.html" },
-                  { name: "Accessibility", link: "/accessibility.html" },
-                  { name: "Disclaimer", link: "/disclaimer.html" },
-                  { name: "Do Not Sell My Info", link: "/do-not-sell.html" },
+                  { name: "Privacy Policy", link: "/privacy-policy" },
+                  { name: "Terms & Conditions", link: "/terms-conditions" },
+                  { name: "Cookie Policy", link: "/cookie-policy" },
+                  { name: "Accessibility", link: "/accessibility" },
+                  { name: "Disclaimer", link: "/disclaimer" },
+                  { name: "Do Not Sell My Info", link: "/do-not-sell" },
                 ].map((item) => (
                   <li key={item.name}>
                     <a

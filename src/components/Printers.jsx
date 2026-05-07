@@ -291,7 +291,7 @@ const Printers = ({ hideHero = false }) => {
 
     // Sync activeTab with the ?filter= query param or the pathname (for separate html pages)
     useEffect(() => {
-        const path = location.pathname.replace('/', '').replace('.html', '');
+        const path = location.pathname.replace('/', '').replace('', '');
         if (filterParam && FILTER_MAP[filterParam]) {
             setActiveTab(FILTER_MAP[filterParam]);
         } else if (FILTER_MAP[path]) {
@@ -325,47 +325,73 @@ const Printers = ({ hideHero = false }) => {
 
             {/* ── Hero Banner (Full Width) ─────────────────────────────────── */}
             {!hideHero && (
-                <div className="relative h-[200px] sm:h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden group">
+                <div className="relative h-[600px] overflow-hidden">
+                    {/* Background Image */}
+                    <img 
+                        src="/printer-banner.webp" 
+                        alt="Hero Banner" 
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[20s] ease-linear"
+                    />
+                </div>
+            )}
 
-                {/* Background Image */}
-                <img 
-                    src="/printer-banner.webp" 
-                    alt="Hero Banner" 
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[20s] ease-linear"
-                />
-                
-                {/* Overlay & Content */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/50 to-transparent flex flex-col justify-center">
-                    <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-2xl">
-                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] text-black mb-3 sm:mb-5 block animate-fade-in">
+            {/* Banner Content (Moved below the image) */}
+            <div className="bg-white pt-16 sm:pt-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="max-w-4xl">
+                        <div className="flex items-center gap-3 mb-6 animate-fade-in">
+                            <div className="w-8 h-px bg-[#024ad8]" />
+                            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] text-[#024ad8]">
                                 Official HP Partner
                             </span>
-                            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight uppercase tracking-tight">
-                                {headingLabel}
-                            </h1>
-                            <div className="w-12 sm:w-20 h-1 sm:h-1.5 bg-black mb-4 sm:mb-8" />
-                            <p className="text-sm sm:text-lg text-gray-200 font-medium leading-relaxed max-w-lg hidden sm:block">
-                                {globalSearch
-                                    ? 'Showing filtered results from our professional inventory.'
-                                    : (activeTab
-                                        ? `Explore our carefully selected range of ${activeTab.label} built for performance and reliability.`
-                                        : 'Browse our full range of professional printers and genuine supplies.')}
-                            </p>
+                        </div>
+                        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-black mb-8 leading-none uppercase tracking-tighter">
+                            {headingLabel.split(' ').map((word, i) => (
+                                <span key={i} className={i === 1 ? 'text-[#024ad8] block sm:inline' : 'block sm:inline'}>
+                                    {word}{' '}
+                                </span>
+                            ))}
+                        </h1>
+                        <div className="w-24 h-2 bg-black mb-10" />
+                        <p className="text-base sm:text-xl text-gray-500 font-medium leading-relaxed max-w-2xl mb-12">
+                            {globalSearch
+                                ? 'Showing precision-filtered results from our comprehensive professional inventory.'
+                                : (activeTab
+                                    ? `Experience the next generation of ${activeTab.label} designed for peak performance, extreme reliability, and professional output quality.`
+                                    : 'Browse our full spectrum of professional-grade printing solutions and genuine factory supplies.')}
+                        </p>
+
+                        {/* ── Category Filters (Like reference image) ────────────────── */}
+                        <div className="flex flex-wrap gap-3 sm:gap-4 mt-8">
+                            {NAV_TABS.map((tab) => {
+                                const isActive = activeTab?.label === tab.label;
+                                const tabPath = tab.label === 'Home Printers' ? '/home-printers' :
+                                               tab.label === 'Office Printers' ? '/office-printers' :
+                                               tab.label === 'Laser Printers' ? '/laser-printers' :
+                                               tab.label === 'Inkjet Printers' ? '/inkjet-printers' :
+                                               tab.label === 'Ink & Toner' ? '/ink-toner' : '/shop';
+
+                                return (
+                                    <button
+                                        key={tab.label}
+                                        onClick={() => {
+                                            setActiveTab(tab);
+                                            window.location.href = tabPath;
+                                        }}
+                                        className={`px-6 sm:px-5 py-4 sm:py-5 text-[10px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] transition-all duration-500 rounded-sm ${
+                                            isActive 
+                                            ? 'bg-[#024ad8] text-white shadow-[0_15px_30px_rgba(2,74,216,0.2)] scale-105 z-10' 
+                                            : 'bg-white text-gray-400 border border-gray-100 hover:border-black hover:text-black hover:shadow-lg'
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
-                
-                {/* Subtle micro-elements */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-7xl px-4 sm:px-6 lg:px-8 hidden md:flex items-center justify-between pointer-events-none">
-                    
-                    <div className="flex items-center gap-2 text-[9px] font-bold text-black uppercase tracking-[0.2em]">
-                        <div className="w-8 h-px bg-black" />
-                        <span>Innovation Dynamics Group</span>
-                    </div>
-                </div>
             </div>
-            )}
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
 

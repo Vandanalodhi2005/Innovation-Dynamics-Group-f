@@ -90,6 +90,14 @@ function App() {
                   <Route path="/shop" element={<Printers />} />
                   <Route path="/shop.html" element={<Printers />} />
                   <Route path="/shop/:category" element={<Printers />} />
+                  
+                  {/* Clean Printer Category Routes */}
+                  <Route path="/home-printers" element={<Printers />} />
+                  <Route path="/office-printers" element={<Printers />} />
+                  <Route path="/laser-printers" element={<Printers />} />
+                  <Route path="/inkjet-printers" element={<Printers />} />
+                  <Route path="/ink-toner" element={<Printers />} />
+
                   <Route path="/home-printers.html" element={<Printers />} />
                   <Route path="/office-printers.html" element={<Printers />} />
                   <Route path="/laser-printers.html" element={<Printers />} />

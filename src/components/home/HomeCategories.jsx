@@ -9,7 +9,7 @@ const HomeCategories = () => {
             icon: <Printer size={24} />,
             webp: "/homeImage/img1.webp",
             jpg:  "/homeImage/img1.jpg",
-            link: "/shop.html?filter=home-printers"
+            link: "/shop?filter=home-printers"
         },
         {
             title: "Office Printers",
@@ -17,7 +17,7 @@ const HomeCategories = () => {
             icon: <Briefcase size={24} />,
             webp: "/homeImage/img2_opt.webp",
             jpg:  "/homeImage/img2.jpg",
-            link: "/shop.html?filter=office-printers"
+            link: "/shop?filter=office-printers"
         },
         {
             title: "Inkjet Printers",
@@ -25,7 +25,7 @@ const HomeCategories = () => {
             icon: <Palette size={24} />,
             webp: "/homeImage/img3.webp",
             jpg:  "/homeImage/img3.jpg",
-            link: "/shop.html?filter=inkjet-printers"
+            link: "/shop?filter=inkjet-printers"
         },
         {
             title: "Laser Printers",
@@ -33,7 +33,7 @@ const HomeCategories = () => {
             icon: <Zap size={24} />,
             webp: "/homeImage/img4.webp",
             jpg:  "/homeImage/img4.jpg",
-            link: "/shop.html?filter=laser-printers"
+            link: "/shop?filter=laser-printers"
         },
         {
             title: "Ink & Toner",
@@ -41,7 +41,7 @@ const HomeCategories = () => {
             icon: <Droplet size={24} />,
             webp: "/homeImage/img5_opt_super.webp",
             jpg:  "/homeImage/img5.jpg",
-            link: "/shop.html?filter=ink-toner"
+            link: "/shop?filter=ink-toner"
         }
     ];
 
@@ -62,7 +62,7 @@ const HomeCategories = () => {
                         </p>
                     </div>
                     <div className="hidden md:block">
-                        <a href="/shop.html" className="text-[10px] font-black uppercase tracking-[0.2em] text-black border-b-2 border-black pb-1 hover:text-[#024ad8] hover:border-[#024ad8] transition-all">
+                        <a href="/shop" className="text-[10px] font-black uppercase tracking-[0.2em] text-black border-b-2 border-black pb-1 hover:text-[#024ad8] hover:border-[#024ad8] transition-all">
                             View Entire Store
                         </a>
                     </div>

@@ -52,13 +52,13 @@ const Hero = () => {
                             <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">
                                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                                     <a 
-                                        href="/shop.html" 
+                                        href="/shop" 
                                         className="w-full sm:w-auto px-10 py-5 bg-[#024ad8] text-white text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-[#0133a1] transition-all duration-300 flex items-center justify-center gap-3 group shadow-xl shadow-[#024ad8]/20"
                                     >
                                         Shop Printers
                                     </a>
                                     <a 
-                                        href="/shop.html?filter=home-printers" 
+                                        href="/shop?filter=home-printers" 
                                         className="w-full sm:w-auto px-10 py-5 bg-white border border-gray-200 text-black text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
                                     >
                                         Browse Categories
