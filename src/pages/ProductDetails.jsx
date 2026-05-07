@@ -307,7 +307,7 @@ const ProductDetails = () => {
                                 {/* ── Trust badges ────────────────────── */}
                                 <div className="grid grid-cols-2 gap-3 mt-8 pt-6 border-t border-gray-100">
                                     {[
-                                        { icon: <Truck size={16} />, label: 'Free Shipping', sub: 'On all orders' },
+                                        { icon: <Truck size={16} />, label: 'Free Shipping', sub: 'Orders over $249' },
                                         { icon: <RotateCcw size={16} />, label: 'Easy Returns', sub: '30-day window' },
                                         { icon: <Shield size={16} />, label: 'Warranty', sub: 'Manufacturer covered' },
                                         { icon: <Award size={16} />, label: 'Authentic', sub: 'HP authorized' },

@@ -4,7 +4,7 @@ import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ArrowLeft } from 'lucide-
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useShop();
+    const { cart, removeFromCart, updateQuantity, cartTotal, clearCart, shippingPrice, taxPrice, totalPrice } = useShop();
 
     if (cart.length === 0) {
         return (
@@ -107,16 +107,14 @@ const Cart = () => {
                                 </div>
                                 <div className="flex justify-between text-sm text-gray-500">
                                     <span>Shipping</span>
-                                    <span className="text-green-600 font-bold">Free</span>
-                                </div>
-                                <div className="flex justify-between text-sm text-gray-500">
-                                    <span>Estimated Tax</span>
-                                    <span className="text-black font-bold">${(cartTotal * 0.08).toFixed(2)}</span>
+                                    <span className={shippingPrice === 0 ? "text-green-600 font-bold" : "text-black font-bold"}>
+                                        {shippingPrice === 0 ? 'Free' : `$${shippingPrice.toFixed(2)}`}
+                                    </span>
                                 </div>
                                 <div className="h-px bg-gray-100 my-4"></div>
                                 <div className="flex justify-between items-center">
                                     <span className="text-sm font-medium text-gray-600">Total</span>
-                                    <span className="text-2xl font-bold text-[#024ad8]">${(cartTotal * 1.08).toFixed(2)}</span>
+                                    <span className="text-2xl font-bold text-[#024ad8]">${totalPrice.toFixed(2)}</span>
                                 </div>
                             </div>
 

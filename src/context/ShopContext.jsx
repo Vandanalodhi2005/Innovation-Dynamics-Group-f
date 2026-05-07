@@ -98,6 +98,11 @@ export const ShopProvider = ({ children }) => {
     const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
     const wishlistCount = wishlist.length;
     const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    
+    // Dynamic Pricing Logic
+    const shippingPrice = cartTotal > 249 || cartTotal === 0 ? 0 : 45;
+    const taxPrice = 0; // Tax removed per user request
+    const totalPrice = cartTotal + shippingPrice;
 
     const value = {
         cart,
@@ -122,7 +127,10 @@ export const ShopProvider = ({ children }) => {
         saveShippingInfo,
         cartCount,
         wishlistCount,
-        cartTotal
+        cartTotal,
+        shippingPrice,
+        taxPrice,
+        totalPrice
     };
 
     return (

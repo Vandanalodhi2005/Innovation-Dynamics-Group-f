@@ -54,7 +54,7 @@ const Footer = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/5">
           <div className="lg:col-span-3 space-y-6">
-            <Link to="/" className="flex items-center gap-3 min-h-[40px] select-none h-10 overflow-hidden">
+            <a href="/" className="flex items-center gap-3 min-h-[40px] select-none h-10 overflow-hidden">
               <span className="font-bold text-4xl tracking-tighter text-white lowercase leading-[0.8] py-1">
                 idg
               </span>
@@ -63,30 +63,10 @@ const Footer = () => {
                 <span className="text-blue-400">Innovation Dynamics</span>
                 <span className="text-neutral-300">Group LLC</span>
               </div>
-            </Link>
+            </a>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-sm">
               Innovation Dynamics Group LLC is an independent U.S.-based retailer providing printers and related products with verified sourcing, reliable fulfillment, and a seamless shopping experience across the U.S. and Canada.
             </p>
-            {/* <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="p-2 bg-white/5 rounded hover:bg-[#024ad8] transition-colors text-white/50 hover:text-white"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-white/5 rounded hover:bg-[#024ad8] transition-colors text-white/50 hover:text-white"
-              >
-                <Twitter size={18} />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-white/5 rounded hover:bg-[#024ad8] transition-colors text-white/50 hover:text-white"
-              >
-                <Facebook size={18} />
-              </a>
-            </div> */}
           </div>
 
           <div className="lg:col-span-9 grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -96,19 +76,19 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  { name: "Home Printers", link: "/shop?filter=home-printers" },
-                  { name: "Office Printers", link: "/shop?filter=office-printers" },
-                  { name: "Inkjet Printers", link: "/shop?filter=inkjet-printers" },
-                  { name: "Laser Printers", link: "/shop?filter=laser-printers" },
-                  { name: "Ink & Toner", link: "/shop?filter=ink-toner" },
+                  { name: "Home Printers", link: "/home-printers.html" },
+                  { name: "Office Printers", link: "/office-printers.html" },
+                  { name: "Inkjet Printers", link: "/inkjet-printers.html" },
+                  { name: "Laser Printers", link: "/laser-printers.html" },
+                  { name: "Ink & Toner", link: "/ink-toner.html" },
                 ].map((item) => (
                   <li key={item.name}>
-                    <Link
-                      to={item.link}
+                    <a
+                      href={item.link}
                       className="text-sm font-semibold text-neutral-400 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -120,20 +100,20 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  { name: "Track Order", link: "/track-order" },
-                  { name: "Shipping Policy", link: "/shipping-policy" },
-                  { name: "Return & Exchange", link: "/return-exchange" },
-                  { name: "Refund & Return Policy", link: "/return-refund" },
-                  { name: "Buying Guide", link: "/buying-guide" },
-                  { name: "Support Hub", link: "/resources" },
+                  { name: "Track Order", link: "/track-order.html" },
+                  { name: "Shipping Policy", link: "/shipping-policy.html" },
+                  { name: "Return & Exchange", link: "/return-exchange.html" },
+                  { name: "Refund & Return Policy", link: "/refund-policy.html" },
+                  { name: "Buying Guide", link: "/buying-guide.html" },
+                  { name: "Support Hub", link: "/resources.html" },
                 ].map((item) => (
                   <li key={item.name}>
-                    <Link
-                      to={item.link}
+                    <a
+                      href={item.link}
                       className="text-sm font-semibold text-neutral-400 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -145,20 +125,20 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {[
-                  { name: "Privacy Policy", link: "/privacy-policy" },
-                  { name: "Terms & Conditions", link: "/terms-conditions" },
-                  { name: "Cookie Policy", link: "/cookies-policy" },
-                  { name: "Accessibility", link: "/accessibility" },
-                  { name: "Disclaimer", link: "/disclaimer" },
-                  { name: "Do Not Sell My Info", link: "/do-not-sell" },
+                  { name: "Privacy Policy", link: "/privacy-policy.html" },
+                  { name: "Terms & Conditions", link: "/terms-conditions.html" },
+                  { name: "Cookie Policy", link: "/cookie-policy.html" },
+                  { name: "Accessibility", link: "/accessibility.html" },
+                  { name: "Disclaimer", link: "/disclaimer.html" },
+                  { name: "Do Not Sell My Info", link: "/do-not-sell.html" },
                 ].map((item) => (
                   <li key={item.name}>
-                    <Link
-                      to={item.link}
+                    <a
+                      href={item.link}
                       className="text-sm font-semibold text-neutral-400 hover:text-[#024ad8] transition-colors block"
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -199,12 +179,10 @@ const Footer = () => {
 
         <div className="py-12 border-b grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="flex flex-wrap border-radius-2xl md:flex-nowrap items-center gap-4 justify-center  lg:justify-start">
-            {/* GoDaddy Verified & Secured — official seal embed */}
             <div className="h-[80px] w-[150px] rounded-sm flex items-center justify-center p-2 shadow-sm shrink-0 bg-white">
               <span id="siteseal" className="flex items-center justify-center h-full w-full overflow-hidden" />
             </div>
 
-            {/* Google Safe Browsing */}
             <a
               href="https://transparencyreport.google.com/safe-browsing/search?url=http:%2F%2Finnovationdynamicsgroup.com&hl=en"
               target="_blank"
@@ -214,8 +192,6 @@ const Footer = () => {
               <img
                 src="/footer_google.webp"
                 alt="Google Safe Browsing"
-                // width="150"
-                // height="100"
                 className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>
@@ -229,8 +205,6 @@ const Footer = () => {
               <img
                 src="/logo/start_inno.webp"
                 alt="Trustpilot Reviews"
-                // width="250"
-                // height="100"
                 className="w-full h-full object-contain p-1 transition-all duration-500"
               />
             </a>

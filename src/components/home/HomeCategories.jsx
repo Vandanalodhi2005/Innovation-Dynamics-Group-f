@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Printer, Briefcase, Zap, Palette, Droplet, Check } from 'lucide-react';
 
 const HomeCategories = () => {
@@ -10,7 +9,7 @@ const HomeCategories = () => {
             icon: <Printer size={24} />,
             webp: "/homeImage/img1.webp",
             jpg:  "/homeImage/img1.jpg",
-            link: "/shop?filter=home-printers"
+            link: "/shop.html?filter=home-printers"
         },
         {
             title: "Office Printers",
@@ -18,7 +17,7 @@ const HomeCategories = () => {
             icon: <Briefcase size={24} />,
             webp: "/homeImage/img2_opt.webp",
             jpg:  "/homeImage/img2.jpg",
-            link: "/shop?filter=office-printers"
+            link: "/shop.html?filter=office-printers"
         },
         {
             title: "Inkjet Printers",
@@ -26,7 +25,7 @@ const HomeCategories = () => {
             icon: <Palette size={24} />,
             webp: "/homeImage/img3.webp",
             jpg:  "/homeImage/img3.jpg",
-            link: "/shop?filter=inkjet-printers"
+            link: "/shop.html?filter=inkjet-printers"
         },
         {
             title: "Laser Printers",
@@ -34,7 +33,7 @@ const HomeCategories = () => {
             icon: <Zap size={24} />,
             webp: "/homeImage/img4.webp",
             jpg:  "/homeImage/img4.jpg",
-            link: "/shop?filter=laser-printers"
+            link: "/shop.html?filter=laser-printers"
         },
         {
             title: "Ink & Toner",
@@ -42,7 +41,7 @@ const HomeCategories = () => {
             icon: <Droplet size={24} />,
             webp: "/homeImage/img5_opt_super.webp",
             jpg:  "/homeImage/img5.jpg",
-            link: "/shop?filter=ink-toner"
+            link: "/shop.html?filter=ink-toner"
         }
     ];
 
@@ -63,21 +62,20 @@ const HomeCategories = () => {
                         </p>
                     </div>
                     <div className="hidden md:block">
-                        <Link to="/shop" className="text-[10px] font-black uppercase tracking-[0.2em] text-black border-b-2 border-black pb-1 hover:text-[#024ad8] hover:border-[#024ad8] transition-all">
+                        <a href="/shop.html" className="text-[10px] font-black uppercase tracking-[0.2em] text-black border-b-2 border-black pb-1 hover:text-[#024ad8] hover:border-[#024ad8] transition-all">
                             View Entire Store
-                        </Link>
+                        </a>
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
                     {categories.map((type, index) => (
-                        <Link 
+                        <a 
                             key={index} 
-                            to={type.link} 
+                            href={type.link} 
                             className={`group relative h-full transition-all duration-700 ${index === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
                         >
                             <div className="bg-white rounded-sm overflow-hidden h-full flex flex-col border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] group-hover:shadow-[0_20px_50px_rgba(2,74,216,0.1)] group-hover:-translate-y-2 transition-all duration-500">
-                                {/* Card Image Area */}
                                 <div className="relative h-56 sm:h-64 overflow-hidden bg-[#fafafa] p-6 lg:p-10">
                                     <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                                     <picture>
@@ -98,7 +96,6 @@ const HomeCategories = () => {
                                     </div>
                                 </div>
 
-                                {/* Card Content Area */}
                                 <div className="p-8 lg:p-10 flex-grow flex flex-col border-t border-gray-50">
                                     <div className="flex items-center gap-3 mb-4">
                                         <span className="text-[8px] font-black text-[#0133a1] uppercase tracking-[0.2em]">Category 0{index + 1}</span>
@@ -120,7 +117,7 @@ const HomeCategories = () => {
                                     </div>
                                 </div>
                             </div>
-                        </Link>
+                        </a>
                     ))}
                 </div>
             </div>

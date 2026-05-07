@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Printer, Briefcase, Zap, Palette, Droplet, Activity, Check, Star } from 'lucide-react';
+import { Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
 const Hero = () => {
 
@@ -23,17 +23,15 @@ const Hero = () => {
                                 <div className="space-y-4">
                                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black leading-[1.1] text-black tracking-tighter uppercase">
                                      Smart Printing Solutions<br className="hidden md:block" />
-                                        <span className="text-[#024ad8]"> for Every Need
-</span>
+                                         <span className="text-[#024ad8]"> for Every Need</span>
                                     </h1>
                                     <h2 className="text-lg md:text-xl font-bold text-gray-500 uppercase tracking-tight">
                                        Reliable Printers for Home, Office, and Business Use
-
                                     </h2>
                                 </div>
                                 
                                 <p className="text-sm md:text-base text-gray-500 leading-relaxed font-medium max-w-xl">
-Explore a carefully selected range of printers designed to deliver performance, reliability, and ease of use. Whether you need a compact device for everyday tasks or a high-efficiency printer for business operations, finding the right solution is simple and straightforward.
+                                    Explore a carefully selected range of printers designed to deliver performance, reliability, and ease of use. Whether you need a compact device for everyday tasks or a high-efficiency printer for business operations, finding the right solution is simple and straightforward.
                                 </p>
 
                                 <ul className="space-y-3 pt-2">
@@ -53,18 +51,18 @@ Explore a carefully selected range of printers designed to deliver performance, 
                             {/* CTAs */}
                             <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">
                                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                                    <Link 
-                                        to="/shop" 
+                                    <a 
+                                        href="/shop.html" 
                                         className="w-full sm:w-auto px-10 py-5 bg-[#024ad8] text-white text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-[#0133a1] transition-all duration-300 flex items-center justify-center gap-3 group shadow-xl shadow-[#024ad8]/20"
                                     >
                                         Shop Printers
-                                    </Link>
-                                    <Link 
-                                        to="/shop/home-printers" 
+                                    </a>
+                                    <a 
+                                        href="/shop.html?filter=home-printers" 
                                         className="w-full sm:w-auto px-10 py-5 bg-white border border-gray-200 text-black text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
                                     >
                                         Browse Categories
-                                    </Link>
+                                    </a>
                                 </div>
                                 
                                 <div className="flex items-center gap-6">

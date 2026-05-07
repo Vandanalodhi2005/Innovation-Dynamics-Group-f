@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Meta from './common/Meta';
+
+
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../redux/actions/productActions';
-import { Eye, ShoppingBag, ChevronRight, X, ChevronLeft } from 'lucide-react';
+import { Eye, ShoppingBag, ChevronRight, X, ChevronLeft, Truck } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { getImageUrl } from '../utils/imageUtils';
 
@@ -14,7 +17,7 @@ const ProductCard = ({ product, onDetails }) => {
     return (
         <div className="group bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 relative rounded-sm overflow-hidden flex flex-row sm:flex-col h-full">
             {/* Image area */}
-            <div className="relative flex-shrink-0 w-32 sm:w-auto sm:aspect-[4/3] sm:flex flex-col items-center justify-center bg-gray-50/50 overflow-hidden group-hover:bg-white transition-colors duration-500 aspect-square">
+            <div className="relative flex-shrink-0 w-40 sm:w-auto sm:aspect-[4/3] sm:flex flex-col items-center justify-center bg-gray-50/50 overflow-hidden group-hover:bg-white transition-colors duration-500 aspect-square">
                 <img
                     src={imageUrl}
                     alt={product.title}
@@ -43,10 +46,6 @@ const ProductCard = ({ product, onDetails }) => {
             <div className="p-4 sm:p-6 flex flex-col flex-1 sm:border-t border-l sm:border-l-0 border-gray-50 min-w-0">
                 <div className="flex justify-between items-start mb-1">
                     <span className="text-[10px] font-bold text-gray-600 uppercase tracking-widest">{product.brand || 'HP'}</span>
-                    {/* <div className="flex text-[#024ad8] text-[10px]">
-                        {'★'.repeat(Math.min(5, Math.max(0, Math.round(product.rating || 0))))}
-                        <span className="text-gray-200">{'★'.repeat(Math.max(0, 5 - Math.min(5, Math.max(0, Math.round(product.rating || 0)))))}</span>
-                    </div> */}
                 </div>
                 <h2
                     className="text-sm font-bold text-black mb-2 leading-tight group-hover:text-[#024ad8] transition-colors cursor-pointer line-clamp-2"
@@ -118,6 +117,7 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
     const [search, setSearch] = useState(initialSearch);
     const [debounced, setDeb] = useState(initialSearch);
     const [sortBy, setSortBy] = useState('featured');
+    const [selectedBrand, setSelectedBrand] = useState('');
 
     const productList = useSelector(s => s.productList || {});
     const { loading, error, products = [], pages = 1, page = 1 } = productList;
@@ -125,8 +125,8 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
     useEffect(() => { setSearch(initialSearch); }, [initialSearch]);
     useEffect(() => { const t = setTimeout(() => setDeb(search), 400); return () => clearTimeout(t); }, [search]);
     useEffect(() => {
-        dispatch(listProducts(debounced, catName, 1, '', usageCategory));
-    }, [dispatch, debounced, catName, usageCategory]);
+        dispatch(listProducts(debounced, catName, 1, selectedBrand, usageCategory));
+    }, [dispatch, debounced, catName, usageCategory, selectedBrand]);
 
     if (error) {
         return (
@@ -175,6 +175,24 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                 </div>
             </div>
 
+            {/* Brand Filter */}
+            <div className="flex flex-wrap items-center gap-2 mb-8">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mr-2">Brand:</span>
+                {['', 'HP', 'Brother', 'Canon', 'Epson'].map((brand) => (
+                    <button
+                        key={brand}
+                        onClick={() => setSelectedBrand(brand)}
+                        className={`px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest border transition-all ${
+                            selectedBrand === brand
+                                ? 'bg-black text-white border-black'
+                                : 'bg-white text-gray-500 border-gray-100 hover:border-black hover:text-black'
+                        }`}
+                    >
+                        {brand || 'All Brands'}
+                    </button>
+                ))}
+            </div>
+
             <div className="flex items-center gap-4 mb-8">
                 <div className="h-0.5 flex-grow bg-gray-100"></div>
                 <p className="text-gray-600 text-xs font-medium whitespace-nowrap">
@@ -209,7 +227,7 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
             {pages > 1 && (
                 <div className="flex justify-center items-center gap-3 mt-20 pb-16">
                     <button
-                        onClick={() => dispatch(listProducts(debounced, catName, page - 1, '', usageCategory))}
+                        onClick={() => dispatch(listProducts(debounced, catName, page - 1, selectedBrand, usageCategory))}
                         disabled={page <= 1}
                         className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
                         aria-label="Previous Page"
@@ -217,7 +235,7 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                         <ChevronLeft size={20} />
                     </button>
                     {[...Array(isNaN(pages) ? 0 : Number(pages))].map((_, i) => (
-                        <button key={i + 1} onClick={() => dispatch(listProducts(debounced, catName, i + 1, '', usageCategory))}
+                        <button key={i + 1} onClick={() => dispatch(listProducts(debounced, catName, i + 1, selectedBrand, usageCategory))}
                             className={`w-12 h-12 text-[11px] font-bold uppercase tracking-wider rounded-sm border transition-all shadow-sm ${page === i + 1 ? 'bg-black text-white border-black' : 'bg-white text-gray-600 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'}`}
                             aria-label={`Page ${i + 1}`}
                             aria-current={page === i + 1 ? "page" : undefined}
@@ -226,7 +244,7 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
                         </button>
                     ))}
                     <button
-                        onClick={() => dispatch(listProducts(debounced, catName, page + 1, '', usageCategory))}
+                        onClick={() => dispatch(listProducts(debounced, catName, page + 1, selectedBrand, usageCategory))}
                         disabled={page >= pages}
                         className="w-12 h-12 flex items-center justify-center border border-gray-200 rounded-sm bg-white hover:border-black transition-all disabled:opacity-20 shadow-sm"
                         aria-label="Next Page"
@@ -252,6 +270,7 @@ const Printers = () => {
 
     // Map ?filter= values from navbar links to tab objects
     const FILTER_MAP = {
+        'shop':            { label: 'All Products',    filterType: null,            filterValue: null },
         'home-printers':   { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home' },
         'office-printers': { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office' },
         'laser-printers':  { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser' },
@@ -270,14 +289,19 @@ const Printers = () => {
 
     const [activeTab, setActiveTab] = useState(NAV_TABS[0]); // Default to Home Printers
 
-    // Sync activeTab with the ?filter= query param (navbar navigation)
+    // Sync activeTab with the ?filter= query param or the pathname (for separate html pages)
     useEffect(() => {
+        const path = location.pathname.replace('/', '').replace('.html', '');
         if (filterParam && FILTER_MAP[filterParam]) {
             setActiveTab(FILTER_MAP[filterParam]);
+        } else if (FILTER_MAP[path]) {
+            setActiveTab(FILTER_MAP[path]);
+        } else if (path === 'shop') {
+            setActiveTab({ label: 'All Products', filterType: null, filterValue: null });
         } else if (!filterParam && !globalSearch) {
             setActiveTab(NAV_TABS[0]);
         }
-    }, [filterParam]);
+    }, [filterParam, location.pathname]);
 
     // Reset to Home Printers when a new global search is made
     useEffect(() => { if (globalSearch) setActiveTab(NAV_TABS[0]); }, [globalSearch]);
@@ -290,51 +314,57 @@ const Printers = () => {
     const activeUsageCat = activeTab?.filterType === 'usageCategory' ? activeTab.filterValue : '';
     const headingLabel   = globalSearch
         ? `Search: "${globalSearch}"`
-        : (activeTab?.label || 'Reliable Printing Solutions');
+        : (activeTab?.filterType === null ? 'All Products' : (activeTab?.label || 'Reliable Printing Solutions'));
 
     return (
         <div className="bg-white min-h-screen font-sans text-black">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+            <Meta 
+                title="Shop | Innovation Dynamics Group"
+                description={globalSearch ? `Browse search results for "${globalSearch}" at Innovation Dynamics Group. Find the best HP printers and genuine ink or toner supplies.` : `Explore our collection of ${activeTab?.label || 'professional printers and supplies'}. High-quality HP solutions for home and office use.`}
+            />
 
-                {/* ── Header ──────────────────────────────────────────────── */}
-                <div className="text-center mb-10 md:mb-16">
-                    <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#0133a1] mb-4 block">Official Catalog</span>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6 tracking-tight text-black uppercase leading-tight">
-                        {headingLabel}
-                    </h1>
-                    <div className="w-16 h-1 bg-[#024ad8] mx-auto" />
-                    <p className="text-gray-700 mt-4 md:mt-6 text-base md:text-lg max-w-2xl mx-auto font-medium">
-                        {globalSearch
-                            ? 'Showing filtered results from our professional inventory.'
-                            : (activeTab
-                                ? `Explore our carefully selected range of ${activeTab.label} built for performance and reliability.`
-                                : 'Browse our full range of professional printers and genuine supplies.')}
-                    </p>
-
-                    {/* ── Navigation Tabs — scrollable on mobile ────────── */}
-                    <div className="w-full overflow-x-auto mt-8 md:mt-12 pb-2 -mb-2">
-                        <div className="flex flex-nowrap justify-start md:justify-center gap-2 sm:gap-3 px-1 md:px-0 min-w-max md:min-w-0 mx-auto">
-                            {NAV_TABS.map((tab) => {
-                                const isActive = !globalSearch && 
-                                    tab.filterValue === activeTab?.filterValue && 
-                                    tab.filterType === activeTab?.filterType;
-                                return (
-                                    <button
-                                        key={tab.label}
-                                        onClick={() => setActiveTab(tab.filterType === null ? null : tab)}
-                                        className={`flex-shrink-0 px-5 sm:px-8 py-2.5 sm:py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] transition-all border rounded-sm whitespace-nowrap ${
-                                            isActive
-                                                ? 'bg-[#024ad8] text-white border-[#024ad8] shadow-lg shadow-[#024ad8]/10'
-                                                : 'bg-white text-gray-500 border-gray-100 hover:border-[#024ad8] hover:text-[#024ad8]'
-                                        }`}
-                                    >
-                                        {tab.label}
-                                    </button>
-                                );
-                            })}
+            {/* ── Hero Banner (Full Width) ─────────────────────────────────── */}
+            <div className="relative h-[200px] sm:h-[280px] md:h-[350px] lg:h-[400px] overflow-hidden group">
+                {/* Background Image */}
+                <img 
+                    src="/hero_background_image.webp" 
+                    alt="Hero Banner" 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[20s] ease-linear"
+                />
+                
+                {/* Overlay & Content */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent flex flex-col justify-center">
+                    <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+                        <div className="max-w-2xl">
+                            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] text-[#024ad8] mb-3 sm:mb-5 block animate-fade-in">
+                                Official HP Partner
+                            </span>
+                            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight uppercase tracking-tight">
+                                {headingLabel}
+                            </h1>
+                            <div className="w-12 sm:w-20 h-1 sm:h-1.5 bg-[#024ad8] mb-4 sm:mb-8" />
+                            <p className="text-sm sm:text-lg text-gray-200 font-medium leading-relaxed max-w-lg hidden sm:block">
+                                {globalSearch
+                                    ? 'Showing filtered results from our professional inventory.'
+                                    : (activeTab
+                                        ? `Explore our carefully selected range of ${activeTab.label} built for performance and reliability.`
+                                        : 'Browse our full range of professional printers and genuine supplies.')}
+                            </p>
                         </div>
                     </div>
                 </div>
+                
+                {/* Subtle micro-elements */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-7xl px-4 sm:px-6 lg:px-8 hidden md:flex items-center justify-between pointer-events-none">
+                    
+                    <div className="flex items-center gap-2 text-[9px] font-bold text-[#024ad8] uppercase tracking-[0.2em]">
+                        <div className="w-8 h-px bg-[#024ad8]" />
+                        <span>Innovation Dynamics Group</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
 
                 {/* ── Content ─────────────────────────────────────────────── */}
                 {globalSearch ? (
