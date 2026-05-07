@@ -98,10 +98,11 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
     />
   </head>
+
   <body>
-    <!-- Consume GoDaddy's injected font preload to clear console warnings -->
-    <div class="godaddy-hack">GoDaddyPreloadFix</div>
     <div id="root"></div>
+    <!-- Satisfy GoDaddy's injected font preload to clear console warnings -->
+    <span style="font-family: 'GDSherpa', sans-serif; position: absolute; opacity: 0; pointer-events: none; visibility: hidden;">Preload Fix</span>
     <span id="siteseal" style="display:none;"></span>
 
     <script type="module" src="/src/main.jsx" fetchpriority="high"></script>

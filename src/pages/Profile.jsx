@@ -21,10 +21,10 @@ const Profile = () => {
     // State for Features
     const [isEditingAddress, setIsEditingAddress] = useState(false);
     const [address, setAddress] = useState({
-        street: user?.address || '123 Innovation Drive',
-        city: 'Tech City',
-        zip: '90210',
-        country: 'United States'
+        street: user?.address || '',
+        city: user?.city || '',
+        zip: user?.zip || '',
+        country: user?.country || ''
     });
 
     // Edit Address Form State
@@ -33,9 +33,7 @@ const Profile = () => {
     const [showAllOrders, setShowAllOrders] = useState(false);
 
     const [isAddingCard, setIsAddingCard] = useState(false);
-    const [cards, setCards] = useState([
-        { id: 1, last4: '4242', expiry: '12/28' }
-    ]);
+    const [cards, setCards] = useState([]);
     const [newCard, setNewCard] = useState({ number: '', expiry: '', cvv: '' });
 
     useEffect(() => {
@@ -247,19 +245,25 @@ const Profile = () => {
                                     </h3>
                                 </div>
                                 <div className="p-8 space-y-6">
-                                    {cards.map(card => (
-                                        <div key={card.id} className="flex items-center gap-4 p-4 border border-gray-100 rounded-sm hover:border-[#024ad8]/30 transition-all">
-                                            <div className="w-12 h-8 bg-black rounded-sm relative overflow-hidden flex items-center justify-center flex-shrink-0">
-                                                <div className="w-3 h-3 bg-[#024ad8] rounded-full opacity-50 -ml-1"></div>
-                                                <div className="w-3 h-3 bg-white/20 rounded-full -mr-1"></div>
+                                    {cards.length > 0 ? (
+                                        cards.map(card => (
+                                            <div key={card.id} className="flex items-center gap-4 p-4 border border-gray-100 rounded-sm hover:border-[#024ad8]/30 transition-all">
+                                                <div className="w-12 h-8 bg-black rounded-sm relative overflow-hidden flex items-center justify-center flex-shrink-0">
+                                                    <div className="w-3 h-3 bg-[#024ad8] rounded-full opacity-50 -ml-1"></div>
+                                                    <div className="w-3 h-3 bg-white/20 rounded-full -mr-1"></div>
+                                                </div>
+                                                <div className="space-y-0.5">
+                                                    <span className="font-semibold text-sm block">Ending in {card.last4}</span>
+                                                    <span className="text-xs text-gray-400">Expires {card.expiry}</span>
+                                                </div>
+                                                <div className="ml-auto w-2 h-2 rounded-full bg-green-500"></div>
                                             </div>
-                                            <div className="space-y-0.5">
-                                                <span className="font-semibold text-sm block">Ending in {card.last4}</span>
-                                                <span className="text-xs text-gray-400">Expires {card.expiry}</span>
-                                            </div>
-                                            <div className="ml-auto w-2 h-2 rounded-full bg-green-500"></div>
+                                        ))
+                                    ) : (
+                                        <div className="text-center py-6 border border-dashed border-gray-200 rounded-sm">
+                                            <p className="text-gray-400 text-xs font-medium">No payment methods saved.</p>
                                         </div>
-                                    ))}
+                                    )}
 
                                     {isAddingCard ? (
                                         <div className="mt-5 p-6 bg-gray-50 rounded-sm border border-gray-100">

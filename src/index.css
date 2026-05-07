@@ -7,6 +7,7 @@
   /* Darker for hover/active */
 }
 
+
 :root {
   font-family: "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -24,19 +25,11 @@ html, body {
   overflow-x: hidden;
 }
 
+/* ── GoDaddy Font Link ────────────────────────────────────────────────── */
 @font-face {
   font-family: 'GDSherpa';
   src: url('https://img6.wsimg.com/ux-assets/@ux/fonts/4.5.0/GDSherpa-vf4.woff2') format('woff2');
   font-display: swap;
 }
 
-.godaddy-hack {
-  font-family: 'GDSherpa';
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0.01;
-  pointer-events: none;
-  z-index: -9999;
-  font-size: 1px;
-}
+

@@ -100,16 +100,21 @@ function App() {
                   <Route path="/cart.html" element={<Cart />} />
 
                   <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/checkout.html" element={<Checkout />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/login.html" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/signup.html" element={<Signup />} />
                   <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/forgot-password.html" element={<ForgotPassword />} />
                   <Route path="/reset-password" element={<ResetPassword />} />
                   <Route path="/track-order" element={<TrackOrder />} />
+                  <Route path="/track-order.html" element={<TrackOrder />} />
                   <Route path="/orders" element={<MyOrders />} />
+                  <Route path="/orders.html" element={<MyOrders />} />
                   <Route path="/order/:id" element={<OrderDetails />} />
                   <Route path="/profile" element={<Profile />} />
+                  <Route path="/profile.html" element={<Profile />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/privacy-policy.html" element={<PrivacyPolicy />} />
                   <Route path="/terms-conditions" element={<TermsConditions />} />
