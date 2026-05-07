@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { saveShippingAddress } from '../redux/actions/cartActions';
 import axios from 'axios';
-import { Loader2, Truck, CreditCard, ChevronRight, Lock, AlertCircle, Check } from 'lucide-react';
+import { Loader2, Truck, CreditCard, ChevronRight, Lock, AlertCircle, Check, ShoppingBag, ArrowRight, ArrowLeft } from 'lucide-react';
 import { CART_CLEAR_ITEMS } from '../redux/constants/cartConstants';
 
 const Checkout = () => {
@@ -27,7 +27,6 @@ const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [clover, setClover] = useState(null);
     const [cloverReady, setCloverReady] = useState(false);
-    const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [rates, setRates] = useState([]);
     const [selectedRate, setSelectedRate] = useState(null);
@@ -116,14 +115,6 @@ const Checkout = () => {
     // Fixed Shipping Rule: Free over $249, otherwise use selected rate or fallback
     const shippingPrice = subtotal >= 249 ? 0 : (selectedRate ? parseFloat(selectedRate.rate) : 45);
     const totalPrice = subtotal + shippingPrice;
-
-    const shippingMethod = {
-        id: 'standard',
-        service: shippingPrice === 0 ? 'Free Shipping' : 'Flat Rate Shipping',
-        carrier: 'Standard Delivery',
-        rate: shippingPrice,
-        est_delivery_days: '3-5'
-    };
 
     const submitShippingHandler = async (e) => {
         e.preventDefault();
@@ -253,7 +244,6 @@ const Checkout = () => {
             } catch (payErr) {
                 console.error("Payment Step Failed:", payErr);
                 alert(payErr.response?.data?.message || 'Payment failed. Order not placed. Please try again.');
-                // Note: The backend already deletes the order in this case (Order.findByIdAndDelete)
                 setLoading(false);
             }
 

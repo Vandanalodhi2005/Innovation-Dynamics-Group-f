@@ -46,6 +46,7 @@ export default defineConfig({
         contact: 'contact.html',
         shop: 'shop.html',
         cart: 'cart.html',
+        checkout: 'checkout.html',
         login: 'login.html',
         signup: 'signup.html',
         'privacy-policy': 'privacy-policy.html',
