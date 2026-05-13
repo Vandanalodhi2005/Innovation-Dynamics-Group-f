@@ -126,10 +126,12 @@ function App() {
                   <Route path="/terms-conditions/" element={<TermsConditions />} />
                   <Route path="/terms-conditions.html" element={<TermsConditions />} />
                   <Route path="/return-refund/" element={<RefundPolicy />} />
+                  <Route path="/refund-policy/" element={<RefundPolicy />} />
                   <Route path="/refund-policy.html" element={<RefundPolicy />} />
                   <Route path="/shipping-policy/" element={<ShippingPolicy />} />
                   <Route path="/shipping-policy.html" element={<ShippingPolicy />} />
                   <Route path="/cookies-policy/" element={<CookiePolicy />} />
+                  <Route path="/cookie-policy/" element={<CookiePolicy />} />
                   <Route path="/cookie-policy.html" element={<CookiePolicy />} />
                   <Route path="/disclaimer/" element={<Disclaimer />} />
                   <Route path="/disclaimer.html" element={<Disclaimer />} />

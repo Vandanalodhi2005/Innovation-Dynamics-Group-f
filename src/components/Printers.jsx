@@ -270,34 +270,34 @@ const Printers = ({ hideHero = false }) => {
 
     // Map ?filter= values from navbar links to tab objects
     const FILTER_MAP = {
-        'shop':            { label: 'All Products',    filterType: null,            filterValue: null },
-        'home-printers':   { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home' },
-        'office-printers': { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office' },
-        'laser-printers':  { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser' },
-        'inkjet-printers': { label: 'Inkjet Printers', filterType: 'catName',       filterValue: 'Inkjet' },
-        'ink-toner':       { label: 'Ink & Toner',     filterType: 'catName',       filterValue: 'Ink & Toner' },
+        'shop':            { label: 'All Products',    filterType: null,            filterValue: null, bg: '/bg-1.webp' },
+        'home-printers':   { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home', bg: '/bg-1.webp' },
+        'office-printers': { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office', bg: '/bg-2.webp' },
+        'laser-printers':  { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser', bg: '/bg-3.webp' },
+        'inkjet-printers': { label: 'Inkjet Printers', filterType: 'catName',       filterValue: 'Inkjet', bg: '/bg-4.webp' },
+        'ink-toner':       { label: 'Ink & Toner',     filterType: 'catName',       filterValue: 'Ink & Toner', bg: '/bg-5.webp' },
     };
 
     // Hardcoded navigation tabs
     const NAV_TABS = [
-        { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home' },
-        { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office' },
-        { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser' },
-        { label: 'Inkjet Printers', filterType: 'catName',       filterValue: 'Inkjet' },
-        { label: 'Ink & Toner',     filterType: 'catName',       filterValue: 'Ink & Toner' },
+        { label: 'Home Printers',   filterType: 'usageCategory', filterValue: 'Home', bg: '/bg-1.webp' },
+        { label: 'Office Printers', filterType: 'usageCategory', filterValue: 'Office', bg: '/bg-2.webp' },
+        { label: 'Laser Printers',  filterType: 'catName',       filterValue: 'Laser', bg: '/bg-3.webp' },
+        { label: 'Inkjet Printers', filterType: 'catName',       filterValue: 'Inkjet', bg: '/bg-4.webp' },
+        { label: 'Ink & Toner',     filterType: 'catName',       filterValue: 'Ink & Toner', bg: '/bg-5.webp' },
     ];
 
     const [activeTab, setActiveTab] = useState(NAV_TABS[0]); // Default to Home Printers
 
     // Sync activeTab with the ?filter= query param or the pathname (for separate html pages)
     useEffect(() => {
-        const path = location.pathname.replace('/', '').replace('', '');
+        const path = location.pathname.replace(/^\/|\/$/g, '');
         if (filterParam && FILTER_MAP[filterParam]) {
             setActiveTab(FILTER_MAP[filterParam]);
         } else if (FILTER_MAP[path]) {
             setActiveTab(FILTER_MAP[path]);
         } else if (path === 'shop') {
-            setActiveTab({ label: 'All Products', filterType: null, filterValue: null });
+            setActiveTab({ label: 'All Products', filterType: null, filterValue: null, bg: '/bg-1.webp' });
         } else if (!filterParam && !globalSearch) {
             setActiveTab(NAV_TABS[0]);
         }
@@ -312,9 +312,11 @@ const Printers = ({ hideHero = false }) => {
     // Derive filter values from the active tab
     const activeCatName  = activeTab?.filterType === 'catName'       ? activeTab.filterValue : '';
     const activeUsageCat = activeTab?.filterType === 'usageCategory' ? activeTab.filterValue : '';
-    const headingLabel   = globalSearch
+    
+    // Explicitly set the heading label based on activeTab to ensure it changes
+    const headingLabel = globalSearch
         ? `Search: "${globalSearch}"`
-        : (activeTab?.filterType === null ? 'All Products' : (activeTab?.label || 'Reliable Printing Solutions'));
+        : (activeTab?.label || 'Home Printers');
 
     return (
         <div className="bg-white min-h-screen font-sans text-black">
@@ -328,10 +330,12 @@ const Printers = ({ hideHero = false }) => {
                 <div className="relative h-[300px] sm:h-[450px] md:h-[550px] lg:h-[600px] overflow-hidden">
                     {/* Background Image */}
                     <img 
-                        src="/printer-banner.webp" 
-                        alt="Hero Banner" 
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[20s] ease-linear"
+                        src={activeTab?.bg || "/printer-banner.webp"} 
+                        alt={activeTab?.label || "Hero Banner"} 
+                        key={activeTab?.bg} // Force re-animation on tab change
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-[20s] ease-linear animate-ken-burns"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
                 </div>
             )}
 
