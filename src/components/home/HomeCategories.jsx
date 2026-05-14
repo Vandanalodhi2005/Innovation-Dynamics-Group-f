@@ -9,7 +9,7 @@ const HomeCategories = () => {
             icon: <Printer size={24} />,
             webp: "/homeImage/img1.webp",
             jpg:  "/homeImage/img1.jpg",
-            link: "/shop/?filter=home-printers"
+            link: "/home-printers/"
         },
         {
             title: "Office Printers",
@@ -17,7 +17,7 @@ const HomeCategories = () => {
             icon: <Briefcase size={24} />,
             webp: "/homeImage/img2_opt.webp",
             jpg:  "/homeImage/img2.jpg",
-            link: "/shop/?filter=office-printers"
+            link: "/office-printers/"
         },
         {
             title: "Inkjet Printers",
@@ -25,7 +25,7 @@ const HomeCategories = () => {
             icon: <Palette size={24} />,
             webp: "/homeImage/img3.webp",
             jpg:  "/homeImage/img3.jpg",
-            link: "/shop/?filter=inkjet-printers"
+            link: "/inkjet-printers/"
         },
         {
             title: "Laser Printers",
@@ -33,7 +33,7 @@ const HomeCategories = () => {
             icon: <Zap size={24} />,
             webp: "/homeImage/img4.webp",
             jpg:  "/homeImage/img4.jpg",
-            link: "/shop/?filter=laser-printers"
+            link: "/laser-printers/"
         },
         {
             title: "Ink & Toner",
@@ -41,7 +41,7 @@ const HomeCategories = () => {
             icon: <Droplet size={24} />,
             webp: "/homeImage/img5_opt_super.webp",
             jpg:  "/homeImage/img5.jpg",
-            link: "/shop/?filter=ink-toner"
+            link: "/ink-toner/"
         }
     ];
 

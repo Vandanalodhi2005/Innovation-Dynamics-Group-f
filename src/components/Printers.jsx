@@ -291,7 +291,7 @@ const Printers = ({ hideHero = false }) => {
 
     // Sync activeTab with the ?filter= query param or the pathname (for separate html pages)
     useEffect(() => {
-        const path = location.pathname.replace(/^\/|\/$/g, '');
+        const path = location.pathname.replace(/^\/|\/$/g, '').replace('.html', '');
         if (filterParam && FILTER_MAP[filterParam]) {
             setActiveTab(FILTER_MAP[filterParam]);
         } else if (FILTER_MAP[path]) {

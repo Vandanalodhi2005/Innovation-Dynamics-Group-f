@@ -58,7 +58,7 @@ const Hero = () => {
                                         Shop Printers
                                     </a>
                                     <a 
-                                        href="/shop/?filter=home-printers" 
+                                        href="/home-printers/" 
                                         className="w-full sm:w-auto px-10 py-5 bg-white border border-gray-200 text-black text-xs font-bold uppercase tracking-widest rounded-sm hover:bg-gray-50 transition-all duration-300 flex items-center justify-center"
                                     >
                                         Browse Categories

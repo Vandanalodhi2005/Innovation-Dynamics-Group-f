@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { 
-    Menu, X, ChevronDown, User, Search, ShoppingCart, 
-    LogOut, Truck, Printer, Users, ArrowRight, Zap, 
-    Droplets, ShoppingBag 
+import {
+    Menu, X, ChevronDown, User, Search, ShoppingCart,
+    LogOut, Truck, Printer, Users, ArrowRight, Zap,
+    Droplets, ShoppingBag
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
@@ -123,8 +123,8 @@ const Navbar = () => {
                             <button
                                 onClick={toggleShopDropdown}
                                 className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 focus:outline-none relative py-2 ${window.location.pathname.includes('/shop')
-                                        ? "text-white"
-                                        : 'text-white/80 hover:text-white'
+                                    ? "text-white"
+                                    : 'text-white/80 hover:text-white'
                                     }`}
                             >
                                 Shop
@@ -227,7 +227,7 @@ const Navbar = () => {
                             ) : (
                                 <a href="/login/" className="flex items-center gap-2 group/login" aria-label="Login">
                                     <div className="w-9 h-9 border border-white/20 rounded-full flex items-center justify-center group-hover/login:bg-white group-hover/login:border-white transition-all">
-                                         <User size={18} className="text-white group-hover/login:text-[#024ad8]" />
+                                        <User size={18} className="text-white group-hover/login:text-[#024ad8]" />
                                     </div>
                                     <div className="flex flex-col">
                                         <span className="text-[8px] font-black uppercase tracking-widest text-white/90">Elite Portal</span>

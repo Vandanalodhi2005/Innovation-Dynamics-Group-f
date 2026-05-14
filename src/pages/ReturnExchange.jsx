@@ -7,6 +7,7 @@ const ReturnExchange = () => {
         email: '',
         phone: '',
         orderNumber: '',
+        productName: '',
         reason: '',
         preferredResolution: '',
         details: ''
@@ -16,7 +17,7 @@ const ReturnExchange = () => {
     const [error, setError] = useState('');
     const [submitted, setSubmitted] = useState(false);
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5010/api';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -158,6 +159,17 @@ const ReturnExchange = () => {
                                         onChange={handleChange}
                                         className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm"
                                         placeholder="Enter your order number"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="font-bold text-black">Product Name *</label>
+                                    <input
+                                        required
+                                        name="productName"
+                                        value={formData.productName}
+                                        onChange={handleChange}
+                                        className="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-black transition-all rounded-sm"
+                                        placeholder="Which product are you returning?"
                                     />
                                 </div>
                             </div>

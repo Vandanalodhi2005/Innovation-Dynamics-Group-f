@@ -36,7 +36,29 @@ function inlineCssPlugin() {
 }
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), inlineCssPlugin()],
+  plugins: [
+    react(), 
+    tailwindcss(), 
+    inlineCssPlugin(),
+    {
+      name: 'mpa-rewrites',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          // Remove query params
+          const url = req.url.split('?')[0];
+          
+          // If URL ends with / and isn't root, try to serve the .html file
+          if (url.endsWith('/') && url !== '/') {
+            const name = url.slice(1, -1);
+            // Check if the file exists (simulated) and rewrite
+            req.url = `/${name}.html`;
+            console.log(`[MPA Rewrite] ${url} -> ${req.url}`);
+          }
+          next();
+        });
+      }
+    }
+  ],
   build: {
     rollupOptions: {
       input: {
