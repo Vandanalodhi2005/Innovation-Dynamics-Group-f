@@ -64,7 +64,6 @@ const Signup = () => {
                     <>
                         <div className="text-center mb-10">
                             <h1 className="text-3xl font-bold text-black mb-3 tracking-tight leading-tight">Create Account</h1>
-                            <p className="text-xs font-medium text-gray-400 tracking-wide">Join the professional printing network</p>
                         </div>
 
                         {errorSendOTP && (

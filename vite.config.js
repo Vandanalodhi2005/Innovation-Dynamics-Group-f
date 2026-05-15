@@ -34,12 +34,28 @@ function inlineCssPlugin() {
         }
     };
 }
+// Custom plugin to prevent FOUC (Flash of Unstyled Content) for SEO text inside #root
+function preventFoucPlugin() {
+    return {
+        name: 'prevent-fouc-plugin',
+        transformIndexHtml(html) {
+            return html.replace(
+                '</head>',
+                `<style>
+    /* Hide pre-rendered SEO content to prevent flashing before React hydration */
+    #root > :not(.min-h-screen) { display: none !important; }
+    </style>\n  </head>`
+            );
+        }
+    };
+}
 
 export default defineConfig({
   plugins: [
     react(), 
     tailwindcss(), 
     inlineCssPlugin(),
+    preventFoucPlugin(),
     {
       name: 'mpa-rewrites',
       configureServer(server) {

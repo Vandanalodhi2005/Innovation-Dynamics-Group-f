@@ -50,5 +50,7 @@ html, body {
   animation: fade-in 0.8s ease-out forwards;
 }
 
-
-
+/* Hide pre-rendered SEO content to prevent flashing before React hydration */
+#root > :not(.min-h-screen) {
+  display: none !important;
+}

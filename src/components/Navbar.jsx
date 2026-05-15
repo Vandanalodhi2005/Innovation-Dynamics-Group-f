@@ -230,7 +230,6 @@ const Navbar = () => {
                                         <User size={18} className="text-white group-hover/login:text-[#024ad8]" />
                                     </div>
                                     <div className="flex flex-col">
-                                        <span className="text-[8px] font-black uppercase tracking-widest text-white/90">Elite Portal</span>
                                         <span className="text-[10px] font-black uppercase tracking-widest text-white">LOGIN</span>
                                     </div>
                                 </a>
