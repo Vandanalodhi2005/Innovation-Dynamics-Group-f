@@ -101,14 +101,19 @@ const Navbar = () => {
 
                     <div className="flex-shrink-0 flex items-center">
                         <a href="/" className="flex items-center gap-2 group">
-                            <div className="flex flex-col leading-none">
+                            <img
+                                src="/idg-logo.png"
+                                alt="Innovation Dynamics Group Logo"
+                                className="w-32 h-32 object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                            {/* <div className="flex flex-col leading-none">
                                 <span className="font-bold text-2xl sm:text-3xl tracking-tighter lowercase">idg</span>
                             </div>
                             <div className="flex flex-col leading-tight text-[0.6rem] sm:text-[0.7rem] font-bold tracking-widest uppercase border-l-2 border-white/70 pl-3 py-0.5 group-hover:border-white transition-colors">
                                 <span>Innovation</span>
                                 <span>Dynamics</span>
                                 <span>Group</span>
-                            </div>
+                            </div> */}
                         </a>
                     </div>
 
