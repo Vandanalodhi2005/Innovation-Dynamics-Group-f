@@ -236,7 +236,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <script src="//code.jivosite.com/widget/XjQJxqMY0d" async></script>
     </footer>
   );
 };
