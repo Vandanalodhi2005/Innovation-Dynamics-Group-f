@@ -95,6 +95,7 @@ const Navbar = () => {
 
     return (
         <nav className="bg-[#024ad8] text-white shadow-lg border-b border-white/10 sticky top-0 z-50 font-sans backdrop-blur-md">
+            
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
 
@@ -376,7 +377,6 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-            <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/68a4eba7185799beef283c36230726e7/script.js"></script> 
         </nav>
     );
 };
