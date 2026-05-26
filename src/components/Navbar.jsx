@@ -376,6 +376,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/68a4eba7185799beef283c36230726e7/script.js"></script> 
         </nav>
     );
 };
