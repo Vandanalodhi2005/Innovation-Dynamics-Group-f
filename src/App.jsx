@@ -82,13 +82,13 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about/" element={<About />} />
-                  <Route path="/about.html" element={<About />} />
+                  <Route path="/about/" element={<About />} />
                   <Route path="/faqs/" element={<FAQs />} />
-                  <Route path="/faqs.html" element={<FAQs />} />
+                  <Route path="/faqs/" element={<FAQs />} />
                   <Route path="/contact/" element={<Contact />} />
-                  <Route path="/contact.html" element={<Contact />} />
+                  <Route path="/contact/" element={<Contact />} />
                   <Route path="/shop/" element={<Printers />} />
-                  <Route path="/shop.html" element={<Printers />} />
+                  <Route path="/shop/" element={<Printers />} />
                   
                   {/* Clean Printer Category Routes */}
                   <Route path="/home-printers/" element={<Printers />} />
@@ -97,54 +97,54 @@ function App() {
                   <Route path="/inkjet-printers/" element={<Printers />} />
                   <Route path="/ink-toner/" element={<Printers />} />
 
-                  <Route path="/home-printers.html" element={<Printers />} />
-                  <Route path="/office-printers.html" element={<Printers />} />
-                  <Route path="/laser-printers.html" element={<Printers />} />
-                  <Route path="/inkjet-printers.html" element={<Printers />} />
-                  <Route path="/ink-toner.html" element={<Printers />} />
+                  <Route path="/home-printers/" element={<Printers />} />
+                  <Route path="/office-printers/" element={<Printers />} />
+                  <Route path="/laser-printers/" element={<Printers />} />
+                  <Route path="/inkjet-printers/" element={<Printers />} />
+                  <Route path="/ink-toner/" element={<Printers />} />
                   <Route path="/product/:id" element={<ProductDetails />} />
                   <Route path="/cart/" element={<Cart />} />
-                  <Route path="/cart.html" element={<Cart />} />
+                  <Route path="/cart/" element={<Cart />} />
                   <Route path="/checkout/" element={<Checkout />} />
-                  <Route path="/checkout.html" element={<Checkout />} />
+                  <Route path="/checkout/" element={<Checkout />} />
                   <Route path="/login/" element={<Login />} />
-                  <Route path="/login.html" element={<Login />} />
+                  <Route path="/login/" element={<Login />} />
                   <Route path="/signup/" element={<Signup />} />
-                  <Route path="/signup.html" element={<Signup />} />
+                  <Route path="/signup/" element={<Signup />} />
                   <Route path="/forgot-password/" element={<ForgotPassword />} />
-                  <Route path="/forgot-password.html" element={<ForgotPassword />} />
+                  <Route path="/forgot-password/" element={<ForgotPassword />} />
                   <Route path="/reset-password/" element={<ResetPassword />} />
                   <Route path="/track-order/" element={<TrackOrder />} />
-                  <Route path="/track-order.html" element={<TrackOrder />} />
+                  <Route path="/track-order/" element={<TrackOrder />} />
                   <Route path="/orders/" element={<MyOrders />} />
-                  <Route path="/orders.html" element={<MyOrders />} />
+                  <Route path="/orders/" element={<MyOrders />} />
                   <Route path="/order/:id" element={<OrderDetails />} />
                   <Route path="/profile/" element={<Profile />} />
-                  <Route path="/profile.html" element={<Profile />} />
+                  <Route path="/profile/" element={<Profile />} />
                   <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
-                  <Route path="/privacy-policy.html" element={<PrivacyPolicy />} />
+                  <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
                   <Route path="/terms-conditions/" element={<TermsConditions />} />
-                  <Route path="/terms-conditions.html" element={<TermsConditions />} />
+                  <Route path="/terms-conditions/" element={<TermsConditions />} />
                   <Route path="/return-refund/" element={<RefundPolicy />} />
                   <Route path="/refund-policy/" element={<RefundPolicy />} />
-                  <Route path="/refund-policy.html" element={<RefundPolicy />} />
+                  <Route path="/refund-policy/" element={<RefundPolicy />} />
                   <Route path="/shipping-policy/" element={<ShippingPolicy />} />
-                  <Route path="/shipping-policy.html" element={<ShippingPolicy />} />
+                  <Route path="/shipping-policy/" element={<ShippingPolicy />} />
                   <Route path="/cookies-policy/" element={<CookiePolicy />} />
                   <Route path="/cookie-policy/" element={<CookiePolicy />} />
-                  <Route path="/cookie-policy.html" element={<CookiePolicy />} />
+                  <Route path="/cookie-policy/" element={<CookiePolicy />} />
                   <Route path="/disclaimer/" element={<Disclaimer />} />
-                  <Route path="/disclaimer.html" element={<Disclaimer />} />
+                  <Route path="/disclaimer/" element={<Disclaimer />} />
                   <Route path="/do-not-sell/" element={<DoNotSell />} />
-                  <Route path="/do-not-sell.html" element={<DoNotSell />} />
+                  <Route path="/do-not-sell/" element={<DoNotSell />} />
                   <Route path="/accessibility/" element={<Accessibility />} />
-                  <Route path="/accessibility.html" element={<Accessibility />} />
+                  <Route path="/accessibility/" element={<Accessibility />} />
                   <Route path="/buying-guide/" element={<BuyingGuide />} />
-                  <Route path="/buying-guide.html" element={<BuyingGuide />} />
+                  <Route path="/buying-guide/" element={<BuyingGuide />} />
                   <Route path="/resources/" element={<Resources />} />
-                  <Route path="/resources.html" element={<Resources />} />
+                  <Route path="/resources/" element={<Resources />} />
                   <Route path="/return-exchange/" element={<ReturnExchange />} />
-                  <Route path="/return-exchange.html" element={<ReturnExchange />} />
+                  <Route path="/return-exchange/" element={<ReturnExchange />} />
 
                   {/* Admin Routes */}
                   <Route path="/admin/login" element={<AdminLogin />} />

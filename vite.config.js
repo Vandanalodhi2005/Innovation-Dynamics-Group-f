@@ -56,53 +56,36 @@ export default defineConfig({
     tailwindcss(), 
     inlineCssPlugin(),
     preventFoucPlugin(),
-    {
-      name: 'mpa-rewrites',
-      configureServer(server) {
-        server.middlewares.use((req, res, next) => {
-          // Remove query params
-          const url = req.url.split('?')[0];
-          
-          // If URL ends with / and isn't root, try to serve the .html file
-          if (url.endsWith('/') && url !== '/') {
-            const name = url.slice(1, -1);
-            // Check if the file exists (simulated) and rewrite
-            req.url = `/${name}.html`;
-            console.log(`[MPA Rewrite] ${url} -> ${req.url}`);
-          }
-          next();
-        });
-      }
-    }
+    preventFoucPlugin()
   ],
   build: {
     rollupOptions: {
       input: {
         main: 'index.html',
-        about: 'about.html',
-        faqs: 'faqs.html',
-        contact: 'contact.html',
-        shop: 'shop.html',
-        cart: 'cart.html',
-        checkout: 'checkout.html',
-        login: 'login.html',
-        signup: 'signup.html',
-        'privacy-policy': 'privacy-policy.html',
-        'terms-conditions': 'terms-conditions.html',
-        'refund-policy': 'refund-policy.html',
-        'shipping-policy': 'shipping-policy.html',
-        'cookie-policy': 'cookie-policy.html',
-        disclaimer: 'disclaimer.html',
-        'do-not-sell': 'do-not-sell.html',
-        accessibility: 'accessibility.html',
-        'buying-guide': 'buying-guide.html',
-        resources: 'resources.html',
-        'return-exchange': 'return-exchange.html',
-        'home-printers': 'home-printers.html',
-        'office-printers': 'office-printers.html',
-        'laser-printers': 'laser-printers.html',
-        'inkjet-printers': 'inkjet-printers.html',
-        'ink-toner': 'ink-toner.html',
+        about: 'about/index.html',
+        faqs: 'faqs/index.html',
+        contact: 'contact/index.html',
+        shop: 'shop/index.html',
+        cart: 'cart/index.html',
+        checkout: 'checkout/index.html',
+        login: 'login/index.html',
+        signup: 'signup/index.html',
+        'privacy-policy': 'privacy-policy/index.html',
+        'terms-conditions': 'terms-conditions/index.html',
+        'refund-policy': 'refund-policy/index.html',
+        'shipping-policy': 'shipping-policy/index.html',
+        'cookie-policy': 'cookie-policy/index.html',
+        disclaimer: 'disclaimer/index.html',
+        'do-not-sell': 'do-not-sell/index.html',
+        accessibility: 'accessibility/index.html',
+        'buying-guide': 'buying-guide/index.html',
+        resources: 'resources/index.html',
+        'return-exchange': 'return-exchange/index.html',
+        'home-printers': 'home-printers/index.html',
+        'office-printers': 'office-printers/index.html',
+        'laser-printers': 'laser-printers/index.html',
+        'inkjet-printers': 'inkjet-printers/index.html',
+        'ink-toner': 'ink-toner/index.html',
       }
     }
   }
