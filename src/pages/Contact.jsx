@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Mail, Phone, MapPin, Send, Clock, Info, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 
@@ -166,7 +165,7 @@ const Contact = () => {
                                         className="mt-1 w-4 h-4 text-[#024ad8] border-gray-300 rounded focus:ring-[#024ad8] cursor-pointer"
                                     />
                                     <label htmlFor="privacy-consent" className="text-xs text-gray-500 font-medium leading-relaxed cursor-pointer">
-                                        By submitting this form, you agree to our <Link to="/privacy-policy" className="text-[#024ad8] hover:underline mx-0.5">Privacy Policy</Link>, <Link to="/terms-conditions" className="text-[#024ad8] hover:underline mx-0.5">Terms & Conditions</Link>, <Link to="/return-refund" className="text-[#024ad8] hover:underline mx-0.5">Refund & Return Policy</Link> and consent to us using your information to respond to your request.
+                                        By submitting this form, you agree to our <a href="/privacy-policy" className="text-[#024ad8] hover:underline mx-0.5">Privacy Policy</a>, <a href="/terms-conditions" className="text-[#024ad8] hover:underline mx-0.5">Terms & Conditions</a>, <a href="/return-refund" className="text-[#024ad8] hover:underline mx-0.5">Refund & Return Policy</a> and consent to us using your information to respond to your request.
                                     </label>
                                 </div>
 

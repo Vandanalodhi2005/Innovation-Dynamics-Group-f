@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails, createProductReview } from '../redux/actions/productActions';
 // import { addToCart } from '../redux/actions/cartActions';
@@ -118,9 +118,9 @@ const ProductDetails = () => {
             <div className="border-b border-gray-100 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
                     <nav className="flex items-center gap-4 text-[10px] font-extrabold uppercase tracking-[0.3em] text-gray-300">
-                        <Link to="/" className="hover:text-[#024ad8] transition-colors">Home</Link>
+                        <a href="/" className="hover:text-[#024ad8] transition-colors">Home</a>
                         <ChevronRight size={10} className="text-gray-200" />
-                        <Link to="/shop" className="hover:text-[#024ad8] transition-colors">Shop</Link>
+                        <a href="/shop" className="hover:text-[#024ad8] transition-colors">Shop</a>
                         <ChevronRight size={10} className="text-gray-200" />
                         <span className="text-black truncate max-w-xs block">
                             {product?.title || 'Product'}
@@ -466,10 +466,10 @@ const ProductDetails = () => {
                                             ) : (
                                                 <div className="bg-gray-50 border border-gray-100 rounded-sm p-8 text-center">
                                                     <p className="text-sm text-gray-500 mb-5">Please sign in to write a review.</p>
-                                                    <Link to="/login"
+                                                    <a href="/login"
                                                         className="inline-block bg-black text-white font-semibold px-6 py-3 rounded-sm hover:bg-[#024ad8] transition-colors text-sm">
                                                         Sign In
-                                                    </Link>
+                                                    </a>
                                                 </div>
                                             )}
                                         </div>

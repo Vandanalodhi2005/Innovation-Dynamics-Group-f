@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Truck, Shield, Globe, Award, ArrowRight } from 'lucide-react';
 
 const CorporateAccountability = () => {
@@ -64,13 +63,13 @@ const CorporateAccountability = () => {
                 </div>
 
                 {/* CTA */}
-                <Link
-                    to="/shop"
+                <a
+                    href="/shop"
                     className="inline-flex items-center gap-3 text-[11px] font-black uppercase tracking-[0.3em] text-[#024ad8] hover:translate-x-2 transition-transform duration-300 group"
                 >
                     EXPLORE PRODUCTS
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </a>
             </div>
         </section>
     );

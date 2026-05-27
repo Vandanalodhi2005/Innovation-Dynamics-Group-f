@@ -8,7 +8,7 @@ import { useShop } from '../context/ShopContext';
 import { useAuth } from '../context/AuthContext';
 import { useDispatch } from 'react-redux';
 import { USER_LOGOUT } from '../redux/constants/userConstants';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Navbar Component
@@ -252,10 +252,10 @@ const Navbar = () => {
                                     </div>
                                     <div className="p-2 grid grid-cols-1 gap-1">
                                         {user?.isAdmin && (
-                                            <Link to="/admin/dashboard" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-[#024ad8]/10 text-[#024ad8] transition-colors border-b border-gray-100 mb-1">
+                                            <a href="/admin/dashboard" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-[#024ad8]/10 text-[#024ad8] transition-colors border-b border-gray-100 mb-1">
                                                 <Zap size={16} className="animate-pulse" />
                                                 <span className="text-[10px] font-black uppercase tracking-widest">Admin Dashboard</span>
-                                            </Link>
+                                            </a>
                                         )}
                                         <a href="/profile/" className="flex items-center gap-4 px-4 py-3 rounded-sm hover:bg-gray-100 transition-colors">
                                             <User size={16} className="text-[#024ad8]" />
@@ -341,10 +341,10 @@ const Navbar = () => {
                         {isAuthenticated ? (
                             <>
                                 {user?.isAdmin && (
-                                    <Link to="/admin/dashboard" onClick={toggleMenu} className="w-full flex items-center gap-3 px-3 py-3 bg-white/20 rounded-lg text-white mb-2">
+                                    <a href="/admin/dashboard" onClick={toggleMenu} className="w-full flex items-center gap-3 px-3 py-3 bg-white/20 rounded-lg text-white mb-2">
                                         <Zap size={18} className="text-yellow-300" />
                                         <span className="text-sm font-black uppercase tracking-widest">Admin Panel</span>
-                                    </Link>
+                                    </a>
                                 )}
                                 <div className="w-full flex items-center justify-between bg-white/10 p-3 rounded-lg border border-white/20 mb-2">
                                     <a href="/profile/" onClick={toggleMenu} className="flex items-center gap-3">

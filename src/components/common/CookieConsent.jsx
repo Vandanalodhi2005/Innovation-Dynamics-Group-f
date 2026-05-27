@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 const CookieConsent = () => {
     // Read from localStorage synchronously to eliminate artificial 3000ms Element Render Delay for LCP audits
@@ -31,7 +30,7 @@ const CookieConsent = () => {
             <div className="bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-lg border border-gray-100">
                 <div className="space-y-6">
                     <p className="text-[15px] leading-relaxed text-gray-700 font-medium">
-                        We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to improve user experience and analyze website traffic. By clicking "Accept," you agree to our website's cookie use as described in our <Link to="/cookies-policy" className="underline hover:text-black">Cookie Policy</Link>. You can change your cookie settings at any time by clicking "Preferences."
+                        We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to improve user experience and analyze website traffic. By clicking "Accept," you agree to our website's cookie use as described in our <a href="/cookies-policy" className="underline hover:text-black">Cookie Policy</a>. You can change your cookie settings at any time by clicking "Preferences."
                     </p>
                     
                     <div className="flex flex-col sm:flex-row gap-3 pt-2">

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useShop } from '../context/ShopContext';
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity, cartTotal, clearCart, shippingPrice, taxPrice, totalPrice } = useShop();
@@ -12,9 +11,9 @@ const Cart = () => {
                 <ShoppingBag size={64} className="text-gray-200 mb-6" />
                 <h2 className="text-2xl font-bold text-black mb-2">Your cart is empty</h2>
                 <p className="text-gray-500 mb-8 text-center max-w-xs">Looks like you haven't added anything to your cart yet.</p>
-                <Link to="/shop" className="bg-black text-white px-8 py-3 rounded-sm font-bold hover:bg-[#024ad8] transition-all">
+                <a href="/shop" className="bg-black text-white px-8 py-3 rounded-sm font-bold hover:bg-[#024ad8] transition-all">
                     Start Shopping
-                </Link>
+                </a>
             </div>
         );
     }
@@ -72,9 +71,9 @@ const Cart = () => {
                         ))}
 
                         <div className="flex justify-between items-center pt-6">
-                            <Link to="/shop" className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-black transition-all">
+                            <a href="/shop" className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-black transition-all">
                                 <ArrowLeft size={16} /> Continue Shopping
-                            </Link>
+                            </a>
                             <button 
                                 onClick={clearCart}
                                 className="text-sm font-bold text-red-500 hover:underline"
@@ -111,12 +110,12 @@ const Cart = () => {
                                 <span className="text-2xl font-bold text-[#024ad8]">${totalPrice.toFixed(2)}</span>
                             </div>
 
-                            <Link 
-                                to="/checkout" 
+                            <a 
+                                href="/checkout" 
                                 className="w-full bg-black text-white py-4 rounded-sm font-bold flex items-center justify-center gap-3 hover:bg-[#024ad8] transition-all shadow-lg"
                             >
                                 Proceed to Checkout <ArrowRight size={18} />
-                            </Link>
+                            </a>
                             
                             <div className="mt-6 flex items-center justify-center gap-4">
                                 <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" className="h-6 opacity-70" />

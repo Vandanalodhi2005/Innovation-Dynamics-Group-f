@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/actions/userActions';
 import { Mail, Lock, AlertCircle, Shield } from 'lucide-react';
@@ -31,23 +31,25 @@ const Login = () => {
         }
     }, [messageParam]);
 
-    useEffect(() => {
-        if (userInfo) {
-            setUser(userInfo); // Sync AuthContext with Redux
-            setSuccessMessage('Logged In Successfully');
-            const timer = setTimeout(() => {
-                if (redirect) {
-                    navigate(`/${redirect}`, { replace: true });
-                } else if (userInfo.isAdmin && isAdminLogin) {
-                    navigate('/admin/dashboard', { replace: true });
-                } else {
-                    const from = location.state?.from?.pathname || '/';
-                    navigate(from, { replace: true });
-                }
-            }, 1500);
-            return () => clearTimeout(timer);
-        }
-    }, [userInfo, navigate, redirect, isAdminLogin, location.state, setUser]);
+useEffect(() => {
+    if (userInfo) {
+        setUser(userInfo); // Sync AuthContext with Redux
+        setSuccessMessage('Logged In Successfully');
+
+        const timer = setTimeout(() => {
+            if (redirect) {
+                window.location.href = `/${redirect}`;
+            } else if (userInfo.isAdmin && isAdminLogin) {
+                window.location.href = '/admin/dashboard';
+            } else {
+                const from = location.state?.from?.pathname || '/';
+                window.location.href = from;
+            }
+        }, 1500);
+
+        return () => clearTimeout(timer);
+    }
+}, [userInfo, redirect, isAdminLogin, location.state, setUser]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -131,9 +133,9 @@ const Login = () => {
                         </div>
 
                         <div>
-                            <Link to="/forgot-password" title="Forgot Password" className="font-semibold text-[#024ad8] hover:underline text-xs">
+                            <a href="/forgot-password" title="Forgot Password" className="font-semibold text-[#024ad8] hover:underline text-xs">
                                 Forgot Password?
-                            </Link>
+                            </a>
                         </div>
                     </div>
 
@@ -154,9 +156,9 @@ const Login = () => {
                 <div className="mt-10 text-center border-t border-gray-100 pt-8">
                     <p className="text-sm font-medium text-gray-400">
                         Don't have an account?{' '}
-                        <Link to="/signup" className="text-[#024ad8] font-semibold hover:underline ml-1">
+                        <a href="/signup" className="text-[#024ad8] font-semibold hover:underline ml-1">
                             Sign Up
-                        </Link>
+                        </a>
                     </p>
                 </div>
             </div>

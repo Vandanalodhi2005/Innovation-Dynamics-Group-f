@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { listMyOrders } from '../redux/actions/orderActions';
 import { Package, Truck, CheckCircle, Clock, AlertCircle, ArrowRight } from 'lucide-react';
 
@@ -56,9 +56,9 @@ const MyOrders = () => {
                         </div>
                         <h2 className="text-2xl font-bold text-gray-800 mb-2">No Orders Yet</h2>
                         <p className="text-gray-500 mb-8 max-w-sm mx-auto">You haven't placed any orders yet. Explore our latest products and start your journey.</p>
-                        <Link to="/shop" className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-xl hover:bg-primary-blue transition-all">
+                        <a href="/shop" className="inline-flex items-center gap-2 px-8 py-3 bg-black text-white font-bold rounded-xl hover:bg-primary-blue transition-all">
                             Start Shopping <ArrowRight size={18} />
-                        </Link>
+                        </a>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 gap-6">
@@ -95,9 +95,9 @@ const MyOrders = () => {
                                                 </span>
                                             )}
                                         </div>
-                                        <Link to={`/order/${order._id}`} className="px-5 py-2 bg-white border border-gray-200 text-gray-600 text-sm font-bold rounded-lg hover:border-primary-blue hover:text-primary-blue transition-colors">
+                                        <a href={`/order/${order._id}`} className="px-5 py-2 bg-white border border-gray-200 text-gray-600 text-sm font-bold rounded-lg hover:border-primary-blue hover:text-primary-blue transition-colors">
                                             View Details
-                                        </Link>
+                                        </a>
                                     </div>
                                 </div>
                                 <div className="p-6">

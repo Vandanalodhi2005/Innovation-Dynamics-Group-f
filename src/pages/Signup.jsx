@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { sendRegistrationOTP, verifyRegistrationOTP } from '../redux/actions/userActions';
 import { User, Mail, Lock, AlertCircle, KeyRound, CheckCircle2 } from 'lucide-react';
@@ -230,9 +230,9 @@ const Signup = () => {
                 <div className="mt-10 text-center border-t border-gray-100 pt-8">
                     <p className="text-sm font-medium text-gray-400">
                         Already have an account?{' '}
-                        <Link to="/login" className="text-[#024ad8] font-semibold hover:underline ml-1">
+                        <a href="/login" className="text-[#024ad8] font-semibold hover:underline ml-1">
                             Sign In
-                        </Link>
+                        </a>
                     </p>
                 </div>
             </div>

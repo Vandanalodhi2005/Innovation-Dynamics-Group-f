@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const TermsConditions = () => {
     return (
@@ -98,12 +97,12 @@ const TermsConditions = () => {
                             <li>Additional fees may apply for remote or special delivery locations</li>
                             <li>International orders may be subject to customs duties or taxes</li>
                         </ul>
-                        <p>Please refer to our <Link to="/shipping-policy" className="text-[#024ad8] hover:underline font-bold">Shipping Policy</Link> for complete details.</p>
+                        <p>Please refer to our <a href="/shipping-policy" className="text-[#024ad8] hover:underline font-bold">Shipping Policy</a> for complete details.</p>
                     </div>
 
                     <div>
                         <h2 className="text-xl font-bold text-black mb-2 mt-8">7. Returns & Refunds</h2>
-                        <p>Returns and refunds are subject to our <Link to="/return-refund" className="text-[#024ad8] hover:underline font-bold">Return & Refund Policy</Link>:</p>
+                        <p>Returns and refunds are subject to our <a href="/return-refund" className="text-[#024ad8] hover:underline font-bold">Return & Refund Policy</a>:</p>
                         <ul className="list-disc pl-6 space-y-1 mt-2 mb-4">
                             <li>Returns must be initiated within the specified return window</li>
                             <li>Items must be unused and in original packaging unless defective</li>

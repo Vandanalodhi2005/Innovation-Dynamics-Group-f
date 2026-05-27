@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { Package, Truck, CheckCircle, Clock, MapPin, CreditCard, ChevronLeft, Calendar, User, ShoppingBag, Download, Lock, Loader2, AlertTriangle } from 'lucide-react';
@@ -205,9 +205,9 @@ const OrderDetails = () => {
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Order Not Found</h2>
             <p className="text-gray-600 mb-8">{error}</p>
-            <Link to="/orders" className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-primary-blue transition-colors">
+            <a href="/orders" className="px-6 py-2 bg-black text-white rounded-lg font-bold hover:bg-primary-blue transition-colors">
                 Back to My Orders
-            </Link>
+            </a>
         </div>
     );
 
@@ -217,9 +217,9 @@ const OrderDetails = () => {
                 {/* Header Section */}
                 <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
-                        <Link to="/orders" className="flex items-center gap-1 text-gray-500 hover:text-primary-blue font-bold text-sm mb-4 transition-colors">
+                        <a href="/orders" className="flex items-center gap-1 text-gray-500 hover:text-primary-blue font-bold text-sm mb-4 transition-colors">
                             <ChevronLeft size={16} /> Back to My Orders
-                        </Link>
+                        </a>
                         <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
                             Order Details
                             <span className="text-gray-400 text-xl font-medium font-mono">#{order._id}</span>

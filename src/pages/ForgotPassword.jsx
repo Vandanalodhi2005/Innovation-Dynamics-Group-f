@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { forgotPassword } from '../redux/actions/userActions';
 import { Mail, ArrowRight, AlertCircle, CheckCircle, ArrowLeft } from 'lucide-react';
 
@@ -75,9 +75,9 @@ const ForgotPassword = () => {
                 </form>
 
                 <div className="mt-8 text-center text-sm">
-                    <Link to="/login" className="font-medium text-gray-600 hover:text-primary-blue flex items-center justify-center gap-2 transition-colors">
+                    <a href="/login" className="font-medium text-gray-600 hover:text-primary-blue flex items-center justify-center gap-2 transition-colors">
                         <ArrowLeft size={16} /> Back to Sign In
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>

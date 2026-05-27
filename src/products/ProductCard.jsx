@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartActions';
 const printerImg = "/PrintsCartslogo.png"; // Fallback
@@ -53,22 +53,22 @@ const ProductCard = ({ product }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Link to={`/product/${product.slug || product._id}`} className="product-image-container">
+      <a href={`/product/${product.slug || product._id}`} className="product-image-container">
         <img
           src={imageUrl}
           alt={product.title || product.name}
           onError={(e) => { e.target.src = 'https://via.placeholder.com/300?text=No+Image'; }}
           className="product-image"
         />
-      </Link>
+      </a>
 
       <div className="product-info">
         <div className="product-category">
           {product.category?.name || product.category || 'Printer'}
         </div>
-        <Link to={`/product/${product.slug || product._id}`} className="product-title" title={product.title || product.name}>
+        <a href={`/product/${product.slug || product._id}`} className="product-title" title={product.title || product.name}>
           {product.title || product.name}
-        </Link>
+        </a>
         <div className="product-price">
           ${price}
         </div>

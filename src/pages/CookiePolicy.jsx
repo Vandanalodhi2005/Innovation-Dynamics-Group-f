@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const CookiePolicy = () => {
     return (
@@ -28,7 +27,7 @@ const CookiePolicy = () => {
                         
                         <h3 className="text-lg font-bold text-black mb-2 mt-6">Important:</h3>
                         <p>
-                            Cookies used on our website do not store sensitive personal information such as your full payment details. Any personal data you provide is handled in accordance with our <Link to="/privacy-policy" className="text-[#024ad8] hover:underline font-bold">Privacy Policy</Link>.
+                            Cookies used on our website do not store sensitive personal information such as your full payment details. Any personal data you provide is handled in accordance with our <a href="/privacy-policy" className="text-[#024ad8] hover:underline font-bold">Privacy Policy</a>.
                         </p>
                     </div>
 

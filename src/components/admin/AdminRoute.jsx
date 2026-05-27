@@ -9,7 +9,7 @@ const AdminRoute = ({ children }) => {
     if (userInfo && userInfo.isAdmin) {
         return children ? children : <Outlet />;
     } else {
-        return <Navigate to="/signin" replace />;
+        return <Navigate href="/signin" replace />;
     }
 };
 

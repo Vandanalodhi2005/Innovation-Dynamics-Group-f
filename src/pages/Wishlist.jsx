@@ -1,7 +1,7 @@
 import React from 'react';
 import { useShop } from '../context/ShopContext';
 import { Trash2, ShoppingBag, Heart, ArrowRight, Eye, Star } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // Build image URL from product
@@ -32,12 +32,12 @@ const Wishlist = () => {
                 </motion.div>
                 <h2 className="text-2xl font-bold mb-3 text-black text-center">Your wishlist is empty</h2>
                 <p className="text-gray-400 mb-8 text-center max-w-sm text-sm leading-relaxed">Save items you love and come back to them anytime.</p>
-                <Link
-                    to="/shop"
+                <a
+                    href="/shop"
                     className="px-8 py-3.5 bg-[#024ad8] text-white font-bold rounded-sm hover:bg-[#0133a1] transition-all flex items-center gap-3 text-sm shadow-lg"
                 >
                     Browse Products <ArrowRight size={16} />
-                </Link>
+                </a>
             </div>
         );
     }
@@ -50,12 +50,12 @@ const Wishlist = () => {
                         <h1 className="text-2xl sm:text-3xl font-bold text-black">My <span className="text-[#024ad8]">Wishlist</span></h1>
                         <span className="text-xs font-bold text-[#024ad8] bg-blue-50 px-3 py-1.5 rounded-sm border border-blue-100">{wishlist.length} {wishlist.length === 1 ? 'item' : 'items'}</span>
                     </div>
-                    <Link
-                        to="/shop"
+                    <a
+                        href="/shop"
                         className="flex items-center gap-2 text-gray-500 text-sm font-medium hover:text-[#024ad8] transition-all"
                     >
                         Continue Shopping <ArrowRight size={16} />
-                    </Link>
+                    </a>
                 </div>
 
                 <motion.div

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const CallToAction = () => {
     return (
@@ -20,18 +19,18 @@ const CallToAction = () => {
                         </p>
                         
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <Link 
-                                to="/shop" 
+                            <a 
+                                href="/shop" 
                                 className="px-10 py-5 bg-[#024ad8] text-white font-bold uppercase tracking-widest text-xs hover:bg-[#0239a5] transition-all rounded-sm text-center shadow-lg shadow-blue-900/20"
                             >
                                 Shop Now
-                            </Link>
-                            <Link 
-                                 to="/shop?filter=home-printers" 
+                            </a>
+                            <a 
+                                 href="/shop?filter=home-printers" 
                                  className="px-10 py-5 bg-transparent border border-gray-700 text-white font-bold uppercase tracking-widest text-xs hover:bg-gray-800 transition-all rounded-sm text-center"
                             >
                                 Explore All Categories
-                            </Link>
+                            </a>
                         </div>
                     </div>
 

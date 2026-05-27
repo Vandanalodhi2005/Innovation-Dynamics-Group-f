@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { saveShippingAddress } from '../redux/actions/cartActions';
 import axios from 'axios';
 import { Loader2, Truck, CreditCard, ChevronRight, Lock, AlertCircle, Check, ShoppingBag, ArrowRight, ArrowLeft } from 'lucide-react';
@@ -562,7 +562,7 @@ const Checkout = () => {
                                                 {agreedToTerms && <Check size={14} className="text-white" />}
                                             </div>
                                             <span className="text-[11px] leading-relaxed text-gray-500 font-medium tracking-tight">
-                                                By placing your order, you confirm that you have read and agree to our <Link to="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Terms & Conditions</Link>, <Link to="/return-refund" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Refund & Return Policy</Link> and understand how your personal information is collected and used as described in our <Link to="/privacy-policy" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Privacy Policy</Link>.
+                                                By placing your order, you confirm that you have read and agree to our <a href="/terms-conditions" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Terms & Conditions</a>, <a href="/return-refund" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Refund & Return Policy</a> and understand how your personal information is collected and used as described in our <a href="/privacy-policy" target="_blank" className="text-[#024ad8] hover:underline mx-0.5">Privacy Policy</a>.
                                             </span>
                                         </div>
                                     </div>

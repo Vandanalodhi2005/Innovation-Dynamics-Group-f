@@ -2,7 +2,6 @@ import React from 'react';
 import Meta from './Meta';
 import { motion } from 'framer-motion';
 import { ChevronRight, Shield, FileText, Clock, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const PolicyLayout = ({ title, lastUpdated, description, children, metaTitle, metaDescription }) => {
     return (
@@ -12,7 +11,7 @@ const PolicyLayout = ({ title, lastUpdated, description, children, metaTitle, me
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Breadcrumbs */}
                 <nav className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[.2em] text-gray-400 mb-12">
-                    <Link to="/" className="hover:text-[#024ad8] transition-colors">Home</Link>
+                    <a href="/" className="hover:text-[#024ad8] transition-colors">Home</a>
                     <ChevronRight size={10} />
                     <span className="text-[#024ad8]">Legal</span>
                     <ChevronRight size={10} />
@@ -43,8 +42,8 @@ const PolicyLayout = ({ title, lastUpdated, description, children, metaTitle, me
                                 </div>
                             </motion.div>
 
-                            <Link 
-                                to="/contact"
+                            <a 
+                                href="/contact"
                                 className="flex items-center justify-between p-6 bg-black text-white rounded-sm group hover:bg-[#024ad8] transition-all duration-500 shadow-xl"
                             >
                                 <div className="flex items-center gap-4">
@@ -52,7 +51,7 @@ const PolicyLayout = ({ title, lastUpdated, description, children, metaTitle, me
                                     <span className="text-xs font-bold uppercase tracking-widest">Need Clarification?</span>
                                 </div>
                                 <ArrowLeft size={18} className="rotate-180 group-hover:translate-x-1 transition-transform" />
-                            </Link>
+                            </a>
                         </div>
                     </aside>
 

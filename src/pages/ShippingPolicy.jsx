@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const ShippingPolicy = () => {
     return (
@@ -165,7 +164,7 @@ const ShippingPolicy = () => {
                         <ul className="list-disc pl-6 space-y-1 mt-2 mb-4">
                             <li>Orders may be canceled only before shipment</li>
                             <li>Once dispatched, cancellations are no longer possible</li>
-                            <li>Customers may initiate a return after delivery per our <Link to="/return-refund" className="text-[#024ad8] hover:underline font-bold">Return Policy</Link></li>
+                            <li>Customers may initiate a return after delivery per our <a href="/return-refund" className="text-[#024ad8] hover:underline font-bold">Return Policy</a></li>
                         </ul>
                     </div>
 

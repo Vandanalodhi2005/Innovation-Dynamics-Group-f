@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout as logoutAction } from '../redux/actions/userActions';
 import { listMyOrders } from '../redux/actions/orderActions';
 import { User, Package, LogOut, MapPin, CreditCard, ChevronDown, ChevronUp, Plus, X, Save, Shield } from 'lucide-react';
-import { Link } from 'react-router-dom';
+
 import { useAuth } from '../context/AuthContext';
 
 const Profile = () => {
@@ -205,7 +205,7 @@ const Profile = () => {
                                     ) : orders && orders.length === 0 ? (
                                         <div className="p-12 text-center">
                                             <p className="text-gray-400 font-medium text-sm mb-6">No orders yet</p>
-                                            <Link to="/shop" className="inline-block bg-[#024ad8] text-white px-6 py-3 rounded-sm font-semibold text-sm hover:bg-[#0133a1] transition-all">Start Shopping</Link>
+                                            <a href="/shop" className="inline-block bg-[#024ad8] text-white px-6 py-3 rounded-sm font-semibold text-sm hover:bg-[#0133a1] transition-all">Start Shopping</a>
                                         </div>
                                     ) : (
                                         displayedOrders.map(order => (
@@ -227,9 +227,9 @@ const Profile = () => {
                                                         <p className="font-bold text-sm">${order.totalPrice.toFixed(2)}</p>
                                                         <p className="text-xs text-gray-400">{order.orderItems.length} {order.orderItems.length === 1 ? 'item' : 'items'}</p>
                                                     </div>
-                                                    <Link to={`/order/${order._id}`} className="bg-gray-50 p-2.5 rounded-sm text-gray-400 hover:bg-[#024ad8] hover:text-white transition-all">
+                                                    <a href={`/order/${order._id}`} className="bg-gray-50 p-2.5 rounded-sm text-gray-400 hover:bg-[#024ad8] hover:text-white transition-all">
                                                         <Plus size={16} />
-                                                    </Link>
+                                                    </a>
                                                 </div>
                                             </div>
                                         ))
