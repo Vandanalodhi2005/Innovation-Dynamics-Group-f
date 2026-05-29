@@ -71,7 +71,7 @@ const AdminSidebar = ({ isOpen, setIsOpen }) => {
                     {navItems.map((item) => (
                         <NavLink
                             key={item.path}
-                            href={item.path}
+                            to={item.path}
                             onClick={() => setIsOpen(false)}
                             className={({ isActive }) =>
                                 `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${isActive
