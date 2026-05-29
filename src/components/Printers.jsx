@@ -140,6 +140,20 @@ const FilteredView = ({ catName, initialSearch = '', usageCategory = '', onDetai
     const safeProducts = Array.isArray(products) ? products : [];
 
     const sorted = [...safeProducts].sort((a, b) => {
+        // If it's Home Printers and sorting by Featured, prioritize brands: HP > Epson > Canon
+        if (usageCategory === 'Home' && sortBy === 'featured') {
+            const brandOrder = { 'HP': 1, 'EPSON': 2, 'CANON': 3 };
+            const brandA = (a.brand || '').toUpperCase();
+            const brandB = (b.brand || '').toUpperCase();
+            
+            const orderA = brandOrder[brandA] || 99;
+            const orderB = brandOrder[brandB] || 99;
+            
+            if (orderA !== orderB) {
+                return orderA - orderB;
+            }
+        }
+
         if (sortBy === 'price-low') return (a.price || 0) - (b.price || 0);
         if (sortBy === 'price-high') return (b.price || 0) - (a.price || 0);
         if (sortBy === 'rating') return (b.rating || 0) - (a.rating || 0);
